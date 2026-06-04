@@ -1,0 +1,139 @@
+---
+aid: ucla
+name: University of California, Los Angeles
+description: >-
+  The University of California, Los Angeles (UCLA) is a public land-grant
+  research university in Los Angeles, California, ranked #30 in the QS World
+  University Rankings 2025. UCLA operates a centralized API Developer Portal
+  (developer.api.ucla.edu) that publishes a catalog of campus APIs covering
+  student information systems, course and class data, the Registrar data
+  dictionary, MyUCLA menu data, and enterprise integration services. Most
+  products are interactive-documented but gated behind an access request and
+  approval workflow with App Key/secret credentials. UCLA Library additionally
+  exposes IIIF-compliant digital collections manifests for image
+  interoperability.
+type: Index
+position: Consumer
+access: 3rd-Party
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/ucla/refs/heads/main/apis.yml
+tags:
+  - Education
+  - Higher Education
+  - University
+  - Student Information
+  - Course Catalog
+  - Library
+  - IIIF
+  - United States
+  - California
+created: '2026-06-03'
+modified: '2026-06-03'
+specificationVersion: '0.19'
+apis:
+  - aid: ucla:classes
+    name: Classes API
+    description: >-
+      Information on all classes offered in a selected term, including title,
+      description, notes and final exam details, as well as class sections with
+      meeting times, locations, enrollment details, units and instructors.
+      Access requires an approved request and credentials via the UCLA API
+      Developer Portal.
+    humanURL: https://developer.api.ucla.edu/api/261
+    tags: [ Classes, Course Catalog, Student Information, SIS ]
+    properties:
+      - type: Documentation
+        url: https://developer.api.ucla.edu/api/261
+      - type: SignUp
+        url: https://developer.api.ucla.edu/
+  - aid: ucla:courses
+    name: Courses API
+    description: >-
+      Information on all approved courses (currently and historically offered)
+      at UCLA, including course title, description, General Education and
+      diversity attributes, and course requisites, with the ability to query
+      courses by subject area. Sourced from the UCLA General Catalog and owned
+      by the Registrar's Office. Access is gated by approval and credentials.
+    humanURL: https://developer.api.ucla.edu/api/271
+    tags: [ Courses, Course Catalog, Registrar, SIS ]
+    properties:
+      - type: Documentation
+        url: https://developer.api.ucla.edu/api/271
+      - type: SignUp
+        url: https://developer.api.ucla.edu/
+  - aid: ucla:dictionary
+    name: Dictionary API
+    description: >-
+      Access to general data dictionary information and descriptions from the
+      UCLA Registrar's Office, used to interpret coded values across the
+      student information system APIs. Access is gated by the portal's approval
+      workflow.
+    humanURL: https://developer.api.ucla.edu/api/366
+    tags: [ Data Dictionary, Registrar, Reference Data ]
+    properties:
+      - type: Documentation
+        url: https://developer.api.ucla.edu/api/366
+      - type: SignUp
+        url: https://developer.api.ucla.edu/
+  - aid: ucla:myucla-menu
+    name: MyUCLA Menu Data API
+    description: >-
+      Returns the information needed to build the MyUCLA megamenu navigation,
+      published through the UCLA API Developer Portal. Access is gated by the
+      portal's approval workflow.
+    humanURL: https://developer.api.ucla.edu/api/61
+    tags: [ Navigation, MyUCLA, Campus ]
+    properties:
+      - type: Documentation
+        url: https://developer.api.ucla.edu/api/61
+      - type: SignUp
+        url: https://developer.api.ucla.edu/
+  - aid: ucla:production-calendar-jobs
+    name: Production Calendar Jobs API
+    description: >-
+      Endpoints for obtaining information about production calendar operations
+      and scheduled jobs, published through the UCLA API Developer Portal.
+      Access is gated by the portal's approval workflow.
+    humanURL: https://developer.api.ucla.edu/api/281
+    tags: [ Operations, Data Integration, Scheduling ]
+    properties:
+      - type: Documentation
+        url: https://developer.api.ucla.edu/api/281
+      - type: SignUp
+        url: https://developer.api.ucla.edu/
+  - aid: ucla:library-iiif
+    name: UCLA Library Digital Collections IIIF
+    description: >-
+      UCLA Library Digital Collections comply with the International Image
+      Interoperability Framework (IIIF). Each item page exposes a IIIF JSON
+      manifest that can be opened in IIIF-compatible viewers and tools outside
+      the collections site, delivering high-resolution image content over the
+      web.
+    humanURL: https://digital.library.ucla.edu/
+    baseURL: https://iiif.library.ucla.edu/
+    tags: [ Library, IIIF, Digital Collections, Images ]
+    properties:
+      - type: Documentation
+        url: https://guides.library.ucla.edu/digital-collections/iiif
+      - type: GitHub
+        url: https://github.com/uclalibrary
+common:
+  - type: Website
+    url: https://www.ucla.edu/
+  - type: DeveloperPortal
+    url: https://developer.api.ucla.edu/
+  - type: GitHub
+    url: https://github.com/ucla
+  - type: LinkedIn
+    url: https://www.linkedin.com/school/ucla/
+  - type: Plans
+    url: plans/ucla-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/ucla-rate-limits.yml
+  - type: FinOps
+    url: finops/ucla-finops.yml
+  - type: Review
+    url: review.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

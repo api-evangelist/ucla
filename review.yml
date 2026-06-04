@@ -1,0 +1,61 @@
+---
+name: University of California, Los Angeles
+description: University of California, Los Angeles public developer/API footprint review for APIs.json cataloging.
+url: https://raw.githubusercontent.com/api-evangelist/ucla/refs/heads/main/review.yml
+created: '2026-06-03'
+modified: '2026-06-03'
+reviews:
+  - date: '2026-06-03'
+    rating: 4
+    summary: >-
+      UCLA runs a genuine, centralized API Developer Portal at
+      developer.api.ucla.edu with a public API Catalog (Classes, Courses,
+      Dictionary, MyUCLA Menu Data, Production Calendar Jobs) that offers
+      interactive documentation, but access to actual endpoints is gated behind
+      an approval workflow with App Key/secret credentials, so base URLs were
+      not published. The portal home, catalog, and individual product pages all
+      resolved live (HTTP 200). UCLA Library exposes IIIF-compliant digital
+      collections manifests. The developer-pilot portal did not resolve from
+      outside the network (treated as 0). Official GitHub org (github.com/ucla)
+      and UCLA Library org verified live. No public endpoints were fabricated;
+      gated and unreachable resources are recorded honestly.
+    endpoints:
+      - url: https://developer.api.ucla.edu/
+        status: 200
+        note: API Developer Portal home; verified live.
+      - url: https://developer.api.ucla.edu/api-catalog
+        status: 200
+        note: API Catalog listing campus API products; verified live.
+      - url: https://developer.api.ucla.edu/api/261
+        status: 200
+        note: Classes API documentation page; access gated.
+      - url: https://developer.api.ucla.edu/api/271
+        status: 200
+        note: Courses API documentation page; access gated.
+      - url: https://developer.api.ucla.edu/api/366
+        status: 200
+        note: Dictionary API documentation page; access gated.
+      - url: https://developer.api.ucla.edu/api/61
+        status: 200
+        note: MyUCLA Menu Data API documentation page; access gated.
+      - url: https://developer.api.ucla.edu/api/281
+        status: 200
+        note: Production Calendar Jobs API documentation page; access gated.
+      - url: https://catalog.registrar.ucla.edu/
+        status: 200
+        note: UCLA General Catalog, source for Courses/Classes data.
+      - url: https://digital.library.ucla.edu/
+        status: 200
+        note: UCLA Library Digital Collections (IIIF-enabled); verified live.
+      - url: https://iiif.library.ucla.edu/
+        status: 200
+        note: UCLA Library IIIF image service host; verified live.
+      - url: https://github.com/ucla
+        status: 200
+        note: Official UCLA GitHub organization; verified live.
+      - url: https://www.ucla.edu/
+        status: 200
+        note: Official institution website; verified live.
+      - url: https://developer-pilot.api.ucla.edu/
+        status: 0
+        note: Pilot developer portal did not resolve from outside the campus network.
