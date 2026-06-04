@@ -1,0 +1,42 @@
+{
+  "@context": {
+    "schema": "https://schema.org/",
+    "ucla": "https://developer.api.ucla.edu/vocab#",
+    "name": "schema:name",
+    "description": "schema:description",
+    "url": "schema:url",
+    "sameAs": "schema:sameAs",
+    "logo": "schema:logo",
+    "address": "schema:address",
+    "department": "schema:department",
+    "api": {
+      "@id": "ucla:api",
+      "@container": "@set"
+    },
+    "humanURL": {
+      "@id": "ucla:humanURL",
+      "@type": "@id"
+    },
+    "baseURL": {
+      "@id": "ucla:baseURL",
+      "@type": "@id"
+    },
+    "Classes": "ucla:Classes",
+    "Courses": "ucla:Courses",
+    "Dictionary": "ucla:Dictionary",
+    "Menu": "ucla:Menu",
+    "ProductionCalendarJob": "ucla:ProductionCalendarJob",
+    "IIIFManifest": "ucla:IIIFManifest"
+  },
+  "@type": "schema:CollegeOrUniversity",
+  "@id": "https://www.ucla.edu/",
+  "name": "University of California, Los Angeles",
+  "url": "https://www.ucla.edu/",
+  "description": "A public land-grant research university in Los Angeles, California, operating a centralized API Developer Portal cataloging campus APIs for student information, courses, classes, the Registrar data dictionary, MyUCLA menu data, enterprise integration, and IIIF-compliant library digital collections.",
+  "sameAs": [
+    "https://developer.api.ucla.edu/",
+    "https://github.com/ucla",
+    "https://www.linkedin.com/school/ucla/",
+    "https://digital.library.ucla.edu/"
+  ]
+}
