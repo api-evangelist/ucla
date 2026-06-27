@@ -44,7 +44,7 @@ apis:
     properties:
       - type: Documentation
         url: https://developer.api.ucla.edu/api/261
-      - type: SignUp
+      - type: Signup
         url: https://developer.api.ucla.edu/
   - aid: ucla:courses
     name: Courses API
@@ -59,7 +59,7 @@ apis:
     properties:
       - type: Documentation
         url: https://developer.api.ucla.edu/api/271
-      - type: SignUp
+      - type: Signup
         url: https://developer.api.ucla.edu/
   - aid: ucla:dictionary
     name: Dictionary API
@@ -73,7 +73,7 @@ apis:
     properties:
       - type: Documentation
         url: https://developer.api.ucla.edu/api/366
-      - type: SignUp
+      - type: Signup
         url: https://developer.api.ucla.edu/
   - aid: ucla:myucla-menu
     name: MyUCLA Menu Data API
@@ -86,7 +86,7 @@ apis:
     properties:
       - type: Documentation
         url: https://developer.api.ucla.edu/api/61
-      - type: SignUp
+      - type: Signup
         url: https://developer.api.ucla.edu/
   - aid: ucla:production-calendar-jobs
     name: Production Calendar Jobs API
@@ -99,7 +99,7 @@ apis:
     properties:
       - type: Documentation
         url: https://developer.api.ucla.edu/api/281
-      - type: SignUp
+      - type: Signup
         url: https://developer.api.ucla.edu/
   - aid: ucla:library-iiif
     name: UCLA Library Digital Collections IIIF
