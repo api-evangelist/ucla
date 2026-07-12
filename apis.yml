@@ -118,6 +118,8 @@ apis:
       - type: GitHub
         url: https://github.com/uclalibrary
 common:
+  - type: DomainSecurity
+    url: security/ucla-domain-security.yml
   - type: Website
     url: https://www.ucla.edu/
   - type: DeveloperPortal
