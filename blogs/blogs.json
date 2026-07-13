@@ -5,10 +5,10 @@
       "source": "https://newsroom.ucla.edu/",
       "feed_url": "https://newsroom.ucla.edu/rss.xml",
       "title": "UCLA Newsroom",
-      "saved": 0,
+      "saved": 20,
       "method": "none"
     }
   ],
-  "post_count": 0,
-  "fetched": "2026-06-03T00:00:00Z"
+  "post_count": 20,
+  "fetched": "2026-07-11T11:43:46Z"
 }
