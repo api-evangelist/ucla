@@ -2,152 +2,569 @@
 aid: ucla
 name: University of California, Los Angeles
 description: >-
-  The University of California, Los Angeles (UCLA) is a public land-grant
-  research university in Los Angeles, California, ranked #30 in the QS World
-  University Rankings 2025. UCLA operates a centralized API Developer Portal
-  (developer.api.ucla.edu) that publishes a catalog of campus APIs covering
-  student information systems, course and class data, the Registrar data
-  dictionary, MyUCLA menu data, and enterprise integration services. Most
-  products are interactive-documented but gated behind an access request and
-  approval workflow with App Key/secret credentials. UCLA Library additionally
-  exposes IIIF-compliant digital collections manifests for image
-  interoperability.
+  The University of California, Los Angeles is a public land-grant research university in the
+  University of California system, ranked 29th in the QS World University Rankings, and it is one
+  of the few institutions in this cohort that genuinely runs a central API program rather than
+  renting one. UCLA operates its own API gateway at api.ucla.edu, fronted by Apigee under a
+  certificate issued to the university, and a Drupal/Apigee developer portal at
+  developer.api.ucla.edu that catalogues eight API products. Seven of those products publish a
+  real machine-readable contract, anonymously downloadable, and all seven describe routes on
+  UCLA's own gateway - six Swagger 2.0 contracts covering the student information system
+  (classes, class sections, courses, GE foundations, a 61-operation Registrar data dictionary,
+  the mainframe production calendar, a connectivity health check and the MyUCLA portal menu) plus
+  one OpenAPI 3.0.3 contract for a campus weather station. Ninety-one operations in total, every
+  one of them a read. UCLA also runs its own Shibboleth identity provider, registered by InCommon
+  under entityID urn:mace:incommon:ucla.edu with REFEDS Research & Scholarship and SIRTFI
+  certification - the most complete machine-readable artifact the university publishes, and the
+  one no API catalogue had looked at. UCLA Library self-hosts a Cantaloupe IIIF image server, a
+  Hyrax digital collections platform and a Dataverse instance, all on ucla.edu hosts under UCLA's
+  own TLS certificates. What UCLA does not have is any way in: every credential requires a UCLA
+  logon and a human approval, there is no self-service path, no status page, no changelog, no
+  llms.txt, no machine-readable catalog index, and no rate-limit or error documentation. The
+  learning management system, BruinLearn, is Instructure Canvas on a vanity subdomain and is
+  recorded as a tenant relationship rather than as UCLA engineering.
 type: Index
 accessModel:
   pricing: free
-  onboarding: unknown
+  onboarding: request
   trial: false
   try_now: false
   public: false
-  label: Free
-  confidence: medium
+  label: Affiliation-gated
+  confidence: high
   source:
+  - authentication
   - plans
-  generated: '2026-07-22'
-  method: derived
+  generated: '2026-08-19'
+  method: probed
 position: Consumer
 access: 3rd-Party
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/ucla.png
 url: https://raw.githubusercontent.com/api-evangelist/ucla/refs/heads/main/apis.yml
 tags:
-  - Education
-  - Higher Education
-  - University
-  - Student Information
-  - Course Catalog
-  - Library
-  - IIIF
-  - United States
-  - California
+- University
+- Higher Education
+- Education
+- United States
+- California
+- UC System
+- Public Research University
+- Course Catalog
+- Student Information
+- Identity Federation
+- Research Repository
+- Library
+- IIIF
+- Campus Life
 created: '2026-06-03'
-modified: '2026-06-03'
+modified: '2026-08-19'
 specificationVersion: '0.23'
+x-type: university
+x-category: Public Research University
 apis:
-  - aid: ucla:classes
-    name: Classes API
-    description: >-
-      Information on all classes offered in a selected term, including title,
-      description, notes and final exam details, as well as class sections with
-      meeting times, locations, enrollment details, units and instructors.
-      Access requires an approved request and credentials via the UCLA API
-      Developer Portal.
-    humanURL: https://developer.api.ucla.edu/api/261
-    tags: [ Classes, Course Catalog, Student Information, SIS ]
-    properties:
-      - type: Documentation
-        url: https://developer.api.ucla.edu/api/261
-      - type: Signup
-        url: https://developer.api.ucla.edu/
-  - aid: ucla:courses
-    name: Courses API
-    description: >-
-      Information on all approved courses (currently and historically offered)
-      at UCLA, including course title, description, General Education and
-      diversity attributes, and course requisites, with the ability to query
-      courses by subject area. Sourced from the UCLA General Catalog and owned
-      by the Registrar's Office. Access is gated by approval and credentials.
-    humanURL: https://developer.api.ucla.edu/api/271
-    tags: [ Courses, Course Catalog, Registrar, SIS ]
-    properties:
-      - type: Documentation
-        url: https://developer.api.ucla.edu/api/271
-      - type: Signup
-        url: https://developer.api.ucla.edu/
-  - aid: ucla:dictionary
-    name: Dictionary API
-    description: >-
-      Access to general data dictionary information and descriptions from the
-      UCLA Registrar's Office, used to interpret coded values across the
-      student information system APIs. Access is gated by the portal's approval
-      workflow.
-    humanURL: https://developer.api.ucla.edu/api/366
-    tags: [ Data Dictionary, Registrar, Reference Data ]
-    properties:
-      - type: Documentation
-        url: https://developer.api.ucla.edu/api/366
-      - type: Signup
-        url: https://developer.api.ucla.edu/
-  - aid: ucla:myucla-menu
-    name: MyUCLA Menu Data API
-    description: >-
-      Returns the information needed to build the MyUCLA megamenu navigation,
-      published through the UCLA API Developer Portal. Access is gated by the
-      portal's approval workflow.
-    humanURL: https://developer.api.ucla.edu/api/61
-    tags: [ Navigation, MyUCLA, Campus ]
-    properties:
-      - type: Documentation
-        url: https://developer.api.ucla.edu/api/61
-      - type: Signup
-        url: https://developer.api.ucla.edu/
-  - aid: ucla:production-calendar-jobs
-    name: Production Calendar Jobs API
-    description: >-
-      Endpoints for obtaining information about production calendar operations
-      and scheduled jobs, published through the UCLA API Developer Portal.
-      Access is gated by the portal's approval workflow.
-    humanURL: https://developer.api.ucla.edu/api/281
-    tags: [ Operations, Data Integration, Scheduling ]
-    properties:
-      - type: Documentation
-        url: https://developer.api.ucla.edu/api/281
-      - type: Signup
-        url: https://developer.api.ucla.edu/
-  - aid: ucla:library-iiif
-    name: UCLA Library Digital Collections IIIF
-    description: >-
-      UCLA Library Digital Collections comply with the International Image
-      Interoperability Framework (IIIF). Each item page exposes a IIIF JSON
-      manifest that can be opened in IIIF-compatible viewers and tools outside
-      the collections site, delivering high-resolution image content over the
-      web.
-    humanURL: https://digital.library.ucla.edu/
-    baseURL: https://iiif.library.ucla.edu/
-    tags: [ Library, IIIF, Digital Collections, Images ]
-    properties:
-      - type: Documentation
-        url: https://guides.library.ucla.edu/digital-collections/iiif
-      - type: GitHub
-        url: https://github.com/uclalibrary
-common:
-  - type: DomainSecurity
-    url: security/ucla-domain-security.yml
-  - type: Website
-    url: https://www.ucla.edu/
-  - type: DeveloperPortal
+- aid: ucla:sis-classes
+  name: UCLA Classes API
+  description: >-
+    All classes offered in a selected UCLA term - title, description, notes, final exam details,
+    and class sections with meeting times, locations, enrolment counts, units and instructors.
+    Six read operations tagged Classes and Class Sections, including a dedicated route for UCLA
+    Extension. Keyed on UCLA's own three-character offeredTermCode. Contract is Swagger 2.0,
+    published by UCLA on its own portal and describing routes on UCLA's own gateway.
+  humanURL: https://developer.api.ucla.edu/api/261
+  baseURL: https://api.ucla.edu/sis
+  tags: [Classes, Course Catalog, Student Information, SIS, Registrar]
+  properties:
+  - type: OpenAPI
+    url: openapi/ucla-sis-classes-openapi.yml
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/261
+  - type: JSONSchema
+    url: json-schema/ucla-sis-classes-schemas.json
+  - type: Authentication
+    url: authentication/ucla-authentication.yml
+  - type: Scopes
+    url: scopes/ucla-scopes.yml
+  - type: Signup
     url: https://developer.api.ucla.edu/
-  - type: GitHub
-    url: https://github.com/ucla
-  - type: LinkedIn
-    url: https://www.linkedin.com/school/ucla/
-  - type: Plans
-    url: plans/ucla-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/ucla-rate-limits.yml
-  - type: FinOps
-    url: finops/ucla-finops.yml
-  - type: Review
-    url: review.yml
+  x-operator: institution
+  x-operator-evidence: >-
+    Contract host api.ucla.edu with basePath /sis; TLS subject O=University of California, Los
+    Angeles issued by InCommon RSA Server CA 2; tokenUrl on the same host; contract served from
+    UCLA's own developer portal.
+  x-access: gated
+  x-status: 401 oauth.v2.InvalidAccessToken on a documented route (probed 2026-08-19)
+- aid: ucla:sis-courses
+  name: UCLA Courses API
+  description: >-
+    Every approved UCLA course, current and historical - title, description, General Education
+    and diversity attributes, requisites, and the General Education foundation and category
+    structure courses are certified against. Seven read operations. Courses are identified by the
+    triple subjectAreaCode / courseCatalogNumber / courseStartTermCode, because UCLA versions its
+    courses by the term a version took effect. Sourced from the Registrar's general catalog.
+  humanURL: https://developer.api.ucla.edu/api/271
+  baseURL: https://api.ucla.edu/sis
+  tags: [Courses, Course Catalog, Registrar, SIS, General Education]
+  properties:
+  - type: OpenAPI
+    url: openapi/ucla-sis-courses-openapi.yml
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/271
+  - type: JSONSchema
+    url: json-schema/ucla-sis-courses-schemas.json
+  - type: CourseCatalog
+    url: https://catalog.registrar.ucla.edu/
+  - type: Authentication
+    url: authentication/ucla-authentication.yml
+  - type: Signup
+    url: https://developer.api.ucla.edu/
+  x-operator: institution
+  x-operator-evidence: Contract host api.ucla.edu/sis; UCLA-issued TLS; served from UCLA's own portal.
+  x-access: gated
+- aid: ucla:sis-dictionary
+  name: UCLA Registrar Dictionary API
+  description: >-
+    The largest contract UCLA publishes and the one that makes the rest legible - 61 read
+    operations enumerating every coded value the other SIS APIs return: buildings, careers,
+    cities, colleges, class levels, class numbers, activity types, academic actions, affiliation
+    term sessions, enrolment statuses and fifty more. Owned by the Registrar's Office. Any other
+    campus would call this a code-tables service; publishing it as a first-class API product is
+    the right decision and is unusual in this cohort.
+  humanURL: https://developer.api.ucla.edu/api/366
+  baseURL: https://api.ucla.edu/sis
+  tags: [Data Dictionary, Registrar, Reference Data, SIS]
+  properties:
+  - type: OpenAPI
+    url: openapi/ucla-sis-dictionary-openapi.yml
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/366
+  - type: JSONSchema
+    url: json-schema/ucla-sis-dictionary-schemas.json
+  - type: Vocabulary
+    url: vocabulary/ucla-vocabulary.yml
+  - type: Signup
+    url: https://developer.api.ucla.edu/
+  x-operator: institution
+  x-operator-evidence: Contract host api.ucla.edu/sis; UCLA-issued TLS; served from UCLA's own portal.
+  x-access: gated
+  x-note: >-
+    The portal lists this product twice, at node 366 and node 1446. Only node 366 carries a
+    specification; node 1446 is an unannotated duplicate.
+- aid: ucla:sis-production-calendar-jobs
+  name: UCLA Production Calendar Jobs API
+  description: >-
+    One read operation returning the Registrar's mainframe batch schedule for a given run date
+    and a forward window in weeks. The only UCLA contract that describes campus operations rather
+    than campus data, and the only public evidence that UCLA's student information system still
+    has a mainframe behind it. Classified privileged in agentic-access for that reason.
+  humanURL: https://developer.api.ucla.edu/api/281
+  baseURL: https://api.ucla.edu/sis
+  tags: [Operations, Data Integration, Scheduling, Registrar]
+  properties:
+  - type: OpenAPI
+    url: openapi/ucla-sis-production-calendar-jobs-openapi.yml
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/281
+  - type: JSONSchema
+    url: json-schema/ucla-sis-production-calendar-jobs-schemas.json
+  - type: AgenticAccess
+    url: agentic-access/ucla-agentic-access.yml
+  x-operator: institution
+  x-operator-evidence: Contract host api.ucla.edu/sis; UCLA-issued TLS; served from UCLA's own portal.
+  x-access: gated
+- aid: ucla:sis-verify-connectivity
+  name: UCLA Verify Connectivity to SIS API
+  description: >-
+    A single health-check operation under the Infrastructure tag, whose only purpose is to let a
+    subscribed application confirm it can reach the student information system through the
+    gateway. UCLA ships it as a catalogued API product with its own portal page and its own
+    contract - a small piece of genuinely good API program design. The contract nonetheless
+    carries 1,036 schema definitions to describe one operation.
+  humanURL: https://developer.api.ucla.edu/api/346
+  baseURL: https://api.ucla.edu/sis
+  tags: [Infrastructure, Health Check, SIS, Operations]
+  properties:
+  - type: OpenAPI
+    url: openapi/ucla-sis-verify-connectivity-openapi.yml
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/346
+  - type: JSONSchema
+    url: json-schema/ucla-sis-verify-connectivity-schemas.json
+  x-operator: institution
+  x-operator-evidence: Contract host api.ucla.edu/sis; UCLA-issued TLS; served from UCLA's own portal.
+  x-access: gated
+  x-added: '2026-08-19'
+- aid: ucla:myucla-menu-data
+  name: MyUCLA Menu Data API
+  description: >-
+    One read operation returning the navigation tree of MyUCLA, the student portal, so that the
+    megamenu can be assembled by any client rather than hard-coded into one. Small, honest and
+    genuinely institution-run - exactly the class of campus surface this pipeline exists to find.
+  humanURL: https://developer.api.ucla.edu/api/61
+  baseURL: https://api.ucla.edu/sis
+  tags: [Navigation, MyUCLA, Campus Life, Student Portal]
+  properties:
+  - type: OpenAPI
+    url: openapi/ucla-myucla-menu-data-openapi.yml
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/61
+  - type: JSONSchema
+    url: json-schema/ucla-myucla-menu-data-schemas.json
+  x-operator: institution
+  x-operator-evidence: Contract host api.ucla.edu/sis; UCLA-issued TLS; served from UCLA's own portal.
+  x-access: gated
+- aid: ucla:weather
+  name: UCLA Weather API
+  description: >-
+    Fourteen read operations returning live observations from UCLA's campus weather station -
+    wind speed and gust, air temperature with daily minimum and maximum, relative humidity, dew
+    point, wet bulb, sea-level pressure and more, each as a plain-text scalar. The only UCLA
+    contract written in OpenAPI 3.0.3 rather than Swagger 2.0, the only one that documents every
+    operation, and the only one that authenticates with a header API key instead of OAuth 2.0.
+    info.version is 0.0.1 on a live production route.
+  humanURL: https://developer.api.ucla.edu/api/51
+  baseURL: https://api.ucla.edu/weather
+  tags: [Weather, Campus Life, Environmental Data, Atmospheric Sciences]
+  properties:
+  - type: OpenAPI
+    url: openapi/ucla-weather-openapi.yml
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/51
+  - type: JSONSchema
+    url: json-schema/ucla-weather-schemas.json
+  x-operator: institution
+  x-operator-evidence: >-
+    servers[] https://api.ucla.edu/ and https://qa.api.ucla.edu/; info.description names
+    https://weather.atmos.ucla.edu/; UCLA-issued TLS on both hosts.
+  x-access: gated
+  x-status: 401 on https://api.ucla.edu/weather/api with no key (probed 2026-08-19)
+  x-added: '2026-08-19'
+  x-note: >-
+    The contract's info.description points at https://weather.atmos.ucla.edu/, which resolves in
+    DNS (CNAME ocypete.atmos.ucla.edu, 164.67.86.87) but accepts no HTTP or HTTPS connection. The
+    pointer is dead and is deliberately not carried into this profile.
+- aid: ucla:identity
+  name: UCLA Shibboleth Identity Provider (InCommon)
+  description: >-
+    UCLA's own Shibboleth identity provider and the most complete machine-readable artifact the
+    university publishes. Registered by InCommon under entityID urn:mace:incommon:ucla.edu,
+    signed with RSA-SHA256, scoped to ucla.edu, serving SAML 1.1 and SAML 2.0 SSO from
+    shb.ais.ucla.edu with a separate attribute authority on port 8443. Asserts the InCommon and
+    REFEDS Research & Scholarship entity categories and a REFEDS SIRTFI assurance certification
+    with a named security contact. Anonymously readable, federated into eduGAIN, and the surface
+    class this cohort is never credited for.
+  humanURL: https://dts.ucla.edu/
+  baseURL: https://shb.ais.ucla.edu/shibboleth-idp
+  tags: [Identity Federation, SAML, Shibboleth, InCommon, Single Sign-On, eduGAIN]
+  properties:
+  - type: IdentityFederation
+    url: identity-federation/ucla-identity-federation.yml
+  - type: Documentation
+    url: https://mdq.incommon.org/entities/urn%3Amace%3Aincommon%3Aucla.edu
+  - type: Examples
+    url: examples/ucla-idp-saml-metadata.xml
+  - type: Conformance
+    url: conformance/ucla-conformance.yml
+  - type: Authentication
+    url: authentication/ucla-authentication.yml
+  x-operator: institution
+  x-operator-evidence: >-
+    entityID under ucla.edu; shibmd:Scope ucla.edu; endpoints on shb.ais.ucla.edu which CNAMEs
+    to sso.auth.612c0b3a.prod.r53.aws.it.ucla.edu (UCLA-managed Route 53); OrganizationName
+    "University of California-Los Angeles"; contacts at it.ucla.edu and ucla.edu.
+  x-access: public
+  x-added: '2026-08-19'
+- aid: ucla:library-iiif
+  name: UCLA Library IIIF Image Service
+  description: >-
+    UCLA Library self-hosts a Cantaloupe 5.0.5 image server exposing both IIIF Image API 2.x and
+    3.0 endpoints for its digital collections. Institution-operated on UCLA's own AWS
+    infrastructure under a UCLA-issued certificate, not a vendor platform. Live but effectively
+    unreadable from outside - every identifier probed, including a deliberate nonsense control,
+    returned 403 with a Java stack trace naming the private S3 source bucket, so no manifest or
+    info.json could be retrieved and none is claimed.
+  humanURL: https://guides.library.ucla.edu/digital-collections/iiif
+  baseURL: https://iiif.library.ucla.edu/iiif/2
+  tags: [Library, IIIF, Digital Collections, Images, Cultural Heritage]
+  properties:
+  - type: Documentation
+    url: https://iiif.library.ucla.edu/
+  - type: Examples
+    url: examples/ucla-iiif-cantaloupe-403-negative-probe.txt
+  - type: Errors
+    url: errors/ucla-errors.yml
+  - type: GitHubOrganization
+    url: https://github.com/UCLALibrary
+  x-operator: institution
+  x-operator-evidence: >-
+    TLS subject O=University of California, Los Angeles issued by InCommon RSA OV SSL CA 3;
+    resolves to an AWS ELB in UCLA Library's own us-west-2 account; software is open-source
+    Cantaloupe self-hosted, not a hosted repository service.
+  x-access: blocked
+  x-status: 403 with stack trace on every identifier including a negative control (probed 2026-08-19)
+- aid: ucla:digital-collections
+  name: UCLA Library Digital Collections
+  description: >-
+    UCLA Library's digital collections platform, institution-hosted on a UCLA IP under a
+    UCLA-issued certificate and developed in the open by the UCLA Library engineering
+    organisation. Recorded as a relationship rather than a contract because the host answers HTTP
+    200 with an Anubis proof-of-work bot challenge to every path, including the OAI-PMH route, so
+    no API response could be read. Neither a finding about UCLA nor a claim of a surface - a
+    marker that this needs an authorised re-probe.
+  humanURL: https://digital.library.ucla.edu/
+  baseURL: https://digital.library.ucla.edu/
+  tags: [Library, Digital Collections, Research Repository, OAI-PMH, Blocked]
+  properties:
+  - type: Documentation
+    url: https://digital.library.ucla.edu/
+  - type: GitHubOrganization
+    url: https://github.com/UCLALibrary
+  x-operator: institution
+  x-operator-evidence: >-
+    A record 164.67.48.162 in UCLA address space; TLS subject O=University of California, Los
+    Angeles issued by InCommon RSA Server CA 2; no vendor CNAME.
+  x-access: blocked
+  x-status: 200 with an Anubis bot-challenge body on every path (probed 2026-08-19)
+- aid: ucla:dataverse
+  name: UCLA Dataverse
+  description: >-
+    UCLA's research data repository, running open-source Dataverse on a UCLA-owned host under a
+    UCLA-issued certificate with no vendor CNAME - which distinguishes it from the Figshare and
+    Elsevier Pure tenancies that dominate this cohort. Recorded as a relationship rather than a
+    contract because the host answers HTTP 200 with an Anubis bot challenge to every path
+    including /api/info/version and /oai, so neither the Dataverse version, the DOI prefix nor
+    OAI-PMH conformance could be confirmed, and none is claimed.
+  humanURL: https://dataverse.ucla.edu/
+  baseURL: https://dataverse.ucla.edu/api
+  tags: [Research Repository, Research Data, Dataverse, Open Data, Blocked]
+  properties:
+  - type: Documentation
+    url: https://dataverse.ucla.edu/
+  - type: Conformance
+    url: conformance/ucla-conformance.yml
+  x-operator: institution
+  x-operator-evidence: >-
+    TLS subject O=University of California, Los Angeles issued by InCommon RSA Server CA 2; A
+    record 52.37.16.173 with no vendor CNAME; software is open-source Dataverse, self-installed.
+  x-access: blocked
+  x-status: 200 with an Anubis bot-challenge body on every path (probed 2026-08-19)
+  x-added: '2026-08-19'
+- aid: ucla:bruinlearn
+  name: BruinLearn (Canvas LMS)
+  description: >-
+    UCLA's learning management system. The brand, the courses, the learners and the subdomain are
+    UCLA's; the REST API, the LTI 1.3 implementation, the key rotation and the contract are
+    Instructure's, and bruinlearn.ucla.edu CNAMEs to ucla-vanity.instructure.com. The LTI
+    tool-platform JWKS is anonymously readable and the REST API returns a structured 401.
+    Recorded as a tenant relationship; no Canvas contract is saved under this institution.
+  humanURL: https://bruinlearn.ucla.edu/
+  baseURL: https://bruinlearn.ucla.edu/api/v1
+  tags: [Learning Management, LTI, Course Delivery, Canvas, Gated]
+  properties:
+  - type: Documentation
+    url: https://bruinlearn.ucla.edu/api/lti/security/jwks
+  - type: Examples
+    url: examples/ucla-bruinlearn-lti-jwks.json
+  x-operator: tenant
+  x-operator-evidence: >-
+    bruinlearn.ucla.edu CNAMEs to ucla-vanity.instructure.com; Canvas error envelope
+    {"status":"unauthenticated"} on /api/v1/accounts; LTI JWKS at the standard Canvas path.
+  x-access: gated
+  x-added: '2026-08-19'
+common:
+- type: Website
+  url: https://www.ucla.edu/
+- type: DeveloperPortal
+  url: https://developer.api.ucla.edu/
+- type: APIReference
+  url: https://developer.api.ucla.edu/api-catalog
+- type: Documentation
+  url: https://developer.api.ucla.edu/ucla-help
+- type: Support
+  url: https://developer.api.ucla.edu/ucla-help
+- type: TermsOfService
+  url: https://www.ucla.edu/terms-of-use
+- type: PrivacyPolicy
+  url: https://compliance.ucla.edu/privacy
+- type: Accessibility
+  url: https://www.ucla.edu/accessibility
+- type: GitHubOrganization
+  url: https://github.com/ucla
+- type: GitHub
+  url: https://github.com/UCLALibrary
+- type: LinkedIn
+  url: https://www.linkedin.com/school/ucla/
+- type: Blog
+  url: https://newsroom.ucla.edu/
+- type: BlogRSS
+  url: https://newsroom.ucla.edu/rss.xml
+- type: IdentityFederation
+  url: https://mdq.incommon.org/entities/urn%3Amace%3Aincommon%3Aucla.edu
+- type: CourseCatalog
+  url: https://catalog.registrar.ucla.edu/
+- type: LibraryCatalog
+  url: https://www.library.ucla.edu/
+- type: ResearchRepository
+  url: https://dataverse.ucla.edu/
+- type: ResearchComputing
+  url: https://oarc.ucla.edu/
+- type: AIPolicy
+  url: https://dts.ucla.edu/initiatives/ai/ai-use-policy-guide
+- type: AITooling
+  url: https://dts.ucla.edu/initiatives/ai/guiding-principles-responsible-use
+- type: OpenAPI
+  url: openapi/ucla-sis-dictionary-openapi.yml
+- type: JSONSchema
+  url: json-schema/ucla-sis-dictionary-schemas.json
+- type: Examples
+  url: examples/index.yml
+- type: Rules
+  url: rules/ucla-rules.yml
+- type: Vocabulary
+  url: vocabulary/ucla-vocabulary.yml
+- type: JSONLD
+  url: json-ld/ucla-context.jsonld
+- type: Authentication
+  url: authentication/ucla-authentication.yml
+- type: Scopes
+  url: scopes/ucla-scopes.yml
+- type: Errors
+  url: errors/ucla-errors.yml
+- type: Conformance
+  url: conformance/ucla-conformance.yml
+- type: Lifecycle
+  url: lifecycle/ucla-lifecycle.yml
+- type: AgenticAccess
+  url: agentic-access/ucla-agentic-access.yml
+- type: DomainSecurity
+  url: security/ucla-domain-security.yml
+- type: Plans
+  url: plans/ucla-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/ucla-rate-limits.yml
+- type: FinOps
+  url: finops/ucla-finops.yml
+- type: Review
+  url: review.yml
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
+x-coverage:
+  state: gated
+  reason: approval_required_no_self_service
+  detail: >-
+    UCLA is the strongest institution-operated API program measured in this cohort so far and it
+    is still not consumable. Seven real OpenAPI contracts covering 91 operations are anonymously
+    downloadable from the developer portal, and every route they describe is live on UCLA's own
+    Apigee gateway - a documented SIS path returns 401 with oauth.v2.InvalidAccessToken and a
+    conformant RFC 6750 Bearer challenge, which proves the contracts describe real endpoints. But
+    a credential exists only after a developer signs in with a UCLA logon, creates an App, selects
+    an API Product and a campus unit approves the request. There is no public registration, no
+    sandbox, no trial key. The portal states plainly that most APIs are only visible after log on,
+    so the eight catalogued products are a subset of an unknown whole. Two secondary limits are
+    recorded rather than treated as findings about UCLA - dataverse.ucla.edu and
+    digital.library.ucla.edu both answer 200 with an Anubis proof-of-work bot challenge on every
+    path, so OAI-PMH, Dataverse version and DOI prefix could not be read and are not claimed; and
+    UCLA Library's Cantaloupe IIIF server answers 403 with a stack trace for every identifier
+    including a deliberate nonsense control, so no manifest could be retrieved. This is a correct
+    gated profile, not a failed probe - roughly 60 URLs were fetched successfully across 15 hosts,
+    including 7 contracts, signed federation metadata and 3 live error surfaces.
+  evidence:
+  - url: https://developer.api.ucla.edu/api-catalog
+    status: 200
+    note: Eight API products listed; three of them (51, 346, 1446) were absent from the June profile.
+  - url: https://developer.api.ucla.edu/sites/default/files/apidoc_specs/classes_v1_4.json
+    status: 200
+  - url: https://developer.api.ucla.edu/sites/default/files/apidoc_specs/courses_v1%20%281%29_0.json
+    status: 200
+  - url: https://developer.api.ucla.edu/sites/default/files/apidoc_specs/dictionary_v1%20%281%29.json
+    status: 200
+  - url: https://developer.api.ucla.edu/sites/default/files/apidoc_specs/productioncalendarjobs_v1_0.json
+    status: 200
+  - url: https://developer.api.ucla.edu/sites/default/files/apidoc_specs/_infrastructure_verifyconnectivity_v1.json
+    status: 200
+  - url: https://developer.api.ucla.edu/sites/default/files/apidoc_specs/_myucla_menudata_v1.json
+    status: 200
+  - url: https://developer.api.ucla.edu/sites/default/files/apidoc_specs/UCLAWeather_3.yaml
+    status: 200
+  - url: https://api.ucla.edu/sis/dictionary/buildings/v1
+    status: 401
+    note: oauth.v2.InvalidAccessToken with an RFC 6750 Bearer challenge; the gateway is live and enforcing.
+  - url: https://api.ucla.edu/weather/api
+    status: 401
+  - url: https://api.ucla.edu/oauth/client_credential/accesstoken
+    status: 200
+  - url: https://api.ucla.edu/nonexistentpath
+    status: 500
+    note: 'Plain-text "Unauthorized by UCLA API Gateway. Invalid Config Data" on every unrouted path; should be 404.'
+  - url: https://qa.api.ucla.edu/
+    status: 404
+    note: QA returns a structured ApplicationNotFound fault where production returns a 500.
+  - url: https://mdq.incommon.org/entities/urn%3Amace%3Aincommon%3Aucla.edu
+    status: 200
+    note: Signed SAML metadata for UCLA's own Shibboleth IdP; REFEDS R&S and SIRTFI.
+  - url: https://met.refeds.org/met/entity/urn:mace:incommon:ucla.edu/
+    status: 200
+  - url: https://bruinlearn.ucla.edu/api/lti/security/jwks
+    status: 200
+    note: Tenant surface — Instructure Canvas on a UCLA vanity subdomain.
+  - url: https://bruinlearn.ucla.edu/api/v1/accounts
+    status: 401
+  - url: https://dataverse.ucla.edu/api/info/version
+    status: 200
+    note: Anubis bot-challenge body, not a Dataverse response; unreadable, not credited.
+  - url: https://dataverse.ucla.edu/oai?verb=Identify
+    status: 200
+    note: Anubis bot-challenge body; OAI-PMH conformance neither confirmed nor denied.
+  - url: https://digital.library.ucla.edu/catalog/oai?verb=Identify
+    status: 200
+    note: Anubis bot-challenge body; not credited.
+  - url: https://iiif.library.ucla.edu/
+    status: 200
+    note: Cantaloupe 5.0.5 landing page; IIIF Image API 2.x and 3.0 endpoints advertised.
+  - url: https://iiif.library.ucla.edu/iiif/2/bogus-identifier/info.json
+    status: 403
+    note: >-
+      Negative control. Identical stack-trace body to a plausible real identifier, so a 403 here
+      is never evidence an object exists. Also leaks the private S3 bucket name.
+  - url: https://api.ucla.edu/
+    status: 500
+  - url: https://data.ucla.edu/
+    status: 0
+    note: Does not resolve; UCLA operates no open-data portal at the conventional hostname.
+  - url: https://developer-pilot.api.ucla.edu/
+    status: 0
+    note: Pilot portal recorded in the June 2026 profile still does not resolve from outside campus.
+  - url: https://weather.atmos.ucla.edu/
+    status: 0
+    note: >-
+      Referenced by info.description in UCLA's own Weather contract. Resolves in DNS but accepts
+      no connection; dead pointer, removed rather than carried.
+  - url: https://www.ucla.edu/llms.txt
+    status: 404
+  - url: https://developer.api.ucla.edu/.well-known/security.txt
+    status: 404
+  - url: https://escholarship.org/oai?verb=ListSets
+    status: 200
+    note: >-
+      UC systemwide repository operated by the California Digital Library. ListSets returns a
+      single set, "everything", with no UCLA-specific set, so nothing here is attributable to
+      UCLA and no entry is recorded for it.
+  - url: https://it.ucla.edu/privacy
+    status: 200
+    note: Soft-404 — redirects to the dts.ucla.edu homepage; not claimed as a pointer.
+  assessed: '2026-08-19'
+  method: university pipeline live probe sweep
+  added: 6
+  added_detail: >-
+    Six surfaces were added that the June 2026 profile missed: the Verify Connectivity to SIS and
+    UCLA Weather API products, the Shibboleth identity provider, UCLA Dataverse, UCLA Library
+    Digital Collections and the BruinLearn tenancy. Seven OpenAPI contracts were retrieved for
+    the first time; the June profile recorded documentation pointers only and held no contract at
+    all. All seven were found by reading the swaggerUIFormatter block out of the portal's
+    drupal-settings-json, because UCLA publishes no machine-readable index of its own catalog.
+  removed: 0
+  removed_detail: >-
+    Nothing was removed. The correct-university-attribution pass found no vendor-attributed
+    contract in this repository to strip - UCLA had none, because the June profile had saved no
+    contracts at all. The one reclassification is BruinLearn, newly recorded as x-operator tenant
+    rather than credited to UCLA.
