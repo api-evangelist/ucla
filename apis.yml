@@ -158,7 +158,15 @@ apis:
     has a mainframe behind it. Classified privileged in agentic-access for that reason.
   humanURL: https://developer.api.ucla.edu/api/281
   baseURL: https://api.ucla.edu/sis
-  tags: [Operations, Data Integration, Scheduling, Registrar]
+  tags:
+  - Data Integration
+  - Scheduling
+  - Registrar
+  tags_raw:
+  - Operations
+  - Data Integration
+  - Scheduling
+  - Registrar
   properties:
   - type: OpenAPI
     url: openapi/ucla-sis-production-calendar-jobs-openapi.yml
@@ -181,7 +189,15 @@ apis:
     carries 1,036 schema definitions to describe one operation.
   humanURL: https://developer.api.ucla.edu/api/346
   baseURL: https://api.ucla.edu/sis
-  tags: [Infrastructure, Health Check, SIS, Operations]
+  tags:
+  - Infrastructure
+  - Health Check
+  - SIS
+  tags_raw:
+  - Infrastructure
+  - Health Check
+  - SIS
+  - Operations
   properties:
   - type: OpenAPI
     url: openapi/ucla-sis-verify-connectivity-openapi.yml
@@ -284,7 +300,18 @@ apis:
     info.json could be retrieved and none is claimed.
   humanURL: https://guides.library.ucla.edu/digital-collections/iiif
   baseURL: https://iiif.library.ucla.edu/iiif/2
-  tags: [Library, IIIF, Digital Collections, Images, Cultural Heritage]
+  tags:
+  - Library
+  - IIIF
+  - Digital Collections
+  - Image
+  - Cultural Heritage
+  tags_raw:
+  - Library
+  - IIIF
+  - Digital Collections
+  - Images
+  - Cultural Heritage
   properties:
   - type: Documentation
     url: https://iiif.library.ucla.edu/
