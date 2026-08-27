@@ -62,215 +62,24 @@ specificationVersion: '0.23'
 x-type: university
 x-category: Public Research University
 apis:
-- aid: ucla:sis-classes
-  name: UCLA Classes API
-  description: >-
-    All classes offered in a selected UCLA term - title, description, notes, final exam details,
-    and class sections with meeting times, locations, enrolment counts, units and instructors.
-    Six read operations tagged Classes and Class Sections, including a dedicated route for UCLA
-    Extension. Keyed on UCLA's own three-character offeredTermCode. Contract is Swagger 2.0,
-    published by UCLA on its own portal and describing routes on UCLA's own gateway.
-  humanURL: https://developer.api.ucla.edu/api/261
-  baseURL: https://api.ucla.edu/sis
-  tags: [Classes, Course Catalog, Student Information, SIS, Registrar]
-  properties:
-  - type: OpenAPI
-    url: openapi/ucla-sis-classes-openapi.yml
-  - type: Documentation
-    url: https://developer.api.ucla.edu/api/261
-  - type: JSONSchema
-    url: json-schema/ucla-sis-classes-schemas.json
-  - type: Authentication
-    url: authentication/ucla-authentication.yml
-  - type: Scopes
-    url: scopes/ucla-scopes.yml
-  - type: Signup
-    url: https://developer.api.ucla.edu/
-  x-operator: institution
-  x-operator-evidence: >-
-    Contract host api.ucla.edu with basePath /sis; TLS subject O=University of California, Los
-    Angeles issued by InCommon RSA Server CA 2; tokenUrl on the same host; contract served from
-    UCLA's own developer portal.
-  x-access: gated
-  x-status: 401 oauth.v2.InvalidAccessToken on a documented route (probed 2026-08-19)
-- aid: ucla:sis-courses
-  name: UCLA Courses API
-  description: >-
-    Every approved UCLA course, current and historical - title, description, General Education
-    and diversity attributes, requisites, and the General Education foundation and category
-    structure courses are certified against. Seven read operations. Courses are identified by the
-    triple subjectAreaCode / courseCatalogNumber / courseStartTermCode, because UCLA versions its
-    courses by the term a version took effect. Sourced from the Registrar's general catalog.
-  humanURL: https://developer.api.ucla.edu/api/271
-  baseURL: https://api.ucla.edu/sis
-  tags: [Courses, Course Catalog, Registrar, SIS, General Education]
-  properties:
-  - type: OpenAPI
-    url: openapi/ucla-sis-courses-openapi.yml
-  - type: Documentation
-    url: https://developer.api.ucla.edu/api/271
-  - type: JSONSchema
-    url: json-schema/ucla-sis-courses-schemas.json
-  - type: CourseCatalog
-    url: https://catalog.registrar.ucla.edu/
-  - type: Authentication
-    url: authentication/ucla-authentication.yml
-  - type: Signup
-    url: https://developer.api.ucla.edu/
-  x-operator: institution
-  x-operator-evidence: Contract host api.ucla.edu/sis; UCLA-issued TLS; served from UCLA's own portal.
-  x-access: gated
-- aid: ucla:sis-dictionary
-  name: UCLA Registrar Dictionary API
-  description: >-
-    The largest contract UCLA publishes and the one that makes the rest legible - 61 read
-    operations enumerating every coded value the other SIS APIs return: buildings, careers,
-    cities, colleges, class levels, class numbers, activity types, academic actions, affiliation
-    term sessions, enrolment statuses and fifty more. Owned by the Registrar's Office. Any other
-    campus would call this a code-tables service; publishing it as a first-class API product is
-    the right decision and is unusual in this cohort.
-  humanURL: https://developer.api.ucla.edu/api/366
-  baseURL: https://api.ucla.edu/sis
-  tags: [Data Dictionary, Registrar, Reference Data, SIS]
-  properties:
-  - type: OpenAPI
-    url: openapi/ucla-sis-dictionary-openapi.yml
-  - type: Documentation
-    url: https://developer.api.ucla.edu/api/366
-  - type: JSONSchema
-    url: json-schema/ucla-sis-dictionary-schemas.json
-  - type: Vocabulary
-    url: vocabulary/ucla-vocabulary.yml
-  - type: Signup
-    url: https://developer.api.ucla.edu/
-  x-operator: institution
-  x-operator-evidence: Contract host api.ucla.edu/sis; UCLA-issued TLS; served from UCLA's own portal.
-  x-access: gated
-  x-note: >-
-    The portal lists this product twice, at node 366 and node 1446. Only node 366 carries a
-    specification; node 1446 is an unannotated duplicate.
-- aid: ucla:sis-production-calendar-jobs
-  name: UCLA Production Calendar Jobs API
-  description: >-
-    One read operation returning the Registrar's mainframe batch schedule for a given run date
-    and a forward window in weeks. The only UCLA contract that describes campus operations rather
-    than campus data, and the only public evidence that UCLA's student information system still
-    has a mainframe behind it. Classified privileged in agentic-access for that reason.
-  humanURL: https://developer.api.ucla.edu/api/281
-  baseURL: https://api.ucla.edu/sis
-  tags:
-  - Data Integration
-  - Scheduling
-  - Registrar
-  tags_raw:
-  - Operations
-  - Data Integration
-  - Scheduling
-  - Registrar
-  properties:
-  - type: OpenAPI
-    url: openapi/ucla-sis-production-calendar-jobs-openapi.yml
-  - type: Documentation
-    url: https://developer.api.ucla.edu/api/281
-  - type: JSONSchema
-    url: json-schema/ucla-sis-production-calendar-jobs-schemas.json
-  - type: AgenticAccess
-    url: agentic-access/ucla-agentic-access.yml
-  x-operator: institution
-  x-operator-evidence: Contract host api.ucla.edu/sis; UCLA-issued TLS; served from UCLA's own portal.
-  x-access: gated
-- aid: ucla:sis-verify-connectivity
-  name: UCLA Verify Connectivity to SIS API
-  description: >-
-    A single health-check operation under the Infrastructure tag, whose only purpose is to let a
-    subscribed application confirm it can reach the student information system through the
-    gateway. UCLA ships it as a catalogued API product with its own portal page and its own
-    contract - a small piece of genuinely good API program design. The contract nonetheless
-    carries 1,036 schema definitions to describe one operation.
-  humanURL: https://developer.api.ucla.edu/api/346
-  baseURL: https://api.ucla.edu/sis
-  tags:
-  - Infrastructure
-  - Health Check
-  - SIS
-  tags_raw:
-  - Infrastructure
-  - Health Check
-  - SIS
-  - Operations
-  properties:
-  - type: OpenAPI
-    url: openapi/ucla-sis-verify-connectivity-openapi.yml
-  - type: Documentation
-    url: https://developer.api.ucla.edu/api/346
-  - type: JSONSchema
-    url: json-schema/ucla-sis-verify-connectivity-schemas.json
-  x-operator: institution
-  x-operator-evidence: Contract host api.ucla.edu/sis; UCLA-issued TLS; served from UCLA's own portal.
-  x-access: gated
-  x-added: '2026-08-19'
-- aid: ucla:myucla-menu-data
-  name: MyUCLA Menu Data API
-  description: >-
-    One read operation returning the navigation tree of MyUCLA, the student portal, so that the
-    megamenu can be assembled by any client rather than hard-coded into one. Small, honest and
-    genuinely institution-run - exactly the class of campus surface this pipeline exists to find.
-  humanURL: https://developer.api.ucla.edu/api/61
-  baseURL: https://api.ucla.edu/sis
-  tags: [Navigation, MyUCLA, Campus Life, Student Portal]
-  properties:
-  - type: OpenAPI
-    url: openapi/ucla-myucla-menu-data-openapi.yml
-  - type: Documentation
-    url: https://developer.api.ucla.edu/api/61
-  - type: JSONSchema
-    url: json-schema/ucla-myucla-menu-data-schemas.json
-  x-operator: institution
-  x-operator-evidence: Contract host api.ucla.edu/sis; UCLA-issued TLS; served from UCLA's own portal.
-  x-access: gated
-- aid: ucla:weather
-  name: UCLA Weather API
-  description: >-
-    Fourteen read operations returning live observations from UCLA's campus weather station -
-    wind speed and gust, air temperature with daily minimum and maximum, relative humidity, dew
-    point, wet bulb, sea-level pressure and more, each as a plain-text scalar. The only UCLA
-    contract written in OpenAPI 3.0.3 rather than Swagger 2.0, the only one that documents every
-    operation, and the only one that authenticates with a header API key instead of OAuth 2.0.
-    info.version is 0.0.1 on a live production route.
-  humanURL: https://developer.api.ucla.edu/api/51
-  baseURL: https://api.ucla.edu/weather
-  tags: [Weather, Campus Life, Environmental Data, Atmospheric Sciences]
-  properties:
-  - type: OpenAPI
-    url: openapi/ucla-weather-openapi.yml
-  - type: Documentation
-    url: https://developer.api.ucla.edu/api/51
-  - type: JSONSchema
-    url: json-schema/ucla-weather-schemas.json
-  x-operator: institution
-  x-operator-evidence: >-
-    servers[] https://api.ucla.edu/ and https://qa.api.ucla.edu/; info.description names
-    https://weather.atmos.ucla.edu/; UCLA-issued TLS on both hosts.
-  x-access: gated
-  x-status: 401 on https://api.ucla.edu/weather/api with no key (probed 2026-08-19)
-  x-added: '2026-08-19'
-  x-note: >-
-    The contract's info.description points at https://weather.atmos.ucla.edu/, which resolves in
-    DNS (CNAME ocypete.atmos.ucla.edu, 164.67.86.87) but accepts no HTTP or HTTPS connection. The
-    pointer is dead and is deliberately not carried into this profile.
 - aid: ucla:identity
   name: UCLA Shibboleth Identity Provider (InCommon)
   description: >-
-    UCLA's own Shibboleth identity provider and the most complete machine-readable artifact the
-    university publishes. Registered by InCommon under entityID urn:mace:incommon:ucla.edu,
-    signed with RSA-SHA256, scoped to ucla.edu, serving SAML 1.1 and SAML 2.0 SSO from
-    shb.ais.ucla.edu with a separate attribute authority on port 8443. Asserts the InCommon and
-    REFEDS Research & Scholarship entity categories and a REFEDS SIRTFI assurance certification
-    with a named security contact. Anonymously readable, federated into eduGAIN, and the surface
-    class this cohort is never credited for.
+    UCLA's own Shibboleth identity provider and the most complete machine-readable artifact the university
+    publishes. Registered by InCommon under entityID urn:mace:incommon:ucla.edu, signed with RSA-SHA256,
+    scoped to ucla.edu, serving SAML 1.1 and SAML 2.0 SSO from shb.ais.ucla.edu with a separate attribute
+    authority on port 8443. Asserts the InCommon and REFEDS Research & Scholarship entity categories and
+    a REFEDS SIRTFI assurance certification with a named security contact. Anonymously readable, federated
+    into eduGAIN, and the surface class this cohort is never credited for.
   humanURL: https://dts.ucla.edu/
   baseURL: https://shb.ais.ucla.edu/shibboleth-idp
-  tags: [Identity Federation, SAML, Shibboleth, InCommon, Single Sign-On, eduGAIN]
+  tags:
+  - Identity Federation
+  - SAML
+  - Shibboleth
+  - InCommon
+  - Single Sign-On
+  - eduGAIN
   properties:
   - type: IdentityFederation
     url: identity-federation/ucla-identity-federation.yml
@@ -284,20 +93,19 @@ apis:
     url: authentication/ucla-authentication.yml
   x-operator: institution
   x-operator-evidence: >-
-    entityID under ucla.edu; shibmd:Scope ucla.edu; endpoints on shb.ais.ucla.edu which CNAMEs
-    to sso.auth.612c0b3a.prod.r53.aws.it.ucla.edu (UCLA-managed Route 53); OrganizationName
-    "University of California-Los Angeles"; contacts at it.ucla.edu and ucla.edu.
+    entityID under ucla.edu; shibmd:Scope ucla.edu; endpoints on shb.ais.ucla.edu which CNAMEs to sso.auth.612c0b3a.prod.r53.aws.it.ucla.edu
+    (UCLA-managed Route 53); OrganizationName "University of California-Los Angeles"; contacts at it.ucla.edu
+    and ucla.edu.
   x-access: public
   x-added: '2026-08-19'
 - aid: ucla:library-iiif
   name: UCLA Library IIIF Image Service
   description: >-
-    UCLA Library self-hosts a Cantaloupe 5.0.5 image server exposing both IIIF Image API 2.x and
-    3.0 endpoints for its digital collections. Institution-operated on UCLA's own AWS
-    infrastructure under a UCLA-issued certificate, not a vendor platform. Live but effectively
-    unreadable from outside - every identifier probed, including a deliberate nonsense control,
-    returned 403 with a Java stack trace naming the private S3 source bucket, so no manifest or
-    info.json could be retrieved and none is claimed.
+    UCLA Library self-hosts a Cantaloupe 5.0.5 image server exposing both IIIF Image API 2.x and 3.0 endpoints
+    for its digital collections. Institution-operated on UCLA's own AWS infrastructure under a UCLA-issued
+    certificate, not a vendor platform. Live but effectively unreadable from outside - every identifier
+    probed, including a deliberate nonsense control, returned 403 with a Java stack trace naming the private
+    S3 source bucket, so no manifest or info.json could be retrieved and none is claimed.
   humanURL: https://guides.library.ucla.edu/digital-collections/iiif
   baseURL: https://iiif.library.ucla.edu/iiif/2
   tags:
@@ -323,23 +131,28 @@ apis:
     url: https://github.com/UCLALibrary
   x-operator: institution
   x-operator-evidence: >-
-    TLS subject O=University of California, Los Angeles issued by InCommon RSA OV SSL CA 3;
-    resolves to an AWS ELB in UCLA Library's own us-west-2 account; software is open-source
-    Cantaloupe self-hosted, not a hosted repository service.
+    TLS subject O=University of California, Los Angeles issued by InCommon RSA OV SSL CA 3; resolves to
+    an AWS ELB in UCLA Library's own us-west-2 account; software is open-source Cantaloupe self-hosted,
+    not a hosted repository service.
   x-access: blocked
-  x-status: 403 with stack trace on every identifier including a negative control (probed 2026-08-19)
+  x-status: >-
+    403 with stack trace on every identifier including a negative control (probed 2026-08-19)
 - aid: ucla:digital-collections
   name: UCLA Library Digital Collections
   description: >-
-    UCLA Library's digital collections platform, institution-hosted on a UCLA IP under a
-    UCLA-issued certificate and developed in the open by the UCLA Library engineering
-    organisation. Recorded as a relationship rather than a contract because the host answers HTTP
-    200 with an Anubis proof-of-work bot challenge to every path, including the OAI-PMH route, so
-    no API response could be read. Neither a finding about UCLA nor a claim of a surface - a
-    marker that this needs an authorised re-probe.
+    UCLA Library's digital collections platform, institution-hosted on a UCLA IP under a UCLA-issued certificate
+    and developed in the open by the UCLA Library engineering organisation. Recorded as a relationship
+    rather than a contract because the host answers HTTP 200 with an Anubis proof-of-work bot challenge
+    to every path, including the OAI-PMH route, so no API response could be read. Neither a finding about
+    UCLA nor a claim of a surface - a marker that this needs an authorised re-probe.
   humanURL: https://digital.library.ucla.edu/
   baseURL: https://digital.library.ucla.edu/
-  tags: [Library, Digital Collections, Research Repository, OAI-PMH, Blocked]
+  tags:
+  - Library
+  - Digital Collections
+  - Research Repository
+  - OAI-PMH
+  - Blocked
   properties:
   - type: Documentation
     url: https://digital.library.ucla.edu/
@@ -347,22 +160,26 @@ apis:
     url: https://github.com/UCLALibrary
   x-operator: institution
   x-operator-evidence: >-
-    A record 164.67.48.162 in UCLA address space; TLS subject O=University of California, Los
-    Angeles issued by InCommon RSA Server CA 2; no vendor CNAME.
+    A record 164.67.48.162 in UCLA address space; TLS subject O=University of California, Los Angeles
+    issued by InCommon RSA Server CA 2; no vendor CNAME.
   x-access: blocked
   x-status: 200 with an Anubis bot-challenge body on every path (probed 2026-08-19)
 - aid: ucla:dataverse
   name: UCLA Dataverse
   description: >-
-    UCLA's research data repository, running open-source Dataverse on a UCLA-owned host under a
-    UCLA-issued certificate with no vendor CNAME - which distinguishes it from the Figshare and
-    Elsevier Pure tenancies that dominate this cohort. Recorded as a relationship rather than a
-    contract because the host answers HTTP 200 with an Anubis bot challenge to every path
-    including /api/info/version and /oai, so neither the Dataverse version, the DOI prefix nor
-    OAI-PMH conformance could be confirmed, and none is claimed.
+    UCLA's research data repository, running open-source Dataverse on a UCLA-owned host under a UCLA-issued
+    certificate with no vendor CNAME - which distinguishes it from the Figshare and Elsevier Pure tenancies
+    that dominate this cohort. Recorded as a relationship rather than a contract because the host answers
+    HTTP 200 with an Anubis bot challenge to every path including /api/info/version and /oai, so neither
+    the Dataverse version, the DOI prefix nor OAI-PMH conformance could be confirmed, and none is claimed.
   humanURL: https://dataverse.ucla.edu/
   baseURL: https://dataverse.ucla.edu/api
-  tags: [Research Repository, Research Data, Dataverse, Open Data, Blocked]
+  tags:
+  - Research Repository
+  - Research Data
+  - Dataverse
+  - Open Data
+  - Blocked
   properties:
   - type: Documentation
     url: https://dataverse.ucla.edu/
@@ -370,22 +187,27 @@ apis:
     url: conformance/ucla-conformance.yml
   x-operator: institution
   x-operator-evidence: >-
-    TLS subject O=University of California, Los Angeles issued by InCommon RSA Server CA 2; A
-    record 52.37.16.173 with no vendor CNAME; software is open-source Dataverse, self-installed.
+    TLS subject O=University of California, Los Angeles issued by InCommon RSA Server CA 2; A record 52.37.16.173
+    with no vendor CNAME; software is open-source Dataverse, self-installed.
   x-access: blocked
   x-status: 200 with an Anubis bot-challenge body on every path (probed 2026-08-19)
   x-added: '2026-08-19'
 - aid: ucla:bruinlearn
   name: BruinLearn (Canvas LMS)
   description: >-
-    UCLA's learning management system. The brand, the courses, the learners and the subdomain are
-    UCLA's; the REST API, the LTI 1.3 implementation, the key rotation and the contract are
-    Instructure's, and bruinlearn.ucla.edu CNAMEs to ucla-vanity.instructure.com. The LTI
-    tool-platform JWKS is anonymously readable and the REST API returns a structured 401.
-    Recorded as a tenant relationship; no Canvas contract is saved under this institution.
+    UCLA's learning management system. The brand, the courses, the learners and the subdomain are UCLA's;
+    the REST API, the LTI 1.3 implementation, the key rotation and the contract are Instructure's, and
+    bruinlearn.ucla.edu CNAMEs to ucla-vanity.instructure.com. The LTI tool-platform JWKS is anonymously
+    readable and the REST API returns a structured 401. Recorded as a tenant relationship; no Canvas contract
+    is saved under this institution.
   humanURL: https://bruinlearn.ucla.edu/
   baseURL: https://bruinlearn.ucla.edu/api/v1
-  tags: [Learning Management, LTI, Course Delivery, Canvas, Gated]
+  tags:
+  - Learning Management
+  - LTI
+  - Course Delivery
+  - Canvas
+  - Gated
   properties:
   - type: Documentation
     url: https://bruinlearn.ucla.edu/api/lti/security/jwks
@@ -393,10 +215,467 @@ apis:
     url: examples/ucla-bruinlearn-lti-jwks.json
   x-operator: tenant
   x-operator-evidence: >-
-    bruinlearn.ucla.edu CNAMEs to ucla-vanity.instructure.com; Canvas error envelope
-    {"status":"unauthenticated"} on /api/v1/accounts; LTI JWKS at the standard Canvas path.
+    bruinlearn.ucla.edu CNAMEs to ucla-vanity.instructure.com; Canvas error envelope {"status":"unauthenticated"}
+    on /api/v1/accounts; LTI JWKS at the standard Canvas path.
   x-access: gated
   x-added: '2026-08-19'
+- aid: ucla:ucla-class-sections-api
+  name: University of California, Los Angeles Class Sections API
+  description: >-
+    The Class Sections API from University of California, Los Angeles — 2 operation(s) for class sections.
+  humanURL: https://developer.api.ucla.edu/api/261
+  baseURL: https://api.ucla.edu/sis
+  tags:
+  - Class Sections
+  properties:
+  - type: OpenAPI
+    url: openapi/ucla-class-sections-api-openapi.yml
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/261
+  - type: JSONSchema
+    url: json-schema/ucla-sis-classes-schemas.json
+  - type: Authentication
+    url: authentication/ucla-authentication.yml
+  - type: Scopes
+    url: scopes/ucla-scopes.yml
+  - type: Signup
+    url: https://developer.api.ucla.edu/
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/271
+  - type: JSONSchema
+    url: json-schema/ucla-sis-courses-schemas.json
+  - type: CourseCatalog
+    url: https://catalog.registrar.ucla.edu/
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/366
+  - type: JSONSchema
+    url: json-schema/ucla-sis-dictionary-schemas.json
+  - type: Vocabulary
+    url: vocabulary/ucla-vocabulary.yml
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/281
+  - type: JSONSchema
+    url: json-schema/ucla-sis-production-calendar-jobs-schemas.json
+  - type: AgenticAccess
+    url: agentic-access/ucla-agentic-access.yml
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/346
+  - type: JSONSchema
+    url: json-schema/ucla-sis-verify-connectivity-schemas.json
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/61
+  - type: JSONSchema
+    url: json-schema/ucla-myucla-menu-data-schemas.json
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/51
+  - type: JSONSchema
+    url: json-schema/ucla-weather-schemas.json
+- aid: ucla:ucla-classes-api
+  name: University of California, Los Angeles Classes API
+  description: The Classes API from University of California, Los Angeles — 4 operation(s) for classes.
+  humanURL: https://developer.api.ucla.edu/api/261
+  baseURL: https://api.ucla.edu/sis
+  tags:
+  - Classes
+  properties:
+  - type: OpenAPI
+    url: openapi/ucla-classes-api-openapi.yml
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/261
+  - type: JSONSchema
+    url: json-schema/ucla-sis-classes-schemas.json
+  - type: Authentication
+    url: authentication/ucla-authentication.yml
+  - type: Scopes
+    url: scopes/ucla-scopes.yml
+  - type: Signup
+    url: https://developer.api.ucla.edu/
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/271
+  - type: JSONSchema
+    url: json-schema/ucla-sis-courses-schemas.json
+  - type: CourseCatalog
+    url: https://catalog.registrar.ucla.edu/
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/366
+  - type: JSONSchema
+    url: json-schema/ucla-sis-dictionary-schemas.json
+  - type: Vocabulary
+    url: vocabulary/ucla-vocabulary.yml
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/281
+  - type: JSONSchema
+    url: json-schema/ucla-sis-production-calendar-jobs-schemas.json
+  - type: AgenticAccess
+    url: agentic-access/ucla-agentic-access.yml
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/346
+  - type: JSONSchema
+    url: json-schema/ucla-sis-verify-connectivity-schemas.json
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/61
+  - type: JSONSchema
+    url: json-schema/ucla-myucla-menu-data-schemas.json
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/51
+  - type: JSONSchema
+    url: json-schema/ucla-weather-schemas.json
+- aid: ucla:ucla-courses-api
+  name: University of California, Los Angeles Courses API
+  description: The Courses API from University of California, Los Angeles — 5 operation(s) for courses.
+  humanURL: https://developer.api.ucla.edu/api/261
+  baseURL: https://api.ucla.edu/sis
+  tags:
+  - Courses
+  properties:
+  - type: OpenAPI
+    url: openapi/ucla-courses-api-openapi.yml
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/261
+  - type: JSONSchema
+    url: json-schema/ucla-sis-classes-schemas.json
+  - type: Authentication
+    url: authentication/ucla-authentication.yml
+  - type: Scopes
+    url: scopes/ucla-scopes.yml
+  - type: Signup
+    url: https://developer.api.ucla.edu/
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/271
+  - type: JSONSchema
+    url: json-schema/ucla-sis-courses-schemas.json
+  - type: CourseCatalog
+    url: https://catalog.registrar.ucla.edu/
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/366
+  - type: JSONSchema
+    url: json-schema/ucla-sis-dictionary-schemas.json
+  - type: Vocabulary
+    url: vocabulary/ucla-vocabulary.yml
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/281
+  - type: JSONSchema
+    url: json-schema/ucla-sis-production-calendar-jobs-schemas.json
+  - type: AgenticAccess
+    url: agentic-access/ucla-agentic-access.yml
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/346
+  - type: JSONSchema
+    url: json-schema/ucla-sis-verify-connectivity-schemas.json
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/61
+  - type: JSONSchema
+    url: json-schema/ucla-myucla-menu-data-schemas.json
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/51
+  - type: JSONSchema
+    url: json-schema/ucla-weather-schemas.json
+- aid: ucla:ucla-dictionary-api
+  name: University of California, Los Angeles Dictionary API
+  description: >-
+    The Dictionary API from University of California, Los Angeles — 61 operation(s) for dictionary.
+  humanURL: https://developer.api.ucla.edu/api/261
+  baseURL: https://api.ucla.edu/sis
+  tags:
+  - Dictionary
+  properties:
+  - type: OpenAPI
+    url: openapi/ucla-dictionary-api-openapi.yml
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/261
+  - type: JSONSchema
+    url: json-schema/ucla-sis-classes-schemas.json
+  - type: Authentication
+    url: authentication/ucla-authentication.yml
+  - type: Scopes
+    url: scopes/ucla-scopes.yml
+  - type: Signup
+    url: https://developer.api.ucla.edu/
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/271
+  - type: JSONSchema
+    url: json-schema/ucla-sis-courses-schemas.json
+  - type: CourseCatalog
+    url: https://catalog.registrar.ucla.edu/
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/366
+  - type: JSONSchema
+    url: json-schema/ucla-sis-dictionary-schemas.json
+  - type: Vocabulary
+    url: vocabulary/ucla-vocabulary.yml
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/281
+  - type: JSONSchema
+    url: json-schema/ucla-sis-production-calendar-jobs-schemas.json
+  - type: AgenticAccess
+    url: agentic-access/ucla-agentic-access.yml
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/346
+  - type: JSONSchema
+    url: json-schema/ucla-sis-verify-connectivity-schemas.json
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/61
+  - type: JSONSchema
+    url: json-schema/ucla-myucla-menu-data-schemas.json
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/51
+  - type: JSONSchema
+    url: json-schema/ucla-weather-schemas.json
+- aid: ucla:ucla-ge-foundations-api
+  name: University of California, Los Angeles GE Foundations API
+  description: >-
+    The GE Foundations API from University of California, Los Angeles — 2 operation(s) for ge foundations.
+  humanURL: https://developer.api.ucla.edu/api/261
+  baseURL: https://api.ucla.edu/sis
+  tags:
+  - GE Foundations
+  properties:
+  - type: OpenAPI
+    url: openapi/ucla-ge-foundations-api-openapi.yml
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/261
+  - type: JSONSchema
+    url: json-schema/ucla-sis-classes-schemas.json
+  - type: Authentication
+    url: authentication/ucla-authentication.yml
+  - type: Scopes
+    url: scopes/ucla-scopes.yml
+  - type: Signup
+    url: https://developer.api.ucla.edu/
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/271
+  - type: JSONSchema
+    url: json-schema/ucla-sis-courses-schemas.json
+  - type: CourseCatalog
+    url: https://catalog.registrar.ucla.edu/
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/366
+  - type: JSONSchema
+    url: json-schema/ucla-sis-dictionary-schemas.json
+  - type: Vocabulary
+    url: vocabulary/ucla-vocabulary.yml
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/281
+  - type: JSONSchema
+    url: json-schema/ucla-sis-production-calendar-jobs-schemas.json
+  - type: AgenticAccess
+    url: agentic-access/ucla-agentic-access.yml
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/346
+  - type: JSONSchema
+    url: json-schema/ucla-sis-verify-connectivity-schemas.json
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/61
+  - type: JSONSchema
+    url: json-schema/ucla-myucla-menu-data-schemas.json
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/51
+  - type: JSONSchema
+    url: json-schema/ucla-weather-schemas.json
+- aid: ucla:ucla-infrastructure-api
+  name: University of California, Los Angeles Infrastructure API
+  description: >-
+    The Infrastructure API from University of California, Los Angeles — 1 operation(s) for infrastructure.
+  humanURL: https://developer.api.ucla.edu/api/261
+  baseURL: https://api.ucla.edu/sis
+  tags:
+  - Infrastructure
+  properties:
+  - type: OpenAPI
+    url: openapi/ucla-infrastructure-api-openapi.yml
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/261
+  - type: JSONSchema
+    url: json-schema/ucla-sis-classes-schemas.json
+  - type: Authentication
+    url: authentication/ucla-authentication.yml
+  - type: Scopes
+    url: scopes/ucla-scopes.yml
+  - type: Signup
+    url: https://developer.api.ucla.edu/
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/271
+  - type: JSONSchema
+    url: json-schema/ucla-sis-courses-schemas.json
+  - type: CourseCatalog
+    url: https://catalog.registrar.ucla.edu/
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/366
+  - type: JSONSchema
+    url: json-schema/ucla-sis-dictionary-schemas.json
+  - type: Vocabulary
+    url: vocabulary/ucla-vocabulary.yml
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/281
+  - type: JSONSchema
+    url: json-schema/ucla-sis-production-calendar-jobs-schemas.json
+  - type: AgenticAccess
+    url: agentic-access/ucla-agentic-access.yml
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/346
+  - type: JSONSchema
+    url: json-schema/ucla-sis-verify-connectivity-schemas.json
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/61
+  - type: JSONSchema
+    url: json-schema/ucla-myucla-menu-data-schemas.json
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/51
+  - type: JSONSchema
+    url: json-schema/ucla-weather-schemas.json
+- aid: ucla:ucla-myucla-api
+  name: University of California, Los Angeles My UCLA API
+  description: The MyUCLA API from University of California, Los Angeles — 1 operation(s) for myucla.
+  humanURL: https://developer.api.ucla.edu/api/261
+  baseURL: https://api.ucla.edu/sis
+  tags:
+  - MyUCLA
+  properties:
+  - type: OpenAPI
+    url: openapi/ucla-myucla-api-openapi.yml
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/261
+  - type: JSONSchema
+    url: json-schema/ucla-sis-classes-schemas.json
+  - type: Authentication
+    url: authentication/ucla-authentication.yml
+  - type: Scopes
+    url: scopes/ucla-scopes.yml
+  - type: Signup
+    url: https://developer.api.ucla.edu/
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/271
+  - type: JSONSchema
+    url: json-schema/ucla-sis-courses-schemas.json
+  - type: CourseCatalog
+    url: https://catalog.registrar.ucla.edu/
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/366
+  - type: JSONSchema
+    url: json-schema/ucla-sis-dictionary-schemas.json
+  - type: Vocabulary
+    url: vocabulary/ucla-vocabulary.yml
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/281
+  - type: JSONSchema
+    url: json-schema/ucla-sis-production-calendar-jobs-schemas.json
+  - type: AgenticAccess
+    url: agentic-access/ucla-agentic-access.yml
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/346
+  - type: JSONSchema
+    url: json-schema/ucla-sis-verify-connectivity-schemas.json
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/61
+  - type: JSONSchema
+    url: json-schema/ucla-myucla-menu-data-schemas.json
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/51
+  - type: JSONSchema
+    url: json-schema/ucla-weather-schemas.json
+- aid: ucla:ucla-production-calendar-jobs-api
+  name: University of California, Los Angeles Production Calendar Jobs API
+  description: >-
+    The Production Calendar Jobs API from University of California, Los Angeles — 1 operation(s) for production
+    calendar jobs.
+  humanURL: https://developer.api.ucla.edu/api/261
+  baseURL: https://api.ucla.edu/sis
+  tags:
+  - Production Calendar Jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/ucla-production-calendar-jobs-api-openapi.yml
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/261
+  - type: JSONSchema
+    url: json-schema/ucla-sis-classes-schemas.json
+  - type: Authentication
+    url: authentication/ucla-authentication.yml
+  - type: Scopes
+    url: scopes/ucla-scopes.yml
+  - type: Signup
+    url: https://developer.api.ucla.edu/
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/271
+  - type: JSONSchema
+    url: json-schema/ucla-sis-courses-schemas.json
+  - type: CourseCatalog
+    url: https://catalog.registrar.ucla.edu/
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/366
+  - type: JSONSchema
+    url: json-schema/ucla-sis-dictionary-schemas.json
+  - type: Vocabulary
+    url: vocabulary/ucla-vocabulary.yml
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/281
+  - type: JSONSchema
+    url: json-schema/ucla-sis-production-calendar-jobs-schemas.json
+  - type: AgenticAccess
+    url: agentic-access/ucla-agentic-access.yml
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/346
+  - type: JSONSchema
+    url: json-schema/ucla-sis-verify-connectivity-schemas.json
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/61
+  - type: JSONSchema
+    url: json-schema/ucla-myucla-menu-data-schemas.json
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/51
+  - type: JSONSchema
+    url: json-schema/ucla-weather-schemas.json
+- aid: ucla:ucla-weather-api
+  name: University of California, Los Angeles Weather API
+  description: >-
+    The Weather API from University of California, Los Angeles — 14 operation(s) for weather.
+  humanURL: https://developer.api.ucla.edu/api/261
+  baseURL: https://api.ucla.edu/sis
+  tags:
+  - Weather
+  properties:
+  - type: OpenAPI
+    url: openapi/ucla-weather-api-openapi.yml
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/261
+  - type: JSONSchema
+    url: json-schema/ucla-sis-classes-schemas.json
+  - type: Authentication
+    url: authentication/ucla-authentication.yml
+  - type: Scopes
+    url: scopes/ucla-scopes.yml
+  - type: Signup
+    url: https://developer.api.ucla.edu/
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/271
+  - type: JSONSchema
+    url: json-schema/ucla-sis-courses-schemas.json
+  - type: CourseCatalog
+    url: https://catalog.registrar.ucla.edu/
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/366
+  - type: JSONSchema
+    url: json-schema/ucla-sis-dictionary-schemas.json
+  - type: Vocabulary
+    url: vocabulary/ucla-vocabulary.yml
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/281
+  - type: JSONSchema
+    url: json-schema/ucla-sis-production-calendar-jobs-schemas.json
+  - type: AgenticAccess
+    url: agentic-access/ucla-agentic-access.yml
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/346
+  - type: JSONSchema
+    url: json-schema/ucla-sis-verify-connectivity-schemas.json
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/61
+  - type: JSONSchema
+    url: json-schema/ucla-myucla-menu-data-schemas.json
+  - type: Documentation
+    url: https://developer.api.ucla.edu/api/51
+  - type: JSONSchema
+    url: json-schema/ucla-weather-schemas.json
 common:
 - type: Website
   url: https://www.ucla.edu/
