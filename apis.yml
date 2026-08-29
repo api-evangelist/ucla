@@ -24,6 +24,18 @@ description: >-
   learning management system, BruinLearn, is Instructure Canvas on a vanity subdomain and is
   recorded as a tenant relationship rather than as UCLA engineering.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: free
   onboarding: request
