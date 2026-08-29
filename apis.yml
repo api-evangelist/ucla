@@ -689,6 +689,9 @@ apis:
   - type: JSONSchema
     url: json-schema/ucla-weather-schemas.json
 common:
+- type: CapabilityMap
+  url: capabilities/ucla-capability-edges.yml
+  name: University of California, Los Angeles Business Capability Map
 - type: Website
   url: https://www.ucla.edu/
 - type: DeveloperPortal
