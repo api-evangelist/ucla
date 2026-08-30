@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ucla/main/json-schema/ucla-sis-production-calendar-jobs-schemas.json",
+  "title": "UCLA sis production calendar jobs \u2014 schemas in use",
+  "description": "Schemas reachable from the operations of the UCLA contract of the same name. Extracted from the contract UCLA publishes on its own developer portal; the source document carries a large shared SIS definition library of which only these are referenced by any path.",
+  "x-generated": "2026-08-19",
+  "x-method": "derived",
+  "x-source": "https://developer.api.ucla.edu/sites/default/files/apidoc_specs/productioncalendarjobs_v1_0.json",
+  "x-operator": "institution",
+  "$defs": {
+    "Jobs": {
+      "type": "object",
+      "properties": {
+        "termCode": {
+          "type": "string"
+        },
+        "network": {
+          "type": "string"
+        },
+        "networkType": {
+          "type": "string"
+        },
+        "jobSequenceNumber": {
+          "type": "string"
+        },
+        "jobName": {
+          "type": "string"
+        },
+        "jobDescription": {
+          "type": "string"
+        },
+        "parameterCode": {
+          "type": "string"
+        },
+        "parameterValue": {
+          "type": "string"
+        },
+        "jobStartDate": {
+          "type": "string"
+        },
+        "jobEndDate": {
+          "type": "string"
+        },
+        "mainframeStartDate": {
+          "type": "string"
+        },
+        "mainframeEndDate": {
+          "type": "string"
+        },
+        "weekdayRun": {
+          "type": "string"
+        },
+        "comments": {
+          "type": "string"
+        }
+      }
+    },
+    "LinkModel": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string"
+        },
+        "rel": {
+          "type": "string"
+        },
+        "method": {
+          "type": "string"
+        }
+      }
+    },
+    "MainframeResponse": {
+      "type": "object",
+      "properties": {
+        "jobRunDate": {
+          "type": "string"
+        },
+        "numberOfWeeksFromJobRunDate": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "productionCalendarJobsCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Jobs"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,128 @@
+generated: '2026-08-19'
+method: probed
+source: >-
+  Live probes of UCLA surfaces on 2026-08-19, evaluated against the Kin Score `education`
+  regulatory regime standards list (scim, lti, oneroster, ed-fi, caliper, qti, oai-pmh,
+  shibboleth, saml, orcid, datacite, crossref). Read from the contracts and from live responses,
+  never from a prose claim.
+provider: University of California, Los Angeles
+providerId: ucla
+regime: education
+description: >-
+  Domain-standard conformance for UCLA. Every hit carries the operator of the surface it was
+  found on, because a standard implemented by a platform UCLA rents is a fact about the platform
+  first and about UCLA second. Reward-only - nothing is asserted that was not observed in a live
+  response, and the standards UCLA does not implement are recorded as absent rather than
+  inferred from adjacent evidence.
+standards:
+- id: saml
+  version: '2.0'
+  status: confirmed
+  x-operator: institution
+  evidence: >-
+    InCommon-signed SAML metadata for entityID urn:mace:incommon:ucla.edu, carrying an
+    IDPSSODescriptor with protocolSupportEnumeration urn:mace:shibboleth:1.0
+    urn:oasis:names:tc:SAML:1.1:protocol urn:oasis:names:tc:SAML:2.0:protocol, three SSO
+    bindings on shb.ais.ucla.edu, a separate AttributeAuthorityDescriptor on port 8443 with
+    SAML 1.0 and SAML 2.0 SOAP AttributeQuery bindings, and Shibboleth scope ucla.edu. Signed
+    with RSA-SHA256, validUntil 2026-09-02, registrationAuthority https://incommon.org.
+  location: https://mdq.incommon.org/entities/urn%3Amace%3Aincommon%3Aucla.edu
+  status_code: 200
+  artifact: examples/ucla-idp-saml-metadata.xml
+- id: shibboleth
+  status: confirmed
+  x-operator: institution
+  evidence: >-
+    The IdP is Shibboleth itself, not merely Shibboleth-federated. Every SSO endpoint is under
+    /shibboleth-idp/, the metadata advertises the urn:mace:shibboleth:1.0 protocol and a
+    urn:mace:shibboleth:1.0:profiles:AuthnRequest binding, and the entity declares a
+    <shibmd:Scope regexp="false">ucla.edu</shibmd:Scope>. UCLA is registered by InCommon and
+    carries the InCommon and REFEDS Research & Scholarship entity categories plus a
+    https://refeds.org/sirtfi assurance certification, which means UCLA has committed to the
+    REFEDS security-incident response framework and publishes security@it.ucla.edu as its
+    federation security contact.
+  location: https://mdq.incommon.org/entities/urn%3Amace%3Aincommon%3Aucla.edu
+  status_code: 200
+  artifact: identity-federation/ucla-identity-federation.yml
+- id: lti
+  version: '1.3'
+  status: confirmed
+  x-operator: tenant
+  evidence: >-
+    BruinLearn, UCLA's learning management system, serves a live LTI 1.3 tool-platform JSON Web
+    Key Set with RSA signing keys at the standard Canvas path. UCLA's courses and learners run
+    through it, but bruinlearn.ucla.edu CNAMEs to ucla-vanity.instructure.com - the LTI
+    implementation, the key rotation and the conformance certification are Instructure's.
+    Recorded as a tenant conformance so it is never read as UCLA engineering.
+  location: https://bruinlearn.ucla.edu/api/lti/security/jwks
+  status_code: 200
+  artifact: examples/ucla-bruinlearn-lti-jwks.json
+- id: oai-pmh
+  status: unreadable
+  x-operator: institution
+  evidence: >-
+    UCLA operates two repository hosts on its own domain and under its own TLS certificates -
+    digital.library.ucla.edu (UCLA Library Digital Collections) and dataverse.ucla.edu (UCLA
+    Dataverse), both O=University of California, Los Angeles, InCommon RSA Server CA 2. Both
+    are the software classes that expose OAI-PMH by default, and both answer HTTP 200 with an
+    Anubis proof-of-work bot challenge to every path including ?verb=Identify. Conformance
+    could not be confirmed or denied and is deliberately not claimed. This is a limit on the
+    probe, not a finding about UCLA.
+  location: https://dataverse.ucla.edu/oai?verb=Identify
+  status_code: 200
+  note: 200 with a bot-challenge body, not an OAI-PMH response.
+- id: scim
+  status: not_found
+  evidence: >-
+    No SCIM ServiceProviderConfig, ResourceTypes or Schemas endpoint on any probed UCLA host,
+    and no SCIM reference in any of the seven published contracts. UCLA provisions accounts
+    through campus directory services that publish nothing to the open internet.
+- id: oneroster
+  status: not_found
+  evidence: >-
+    No OneRoster endpoint or claim. UCLA's roster data moves through the SIS contracts above,
+    which use a UCLA-proprietary vocabulary (offeredTermCode, subjectAreaCode,
+    courseCatalogNumber) rather than the IMS Global / 1EdTech OneRoster model.
+- id: ed-fi
+  status: not_found
+  evidence: Ed-Fi is a K-12 data standard; no evidence at UCLA and none expected.
+- id: caliper
+  status: not_found
+  evidence: >-
+    No Caliper Analytics sensor or event store observed. If one exists it is inside BruinLearn
+    and would be Instructure's, not UCLA's.
+- id: qti
+  status: not_found
+  evidence: No QTI assessment interchange surface observed on any UCLA host.
+- id: orcid
+  status: not_found
+  evidence: >-
+    No ORCID member API integration observable from outside. UCLA researchers hold ORCID iDs
+    individually; that is not an institutional machine-readable surface and is not credited.
+- id: datacite
+  status: unreadable
+  evidence: >-
+    UCLA Dataverse would ordinarily mint DataCite DOIs, but the host is bot-challenged so no
+    DOI prefix or Dataverse API response could be read, and a DataCite provider/client search
+    for "UCLA" returned zero records. Not claimed.
+  location: https://api.datacite.org/clients?query=ucla
+  status_code: 200
+  note: Zero matching clients returned; absence of a match is not proof of absence of membership.
+- id: crossref
+  status: not_found
+  evidence: >-
+    Crossref registration is a publisher function; no UCLA-operated Crossref deposit surface
+    observed.
+summary:
+  confirmed_institution: 2
+  confirmed_tenant: 1
+  unreadable: 2
+  not_found: 7
+  note: >-
+    UCLA's domain-standard conformance is entirely in the identity layer, and it is genuinely
+    strong there - a Shibboleth IdP with SAML 1.1 and 2.0, REFEDS R&S and SIRTFI. Its
+    education-data conformance is nil: the SIS contracts speak a UCLA vocabulary rather than
+    OneRoster, and the one learning-standard hit belongs to Instructure.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

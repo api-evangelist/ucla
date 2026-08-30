@@ -1,0 +1,159 @@
+openapi: 3.2.0
+info:
+  version: v1
+  title: version v1 Production Calendar Jobs API
+servers:
+- url: https://api.ucla.edu/sis
+security:
+- application: []
+tags:
+- name: Production Calendar Jobs
+paths:
+  /productioncalendarjobs/mainframe/{JobRunDate}/{NumberOfWeeksFromJobRunDate}/v1:
+    get:
+      tags:
+      - Production Calendar Jobs
+      summary: Gets the Production Calendar Mainframe jobs
+      operationId: Mainframe_GetMainframeJobs
+      parameters:
+      - name: JobRunDate
+        in: path
+        description: The Year-Month-Day to start the job search for
+        required: true
+        schema:
+          type: string
+      - name: NumberOfWeeksFromJobRunDate
+        in: path
+        description: The number of weeks from the start date to get jobs for
+        required: true
+        schema:
+          type: string
+      - name: TermCode
+        in: query
+        description: 21W
+        required: false
+        schema:
+          type: string
+      - name: JobStartDate
+        in: query
+        description: '2020-08-24'
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MainframeResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MainframeResponse'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+components:
+  schemas:
+    Jobs:
+      type: object
+      properties:
+        termCode:
+          type: string
+        network:
+          type: string
+        networkType:
+          type: string
+        jobSequenceNumber:
+          type: string
+        jobName:
+          type: string
+        jobDescription:
+          type: string
+        parameterCode:
+          type: string
+        parameterValue:
+          type: string
+        jobStartDate:
+          type: string
+        jobEndDate:
+          type: string
+        mainframeStartDate:
+          type: string
+        mainframeEndDate:
+          type: string
+        weekdayRun:
+          type: string
+        comments:
+          type: string
+    LinkModel:
+      type: object
+      properties:
+        href:
+          type: string
+        rel:
+          type: string
+        method:
+          type: string
+    MainframeResponse:
+      type: object
+      properties:
+        jobRunDate:
+          type: string
+        numberOfWeeksFromJobRunDate:
+          format: int32
+          type: integer
+        productionCalendarJobsCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/Jobs'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+  securitySchemes:
+    application:
+      type: oauth2
+      flows:
+        clientCredentials:
+          scopes:
+            read: Read access to protected resources
+            write: Write access to protected resources
+          tokenUrl: https://api.ucla.edu/oauth/client_credential/accesstoken?grant_type=client_credentials
+      description: OAuth2

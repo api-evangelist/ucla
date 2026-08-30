@@ -1,0 +1,279 @@
+openapi: 3.2.0
+info:
+  version: 0.0.1
+  title: UCLA Weather API
+  description: UCLA Weather https://weather.atmos.ucla.edu/
+servers:
+- url: https://api.ucla.edu/
+- url: https://qa.api.ucla.edu/
+security:
+- ApiKeyAuth: []
+tags:
+- name: Weather
+paths:
+  /weather/api:
+    get:
+      summary: Returns current UCLA weather information with a valid APP apiKey send in as header parameter.
+      description: Returns current UCLA weather information with a valid APP apiKey send in as header parameter.
+      parameters:
+      - name: param
+        description: windDirection or windSpeed or gust or airTemperature or minimumTemperature or maximumTemperature or relativeHumidity or minRelativeHumidity or maxRelativeHumidity or dewPoint or wetBulb or seaLevelPressure or rainFallHour or rainFallDay
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Current UCLA Weather data returned in JSON format
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FullList'
+      tags:
+      - Weather
+  /weather/windSpeed:
+    get:
+      summary: Average wind speed during the previous 60 seconds in miles per hour.
+      responses:
+        '200':
+          description: Average wind speed during the previous 60 seconds in miles per hour.
+          content:
+            text/plain:
+              schema:
+                type: string
+      tags:
+      - Weather
+  /weather/gust:
+    get:
+      summary: Maximum wind speed during the previous 60 seconds in miles per hour.
+      responses:
+        '200':
+          description: Maximum wind speed during the previous 60 seconds in miles per hour.
+          content:
+            text/plain:
+              schema:
+                type: string
+      tags:
+      - Weather
+  /weather/airTemperature:
+    get:
+      summary: Current air temperature in degrees Fahrenheit.
+      responses:
+        '200':
+          description: Current air temperature in degrees Fahrenheit.
+          content:
+            text/plain:
+              schema:
+                type: string
+      tags:
+      - Weather
+  /weather/minimumTemperature:
+    get:
+      summary: Minimum temperature since midnight PST in degrees Fahrenheit.
+      responses:
+        '200':
+          description: Minimum temperature since midnight PST in degrees Fahrenheit.
+          content:
+            text/plain:
+              schema:
+                type: string
+      tags:
+      - Weather
+  /weather/maximumTemperature:
+    get:
+      summary: Maximum temperature since midnight PST in degrees Fahrenheit.
+      responses:
+        '200':
+          description: Maximum temperature since midnight PST in degrees Fahrenheit.
+          content:
+            text/plain:
+              schema:
+                type: string
+      tags:
+      - Weather
+  /weather/relativeHumidity:
+    get:
+      summary: Current relative humidity in percent.
+      responses:
+        '200':
+          description: Current relative humidity in percent.
+          content:
+            text/plain:
+              schema:
+                type: string
+      tags:
+      - Weather
+  /weather/minRelativeHumidity:
+    get:
+      summary: Minimum relative humidity since midnight PST in percent.
+      responses:
+        '200':
+          description: Minimum relative humidity since midnight PST in percent.
+          content:
+            text/plain:
+              schema:
+                type: string
+      tags:
+      - Weather
+  /weather/maxRelativeHumidity:
+    get:
+      summary: Maximum relative humidity since midnight PST in percent.
+      responses:
+        '200':
+          description: Maximum relative humidity since midnight PST in percent.
+          content:
+            text/plain:
+              schema:
+                type: string
+      tags:
+      - Weather
+  /weather/dewPoint:
+    get:
+      summary: Current dew point temperature in degrees Fahrenheit.
+      responses:
+        '200':
+          description: Current dew point temperature in degrees Fahrenheit.
+          content:
+            text/plain:
+              schema:
+                type: string
+      tags:
+      - Weather
+  /weather/wetBulb:
+    get:
+      summary: Current wet bulb temperature in degrees Fahrenheit.
+      responses:
+        '200':
+          description: Current wet bulb temperature in degrees Fahrenheit.
+          content:
+            text/plain:
+              schema:
+                type: string
+      tags:
+      - Weather
+  /weather/seaLevelPressure:
+    get:
+      summary: Equivalent sea level pressure in millibars.
+      responses:
+        '200':
+          description: Equivalent sea level pressure in millibars.
+          content:
+            text/plain:
+              schema:
+                type: string
+      tags:
+      - Weather
+  /weather/rainFallHour:
+    get:
+      summary: Rainfall in previous 60 minutes.
+      responses:
+        '200':
+          description: Rainfall in previous 60 minutes.
+          content:
+            text/plain:
+              schema:
+                type: string
+      tags:
+      - Weather
+  /weather/rainFallDay:
+    get:
+      summary: Rainfall since midnight PST.
+      responses:
+        '200':
+          description: Rainfall since midnight PST.
+          content:
+            text/plain:
+              schema:
+                type: string
+      tags:
+      - Weather
+components:
+  schemas:
+    FullList:
+      type: object
+      properties:
+        year:
+          type: integer
+          description: Current four digit year.
+          example: 2020
+        month:
+          type: string
+          description: Current month.
+          example: 08
+        day:
+          type: integer
+          description: Current day of the month.
+          example: 18
+        hour:
+          type: integer
+          description: Current hour of the day.
+          example: 11
+        minutes:
+          type: integer
+          description: Current minute of the hour.
+          example: 37
+        wind_direction:
+          type: integer
+          description: Average direction from which wind blows during the previous 60 seconds in degrees from due North.
+          example: 171
+        wind_speed:
+          type: string
+          description: Average wind speed during the previous 60 seconds in miles per hour.
+          example: 7
+        gust:
+          type: string
+          description: Maximum wind speed during the previous 60 seconds in miles per hour.
+          example: 008
+        air_temp:
+          type: string
+          description: Current air temperature in degrees Fahrenheit.
+          example: 086
+        min_temp:
+          type: string
+          description: Minimum temperature since midnight PST in degrees Fahrenheit.
+          example: 56
+        max_temp:
+          type: string
+          description: Maximum temperature since midnight PST in degrees Fahrenheit.
+          example: 092
+        relative_humid:
+          type: string
+          description: Current relative humidity in percent.
+          example: 048
+        min_rel_humid:
+          type: string
+          description: Minimum relative humidity since midnight PST in percent.
+          example: 35
+        max_rel_humid:
+          type: string
+          description: Maximum relative humidity since midnight PST in percent.
+          example: 078
+        dew_point:
+          type: string
+          description: Current dew point temperature in degrees Fahrenheit.
+          example: 53
+        wet_bulb:
+          type: string
+          description: Current wet bulb temperature in degrees Fahrenheit.
+          example: 57
+        sea_level_pressure:
+          type: string
+          description: Equivalent sea level pressure in millibars.
+          example: 1011.1
+        rainfall_hour:
+          type: string
+          description: Rainfall in previous 60 minutes.
+          example: 0.0
+        rainfall_day:
+          type: string
+          description: Rainfall since midnight PST.
+          example: 0.0
+        datetime:
+          type: string
+          description: Date and time of data publication.
+          example: '2020-08-17 07:35:10'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-apikey

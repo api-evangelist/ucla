@@ -1,0 +1,7006 @@
+openapi: 3.2.0
+info:
+  version: v1
+  title: version v1 Dictionary API
+servers:
+- url: https://api.ucla.edu/sis
+security:
+- application: []
+tags:
+- name: Dictionary
+paths:
+  /dictionary/academicactions/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: AcademicActions_Get
+      parameters:
+      - name: AcademicActionCode
+        in: query
+        description: AA
+        required: false
+        schema:
+          type: string
+      - name: AcademicActionDescription
+        in: query
+        description: Probation
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AcademicActionCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AcademicActionCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/{InputDate}/{TermSessionCode}/activeacademicterm/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: ActiveAcademicTerm_Get
+      parameters:
+      - name: InputDate
+        in: path
+        description: 06-10-2022
+        required: true
+        schema:
+          type: string
+      - name: TermSessionCode
+        in: path
+        description: RG
+        required: true
+        schema:
+          type: string
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActiveAcademicTermCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ActiveAcademicTermCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/activitytypes/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: ActivityTypes_Get
+      parameters:
+      - name: ActivityTypeCode
+        in: query
+        description: LEC
+        required: false
+        schema:
+          type: string
+      - name: ActivityTypeName
+        in: query
+        description: Lecture
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActivityTypeCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ActivityTypeCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/affiliationstermsessions/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: AffiliationsTermSession_Get
+      parameters:
+      - name: affiliationName
+        in: query
+        description: DENTAL
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AffiliationsTermSessionCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AffiliationsTermSessionCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/buildings/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: Buildings_Get
+      parameters:
+      - name: BuildingCode
+        in: query
+        description: MURPHY
+        required: false
+        schema:
+          type: string
+      - name: BuildingName
+        in: query
+        description: Murphy Hall
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BuildingCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/BuildingCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/careers/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: Careers_Get
+      parameters:
+      - name: CareerCode
+        in: query
+        description: G
+        required: false
+        schema:
+          type: string
+      - name: CareerName
+        in: query
+        description: Graduate
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CareerCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CareerCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/cities/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: Cities_Get
+      parameters:
+      - name: UniversityLocationCode
+        in: query
+        description: '030'
+        required: false
+        schema:
+          type: string
+      - name: CityName
+        in: query
+        description: ANAHEIM
+        required: false
+        schema:
+          type: string
+      - name: CityStartTermCode
+        in: query
+        description: 66F
+        required: false
+        schema:
+          type: string
+      - name: CityLastTermCode
+        in: query
+        description: None
+        required: false
+        schema:
+          type: string
+      - name: UniversityLocationStartTermCode
+        in: query
+        description: 66F
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CityCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CityCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/classlevels/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: ClassLevels_Get
+      parameters:
+      - name: ClassLevelCode
+        in: query
+        description: FR
+        required: false
+        schema:
+          type: string
+      - name: ClassLevelName
+        in: query
+        description: Freshman
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClassLevelCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ClassLevelCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/classnumbers/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: ClassNumbers_Get
+      parameters:
+      - name: ClassNumber
+        in: query
+        description: '001'
+        required: false
+        schema:
+          type: string
+      - name: DisplayClassNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClassNumbersCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ClassNumbersCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/classsectionenrollmentstatus/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: ClassSectionEnrollmentStatus_Get
+      parameters:
+      - name: ClassSectionEnrollmentStatusCode
+        in: query
+        description: O
+        required: false
+        schema:
+          type: string
+      - name: ClassSectionEnrollmentStatusDescription
+        in: query
+        description: Open
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnrollmentStatusCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/EnrollmentStatusCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/classsectionnumbers/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: ClassSectionNumbers_Get
+      parameters:
+      - name: ClassSectionNumber
+        in: query
+        description: '001'
+        required: false
+        schema:
+          type: string
+      - name: DisplayClassSectionNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClassSectionNumbersCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ClassSectionNumbersCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/colleges/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: Colleges_Get
+      parameters:
+      - name: CollegeCode
+        in: query
+        description: LS
+        required: false
+        schema:
+          type: string
+      - name: CollegeName
+        in: query
+        description: COLLEGE OF LETTERS AND SCIENCE
+        required: false
+        schema:
+          type: string
+      - name: CollegeStartTermCode
+        in: query
+        description: 66F
+        required: false
+        schema:
+          type: string
+      - name: CollegeLastTermCode
+        in: query
+        description: None
+        required: false
+        schema:
+          type: string
+      - name: CssCollegeCode
+        in: query
+        description: '25'
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CollegeCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CollegeCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/countries/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: Countries_Get
+      parameters:
+      - name: UniversityLocationCode
+        in: query
+        description: '200'
+        required: false
+        schema:
+          type: string
+      - name: CountryCode
+        in: query
+        description: US
+        required: false
+        schema:
+          type: string
+      - name: ISOCountryCode
+        in: query
+        description: US
+        required: false
+        schema:
+          type: string
+      - name: FIPSCountryName
+        in: query
+        description: UNITED STATES
+        required: false
+        schema:
+          type: string
+      - name: USPSCountryName
+        in: query
+        description: USA
+        required: false
+        schema:
+          type: string
+      - name: CountryStartTermCode
+        in: query
+        description: 66F
+        required: false
+        schema:
+          type: string
+      - name: CountryLastTermCode
+        in: query
+        description: None
+        required: false
+        schema:
+          type: string
+      - name: UniversityLocationStartTermCode
+        in: query
+        description: 66F
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CountryCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CountryCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/coursecatalognumbers/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: CourseCatalogNumbers_Get
+      parameters:
+      - name: CourseCatalogNumber
+        in: query
+        description: 0001 M
+        required: false
+        schema:
+          type: string
+      - name: DisplayCourseCatalogNumber
+        in: query
+        description: M1
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CourseCatalogNumbersCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CourseCatalogNumbersCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/{OfferedTermCode}/{ClassSectionID}/courseclassidentifiers/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: Returns parameters for Courses and Classes endpoints for a given term and SRS Number
+      operationId: CourseClassIdentifiers_Get
+      parameters:
+      - name: OfferedTermCode
+        in: path
+        description: 15S
+        required: true
+        schema:
+          type: string
+      - name: ClassSectionID
+        in: path
+        description: 142043200<br />SRS Number
+        required: true
+        schema:
+          type: string
+      - name: ClassNumber
+        in: query
+        description: 001<br />Some Chemistry, Physics and foreign language courses have multiple class numbers associated with an SRS Number. Please filter on class number to get a unique class.
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CourseClassIdentifiersCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CourseClassIdentifiersCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/daysofweek/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: DaysofWeek_Get
+      parameters:
+      - name: DaysofWeekCode
+        in: query
+        description: M
+        required: false
+        schema:
+          type: string
+      - name: DaysofWeekDescription
+        in: query
+        description: MONDAY
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DaysofWeekCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DaysofWeekCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/degreetypes/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: DegreeTypes_Get
+      parameters:
+      - name: DegreeCode
+        in: query
+        description: AB
+        required: false
+        schema:
+          type: string
+      - name: DegreeName
+        in: query
+        description: BACHELOR OF ARTS
+        required: false
+        schema:
+          type: string
+      - name: DegreeTypeCode
+        in: query
+        description: B
+        required: false
+        schema:
+          type: string
+      - name: DegreeStartTermCode
+        in: query
+        description: 66F
+        required: false
+        schema:
+          type: string
+      - name: DegreeLastTermCode
+        in: query
+        description: None
+        required: false
+        schema:
+          type: string
+      - name: CssDegreeCode
+        in: query
+        description: '02'
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DegreeTypeCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DegreeTypeCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/departments/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: Departments_Get
+      parameters:
+      - name: DepartmentCode
+        in: query
+        description: AF STDS
+        required: false
+        schema:
+          type: string
+      - name: DepartmentName
+        in: query
+        description: AFRICAN STUDIES
+        required: false
+        schema:
+          type: string
+      - name: DepartmentStartTermCode
+        in: query
+        description: 01W
+        required: false
+        schema:
+          type: string
+      - name: DepartmentLastTermCode
+        in: query
+        description: None
+        required: false
+        schema:
+          type: string
+      - name: CustomizedDepartmentFlag
+        in: query
+        description: N
+        required: false
+        schema:
+          type: string
+      - name: DepartmentTypeName
+        in: query
+        description: Interdepartmental Program (IDP)
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DepartmentCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DepartmentCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/divisioncolleges/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: DivisionColleges_Get
+      parameters:
+      - name: DivisionCode
+        in: query
+        description: PS
+        required: false
+        schema:
+          type: string
+      - name: CollegeCode
+        in: query
+        description: LS
+        required: false
+        schema:
+          type: string
+      - name: CollegeDivisionLastTermCode
+        in: query
+        description: None
+        required: false
+        schema:
+          type: string
+      - name: MajorCode
+        in: query
+        description: '0072'
+        required: false
+        schema:
+          type: string
+      - name: DegreeCode
+        in: query
+        description: BS
+        required: false
+        schema:
+          type: string
+      - name: ProgramLastTermCode
+        in: query
+        description: None
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DivisionCollegeCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DivisionCollegeCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/divisiondepartments/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: DivisionDepartments_Get
+      parameters:
+      - name: DivisionCode
+        in: query
+        description: PS
+        required: false
+        schema:
+          type: string
+      - name: DepartmentCode
+        in: query
+        description: PHY&amp;AST
+        required: false
+        schema:
+          type: string
+      - name: DivisionDepartmentLastTermCode
+        in: query
+        description: None
+        required: false
+        schema:
+          type: string
+      - name: SubjectAreaCode
+        in: query
+        description: ASTR
+        required: false
+        schema:
+          type: string
+      - name: SubjectAreaDivisionDepartmentLastTermCode
+        in: query
+        description: None
+        required: false
+        schema:
+          type: string
+      - name: MajorCode
+        in: query
+        description: 0099
+        required: false
+        schema:
+          type: string
+      - name: DivisionMajorLastTermCode
+        in: query
+        description: None
+        required: false
+        schema:
+          type: string
+      - name: MinorCode
+        in: query
+        description: M01C
+        required: false
+        schema:
+          type: string
+      - name: DivisionMinorLastTermCode
+        in: query
+        description: None
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DivisionDepartmentCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DivisionDepartmentCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/divisions/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: Divisions_Get
+      parameters:
+      - name: DivisionCode
+        in: query
+        description: ED
+        required: false
+        schema:
+          type: string
+      - name: DivisionName
+        in: query
+        description: EDUCATION
+        required: false
+        schema:
+          type: string
+      - name: DivisionStartTermCode
+        in: query
+        description: 66F
+        required: false
+        schema:
+          type: string
+      - name: DivisionLastTermCode
+        in: query
+        description: None
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DivisionCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DivisionCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/enrollmentappointmentgroups/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: EnrollmentAppointmentGroups_Get
+      parameters:
+      - name: UndergraduateEnrollmentAppointmentGroupCode
+        in: query
+        description: '2'
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnrollmentAppointmentGroupCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/EnrollmentAppointmentGroupCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/{EnrollmentTermCode}/{EnrollmentPassCode}/enrollmentappointments/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: EnrollmentAppointments_Get
+      parameters:
+      - name: EnrollmentTermCode
+        in: path
+        description: 16F
+        required: true
+        schema:
+          type: string
+      - name: EnrollmentPassCode
+        in: path
+        description: U1
+        required: true
+        schema:
+          type: string
+      - name: EnrollmentAppointmentNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnrollmentAppointmentsCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/EnrollmentAppointmentsCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/enrollmentconsentsrequired/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: EnrollmentConsentsRequired_Get
+      parameters:
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnrollmentConsentRequiredCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/EnrollmentConsentRequiredCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/{EnrollmentTermCode}/enrollmentpasses/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: EnrollmentPasses_Get
+      parameters:
+      - name: EnrollmentTermCode
+        in: path
+        description: 16F
+        required: true
+        schema:
+          type: string
+      - name: EnrollmentPassCode
+        in: query
+        description: U1
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnrollmentPassesCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/EnrollmentPassesCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/enrollmentrules/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: EnrollmentRules_Get
+      parameters:
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnrollmentRuleCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/EnrollmentRuleCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/financialsystemdepartments/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: FinancialSystemDepartments_Get
+      parameters:
+      - name: FinancialSystemDepartmentCode
+        in: query
+        description: 0875
+        required: false
+        schema:
+          type: string
+      - name: FinancialSystemDepartmentName
+        in: query
+        description: PSYCHOLOGY
+        required: false
+        schema:
+          type: string
+      - name: FinancialSystemDepartmentAbbreviation
+        in: query
+        description: PSYCHOLOGY
+        required: false
+        schema:
+          type: string
+      - name: FinancialSystemDepartmentMailCode
+        in: query
+        description: '156304'
+        required: false
+        schema:
+          type: string
+      - name: OffersWorkStudyEmploymentFlag
+        in: query
+        description: Y
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FinancialSystemDepartmentCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FinancialSystemDepartmentCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/financialsystemdivisions/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: FinancialSystemDivisions_Get
+      parameters:
+      - name: FinancialSystemDivisionCode
+        in: query
+        description: '2110'
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FinancialSystemDivisionCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FinancialSystemDivisionCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/geattributes/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: GEAttribute_GetGEAttribute
+      parameters:
+      - name: GEAttributeCode
+        in: query
+        description: LD
+        required: false
+        schema:
+          type: string
+      - name: GEAttributeName
+        in: query
+        description: LAB DEMO
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GEAttributeCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/GEAttributeCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/gradetypes/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: GradeTypes_Get
+      parameters:
+      - name: GradeTypeCode
+        in: query
+        description: LG
+        required: false
+        schema:
+          type: string
+      - name: GradeTypeName
+        in: query
+        description: Letter Grade
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GradeTypeCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/GradeTypeCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/holds/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: Holds_Get
+      parameters:
+      - name: HoldCode
+        in: query
+        description: AA
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoldCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/HoldCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/holdlevels/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: HoldLevels_Get
+      parameters:
+      - name: HoldLevelCode
+        in: query
+        description: AF1
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoldLevelCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/HoldLevelCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/institutions/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: Institutions_Get
+      parameters:
+      - name: InstitutionCode
+        in: query
+        description: 004691
+        required: false
+        schema:
+          type: string
+      - name: InstitutionZipCode
+        in: query
+        description: '90405'
+        required: false
+        schema:
+          type: string
+      - name: InstitutionName
+        in: query
+        description: SANTA MONICA COLL
+        required: false
+        schema:
+          type: string
+      - name: InstitutionEffectiveDate
+        in: query
+        description: '1992-07-23'
+        required: false
+        schema:
+          type: string
+      - name: InstitutionExpirationDate
+        in: query
+        description: '2100-12-31'
+        required: false
+        schema:
+          type: string
+      - name: InstitutionCityName
+        in: query
+        description: SANTA MONICA
+        required: false
+        schema:
+          type: string
+      - name: InstitutionStateCode
+        in: query
+        description: CA
+        required: false
+        schema:
+          type: string
+      - name: InstitutionCountyCode
+        in: query
+        description: 019
+        required: false
+        schema:
+          type: string
+      - name: InstitutionCountryCode
+        in: query
+        description: US
+        required: false
+        schema:
+          type: string
+      - name: InstitutionLocationCode
+        in: query
+        description: 019
+        required: false
+        schema:
+          type: string
+      - name: UCLASchoolTypeCode
+        in: query
+        description: CA
+        required: false
+        schema:
+          type: string
+      - name: UCLASchoolLevelCode
+        in: query
+        description: C
+        required: false
+        schema:
+          type: string
+      - name: UCOPSchoolTypeCode
+        in: query
+        description: CC
+        required: false
+        schema:
+          type: string
+      - name: UCOPStatusCode
+        in: query
+        description: PU
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstitutionCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/InstitutionCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/instructortypes/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: InstructorTypes_Get
+      parameters:
+      - name: InstructorType
+        in: query
+        description: '00'
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstructorTypeCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/InstructorTypeCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/ipedsapbethnicities/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: IPEDSAPBEthnicities_Get
+      parameters:
+      - name: IPEDSAPBEthnicityCode
+        in: query
+        description: AI
+        required: false
+        schema:
+          type: string
+      - name: IPEDSAPBEthnicityName
+        in: query
+        description: AMERICAN INDIAN/ALASKAN NATIVE
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IPEDSAPBEthnicityCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/IPEDSAPBEthnicityCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/ipedsapbexpandedethnicities/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: IPEDSAPBExpandedEthnicities_Get
+      parameters:
+      - name: IPEDSAPBExpandedEthnicityCode
+        in: query
+        description: BL
+        required: false
+        schema:
+          type: string
+      - name: IPEDSAPBExpandedEthnicityName
+        in: query
+        description: African American/Black
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IPEDSAPBExpandedEthnicityCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/IPEDSAPBExpandedEthnicityCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/{LatinHonorsStartTermCode}/latinhonors/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: LatinHonors_Get
+      parameters:
+      - name: LatinHonorsStartTermCode
+        in: path
+        description: 23F
+        required: true
+        schema:
+          type: string
+      - name: CollegeCode
+        in: query
+        description: AA
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LatinHonorsCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LatinHonorsCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/majors/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: Majors_GetMajors
+      parameters:
+      - name: MajorCode
+        in: query
+        description: '0540'
+        required: false
+        schema:
+          type: string
+      - name: MajorName
+        in: query
+        description: MATHEMATICS
+        required: false
+        schema:
+          type: string
+      - name: MajorAbbreviation
+        in: query
+        description: MATH
+        required: false
+        schema:
+          type: string
+      - name: MajorStartTermCode
+        in: query
+        description: 66F
+        required: false
+        schema:
+          type: string
+      - name: MajorLastTermCode
+        in: query
+        description: None
+        required: false
+        schema:
+          type: string
+      - name: DivisionCode
+        in: query
+        description: PS
+        required: false
+        schema:
+          type: string
+      - name: DepartmentCode
+        in: query
+        description: MATH
+        required: false
+        schema:
+          type: string
+      - name: DivisionDepartmentLastTermCode
+        in: query
+        description: None
+        required: false
+        schema:
+          type: string
+      - name: DivisionMajorLastTermCode
+        in: query
+        description: None
+        required: false
+        schema:
+          type: string
+      - name: CSSMajorCode
+        in: query
+        description: '540'
+        required: false
+        schema:
+          type: string
+      - name: CustomizedMajorFlag
+        in: query
+        description: N
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MajorCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MajorCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/majorprograms/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: MajorPrograms_Get
+      parameters:
+      - name: CollegeCode
+        in: query
+        description: AA
+        required: false
+        schema:
+          type: string
+      - name: CollegeName
+        in: query
+        description: SCHOOL OF THE ARTS AND ARCHITECTURE
+        required: false
+        schema:
+          type: string
+      - name: CollegeStartTermCode
+        in: query
+        description: 95F
+        required: false
+        schema:
+          type: string
+      - name: MajorCode
+        in: query
+        description: 0090
+        required: false
+        schema:
+          type: string
+      - name: MajorName
+        in: query
+        description: ART
+        required: false
+        schema:
+          type: string
+      - name: MajorStartTermCode
+        in: query
+        description: 66F
+        required: false
+        schema:
+          type: string
+      - name: DegreeCode
+        in: query
+        description: AB
+        required: false
+        schema:
+          type: string
+      - name: DegreeName
+        in: query
+        description: BACHELOR OF ARTS
+        required: false
+        schema:
+          type: string
+      - name: DegreeStartTermCode
+        in: query
+        description: 66F
+        required: false
+        schema:
+          type: string
+      - name: ProgramStartTermCode
+        in: query
+        description: 95F
+        required: false
+        schema:
+          type: string
+      - name: ProgramLastTermCode
+        in: query
+        description: None
+        required: false
+        schema:
+          type: string
+      - name: ProgramCareerCode
+        in: query
+        description: U
+        required: false
+        schema:
+          type: string
+      - name: ProgramTypeName
+        in: query
+        description: Regular Program
+        required: false
+        schema:
+          type: string
+      - name: CustomizedProgramFlag
+        in: query
+        description: N
+        required: false
+        schema:
+          type: string
+      - name: SchoolwideProgramFlag
+        in: query
+        description: N
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MajorProgramCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MajorProgramCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/majorprogramspecialization/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: MajorPrgmSpecl_Get
+      parameters:
+      - name: ProgramSpecializationCode
+        in: query
+        description: AA
+        required: false
+        schema:
+          type: string
+      - name: ProgramSpecializationName
+        in: query
+        description: ASIAN AMERICAN STUDIES
+        required: false
+        schema:
+          type: string
+      - name: CollegeCode
+        in: query
+        description: AA
+        required: false
+        schema:
+          type: string
+      - name: CollegeName
+        in: query
+        description: SCHOOL OF THE ARTS AND ARCHITECTURE
+        required: false
+        schema:
+          type: string
+      - name: CollegeStartTermCode
+        in: query
+        description: 95F
+        required: false
+        schema:
+          type: string
+      - name: MajorCode
+        in: query
+        description: 0090
+        required: false
+        schema:
+          type: string
+      - name: MajorName
+        in: query
+        description: ART
+        required: false
+        schema:
+          type: string
+      - name: MajorStartTermCode
+        in: query
+        description: 66F
+        required: false
+        schema:
+          type: string
+      - name: DegreeCode
+        in: query
+        description: AB
+        required: false
+        schema:
+          type: string
+      - name: DegreeName
+        in: query
+        description: BACHELOR OF ARTS
+        required: false
+        schema:
+          type: string
+      - name: DegreeStartTermCode
+        in: query
+        description: 66F
+        required: false
+        schema:
+          type: string
+      - name: ProgramSpecializationStartTermCode
+        in: query
+        description: 95F
+        required: false
+        schema:
+          type: string
+      - name: ProgramSpecializationLastTermCode
+        in: query
+        description: None
+        required: false
+        schema:
+          type: string
+      - name: CustomizedProgramSpecializationFlag
+        in: query
+        description: N
+        required: false
+        schema:
+          type: string
+      - name: ProgramSpecializationFinalTerm
+        in: query
+        description: None
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MajorPrgmSpeclCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MajorPrgmSpeclCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/minimumprogress/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: MinimumProgress_Get
+      parameters:
+      - name: MinimumProgressCode
+        in: query
+        description: PA
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MinimumProgressCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MinimumProgressCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/minors/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: Minors_GetMinors
+      parameters:
+      - name: MinorCode
+        in: query
+        description: M540
+        required: false
+        schema:
+          type: string
+      - name: MinorFinalTermCode
+        in: query
+        description: None
+        required: false
+        schema:
+          type: string
+      - name: MinorAbbreviation
+        in: query
+        description: MATH
+        required: false
+        schema:
+          type: string
+      - name: MinorStartTermCode
+        in: query
+        description: 97S
+        required: false
+        schema:
+          type: string
+      - name: MinorLastTermCode
+        in: query
+        description: None
+        required: false
+        schema:
+          type: string
+      - name: DivisionCode
+        in: query
+        description: PS
+        required: false
+        schema:
+          type: string
+      - name: DepartmentCode
+        in: query
+        description: MATH
+        required: false
+        schema:
+          type: string
+      - name: DivisionDepartmentLastTermCode
+        in: query
+        description: None
+        required: false
+        schema:
+          type: string
+      - name: DivisionMinorLastTermCode
+        in: query
+        description: None
+        required: false
+        schema:
+          type: string
+      - name: SchoolwideMinorFlag
+        in: query
+        description: N
+        required: false
+        schema:
+          type: string
+      - name: CustomizedMinorFlag
+        in: query
+        description: N
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MinorCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MinorCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/provinces/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: Provinces_Get
+      parameters:
+      - name: ProvinceCode
+        in: query
+        description: AB
+        required: false
+        schema:
+          type: string
+      - name: CountryCode
+        in: query
+        description: CA
+        required: false
+        schema:
+          type: string
+      - name: ProvinceName
+        in: query
+        description: ALBERTA
+        required: false
+        schema:
+          type: string
+      - name: ProvinceTypeCode
+        in: query
+        description: P
+        required: false
+        schema:
+          type: string
+      - name: ProvinceStartTermCode
+        in: query
+        description: 66F
+        required: false
+        schema:
+          type: string
+      - name: ProvinceLastTermCode
+        in: query
+        description: None
+        required: false
+        schema:
+          type: string
+      - name: CountryStartTermCode
+        in: query
+        description: 66F
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProvinceCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProvinceCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/scheduleprint/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: Returns printing control codes used in the Schedule of Classes and MyUCLA.
+      operationId: SchedulePrint_Get
+      parameters:
+      - name: SchedulePrintCode
+        in: query
+        description: A
+        required: false
+        schema:
+          type: string
+      - name: SchedulePrintText
+        in: query
+        description: Display this Class in MyUCLA
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SchedulePrintCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/SchedulePrintCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/specializations/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: Specializations_Get
+      parameters:
+      - name: SpecializationCode
+        in: query
+        description: AA
+        required: false
+        schema:
+          type: string
+      - name: SpecializationName
+        in: query
+        description: ASIAN AMERICAN STUDIES
+        required: false
+        schema:
+          type: string
+      - name: SpecializationStartTermCode
+        in: query
+        description: 78F
+        required: false
+        schema:
+          type: string
+      - name: SpecializationLastTermCode
+        in: query
+        description: None
+        required: false
+        schema:
+          type: string
+      - name: CustomizedSpecializationFlag
+        in: query
+        description: N
+        required: false
+        schema:
+          type: string
+      - name: SpecializationDegreeRecordflag
+        in: query
+        description: Y
+        required: false
+        schema:
+          type: string
+      - name: SpecializationFinalTerm
+        in: query
+        description: None
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpecializationCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/SpecializationCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/states/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: States_Get
+      parameters:
+      - name: UniversityLocationCode
+        in: query
+        description: '105'
+        required: false
+        schema:
+          type: string
+      - name: UniversityLocationName
+        in: query
+        description: CALIFORNIA
+        required: false
+        schema:
+          type: string
+      - name: StateCode
+        in: query
+        description: CA
+        required: false
+        schema:
+          type: string
+      - name: StateStartTermCode
+        in: query
+        description: 66F
+        required: false
+        schema:
+          type: string
+      - name: StateLastTermCode
+        in: query
+        description: None
+        required: false
+        schema:
+          type: string
+      - name: UniversityLocationStartTermCode
+        in: query
+        description: 66F
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StateCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/StateCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/studentenrollmentstatus/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: StudentEnrollmentStatus_Get
+      parameters:
+      - name: StudentEnrollmentStatusCode
+        in: query
+        description: D
+        required: false
+        schema:
+          type: string
+      - name: StudentEnrollmentStatusDescription
+        in: query
+        description: Dropped
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StudentEnrollmentStatusCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/StudentEnrollmentStatusCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/subjectareas/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: SubjectAreas_Get
+      parameters:
+      - name: SubjectAreaCode
+        in: query
+        description: AF STDS
+        required: false
+        schema:
+          type: string
+      - name: SubjectAreaName
+        in: query
+        description: AFRICAN STUDIES
+        required: false
+        schema:
+          type: string
+      - name: SubjectAreaStartTermCode
+        in: query
+        description: 01F
+        required: false
+        schema:
+          type: string
+      - name: SubjectAreaLastTermCode
+        in: query
+        description: None
+        required: false
+        schema:
+          type: string
+      - name: SubjectAreaActiveTermCode
+        in: query
+        description: 17F
+        required: false
+        schema:
+          type: string
+      - name: CustomizedSubjectAreaFlag
+        in: query
+        description: N
+        required: false
+        schema:
+          type: string
+      - name: DivisionCode
+        in: query
+        description: SS
+        required: false
+        schema:
+          type: string
+      - name: DepartmentCode
+        in: query
+        description: AF STDS
+        required: false
+        schema:
+          type: string
+      - name: DivisionDepartmentStartTermCode
+        in: query
+        description: 01W
+        required: false
+        schema:
+          type: string
+      - name: DivisionDepartmentLastTermCode
+        in: query
+        description: None
+        required: false
+        schema:
+          type: string
+      - name: SubjectAreaDivisionDepartmentStartTermCode
+        in: query
+        description: 01F
+        required: false
+        schema:
+          type: string
+      - name: SubjectAreaDivisionDepartmentLastTermCode
+        in: query
+        description: None
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubjectAreaCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/SubjectAreaCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/termfeeassessment/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: TermFeeAssessment_Get
+      parameters:
+      - name: TermCode
+        in: query
+        description: 22W
+        required: false
+        schema:
+          type: string
+      - name: CareerCode
+        in: query
+        description: U
+        required: false
+        schema:
+          type: string
+      - name: MajorCode
+        in: query
+        description: '0364'
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TermFeeAssessmentUtility'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TermFeeAssessmentUtility'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/terms/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: Terms_Get
+      parameters:
+      - name: TermCode
+        in: query
+        description: 15F
+        required: false
+        schema:
+          type: string
+      - name: TermName
+        in: query
+        description: Fall 2015
+        required: false
+        schema:
+          type: string
+      - name: AcademicYear
+        in: query
+        description: 2015-2016
+        required: false
+        schema:
+          type: string
+      - name: TermSequenceNumber
+        in: query
+        description: '235'
+        required: false
+        schema:
+          type: string
+      - name: CssTermCode
+        in: query
+        description: '152'
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TermCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TermCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/termsessions/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: TermSessions_Get
+      parameters:
+      - name: SessionTermCode
+        in: query
+        description: '141'
+        required: false
+        schema:
+          type: string
+      - name: TermSessionCode
+        in: query
+        description: 6A
+        required: false
+        schema:
+          type: string
+      - name: TermsessionGroupCode
+        in: query
+        description: A
+        required: false
+        schema:
+          type: string
+      - name: TermSessionInstructionWeeks
+        in: query
+        description: '6'
+        required: false
+        schema:
+          type: string
+      - name: SessionTypeName
+        in: query
+        description: Summer
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TermSessionCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TermSessionCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/termsessioncodes/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: TermSessionCode_Get
+      parameters:
+      - name: SessionTermCode
+        in: query
+        description: '141'
+        required: false
+        schema:
+          type: string
+      - name: TermSessionCode
+        in: query
+        description: 6A
+        required: false
+        schema:
+          type: string
+      - name: TermSessionDescription
+        in: query
+        description: 6A 6 WEEK A-SESSION
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TermSessionCodeCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TermSessionCodeCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/termsessionevents/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: TermSessionEvents_Get
+      parameters:
+      - name: termCode
+        in: query
+        description: 20F
+        required: false
+        schema:
+          type: string
+      - name: sessionCode
+        in: query
+        description: RG
+        required: false
+        schema:
+          type: string
+      - name: sessionEventCode
+        in: query
+        description: CLFSTLST
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TermSessionEventCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TermSessionEventCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/termsessiongroups/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: TermSessionGroup_Get
+      parameters:
+      - name: TermSessionGroupCode
+        in: query
+        description: A
+        required: false
+        schema:
+          type: string
+      - name: TermSessionGroupDescription
+        in: query
+        description: Session Group A
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TermSessionGroupCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TermSessionGroupCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/termsessionsbyweek/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: TermSessionsWeek_Get
+      parameters:
+      - name: SessionTermCode
+        in: query
+        description: 14F
+        required: false
+        schema:
+          type: string
+      - name: SessionCode
+        in: query
+        description: RG
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TermSessionWeekCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TermSessionWeekCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/transcriptcareers/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: TranscriptCareers_Get
+      parameters:
+      - name: TranscriptCareerCode
+        in: query
+        description: U1
+        required: false
+        schema:
+          type: string
+      - name: TranscriptCareerName
+        in: query
+        description: UNDERGRADUATE
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TranscriptCareerCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TranscriptCareerCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/uccampuses/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: UCCampuses_Get
+      parameters:
+      - name: UCCampusCode
+        in: query
+        description: UCLA
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UCCampusCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/UCCampusCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/unexstudentenrollmentstatus/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: UNEXStudentEnrollmentStatus_GetUNEXStudentEnrollmentStatus
+      parameters:
+      - name: unexStudentEnrollmentStatusCode
+        in: query
+        description: A
+        required: false
+        schema:
+          type: string
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/unexStudentEnrollmentStatusCollectionResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/unexStudentEnrollmentStatusCollectionResponse'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/unittypes/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: UnitTypes_Get
+      parameters:
+      - name: UnitTypeCode
+        in: query
+        description: F
+        required: false
+        schema:
+          type: string
+      - name: UnitTypeName
+        in: query
+        description: Fixed Unit Course
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnitTypeCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/UnitTypeCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/universitylocations/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: UniversityLocations_Get
+      parameters:
+      - name: UniversityLocationCode
+        in: query
+        description: '200'
+        required: false
+        schema:
+          type: string
+      - name: CSSLocationCode
+        in: query
+        description: '200'
+        required: false
+        schema:
+          type: string
+      - name: UniversityLocationName
+        in: query
+        description: UNITED STATES
+        required: false
+        schema:
+          type: string
+      - name: UniversityLocationType
+        in: query
+        description: Nation
+        required: false
+        schema:
+          type: string
+      - name: UniversityCountryCode
+        in: query
+        description: US
+        required: false
+        schema:
+          type: string
+      - name: IRSCountryCode
+        in: query
+        description: US
+        required: false
+        schema:
+          type: string
+      - name: UniversityLocationStartTermCode
+        in: query
+        description: 66F
+        required: false
+        schema:
+          type: string
+      - name: UniversityLocationLastTermCode
+        in: query
+        description: None
+        required: false
+        schema:
+          type: string
+      - name: NonUCOPLocationFlag
+        in: query
+        description: N
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UniversityLocationCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/UniversityLocationCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /dictionary/visatypes/v1:
+    get:
+      tags:
+      - Dictionary
+      summary: ''
+      operationId: VisaTypes_Get
+      parameters:
+      - name: VisaTypeCode
+        in: query
+        description: F1
+        required: false
+        schema:
+          type: string
+      - name: VisaTypeDescription
+        in: query
+        description: Student
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VisaTypeCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/VisaTypeCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+components:
+  schemas:
+    Country:
+      type: object
+      properties:
+        universityLocationCode:
+          type: string
+        countryCode:
+          type: string
+        isoCountryCode:
+          type: string
+        fipsCountryName:
+          type: string
+        uspsCountryName:
+          type: string
+        countryStartTermCode:
+          type: string
+        countryStartDate:
+          type: string
+        countryLastTermCode:
+          type: string
+        countryLastDate:
+          type: string
+        universityLocationStartTermCode:
+          type: string
+    SessionCode:
+      type: object
+      properties:
+        termSessionCode:
+          type: string
+        termSessionDescription:
+          type: string
+    ActiveAcademicTermCollection:
+      type: object
+      properties:
+        activeAcademicTerm:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActiveAcademicTerm'
+    MajorDivisionDepartment:
+      type: object
+      properties:
+        divisionCode:
+          type: string
+        departmentCode:
+          type: string
+        divisionDepartmentStartTermCode:
+          type: string
+        divisionDepartmentLastTermCode:
+          type: string
+        divisionMajorStartTermCode:
+          type: string
+        divisionMajorLastTermCode:
+          type: string
+    TermSessionWeek:
+      type: object
+      properties:
+        sessionTermCode:
+          type: string
+        termSessionCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/TermSessionWeekSession'
+    GradeTypeCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        gradeTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/GradeType'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    EnrollmentAppointmentGroup:
+      type: object
+      properties:
+        undergraduateEnrollmentAppointmentGroupCode:
+          type: string
+        undergraduateEnrollmentAppointmentGroupDescription:
+          type: string
+    CollegeCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        colleges:
+          type: array
+          items:
+            $ref: '#/components/schemas/College'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    EnrollmentAppointments:
+      type: object
+      properties:
+        enrollmentTermCode:
+          type: string
+        enrollmentPassCode:
+          type: string
+        enrollmentAppointmentCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/EnrollmentAppointment'
+    TermSessionCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        termSessions:
+          type: array
+          items:
+            $ref: '#/components/schemas/TermSession'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    GEAttribute:
+      type: object
+      properties:
+        geAttributeCode:
+          type: string
+        geAttributeName:
+          type: string
+        geAttributeStartTermCode:
+          type: string
+        geAttributeLastTermCode:
+          type: string
+    HoldCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        holds:
+          type: array
+          items:
+            $ref: '#/components/schemas/Hold'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    IPEDSAPBExpandedEthnicity:
+      type: object
+      properties:
+        ipedsapbExpandedEthnicityCode:
+          type: string
+        ipedsapbExpandedEthnicityName:
+          type: string
+    ClassLevel:
+      type: object
+      properties:
+        classLevelCode:
+          type: string
+        classLevelName:
+          type: string
+    unexStudentEnrollmentStatusCollectionResponse:
+      type: object
+      properties:
+        unexStudentEnrollmentStatus:
+          type: array
+          items:
+            $ref: '#/components/schemas/unexStudentEnrollmentStatus'
+    ClassLevelCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        classLevels:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClassLevel'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    Career:
+      type: object
+      properties:
+        careerCode:
+          type: string
+        careerName:
+          type: string
+    ClassSectionNumbersCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        classSectionNumbers:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClassSectionNumbers'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    CourseCatalogNumbers:
+      type: object
+      properties:
+        courseCatalogNumber:
+          type: string
+        displayCourseCatalogNumber:
+          type: string
+    TermSessionWeekCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        termSessionsByWeek:
+          type: array
+          items:
+            $ref: '#/components/schemas/TermSessionWeek'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    SubjectArea:
+      type: object
+      properties:
+        subjectAreaCode:
+          type: string
+        subjectAreaName:
+          type: string
+        subjectAreaStartTermCode:
+          type: string
+        subjectAreaLastTermCode:
+          type: string
+        customizedSubjectAreaFlag:
+          type: string
+        divisionDepartmentCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubjectAreaDivisionDepartment'
+    MajorPrgmSpeclCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        majorProgramSpecializations:
+          type: array
+          items:
+            $ref: '#/components/schemas/MajorProgramSpecialization'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    MajorProgramCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        majorPrograms:
+          type: array
+          items:
+            $ref: '#/components/schemas/MajorProgram'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    ActiveAcademicTerm:
+      type: object
+      properties:
+        inputDate:
+          type: string
+        termSessionDate:
+          type: string
+        termCode:
+          type: string
+        termSequenceNumber:
+          type: string
+        termSessionStartDate:
+          type: string
+        termSessionLastDate:
+          type: string
+    CountryCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        countries:
+          type: array
+          items:
+            $ref: '#/components/schemas/Country'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    Hold:
+      type: object
+      properties:
+        holdCode:
+          type: string
+        holdDescription:
+          type: string
+    DegreeType:
+      type: object
+      properties:
+        degreeCode:
+          type: string
+        degreeName:
+          type: string
+        degreeTypeCode:
+          type: string
+        degreeTypeName:
+          type: string
+        degreeStartTermCode:
+          type: string
+        degreeLastTermCode:
+          type: string
+        cssDegreeCode:
+          type: string
+    Division:
+      type: object
+      properties:
+        divisionCode:
+          type: string
+        divisionName:
+          type: string
+        divisionStartTermCode:
+          type: string
+        divisionLastTermCode:
+          type: string
+    ProgramOfStudy:
+      type: object
+      properties:
+        majorCode:
+          type: string
+        degreeCode:
+          type: string
+        programStartTermCode:
+          type: string
+        programLastTermCode:
+          type: string
+    CourseClassIdentifiersCollection:
+      type: object
+      properties:
+        courseClassIdentifiers:
+          type: array
+          items:
+            $ref: '#/components/schemas/CourseClassIdentifiers'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    IPEDSAPBEthnicityCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        ipedsapbEthnicities:
+          type: array
+          items:
+            $ref: '#/components/schemas/IPEDSAPBEthnicity'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    SchedulePrint:
+      type: object
+      properties:
+        schedulePrintCode:
+          type: string
+        schedulePrintText:
+          type: string
+    EnrollmentStatusCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        enrollmentStatuses:
+          type: array
+          items:
+            $ref: '#/components/schemas/EnrollmentStatus'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    SubjectAreaDivisionDepartment:
+      type: object
+      properties:
+        divisionCode:
+          type: string
+        departmentCode:
+          type: string
+        divisionDepartmentStartTermCode:
+          type: string
+        divisionDepartmentLastTermCode:
+          type: string
+        subjectAreaDivisionDepartmentStartTermCode:
+          type: string
+        subjectAreaDivisionDepartmentLastTermCode:
+          type: string
+    TermSessionCodeCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        termSessionCodes:
+          type: array
+          items:
+            $ref: '#/components/schemas/TermSessionCode'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    DivisionDepartmentCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        divisionDepartments:
+          type: array
+          items:
+            $ref: '#/components/schemas/DivisionDepartment'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    City:
+      type: object
+      properties:
+        universityLocationCode:
+          type: string
+        cityName:
+          type: string
+        cityStartTermCode:
+          type: string
+        cityStartDate:
+          type: string
+        cityLastTermCode:
+          type: string
+        cityLastDate:
+          type: string
+        universityLocationStartTermCode:
+          type: string
+    InstructorType:
+      type: object
+      properties:
+        instructorType:
+          type: string
+        instructorTypeName:
+          type: string
+    MinimumProgress:
+      type: object
+      properties:
+        minimumProgressCode:
+          type: string
+        minimumProgressDescription:
+          type: string
+    DivisionDepartmentSubjectArea:
+      type: object
+      properties:
+        subjectAreaCode:
+          type: string
+        subjectAreaDivisionDepartmentStartTermCode:
+          type: string
+        subjectAreaDivisionDepartmentLastTermCode:
+          type: string
+    TermSessionWeekSession:
+      type: object
+      properties:
+        sessionCode:
+          type: string
+        sessionWeekNumber:
+          type: string
+        sessionWeekStartDate:
+          type: string
+        sessionWeekLastDate:
+          type: string
+    MajorProgramSpecialization:
+      type: object
+      properties:
+        programSpecializationCode:
+          type: string
+        programSpecializationName:
+          type: string
+        collegeCode:
+          type: string
+        collegeName:
+          type: string
+        collegeStartTermCode:
+          type: string
+        majorCode:
+          type: string
+        majorName:
+          type: string
+        majorStartTermCode:
+          type: string
+        degreeCode:
+          type: string
+        degreeName:
+          type: string
+        degreeStartTermCode:
+          type: string
+        programSpecializationStartTermCode:
+          type: string
+        programSpecializationLastTermCode:
+          type: string
+        customizedProgramSpecializationFlag:
+          type: string
+        programSpecializationFinalTerm:
+          type: string
+    Session:
+      type: object
+      properties:
+        termSessionCode:
+          type: string
+        termSessionDisplayFormat:
+          type: string
+        termSessionStartDate:
+          type: string
+        termSessionLastDate:
+          type: string
+        termsessionGroupCode:
+          type: string
+        termSessionInstructionWeeks:
+          type: string
+        termsessionGroupWeekCode:
+          type: string
+        sessionTypeName:
+          type: string
+    SubjectAreaCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        subjectAreas:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubjectArea'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    EnrollmentPass:
+      type: object
+      properties:
+        enrollmentPassCode:
+          type: string
+        enrollmentPassDescription:
+          type: string
+        enrollmentPassStartDate:
+          type: string
+        enrollmentPassLastDate:
+          type: string
+        enrollmentPassMaxUnits:
+          type: string
+    ActivityType:
+      type: object
+      properties:
+        activityTypeCode:
+          type: string
+        activityTypeName:
+          type: string
+    Province:
+      type: object
+      properties:
+        provinceCode:
+          type: string
+        countryCode:
+          type: string
+        provinceName:
+          type: string
+        provinceTypeCode:
+          type: string
+        provinceStartTermCode:
+          type: string
+        provinceStartDate:
+          type: string
+        provinceLastTermCode:
+          type: string
+        provinceLastDate:
+          type: string
+        countryStartTermCode:
+          type: string
+    EnrollmentAppointmentsCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        enrollmentAppointments:
+          type: array
+          items:
+            $ref: '#/components/schemas/EnrollmentAppointments'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    FinancialSystemDivisionDepartmentCodeCollection:
+      type: object
+      properties:
+        departmentCode:
+          type: string
+    InstitutionAddress:
+      type: object
+      properties:
+        institutionStreetAddress1:
+          type: string
+        institutionStreetAddress2:
+          type: string
+        institutionCityName:
+          type: string
+        institutionStateCode:
+          type: string
+        institutionZipCode:
+          type: string
+        institutionCountyCode:
+          type: string
+        institutionCountryCode:
+          type: string
+        institutionLocationCode:
+          type: string
+    BuildingCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        buildings:
+          type: array
+          items:
+            $ref: '#/components/schemas/Building'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    DivisionDepartment:
+      type: object
+      properties:
+        divisionCode:
+          type: string
+        divisionStartTermCode:
+          type: string
+        departmentCode:
+          type: string
+        departmentStartTermCode:
+          type: string
+        divisionDepartmentStartTermCode:
+          type: string
+        divisionDepartmentLastTermCode:
+          type: string
+        subjectAreaCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/DivisionDepartmentSubjectArea'
+        majorCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/DivisionDepartmentMajor'
+        minorCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/DivisionDepartmentMinor'
+    UCCampusCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        ucCampuses:
+          type: array
+          items:
+            $ref: '#/components/schemas/UCCampus'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    TranscriptCareer:
+      type: object
+      properties:
+        transcriptCareerCode:
+          type: string
+        transcriptCareerName:
+          type: string
+    UnitType:
+      type: object
+      properties:
+        unitTypeCode:
+          type: string
+        unitTypeName:
+          type: string
+    HoldLevel:
+      type: object
+      properties:
+        holdLevelCode:
+          type: string
+        holdLevelDescription:
+          type: string
+    DaysofWeek:
+      type: object
+      properties:
+        daysofWeekCode:
+          type: string
+        daysofWeekDescription:
+          type: string
+    StudentEnrollmentStatus:
+      type: object
+      properties:
+        studentEnrollmentStatusCode:
+          type: string
+        studentEnrollmentStatusDescription:
+          type: string
+    ClassNumbersCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        classNumbers:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClassNumbers'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    InstitutionCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        institutions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Institution'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    UCCampus:
+      type: object
+      properties:
+        ucCampusCode:
+          type: string
+        ucCampusName:
+          type: string
+    ClassNumbers:
+      type: object
+      properties:
+        classNumber:
+          type: string
+        displayClassNumber:
+          type: string
+    Department:
+      type: object
+      properties:
+        departmentCode:
+          type: string
+        departmentName:
+          type: string
+        departmentStartTermCode:
+          type: string
+        departmentLastTermCode:
+          type: string
+        customizedDepartmentFlag:
+          type: string
+        departmentTypeName:
+          type: string
+    HoldLevelCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        holdLevels:
+          type: array
+          items:
+            $ref: '#/components/schemas/HoldLevel'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    DivisionDepartmentMinor:
+      type: object
+      properties:
+        minorCode:
+          type: string
+        divisionMinorStartTermCode:
+          type: string
+        divisionMinorLastTermCode:
+          type: string
+    UnitTypeCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        unitTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/UnitType'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    TermSessionEventCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        termSessionEvents:
+          type: array
+          items:
+            $ref: '#/components/schemas/TermSessionEvent'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    EnrollmentRule:
+      type: object
+      properties:
+        enrollmentRuleID:
+          type: string
+        enrollmentRuleDescription:
+          type: string
+    TermSession:
+      type: object
+      properties:
+        sessionTermCode:
+          type: string
+        termSessionCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/Session'
+    StudentEnrollmentStatusCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        studentEnrollmentStatus:
+          type: array
+          items:
+            $ref: '#/components/schemas/StudentEnrollmentStatus'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    AcademicActionCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        academicActions:
+          type: array
+          items:
+            $ref: '#/components/schemas/AcademicAction'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    Major:
+      type: object
+      properties:
+        majorCode:
+          type: string
+        majorName:
+          type: string
+        majorAbbreviation:
+          type: string
+        majorStartTermCode:
+          type: string
+        majorLastTermCode:
+          type: string
+        cssMajorCode:
+          type: string
+        customizedMajorFlag:
+          type: string
+        divisionDepartmentCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/MajorDivisionDepartment'
+    DaysofWeekCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        daysofWeek:
+          type: array
+          items:
+            $ref: '#/components/schemas/DaysofWeek'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    CourseClassIdentifiers:
+      type: object
+      properties:
+        offeredTermCode:
+          type: string
+        classSectionID:
+          type: string
+        courseClassIdentifierCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/CourseClassIdentifier'
+    EnrollmentPassesCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        enrollmentPasses:
+          type: array
+          items:
+            $ref: '#/components/schemas/EnrollmentPasses'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    TermFeeAssessmentUtilityCollection:
+      type: object
+      properties:
+        termCode:
+          type: string
+        termFeeAssessmentCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/TermFeeAssessment'
+    Minor:
+      type: object
+      properties:
+        minorCode:
+          type: string
+        minorName:
+          type: string
+        minorAbbreviation:
+          type: string
+        minorStartTermCode:
+          type: string
+        minorLastTermCode:
+          type: string
+        customizedMinorFlag:
+          type: string
+        schoolwideMinorFlag:
+          type: string
+        minorFinalTermCode:
+          type: string
+        divisionDepartmentCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/MinorDivisionDepartment'
+    TermSessionGroup:
+      type: object
+      properties:
+        termSessionGroupCode:
+          type: string
+        termsessionGroupDescription:
+          type: string
+    TermFeeAssessment:
+      type: object
+      properties:
+        careerCode:
+          type: string
+        feeAssessmentSequenceNumber:
+          type: string
+        majorCode:
+          type: string
+        professionalSchoolLevelCode:
+          type: string
+        feeAssessmentBeginDate:
+          type: string
+        feeAssessmentEndDate:
+          type: string
+    EnrollmentPasses:
+      type: object
+      properties:
+        enrollmentTermCode:
+          type: string
+        enrollmentPassCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/EnrollmentPass'
+    UniversityLocation:
+      type: object
+      properties:
+        universityLocationCode:
+          type: string
+        cssLocationCode:
+          type: string
+        universityLocationName:
+          type: string
+        universityLocationAbbreviation:
+          type: string
+        universityLocationAlternateName:
+          type: string
+        universityLocationType:
+          type: string
+        universityCountryCode:
+          type: string
+        irsCountryCode:
+          type: string
+        universityLocationStartTermCode:
+          type: string
+        universityLocationStartDate:
+          type: string
+        universityLocationLastTermCode:
+          type: string
+        universityLocationLastDate:
+          type: string
+        nonUCOPLocationFlag:
+          type: string
+    MajorProgram:
+      type: object
+      properties:
+        collegeCode:
+          type: string
+        collegeName:
+          type: string
+        collegeStartTermCode:
+          type: string
+        majorCode:
+          type: string
+        majorName:
+          type: string
+        majorStartTermCode:
+          type: string
+        degreeCode:
+          type: string
+        degreeName:
+          type: string
+        degreeStartTermCode:
+          type: string
+        programStartTermCode:
+          type: string
+        programLastTermCode:
+          type: string
+        programCareerCode:
+          type: string
+        programTypeName:
+          type: string
+        customizedProgramFlag:
+          type: string
+        schoolwideProgramFlag:
+          type: string
+    CareerCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        careers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Career'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    IPEDSAPBEthnicity:
+      type: object
+      properties:
+        ipedsapbEthnicityCode:
+          type: string
+        ipedsapbEthnicityName:
+          type: string
+    AcademicAction:
+      type: object
+      properties:
+        academicActionCode:
+          type: string
+        academicActionDescription:
+          type: string
+    State:
+      type: object
+      properties:
+        universityLocationCode:
+          type: string
+        universityLocationName:
+          type: string
+        stateCode:
+          type: string
+        stateStartTermCode:
+          type: string
+        stateStartDate:
+          type: string
+        stateLastTermCode:
+          type: string
+        stateLastDate:
+          type: string
+        universityLocationStartTermCode:
+          type: string
+    ProvinceCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        provinces:
+          type: array
+          items:
+            $ref: '#/components/schemas/Province'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    FinancialSystemDepartment:
+      type: object
+      properties:
+        financialSystemDepartmentCode:
+          type: string
+        financialSystemDepartmentName:
+          type: string
+        financialSystemDepartmentAbbreviation:
+          type: string
+        financialSystemDepartmentMailCode:
+          type: string
+        offersWorkStudyEmploymentFlag:
+          type: string
+    DivisionCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        divisions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Division'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    TranscriptCareerCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        transcriptCareers:
+          type: array
+          items:
+            $ref: '#/components/schemas/TranscriptCareer'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    UniversityLocationCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        universityLocations:
+          type: array
+          items:
+            $ref: '#/components/schemas/UniversityLocation'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    FinancialSystemDepartmentCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        financialSystemDepartments:
+          type: array
+          items:
+            $ref: '#/components/schemas/FinancialSystemDepartment'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    EnrollmentConsentRequiredCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        enrollmentConsentsRequired:
+          type: array
+          items:
+            $ref: '#/components/schemas/EnrollmentConsentRequired'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    VisaType:
+      type: object
+      properties:
+        visaTypeCode:
+          type: string
+        visaTypeDescription:
+          type: string
+    DivisionCollegeCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        divisionColleges:
+          type: array
+          items:
+            $ref: '#/components/schemas/DivisionCollege'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    TermSessionGroupCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        termSessionGroups:
+          type: array
+          items:
+            $ref: '#/components/schemas/TermSessionGroup'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    EnrollmentAppointment:
+      type: object
+      properties:
+        enrollmentAppointmentNumber:
+          type: string
+        enrollmentAppointmentStartDate:
+          type: string
+        enrollmentAppointmentStartTime:
+          type: string
+        enrollmentAppointmentEndDate:
+          type: string
+        enrollmentAppointmentEndTime:
+          type: string
+    MinorDivisionDepartment:
+      type: object
+      properties:
+        divisionCode:
+          type: string
+        departmentCode:
+          type: string
+        divisionDepartmentStartTermCode:
+          type: string
+        divisionDepartmentLastTermCode:
+          type: string
+        divisionMinorStartTermCode:
+          type: string
+        divisionMinorLastTermCode:
+          type: string
+    Specialization:
+      type: object
+      properties:
+        specializationCode:
+          type: string
+        specializationName:
+          type: string
+        specializationAbbreviation:
+          type: string
+        specializationStartTermCode:
+          type: string
+        specializationLastTermCode:
+          type: string
+        customizedSpecializationFlag:
+          type: string
+        specializationDegreeRecordflag:
+          type: string
+        specializationFinalTerm:
+          type: string
+    SpecializationCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        specializations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Specialization'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    InstructorTypeCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        instructorTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/InstructorType'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    LatinHonors:
+      type: object
+      properties:
+        latinHonorsStartTermCode:
+          type: string
+        latinHonorsEndTermCode:
+          type: string
+        collegeCode:
+          type: string
+        LatinHonors:
+          type: string
+        minimumGPA:
+          type: string
+        maximumGPA:
+          type: string
+        freshmanGradedUnits:
+          type: string
+        advancedStandingGradedUnits:
+          type: string
+    TermSessionEvent:
+      type: object
+      properties:
+        termCode:
+          type: string
+        sessionCode:
+          type: string
+        sessionEventCode:
+          type: string
+        sessionEventName:
+          type: string
+        sessionEventDescription:
+          type: string
+        sessionEventStartDate:
+          type: string
+        sessionEventLastDate:
+          type: string
+    SchedulePrintCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        schedulePrints:
+          type: array
+          items:
+            $ref: '#/components/schemas/SchedulePrint'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    MinorCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        minors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Minor'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    IPEDSAPBExpandedEthnicityCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        ipedsapbExpandedEthnicities:
+          type: array
+          items:
+            $ref: '#/components/schemas/IPEDSAPBExpandedEthnicity'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    CourseClassIdentifier:
+      type: object
+      properties:
+        subjectAreaCode:
+          type: string
+        courseCatalogNumber:
+          type: string
+        courseStartTermCode:
+          type: string
+        classNumber:
+          type: string
+        classSectionNumber:
+          type: string
+    LinkModel:
+      type: object
+      properties:
+        href:
+          type: string
+        rel:
+          type: string
+        method:
+          type: string
+    FinancialSystemDivisionCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        financialSystemDivisions:
+          type: array
+          items:
+            $ref: '#/components/schemas/FinancialSystemDivision'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    unexStudentEnrollmentStatus:
+      type: object
+      properties:
+        unexStudentEnrollmentStatusCode:
+          type: string
+        unexStudentEnrollmentStatusDescription:
+          type: string
+    Term:
+      type: object
+      properties:
+        termCode:
+          type: string
+        termName:
+          type: string
+        academicYear:
+          type: string
+        termSequenceNumber:
+          type: string
+        cssTermCode:
+          type: string
+    College:
+      type: object
+      properties:
+        collegeCode:
+          type: string
+        collegeName:
+          type: string
+        collegeStartTermCode:
+          type: string
+        collegeLastTermCode:
+          type: string
+        cssCollegeCode:
+          type: string
+    CityCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        cities:
+          type: array
+          items:
+            $ref: '#/components/schemas/City'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    TermFeeAssessmentUtility:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        termFeeAssessment:
+          type: array
+          items:
+            $ref: '#/components/schemas/TermFeeAssessmentUtilityCollection'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    EnrollmentAppointmentGroupCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        enrollmentAppointmentGroups:
+          type: array
+          items:
+            $ref: '#/components/schemas/EnrollmentAppointmentGroup'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    AffiliationsTermSessionCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        affiliationsTermSessions:
+          type: array
+          items:
+            $ref: '#/components/schemas/AffiliationsTermSession'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    CourseCatalogNumbersCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        courseCatalogNumbers:
+          type: array
+          items:
+            $ref: '#/components/schemas/CourseCatalogNumbers'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    AffiliationsTermSession:
+      type: object
+      properties:
+        affiliationName:
+          type: string
+        termSessionCode:
+          type: string
+    TermCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        terms:
+          type: array
+          items:
+            $ref: '#/components/schemas/Term'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    StateCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        states:
+          type: array
+          items:
+            $ref: '#/components/schemas/State'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    VisaTypeCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        visaTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/VisaType'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    MajorCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        majors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Major'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    GEAttributeCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        geAttributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/GEAttribute'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    MinimumProgressCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        minimumProgress:
+          type: array
+          items:
+            $ref: '#/components/schemas/MinimumProgress'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    DivisionCollege:
+      type: object
+      properties:
+        divisionCode:
+          type: string
+        divisionStartTermCode:
+          type: string
+        collegeCode:
+          type: string
+        collegeStartTermCode:
+          type: string
+        collegeDivisionStartTermCode:
+          type: string
+        collegeDivisionLastTermCode:
+          type: string
+        programOfStudyCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProgramOfStudy'
+    EnrollmentConsentRequired:
+      type: object
+      properties:
+        enrollmentConsentRequiredCode:
+          type: string
+        enrollmentConsentRequiredDescription:
+          type: string
+    EnrollmentStatus:
+      type: object
+      properties:
+        classSectionEnrollmentStatusCode:
+          type: string
+        classSectionEnrollmentStatusDescription:
+          type: string
+    LatinHonorsCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        latinHonors:
+          type: array
+          items:
+            $ref: '#/components/schemas/LatinHonors'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    DivisionDepartmentMajor:
+      type: object
+      properties:
+        majorCode:
+          type: string
+        divisionMajorStartTermCode:
+          type: string
+        divisionMajorLastTermCode:
+          type: string
+    GradeType:
+      type: object
+      properties:
+        gradeTypeCode:
+          type: string
+        gradeTypeName:
+          type: string
+        careerCode:
+          type: string
+    EnrollmentRuleCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        enrollmentRules:
+          type: array
+          items:
+            $ref: '#/components/schemas/EnrollmentRule'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    Building:
+      type: object
+      properties:
+        buildingCode:
+          type: string
+        buildingName:
+          type: string
+    ActivityTypeCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        activityTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActivityType'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    DegreeTypeCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        degreeTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/DegreeType'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    DepartmentCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        departments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Department'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    ClassSectionNumbers:
+      type: object
+      properties:
+        classSectionNumber:
+          type: string
+        displayClassSectionNumber:
+          type: string
+    TermSessionCode:
+      type: object
+      properties:
+        sessionTermCode:
+          type: string
+        termSessionCodeCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/SessionCode'
+    Institution:
+      type: object
+      properties:
+        institutionCode:
+          type: string
+        institutionName:
+          type: string
+        institutionEffectiveDate:
+          type: string
+        institutionExpirationDate:
+          type: string
+        institutionAddressCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/InstitutionAddress'
+        uclaSchoolLevelCode:
+          type: string
+        uclaSchoolTypeCode:
+          type: string
+        ucopSchoolTypeCode:
+          type: string
+        ucopStatusCode:
+          type: string
+    FinancialSystemDivision:
+      type: object
+      properties:
+        financialSystemDivisionCode:
+          type: string
+        financialSystemDivisionName:
+          type: string
+        financialSystemDepartmentCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/FinancialSystemDivisionDepartmentCodeCollection'
+  securitySchemes:
+    application:
+      type: oauth2
+      flows:
+        clientCredentials:
+          scopes:
+            read: Read access to protected resources
+            write: Write access to protected resources
+          tokenUrl: https://api.ucla.edu/oauth/client_credential/accesstoken?grant_type=client_credentials
+      description: OAuth2

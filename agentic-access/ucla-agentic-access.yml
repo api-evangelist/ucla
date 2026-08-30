@@ -1,0 +1,1151 @@
+generated: '2026-08-19'
+method: derived
+source: openapi/_original/*.yml — the seven contracts UCLA publishes at https://developer.api.ucla.edu/sites/default/files/apidoc_specs/
+  (all HTTP 200, fetched 2026-08-19)
+x-operator: institution
+provider: University of California, Los Angeles
+providerId: ucla
+description: 'Recommended x-agentic-access execution contracts for every operation across UCLA''s seven
+  institution-operated API contracts, classified from the contracts themselves. UCLA is an easy case
+  for agentic classification and a hard case for agentic access: all 91 operations are HTTP GET with
+  read consequence and no operation mutates anything, but not one of them can be called without a credential
+  that UCLA issues only after a human approves an access request. A governance starting point; review
+  and bind audience per deployment. See research/curity/agentic-governance/.'
+summary:
+  operations: 91
+  by_action_class:
+    connected: 90
+    privileged: 1
+  by_consequence:
+    read: 91
+    write: 0
+  human_in_the_loop_required: 0
+caveat: Every operation here reads student information system data belonging to a US institution subject
+  to FERPA. The published contracts expose catalog and reference data rather than student records, but
+  they run on the same gateway and the same credential as products that are only visible after campus
+  sign-in. No agent should hold a UCLA App Key without an explicit, auditable grant from the owning
+  campus unit, and UCLA operates no self-service path to obtain one.
+blockers:
+- No 429 is declared and no rate-limit headers are documented, so an agent cannot back off correctly.
+- No operation carries an example, and 175 parameter descriptions contain a bare value instead of a
+  description, so an agent cannot construct a valid call from the contract alone.
+- Error responses are declared with whitespace-prefixed keys and are invisible to conformant tooling,
+  so an agent parsing the contract sees only the 200 case.
+- No machine-readable catalog of the developer portal exists; the seven contracts were found by reading
+  Drupal settings out of eight HTML pages.
+operations:
+- contract: ucla-myucla-menu-data-openapi.yml
+  path: /myucla/menudata/v1
+  method: post
+  summary: Retrieve data needed to create the megamenu
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-classes-openapi.yml
+  path: /classes/{offeredTermCode}/v1
+  method: get
+  summary: Returns a collection of courses offered in a term
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-classes-openapi.yml
+  path: /classes/{offeredTermCode}/{subjectAreaCode}/{courseCatalogNumber}/{classNumber}/classfinalexam/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-classes-openapi.yml
+  path: /classes/{offeredTermCode}/{subjectAreaCode}/{courseCatalogNumber}/{classNumber}/classdetail/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-classes-openapi.yml
+  path: /classes/unex/{offeredTermCode}/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-classes-openapi.yml
+  path: /classsections/{offeredTermCode}/{subjectAreaCode}/{courseCatalogNumber}/{classNumber}/v1
+  method: get
+  summary: Returns a collection of sections in a class
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-classes-openapi.yml
+  path: /classsections/{offeredTermCode}/{subjectAreaCode}/{courseCatalogNumber}/{classSectionNumber}/classsectiondetail/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-courses-openapi.yml
+  path: /courses/v1
+  method: get
+  summary: Returns a collection of Courses
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-courses-openapi.yml
+  path: /courses/{subjectAreaCode}/{courseCatalogNumber}/{courseStartTermCode}/coursediversity/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-courses-openapi.yml
+  path: /courses/{subjectAreaCode}/{courseCatalogNumber}/{courseStartTermCode}/coursege/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-courses-openapi.yml
+  path: /courses/{subjectAreaCode}/{courseCatalogNumber}/{courseStartTermCode}/coursedetail/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-courses-openapi.yml
+  path: /courses/{subjectAreaCode}/{courseCatalogNumber}/{courseStartTermCode}/courserequisites/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-courses-openapi.yml
+  path: /gefoundations/v1
+  method: get
+  summary: Returns a collection of GE Foundations
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-courses-openapi.yml
+  path: /gefoundations/{GEFoundationCode}/{GEFoundationCategoryCode}/gefoundationcategorycourses/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/academicactions/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/{InputDate}/{TermSessionCode}/activeacademicterm/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/activitytypes/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/affiliationstermsessions/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/buildings/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/careers/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/cities/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/classlevels/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/classnumbers/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/classsectionenrollmentstatus/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/classsectionnumbers/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/colleges/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/countries/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/coursecatalognumbers/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/{OfferedTermCode}/{ClassSectionID}/courseclassidentifiers/v1
+  method: get
+  summary: Returns parameters for Courses and Classes endpoints for a given term and SRS Number
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/daysofweek/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/degreetypes/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/departments/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/divisioncolleges/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/divisiondepartments/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/divisions/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/enrollmentappointmentgroups/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/{EnrollmentTermCode}/{EnrollmentPassCode}/enrollmentappointments/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/enrollmentconsentsrequired/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/{EnrollmentTermCode}/enrollmentpasses/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/enrollmentrules/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/financialsystemdepartments/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/financialsystemdivisions/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/geattributes/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/gradetypes/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/holds/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/holdlevels/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/institutions/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/instructortypes/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/ipedsapbethnicities/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/ipedsapbexpandedethnicities/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/{LatinHonorsStartTermCode}/latinhonors/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/majors/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/majorprograms/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/majorprogramspecialization/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/minimumprogress/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/minors/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/provinces/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/scheduleprint/v1
+  method: get
+  summary: Returns printing control codes used in the Schedule of Classes and MyUCLA.
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/specializations/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/states/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/studentenrollmentstatus/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/subjectareas/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/termfeeassessment/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/terms/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/termsessions/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/termsessioncodes/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/termsessionevents/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/termsessiongroups/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/termsessionsbyweek/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/transcriptcareers/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/uccampuses/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/unexstudentenrollmentstatus/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/unittypes/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/universitylocations/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-dictionary-openapi.yml
+  path: /dictionary/visatypes/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-sis-production-calendar-jobs-openapi.yml
+  path: /productioncalendarjobs/mainframe/{JobRunDate}/{NumberOfWeeksFromJobRunDate}/v1
+  method: get
+  summary: Gets the Production Calendar Mainframe jobs
+  x-agentic-access:
+    action-class: privileged
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Exposes the Registrar mainframe batch schedule. Read-only, but operational intelligence about
+      campus systems rather than public reference data - treat as privileged and do not surface to an
+      unauthenticated end user.
+- contract: ucla-sis-verify-connectivity-openapi.yml
+  path: /infrastructure/verifyconnectivity/v1
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: OAuth 2.0 client_credentials (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Health check. The correct first call for any agent, and the only operation whose failure
+      is unambiguous.
+- contract: ucla-weather-openapi.yml
+  path: /weather/api
+  method: get
+  summary: Returns current UCLA weather information with a valid APP apiKey send in as header parameter.
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: x-apikey header (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-weather-openapi.yml
+  path: /weather/windSpeed
+  method: get
+  summary: Average wind speed during the previous 60 seconds in miles per hour.
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: x-apikey header (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-weather-openapi.yml
+  path: /weather/gust
+  method: get
+  summary: Maximum wind speed during the previous 60 seconds in miles per hour.
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: x-apikey header (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-weather-openapi.yml
+  path: /weather/airTemperature
+  method: get
+  summary: Current air temperature in degrees Fahrenheit.
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: x-apikey header (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-weather-openapi.yml
+  path: /weather/minimumTemperature
+  method: get
+  summary: Minimum temperature since midnight PST in degrees Fahrenheit.
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: x-apikey header (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-weather-openapi.yml
+  path: /weather/maximumTemperature
+  method: get
+  summary: Maximum temperature since midnight PST in degrees Fahrenheit.
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: x-apikey header (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-weather-openapi.yml
+  path: /weather/relativeHumidity
+  method: get
+  summary: Current relative humidity in percent.
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: x-apikey header (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-weather-openapi.yml
+  path: /weather/minRelativeHumidity
+  method: get
+  summary: Minimum relative humidity since midnight PST in percent.
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: x-apikey header (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-weather-openapi.yml
+  path: /weather/maxRelativeHumidity
+  method: get
+  summary: Maximum relative humidity since midnight PST in percent.
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: x-apikey header (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-weather-openapi.yml
+  path: /weather/dewPoint
+  method: get
+  summary: Current dew point temperature in degrees Fahrenheit.
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: x-apikey header (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-weather-openapi.yml
+  path: /weather/wetBulb
+  method: get
+  summary: Current wet bulb temperature in degrees Fahrenheit.
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: x-apikey header (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-weather-openapi.yml
+  path: /weather/seaLevelPressure
+  method: get
+  summary: Equivalent sea level pressure in millibars.
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: x-apikey header (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-weather-openapi.yml
+  path: /weather/rainFallHour
+  method: get
+  summary: Rainfall in previous 60 minutes.
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: x-apikey header (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.
+- contract: ucla-weather-openapi.yml
+  path: /weather/rainFallDay
+  method: get
+  summary: Rainfall since midnight PST.
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: none
+    token: x-apikey header (UCLA API Gateway)
+    audit: gateway analytics only (Apigee); UCLA publishes no audit contract
+    human-in-the-loop: false
+    notes: Read-only campus reference data. Safe for an agent to call on an approved credential; the
+      credential itself requires a UCLA-approved access request and is not self-service.

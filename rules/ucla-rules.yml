@@ -1,0 +1,153 @@
+x-name: University of California, Los Angeles — governance rules
+description: >-
+  A Spectral-style ruleset written against UCLA's OWN seven first-party contracts, published by
+  UCLA on its own developer portal. Every rule below exists because a real UCLA contract fails
+  or passes it - this is a governance read of what UCLA ships, not a generic style guide. It
+  uses built-in Spectral functions only.
+x-generated: '2026-08-19'
+x-modified: '2026-08-19'
+x-method: derived
+x-source: openapi/_original/*.yml
+x-operator: institution
+x-note: >-
+  Provided as an assessment artifact. It is API Evangelist's ruleset applied to UCLA's
+  contracts; UCLA publishes no governance ruleset of its own and none is claimed here.
+x-findings_summary:
+  contracts_evaluated: 7
+  total_operations: 91
+  specification_versions:
+    swagger-2.0: 6
+    openapi-3.0.3: 1
+  passes:
+    - Every server host is api.ucla.edu; no placeholder, example or vendor host anywhere.
+    - Every SIS contract declares a real OAuth 2.0 flow with a live token endpoint.
+    - >-
+      Every SIS operation is tagged, and the eight tags used (Classes, Class Sections, Courses,
+      GE Foundations, Dictionary, MyUCLA, Production Calendar Jobs, Infrastructure) are a
+      coherent institutional taxonomy.
+    - Every SIS operation declares a 200 response bound to a named schema.
+    - Every SIS operation carries `deprecated: false` explicitly.
+  failures:
+    - >-
+      462 response keys across the six SIS contracts are declared with a LEADING SPACE - " 200",
+      " 400", " 401", " 403", " 404", " 500". A Swagger 2.0 response key must match
+      ^[1-5][0-9][0-9]$ or be `default`, so a strict validator sees exactly one declared
+      response per operation and every error response is invisible. Swagger UI renders them,
+      which is almost certainly why this has never been caught.
+    - No contract declares info.contact. api-support@it.ucla.edu appears only on a help page.
+    - No contract declares info.termsOfService or info.license.
+    - >-
+      Six of seven contracts are titled the literal string "API version v1" - the contracts do
+      not name themselves, so a document downloaded from the portal cannot be identified.
+    - 69 of 91 operations carry neither summary nor description.
+    - >-
+      175 path and query parameter `description` fields hold an example VALUE rather than a
+      description - offeredTermCode is described as "151", courseCatalogNumber as "0003",
+      courseStartTermCode as "99F". The one field an agent reads to learn what a parameter
+      means instead contains an unlabelled sample.
+    - Not one request or response example anywhere in 91 operations.
+    - >-
+      Each SIS contract ships the entire shared SIS definition library - 1,036 to 1,078 schemas -
+      of which between 1 and 139 are actually reachable from its own paths. The Verify
+      Connectivity contract carries 1,036 definitions to describe one operation.
+    - The UCLA Weather contract declares info.version 0.0.1 on a live production route.
+    - The Weather contract uses a header API key while all six others use OAuth 2.0.
+    - No contract declares 429, and no rate-limit headers are documented.
+x-ruleset:
+  extends: []
+  rules:
+    response-key-no-whitespace:
+      description: >-
+        A response key must be a bare status code. UCLA's six SIS contracts declare every error
+        response with a leading space, which makes them invisible to conformant tooling. This is
+        the single highest-value fix available to UCLA and it is a whitespace change.
+      severity: error
+      given: $.paths[*][*].responses
+      then:
+        field: '@key'
+        function: pattern
+        functionOptions:
+          match: '^([1-5][0-9][0-9]|default)$'
+    info-contact-required:
+      description: >-
+        A contract must name a contact. All seven UCLA contracts fail this. api-support@it.ucla.edu
+        exists and is the right answer; it simply is not in any contract.
+      severity: error
+      given: $.info
+      then:
+        field: contact
+        function: truthy
+    info-title-must-be-specific:
+      description: >-
+        info.title must not be a generic version string. Six UCLA contracts are titled
+        "API version v1", so a consumer holding two of them cannot tell them apart.
+      severity: error
+      given: $.info.title
+      then:
+        function: pattern
+        functionOptions:
+          notMatch: '^API version'
+    info-terms-of-service:
+      description: >-
+        A public higher-education API serving student information should state its terms in the
+        contract. No UCLA contract does; ucla.edu/terms-of-use exists and could be referenced.
+      severity: warn
+      given: $.info
+      then:
+        field: termsOfService
+        function: truthy
+    operation-description-required:
+      description: >-
+        69 of 91 UCLA operations carry neither summary nor description, including 59 of the 61
+        Registrar data-dictionary operations.
+      severity: warn
+      given: $.paths[*][get,post,put,delete,patch]
+      then:
+        field: summary
+        function: truthy
+    parameter-description-not-a-value:
+      description: >-
+        A parameter description must describe the parameter, not sample it. 175 UCLA parameters
+        put a bare value ("151", "ENGCOMP", "99F") in the description field. Those values belong
+        in `example`.
+      severity: warn
+      given: $.paths[*][*].parameters[*]
+      then:
+        field: description
+        function: pattern
+        functionOptions:
+          notMatch: '^[A-Z0-9]{1,10}$'
+    operation-examples-required:
+      description: >-
+        Not one of 91 UCLA operations carries a request or response example. For an API whose
+        parameters are opaque campus codes, examples are not decoration - they are the only way
+        a caller learns that a term is "151" and a subject area is "ENGCOMP".
+      severity: warn
+      given: $.paths[*][*].responses[*]
+      then:
+        field: examples
+        function: truthy
+    rate-limit-response-declared:
+      description: >-
+        No UCLA contract declares 429 or documents a rate-limit header, though every route runs
+        behind an Apigee gateway that is certainly enforcing quota.
+      severity: warn
+      given: $.paths[*][get,post,put,delete,patch].responses
+      then:
+        field: '429'
+        function: truthy
+    unused-definitions:
+      description: >-
+        Each SIS contract carries the full shared definition library rather than the schemas its
+        own paths reach. Publishing 1,036 definitions for one operation obscures the contract and
+        leaks the shape of unrelated campus systems.
+      severity: info
+      given: $.definitions
+      then:
+        function: truthy
+      x-manual: >-
+        Not expressible as a built-in Spectral assertion; evaluated by reachability analysis and
+        recorded in json-schema/, which holds the reachable subset per contract.
+x-maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

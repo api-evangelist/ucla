@@ -1,0 +1,67 @@
+generated: '2026-08-19'
+method: probed
+source: >-
+  securityDefinitions.application.scopes read verbatim from the six Swagger 2.0 SIS contracts,
+  and components.securitySchemes.ApiKeyAuth from the OpenAPI 3.0.3 UCLA Weather contract, all
+  published at https://developer.api.ucla.edu/sites/default/files/apidoc_specs/ (HTTP 200,
+  fetched 2026-08-19)
+provider: University of California, Los Angeles
+providerId: ucla
+x-operator: institution
+authorization_server: https://api.ucla.edu/oauth/client_credential/accesstoken
+description: >-
+  The complete authorization vocabulary UCLA's own API gateway advertises. It is two words.
+  Every one of the six SIS contracts declares the same OAuth 2.0 application flow with the same
+  two scopes, and no contract requests anything narrower than `read` on any operation. This is
+  recorded exactly as found rather than elaborated - a two-scope model across a student
+  information system is the finding.
+scopes:
+- name: read
+  standard: false
+  x-operator: institution
+  description: >-
+    "Read access to protected resources", verbatim from the contract. Requested by every
+    operation in all six SIS contracts, including the entire 61-operation Registrar data
+    dictionary and every class, class-section and course-detail route.
+  declared_in:
+  - openapi/_original/ucla-sis-classes-openapi.yml
+  - openapi/_original/ucla-sis-courses-openapi.yml
+  - openapi/_original/ucla-sis-dictionary-openapi.yml
+  - openapi/_original/ucla-sis-production-calendar-jobs-openapi.yml
+  - openapi/_original/ucla-sis-verify-connectivity-openapi.yml
+  - openapi/_original/ucla-myucla-menu-data-openapi.yml
+- name: write
+  standard: false
+  x-operator: institution
+  description: >-
+    "Write access to protected resources", verbatim from the contract. Declared in all six SIS
+    contracts even though every operation in all six is an HTTP GET. Nothing published on the
+    portal exercises it, so it is either aspirational or reserved for products that are only
+    visible after campus sign-in.
+  declared_in:
+  - openapi/_original/ucla-sis-classes-openapi.yml
+  - openapi/_original/ucla-sis-courses-openapi.yml
+  - openapi/_original/ucla-sis-dictionary-openapi.yml
+  - openapi/_original/ucla-sis-production-calendar-jobs-openapi.yml
+  - openapi/_original/ucla-sis-verify-connectivity-openapi.yml
+  - openapi/_original/ucla-myucla-menu-data-openapi.yml
+non_scoped_credentials:
+- name: x-apikey
+  surface: UCLA Weather API
+  x-operator: institution
+  description: >-
+    The UCLA Weather contract uses a header API key with no scope model at all. Fourteen
+    read-only operations, one credential, no partition.
+access_boundary: >-
+  The real authorization boundary at UCLA is not the token scope - it is the API Product an
+  application is subscribed to, approved per product by the owning campus unit through the
+  developer portal. The scope vocabulary is coarse on purpose because the product bundle is
+  where the decision is made. That decision is not machine-readable anywhere public.
+gaps:
+- No per-resource or per-domain scope (nothing like sis.classes.read).
+- No scope documentation outside the contracts themselves.
+- No OpenID Connect discovery document on the gateway, so scopes_supported cannot be discovered.
+- write is declared on six read-only contracts.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

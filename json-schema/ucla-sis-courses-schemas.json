@@ -1,0 +1,650 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ucla/main/json-schema/ucla-sis-courses-schemas.json",
+  "title": "UCLA sis courses \u2014 schemas in use",
+  "description": "Schemas reachable from the operations of the UCLA contract of the same name. Extracted from the contract UCLA publishes on its own developer portal; the source document carries a large shared SIS definition library of which only these are referenced by any path.",
+  "x-generated": "2026-08-19",
+  "x-method": "derived",
+  "x-source": "https://developer.api.ucla.edu/sites/default/files/apidoc_specs/courses_v1%20%281%29_0.json",
+  "x-operator": "institution",
+  "$defs": {
+    "ConcurrentCourse": {
+      "type": "object",
+      "properties": {
+        "concurrentSubjectAreaCode": {
+          "type": "string"
+        },
+        "concurrentCourseCatalogNumber": {
+          "type": "string"
+        },
+        "concurrentCourseStartTermCode": {
+          "type": "string"
+        }
+      }
+    },
+    "Course": {
+      "type": "object",
+      "properties": {
+        "subjectAreaCode": {
+          "type": "string"
+        },
+        "courseCatalogNumberCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CourseCatalogNumber"
+          }
+        }
+      }
+    },
+    "CourseActivity": {
+      "type": "object",
+      "properties": {
+        "courseActivityTypeCode": {
+          "type": "string"
+        },
+        "coursePrimaryActivityFlag": {
+          "type": "string"
+        },
+        "courseGradeTypeCode": {
+          "type": "string"
+        },
+        "courseUnitTypeCode": {
+          "type": "string"
+        },
+        "courseUnitCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CourseUnit"
+          }
+        }
+      }
+    },
+    "CourseCatalogNumber": {
+      "type": "object",
+      "properties": {
+        "courseCatalogNumber": {
+          "type": "string"
+        },
+        "courseStartTermCode": {
+          "type": "string"
+        }
+      }
+    },
+    "CourseCollection": {
+      "type": "object",
+      "properties": {
+        "courses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Course"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "CourseDetail": {
+      "type": "object",
+      "properties": {
+        "subjectAreaCode": {
+          "type": "string"
+        },
+        "courseCatalogNumber": {
+          "type": "string"
+        },
+        "courseCatalogNumberDisplay": {
+          "type": "string"
+        },
+        "courseStartTermCode": {
+          "type": "string"
+        },
+        "courseLastTermCode": {
+          "type": "string"
+        },
+        "courseCareerLevelCode": {
+          "type": "string"
+        },
+        "courseLevelName": {
+          "type": "string"
+        },
+        "courseShortTitle": {
+          "type": "string"
+        },
+        "courseLongTitle": {
+          "type": "string"
+        },
+        "courseSubtitleCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CourseSubtitle"
+          }
+        },
+        "courseDescription": {
+          "type": "string"
+        },
+        "courseMaterialsFeeAmount": {
+          "type": "string"
+        },
+        "individualStudiesFlag": {
+          "type": "string"
+        },
+        "fiatLuxCourseFlag": {
+          "type": "string"
+        },
+        "writingIICourseFlag": {
+          "type": "string"
+        },
+        "impactedCourseFlag": {
+          "type": "string"
+        },
+        "duplicateClassAllowedFlag": {
+          "type": "string"
+        },
+        "equivalentCourseCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EquivalentCourse"
+          }
+        },
+        "multipleListedCourseCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MultipleListedCourse"
+          }
+        },
+        "concurrentCourseCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ConcurrentCourse"
+          }
+        },
+        "multiTermCourseSequenceNumber": {
+          "type": "string"
+        },
+        "multiTermCourseCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MultiTerm"
+          }
+        },
+        "courseActivityCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CourseActivity"
+          }
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "CourseDetailResponse": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "courseDetail": {
+          "$ref": "#/definitions/CourseDetail"
+        }
+      }
+    },
+    "CourseDiversity": {
+      "type": "object",
+      "properties": {
+        "subjectAreaCode": {
+          "type": "string"
+        },
+        "courseCatalogNumber": {
+          "type": "string"
+        },
+        "courseStartTermCode": {
+          "type": "string"
+        },
+        "courseDiversityCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Diversity"
+          }
+        }
+      }
+    },
+    "CourseDiversityResponse": {
+      "type": "object",
+      "properties": {
+        "courseDiversity": {
+          "$ref": "#/definitions/CourseDiversity"
+        }
+      }
+    },
+    "CourseGEAttribute": {
+      "type": "object",
+      "properties": {
+        "geAttributeCode": {
+          "type": "string"
+        },
+        "geAttributeStartTermCode": {
+          "type": "string"
+        },
+        "courseAttributeStartTermCode": {
+          "type": "string"
+        },
+        "courseAttributeLastTermCode": {
+          "type": "string"
+        }
+      }
+    },
+    "CourseGEFoundation": {
+      "type": "object",
+      "properties": {
+        "subjectAreaCode": {
+          "type": "string"
+        },
+        "courseCatalogNumber": {
+          "type": "string"
+        },
+        "courseStartTermCode": {
+          "type": "string"
+        },
+        "geFoundationCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GE"
+          }
+        },
+        "geAttributeCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CourseGEAttribute"
+          }
+        }
+      }
+    },
+    "CourseGEFoundationResponse": {
+      "type": "object",
+      "properties": {
+        "courseGEFoundations": {
+          "$ref": "#/definitions/CourseGEFoundation"
+        }
+      }
+    },
+    "CourseRequisite": {
+      "type": "object",
+      "properties": {
+        "subjectAreaCode": {
+          "type": "string"
+        },
+        "courseCatalogNumber": {
+          "type": "string"
+        },
+        "courseStartTermCode": {
+          "type": "string"
+        },
+        "requisiteCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Requisite"
+          }
+        }
+      }
+    },
+    "CourseRequisiteResponse": {
+      "type": "object",
+      "properties": {
+        "courseRequisite": {
+          "$ref": "#/definitions/CourseRequisite"
+        }
+      }
+    },
+    "CourseSubtitle": {
+      "type": "object",
+      "properties": {
+        "courseShortSubtitle": {
+          "type": "string"
+        },
+        "courseLongSubtitle": {
+          "type": "string"
+        }
+      }
+    },
+    "CourseUnit": {
+      "type": "object",
+      "properties": {
+        "courseUnit": {
+          "type": "string"
+        }
+      }
+    },
+    "Diversity": {
+      "type": "object",
+      "properties": {
+        "courseDiversityCollegeCode": {
+          "type": "string"
+        },
+        "courseDiversityStartTermCode": {
+          "type": "string"
+        },
+        "courseDiversityLastTermCode": {
+          "type": "string"
+        }
+      }
+    },
+    "EquivalentCourse": {
+      "type": "object",
+      "properties": {
+        "equivalentSubjectAreaCode": {
+          "type": "string"
+        },
+        "equivalentCourseCatalogNumber": {
+          "type": "string"
+        },
+        "equivalentCourseStartTermCode": {
+          "type": "string"
+        }
+      }
+    },
+    "GE": {
+      "type": "object",
+      "properties": {
+        "geFoundationCode": {
+          "type": "string"
+        },
+        "geFoundationStartTermCode": {
+          "type": "string"
+        },
+        "geFoundationCategoryCode": {
+          "type": "string"
+        },
+        "geFoundationCategoryStartTermCode": {
+          "type": "string"
+        },
+        "courseFoundationCategoryStartTermCode": {
+          "type": "string"
+        },
+        "courseFoundationCategoryLastTermCode": {
+          "type": "string"
+        }
+      }
+    },
+    "GEFoundationCategoryCourse": {
+      "type": "object",
+      "properties": {
+        "subjectAreaCode": {
+          "type": "string"
+        },
+        "courseCatalogNumber": {
+          "type": "string"
+        },
+        "courseStartTermCode": {
+          "type": "string"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        },
+        "courseFoundationCategoryStartTermCode": {
+          "type": "string"
+        },
+        "courseFoundationCategoryLastTermCode": {
+          "type": "string"
+        }
+      }
+    },
+    "GEFoundationCategoryCourses": {
+      "type": "object",
+      "properties": {
+        "geFoundationCode": {
+          "type": "string"
+        },
+        "geFoundationStartTermCode": {
+          "type": "string"
+        },
+        "geFoundationCategoryCode": {
+          "type": "string"
+        },
+        "geFoundationCategoryStartTermCode": {
+          "type": "string"
+        },
+        "courseCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GEFoundationCategoryCourse"
+          }
+        }
+      }
+    },
+    "GEFoundationCategoryCoursesCollection": {
+      "type": "object",
+      "properties": {
+        "geFoundationCategoryCourses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GEFoundationCategoryCourses"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "GEFoundations": {
+      "type": "object",
+      "properties": {
+        "geFoundationCode": {
+          "type": "string"
+        },
+        "geFoundationName": {
+          "type": "string"
+        },
+        "geFoundationStartTermCode": {
+          "type": "string"
+        },
+        "geFoundationLastTermCode": {
+          "type": "string"
+        },
+        "geFoundationCategoryCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GEFoundationsCategory"
+          }
+        }
+      }
+    },
+    "GEFoundationsCategory": {
+      "type": "object",
+      "properties": {
+        "geFoundationCategoryCode": {
+          "type": "string"
+        },
+        "geFoundationCategoryName": {
+          "type": "string"
+        },
+        "geFoundationCategoryStartTermCode": {
+          "type": "string"
+        },
+        "geFoundationCategoryLastTermCode": {
+          "type": "string"
+        },
+        "href": {
+          "type": "string"
+        },
+        "rel": {
+          "type": "string"
+        }
+      }
+    },
+    "GEFoundationsCollection": {
+      "type": "object",
+      "properties": {
+        "geFoundations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GEFoundations"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "LinkModel": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string"
+        },
+        "rel": {
+          "type": "string"
+        },
+        "method": {
+          "type": "string"
+        }
+      }
+    },
+    "MultiTerm": {
+      "type": "object",
+      "properties": {
+        "multiTermSubjectAreaCode": {
+          "type": "string"
+        },
+        "multiTermCourseCatalogNumber": {
+          "type": "string"
+        },
+        "multiTermCourseStartTermCode": {
+          "type": "string"
+        },
+        "multiTermCourseTotalNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "MultipleListedCourse": {
+      "type": "object",
+      "properties": {
+        "multipleListedSubjectAreaCode": {
+          "type": "string"
+        },
+        "multipleListedCourseCatalogNumber": {
+          "type": "string"
+        },
+        "multipleListedCourseStartTermCode": {
+          "type": "string"
+        }
+      }
+    },
+    "Requisite": {
+      "type": "object",
+      "properties": {
+        "requisiteSequenceNumber": {
+          "type": "string"
+        },
+        "requisiteCourseName": {
+          "type": "string"
+        },
+        "requisiteCourseStartTerm": {
+          "type": "string"
+        },
+        "requisiteCourseMinimumUnits": {
+          "type": "string"
+        },
+        "requisiteCourseMinimumLetterGrade": {
+          "type": "string"
+        },
+        "requisiteLogicalConnectorCode": {
+          "type": "string"
+        },
+        "requisiteConnectorLeftParenthesis1": {
+          "type": "string"
+        },
+        "requisiteConnectorLeftParenthesis2": {
+          "type": "string"
+        },
+        "requisiteConnectorLeftParenthesis3": {
+          "type": "string"
+        },
+        "requisiteConnectorRightParenthesis1": {
+          "type": "string"
+        },
+        "requisiteConnectorRightParenthesis2": {
+          "type": "string"
+        },
+        "requisiteConnectorRightParenthesis3": {
+          "type": "string"
+        },
+        "coRequisiteFlag": {
+          "type": "string"
+        },
+        "preRequisiteFlag": {
+          "type": "string"
+        },
+        "requisiteSeverityText": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

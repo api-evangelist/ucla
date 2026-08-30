@@ -1,0 +1,233 @@
+openapi: 3.2.0
+info:
+  version: v1
+  title: version v1 My UCLA API
+servers:
+- url: https://api.ucla.edu/sis
+security:
+- application: []
+tags:
+- name: MyUCLA
+paths:
+  /myucla/menudata/v1:
+    post:
+      tags:
+      - MyUCLA
+      summary: Retrieve data needed to create the megamenu
+      description: "This function takes in various information from Shibboleth cookie to generate the megamenu and sort it.\n            If you want to use all of the menudata, please use the menuData object in the output.\n            If you want to shrink the size of what is being passed to the user as much as possible, you can use the miniMenuData object"
+      operationId: IweFramework_GetMenuData
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserInfo'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/UserInfo'
+        ' 200':
+          description: OK
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MenuDataInput'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MenuDataInput'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MenuDataInput'
+        description: Menu Data Input containing ppId, sessionId, shibUclaLogonId, uid, uclaPersonRole, and cookies
+        required: true
+components:
+  schemas:
+    Feature:
+      description: "A feature is one of the links that a user can click on. This metadata is populated from\n            the database."
+      type: object
+      properties:
+        featureIDNumber:
+          format: int32
+          description: Feature ID number in database
+          type: integer
+        featureName:
+          description: Feature name
+          type: string
+        featureToolTip:
+          description: Tooltip to show with the feature
+          type: string
+        featureDescription:
+          description: Long description of the feature
+          type: string
+        isFeatureExternal:
+          description: Determines whether or not the feature is an external facing feature
+          type: boolean
+        isHomeWindow:
+          description: Determines whether this feature is a home feature
+          type: boolean
+        tempIcon:
+          description: Location of the feature's icon
+          type: string
+        featureURL:
+          description: URL feature is hosted at
+          type: string
+        isLegacy:
+          description: Determines whether feature is a legacy feature
+          type: boolean
+        isAvailable:
+          description: Determines if feature is available.
+          type: boolean
+        message:
+          description: Optional database message accompanying feature
+          type: string
+        isImportant:
+          description: Determines if the feature is marked as important
+          type: boolean
+        siteID:
+          format: int32
+          description: Site ID number that the feature belongs to
+          type: integer
+        siteName:
+          description: Name of site that the feature belongs to
+          type: string
+    SuperGroup:
+      description: "Class that represents a SuperGroup. A super group is comprised of several\n            feature groups."
+      type: object
+      properties:
+        superGroupID:
+          format: int32
+          description: Super Group ID in database
+          type: integer
+        sequenceNumber:
+          format: int32
+          description: Super Group sequence number that determines ordering on the menu
+          type: integer
+        superGroupName:
+          description: Name of the super group
+          type: string
+        myFeaturesUrl:
+          description: "Url of the page used to customize MyFeatures\n            Only used by the MyFeatures Super Group"
+          type: string
+        featureGroups:
+          description: "Set of feature groups that belong to this super group. This \n            is sorted by the FeatureGroup ID"
+          type: array
+          items:
+            $ref: '#/components/schemas/FeatureGroup'
+        featureGroupColumns:
+          description: "Provides individual column sorting for feature groups. \n            Indexes into the first list are the actual columns that should\n            be rendered. The list of feature groups are the feature groups\n            to render for that column."
+          type: array
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/FeatureGroup'
+    UserInfo:
+      type: object
+      properties:
+        homeURL:
+          type: string
+        logoutURL:
+          type: string
+        noticesURL:
+          type: string
+        displayName:
+          type: string
+        menuData:
+          $ref: '#/components/schemas/MegaMenuModel'
+        notices:
+          format: int32
+          type: integer
+        redirectToNotices:
+          type: boolean
+        jsonMenuData:
+          type: string
+        lastUpdatedTS:
+          format: date-time
+          type: string
+    MegaMenuModel:
+      description: "The mega menu model contains all the data necessary to render\n            the full Mega Menu for IWE."
+      type: object
+      properties:
+        superGroups:
+          description: "Set of super groups sorted in the order that they should\n            be rendered."
+          type: array
+          items:
+            $ref: '#/components/schemas/SuperGroup'
+        _homeURL:
+          type: string
+    FeatureGroup:
+      description: A feature group is a group of features that logically should be grouped together.
+      type: object
+      properties:
+        featureGroupID:
+          format: int32
+          description: Feature Group ID in database
+          type: integer
+        featureGroupSequenceNumber:
+          format: int32
+          description: Feature Group sequence numbering order to render
+          type: integer
+        featureGroupName:
+          description: Name of the Feature Group
+          type: string
+        features:
+          description: Set of features that belong to this feature group
+          type: array
+          items:
+            $ref: '#/components/schemas/Feature'
+    MenuDataInput:
+      type: object
+      properties:
+        ppId:
+          type: string
+        sessionId:
+          type: string
+        shibUclaLogonId:
+          type: string
+        uid:
+          type: string
+        uclaPersonRole:
+          type: string
+        firstName:
+          type: string
+        nickName:
+          type: string
+        logoutURL:
+          type: string
+        favoriteFeatureCookieTS:
+          type: string
+        favoriteFeatureCookieValue:
+          type: string
+        hiddenRoleCookieTS:
+          type: string
+        hiddenRoleCookieValue:
+          type: string
+        homeUrlCookieTS:
+          type: string
+        homeUrlCookieValue:
+          type: string
+        noticeCountCookieValue:
+          type: string
+        roleChangedCookieTS:
+          type: string
+  securitySchemes:
+    application:
+      type: oauth2
+      flows:
+        clientCredentials:
+          scopes:
+            read: Read access to protected resources
+            write: Write access to protected resources
+          tokenUrl: https://api.ucla.edu/oauth/client_credential/accesstoken?grant_type=client_credentials
+      description: OAuth2

@@ -1,0 +1,3689 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ucla/main/json-schema/ucla-sis-dictionary-schemas.json",
+  "title": "UCLA sis dictionary \u2014 schemas in use",
+  "description": "Schemas reachable from the operations of the UCLA contract of the same name. Extracted from the contract UCLA publishes on its own developer portal; the source document carries a large shared SIS definition library of which only these are referenced by any path.",
+  "x-generated": "2026-08-19",
+  "x-method": "derived",
+  "x-source": "https://developer.api.ucla.edu/sites/default/files/apidoc_specs/dictionary_v1%20%281%29.json",
+  "x-operator": "institution",
+  "$defs": {
+    "AcademicAction": {
+      "type": "object",
+      "properties": {
+        "academicActionCode": {
+          "type": "string"
+        },
+        "academicActionDescription": {
+          "type": "string"
+        }
+      }
+    },
+    "AcademicActionCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "academicActions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AcademicAction"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "ActiveAcademicTerm": {
+      "type": "object",
+      "properties": {
+        "inputDate": {
+          "type": "string"
+        },
+        "termSessionDate": {
+          "type": "string"
+        },
+        "termCode": {
+          "type": "string"
+        },
+        "termSequenceNumber": {
+          "type": "string"
+        },
+        "termSessionStartDate": {
+          "type": "string"
+        },
+        "termSessionLastDate": {
+          "type": "string"
+        }
+      }
+    },
+    "ActiveAcademicTermCollection": {
+      "type": "object",
+      "properties": {
+        "activeAcademicTerm": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ActiveAcademicTerm"
+          }
+        }
+      }
+    },
+    "ActivityType": {
+      "type": "object",
+      "properties": {
+        "activityTypeCode": {
+          "type": "string"
+        },
+        "activityTypeName": {
+          "type": "string"
+        }
+      }
+    },
+    "ActivityTypeCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "activityTypes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ActivityType"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "AffiliationsTermSession": {
+      "type": "object",
+      "properties": {
+        "affiliationName": {
+          "type": "string"
+        },
+        "termSessionCode": {
+          "type": "string"
+        }
+      }
+    },
+    "AffiliationsTermSessionCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "affiliationsTermSessions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AffiliationsTermSession"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "Building": {
+      "type": "object",
+      "properties": {
+        "buildingCode": {
+          "type": "string"
+        },
+        "buildingName": {
+          "type": "string"
+        }
+      }
+    },
+    "BuildingCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "buildings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Building"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "Career": {
+      "type": "object",
+      "properties": {
+        "careerCode": {
+          "type": "string"
+        },
+        "careerName": {
+          "type": "string"
+        }
+      }
+    },
+    "CareerCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "careers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Career"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "City": {
+      "type": "object",
+      "properties": {
+        "universityLocationCode": {
+          "type": "string"
+        },
+        "cityName": {
+          "type": "string"
+        },
+        "cityStartTermCode": {
+          "type": "string"
+        },
+        "cityStartDate": {
+          "type": "string"
+        },
+        "cityLastTermCode": {
+          "type": "string"
+        },
+        "cityLastDate": {
+          "type": "string"
+        },
+        "universityLocationStartTermCode": {
+          "type": "string"
+        }
+      }
+    },
+    "CityCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "cities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/City"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "ClassLevel": {
+      "type": "object",
+      "properties": {
+        "classLevelCode": {
+          "type": "string"
+        },
+        "classLevelName": {
+          "type": "string"
+        }
+      }
+    },
+    "ClassLevelCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "classLevels": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ClassLevel"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "ClassNumbers": {
+      "type": "object",
+      "properties": {
+        "classNumber": {
+          "type": "string"
+        },
+        "displayClassNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "ClassNumbersCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "classNumbers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ClassNumbers"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "ClassSectionNumbers": {
+      "type": "object",
+      "properties": {
+        "classSectionNumber": {
+          "type": "string"
+        },
+        "displayClassSectionNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "ClassSectionNumbersCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "classSectionNumbers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ClassSectionNumbers"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "College": {
+      "type": "object",
+      "properties": {
+        "collegeCode": {
+          "type": "string"
+        },
+        "collegeName": {
+          "type": "string"
+        },
+        "collegeStartTermCode": {
+          "type": "string"
+        },
+        "collegeLastTermCode": {
+          "type": "string"
+        },
+        "cssCollegeCode": {
+          "type": "string"
+        }
+      }
+    },
+    "CollegeCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "colleges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/College"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "Country": {
+      "type": "object",
+      "properties": {
+        "universityLocationCode": {
+          "type": "string"
+        },
+        "countryCode": {
+          "type": "string"
+        },
+        "isoCountryCode": {
+          "type": "string"
+        },
+        "fipsCountryName": {
+          "type": "string"
+        },
+        "uspsCountryName": {
+          "type": "string"
+        },
+        "countryStartTermCode": {
+          "type": "string"
+        },
+        "countryStartDate": {
+          "type": "string"
+        },
+        "countryLastTermCode": {
+          "type": "string"
+        },
+        "countryLastDate": {
+          "type": "string"
+        },
+        "universityLocationStartTermCode": {
+          "type": "string"
+        }
+      }
+    },
+    "CountryCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "countries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Country"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "CourseCatalogNumbers": {
+      "type": "object",
+      "properties": {
+        "courseCatalogNumber": {
+          "type": "string"
+        },
+        "displayCourseCatalogNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "CourseCatalogNumbersCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "courseCatalogNumbers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CourseCatalogNumbers"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "CourseClassIdentifier": {
+      "type": "object",
+      "properties": {
+        "subjectAreaCode": {
+          "type": "string"
+        },
+        "courseCatalogNumber": {
+          "type": "string"
+        },
+        "courseStartTermCode": {
+          "type": "string"
+        },
+        "classNumber": {
+          "type": "string"
+        },
+        "classSectionNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "CourseClassIdentifiers": {
+      "type": "object",
+      "properties": {
+        "offeredTermCode": {
+          "type": "string"
+        },
+        "classSectionID": {
+          "type": "string"
+        },
+        "courseClassIdentifierCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CourseClassIdentifier"
+          }
+        }
+      }
+    },
+    "CourseClassIdentifiersCollection": {
+      "type": "object",
+      "properties": {
+        "courseClassIdentifiers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CourseClassIdentifiers"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "DaysofWeek": {
+      "type": "object",
+      "properties": {
+        "daysofWeekCode": {
+          "type": "string"
+        },
+        "daysofWeekDescription": {
+          "type": "string"
+        }
+      }
+    },
+    "DaysofWeekCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "daysofWeek": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DaysofWeek"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "DegreeType": {
+      "type": "object",
+      "properties": {
+        "degreeCode": {
+          "type": "string"
+        },
+        "degreeName": {
+          "type": "string"
+        },
+        "degreeTypeCode": {
+          "type": "string"
+        },
+        "degreeTypeName": {
+          "type": "string"
+        },
+        "degreeStartTermCode": {
+          "type": "string"
+        },
+        "degreeLastTermCode": {
+          "type": "string"
+        },
+        "cssDegreeCode": {
+          "type": "string"
+        }
+      }
+    },
+    "DegreeTypeCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "degreeTypes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DegreeType"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "Department": {
+      "type": "object",
+      "properties": {
+        "departmentCode": {
+          "type": "string"
+        },
+        "departmentName": {
+          "type": "string"
+        },
+        "departmentStartTermCode": {
+          "type": "string"
+        },
+        "departmentLastTermCode": {
+          "type": "string"
+        },
+        "customizedDepartmentFlag": {
+          "type": "string"
+        },
+        "departmentTypeName": {
+          "type": "string"
+        }
+      }
+    },
+    "DepartmentCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "departments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Department"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "Division": {
+      "type": "object",
+      "properties": {
+        "divisionCode": {
+          "type": "string"
+        },
+        "divisionName": {
+          "type": "string"
+        },
+        "divisionStartTermCode": {
+          "type": "string"
+        },
+        "divisionLastTermCode": {
+          "type": "string"
+        }
+      }
+    },
+    "DivisionCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "divisions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Division"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "DivisionCollege": {
+      "type": "object",
+      "properties": {
+        "divisionCode": {
+          "type": "string"
+        },
+        "divisionStartTermCode": {
+          "type": "string"
+        },
+        "collegeCode": {
+          "type": "string"
+        },
+        "collegeStartTermCode": {
+          "type": "string"
+        },
+        "collegeDivisionStartTermCode": {
+          "type": "string"
+        },
+        "collegeDivisionLastTermCode": {
+          "type": "string"
+        },
+        "programOfStudyCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProgramOfStudy"
+          }
+        }
+      }
+    },
+    "DivisionCollegeCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "divisionColleges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DivisionCollege"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "DivisionDepartment": {
+      "type": "object",
+      "properties": {
+        "divisionCode": {
+          "type": "string"
+        },
+        "divisionStartTermCode": {
+          "type": "string"
+        },
+        "departmentCode": {
+          "type": "string"
+        },
+        "departmentStartTermCode": {
+          "type": "string"
+        },
+        "divisionDepartmentStartTermCode": {
+          "type": "string"
+        },
+        "divisionDepartmentLastTermCode": {
+          "type": "string"
+        },
+        "subjectAreaCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DivisionDepartmentSubjectArea"
+          }
+        },
+        "majorCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DivisionDepartmentMajor"
+          }
+        },
+        "minorCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DivisionDepartmentMinor"
+          }
+        }
+      }
+    },
+    "DivisionDepartmentCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "divisionDepartments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DivisionDepartment"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "DivisionDepartmentMajor": {
+      "type": "object",
+      "properties": {
+        "majorCode": {
+          "type": "string"
+        },
+        "divisionMajorStartTermCode": {
+          "type": "string"
+        },
+        "divisionMajorLastTermCode": {
+          "type": "string"
+        }
+      }
+    },
+    "DivisionDepartmentMinor": {
+      "type": "object",
+      "properties": {
+        "minorCode": {
+          "type": "string"
+        },
+        "divisionMinorStartTermCode": {
+          "type": "string"
+        },
+        "divisionMinorLastTermCode": {
+          "type": "string"
+        }
+      }
+    },
+    "DivisionDepartmentSubjectArea": {
+      "type": "object",
+      "properties": {
+        "subjectAreaCode": {
+          "type": "string"
+        },
+        "subjectAreaDivisionDepartmentStartTermCode": {
+          "type": "string"
+        },
+        "subjectAreaDivisionDepartmentLastTermCode": {
+          "type": "string"
+        }
+      }
+    },
+    "EnrollmentAppointment": {
+      "type": "object",
+      "properties": {
+        "enrollmentAppointmentNumber": {
+          "type": "string"
+        },
+        "enrollmentAppointmentStartDate": {
+          "type": "string"
+        },
+        "enrollmentAppointmentStartTime": {
+          "type": "string"
+        },
+        "enrollmentAppointmentEndDate": {
+          "type": "string"
+        },
+        "enrollmentAppointmentEndTime": {
+          "type": "string"
+        }
+      }
+    },
+    "EnrollmentAppointmentGroup": {
+      "type": "object",
+      "properties": {
+        "undergraduateEnrollmentAppointmentGroupCode": {
+          "type": "string"
+        },
+        "undergraduateEnrollmentAppointmentGroupDescription": {
+          "type": "string"
+        }
+      }
+    },
+    "EnrollmentAppointmentGroupCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "enrollmentAppointmentGroups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EnrollmentAppointmentGroup"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "EnrollmentAppointments": {
+      "type": "object",
+      "properties": {
+        "enrollmentTermCode": {
+          "type": "string"
+        },
+        "enrollmentPassCode": {
+          "type": "string"
+        },
+        "enrollmentAppointmentCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EnrollmentAppointment"
+          }
+        }
+      }
+    },
+    "EnrollmentAppointmentsCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "enrollmentAppointments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EnrollmentAppointments"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "EnrollmentConsentRequired": {
+      "type": "object",
+      "properties": {
+        "enrollmentConsentRequiredCode": {
+          "type": "string"
+        },
+        "enrollmentConsentRequiredDescription": {
+          "type": "string"
+        }
+      }
+    },
+    "EnrollmentConsentRequiredCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "enrollmentConsentsRequired": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EnrollmentConsentRequired"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "EnrollmentPass": {
+      "type": "object",
+      "properties": {
+        "enrollmentPassCode": {
+          "type": "string"
+        },
+        "enrollmentPassDescription": {
+          "type": "string"
+        },
+        "enrollmentPassStartDate": {
+          "type": "string"
+        },
+        "enrollmentPassLastDate": {
+          "type": "string"
+        },
+        "enrollmentPassMaxUnits": {
+          "type": "string"
+        }
+      }
+    },
+    "EnrollmentPasses": {
+      "type": "object",
+      "properties": {
+        "enrollmentTermCode": {
+          "type": "string"
+        },
+        "enrollmentPassCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EnrollmentPass"
+          }
+        }
+      }
+    },
+    "EnrollmentPassesCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "enrollmentPasses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EnrollmentPasses"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "EnrollmentRule": {
+      "type": "object",
+      "properties": {
+        "enrollmentRuleID": {
+          "type": "string"
+        },
+        "enrollmentRuleDescription": {
+          "type": "string"
+        }
+      }
+    },
+    "EnrollmentRuleCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "enrollmentRules": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EnrollmentRule"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "EnrollmentStatus": {
+      "type": "object",
+      "properties": {
+        "classSectionEnrollmentStatusCode": {
+          "type": "string"
+        },
+        "classSectionEnrollmentStatusDescription": {
+          "type": "string"
+        }
+      }
+    },
+    "EnrollmentStatusCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "enrollmentStatuses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EnrollmentStatus"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "FinancialSystemDepartment": {
+      "type": "object",
+      "properties": {
+        "financialSystemDepartmentCode": {
+          "type": "string"
+        },
+        "financialSystemDepartmentName": {
+          "type": "string"
+        },
+        "financialSystemDepartmentAbbreviation": {
+          "type": "string"
+        },
+        "financialSystemDepartmentMailCode": {
+          "type": "string"
+        },
+        "offersWorkStudyEmploymentFlag": {
+          "type": "string"
+        }
+      }
+    },
+    "FinancialSystemDepartmentCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "financialSystemDepartments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FinancialSystemDepartment"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "FinancialSystemDivision": {
+      "type": "object",
+      "properties": {
+        "financialSystemDivisionCode": {
+          "type": "string"
+        },
+        "financialSystemDivisionName": {
+          "type": "string"
+        },
+        "financialSystemDepartmentCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FinancialSystemDivisionDepartmentCodeCollection"
+          }
+        }
+      }
+    },
+    "FinancialSystemDivisionCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "financialSystemDivisions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FinancialSystemDivision"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "FinancialSystemDivisionDepartmentCodeCollection": {
+      "type": "object",
+      "properties": {
+        "departmentCode": {
+          "type": "string"
+        }
+      }
+    },
+    "GEAttribute": {
+      "type": "object",
+      "properties": {
+        "geAttributeCode": {
+          "type": "string"
+        },
+        "geAttributeName": {
+          "type": "string"
+        },
+        "geAttributeStartTermCode": {
+          "type": "string"
+        },
+        "geAttributeLastTermCode": {
+          "type": "string"
+        }
+      }
+    },
+    "GEAttributeCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "geAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GEAttribute"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "GradeType": {
+      "type": "object",
+      "properties": {
+        "gradeTypeCode": {
+          "type": "string"
+        },
+        "gradeTypeName": {
+          "type": "string"
+        },
+        "careerCode": {
+          "type": "string"
+        }
+      }
+    },
+    "GradeTypeCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "gradeTypes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GradeType"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "Hold": {
+      "type": "object",
+      "properties": {
+        "holdCode": {
+          "type": "string"
+        },
+        "holdDescription": {
+          "type": "string"
+        }
+      }
+    },
+    "HoldCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "holds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Hold"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "HoldLevel": {
+      "type": "object",
+      "properties": {
+        "holdLevelCode": {
+          "type": "string"
+        },
+        "holdLevelDescription": {
+          "type": "string"
+        }
+      }
+    },
+    "HoldLevelCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "holdLevels": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/HoldLevel"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "IPEDSAPBEthnicity": {
+      "type": "object",
+      "properties": {
+        "ipedsapbEthnicityCode": {
+          "type": "string"
+        },
+        "ipedsapbEthnicityName": {
+          "type": "string"
+        }
+      }
+    },
+    "IPEDSAPBEthnicityCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "ipedsapbEthnicities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/IPEDSAPBEthnicity"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "IPEDSAPBExpandedEthnicity": {
+      "type": "object",
+      "properties": {
+        "ipedsapbExpandedEthnicityCode": {
+          "type": "string"
+        },
+        "ipedsapbExpandedEthnicityName": {
+          "type": "string"
+        }
+      }
+    },
+    "IPEDSAPBExpandedEthnicityCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "ipedsapbExpandedEthnicities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/IPEDSAPBExpandedEthnicity"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "Institution": {
+      "type": "object",
+      "properties": {
+        "institutionCode": {
+          "type": "string"
+        },
+        "institutionName": {
+          "type": "string"
+        },
+        "institutionEffectiveDate": {
+          "type": "string"
+        },
+        "institutionExpirationDate": {
+          "type": "string"
+        },
+        "institutionAddressCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InstitutionAddress"
+          }
+        },
+        "uclaSchoolLevelCode": {
+          "type": "string"
+        },
+        "uclaSchoolTypeCode": {
+          "type": "string"
+        },
+        "ucopSchoolTypeCode": {
+          "type": "string"
+        },
+        "ucopStatusCode": {
+          "type": "string"
+        }
+      }
+    },
+    "InstitutionAddress": {
+      "type": "object",
+      "properties": {
+        "institutionStreetAddress1": {
+          "type": "string"
+        },
+        "institutionStreetAddress2": {
+          "type": "string"
+        },
+        "institutionCityName": {
+          "type": "string"
+        },
+        "institutionStateCode": {
+          "type": "string"
+        },
+        "institutionZipCode": {
+          "type": "string"
+        },
+        "institutionCountyCode": {
+          "type": "string"
+        },
+        "institutionCountryCode": {
+          "type": "string"
+        },
+        "institutionLocationCode": {
+          "type": "string"
+        }
+      }
+    },
+    "InstitutionCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "institutions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Institution"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "InstructorType": {
+      "type": "object",
+      "properties": {
+        "instructorType": {
+          "type": "string"
+        },
+        "instructorTypeName": {
+          "type": "string"
+        }
+      }
+    },
+    "InstructorTypeCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "instructorTypes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InstructorType"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "LatinHonors": {
+      "type": "object",
+      "properties": {
+        "latinHonorsStartTermCode": {
+          "type": "string"
+        },
+        "latinHonorsEndTermCode": {
+          "type": "string"
+        },
+        "collegeCode": {
+          "type": "string"
+        },
+        "LatinHonors": {
+          "type": "string"
+        },
+        "minimumGPA": {
+          "type": "string"
+        },
+        "maximumGPA": {
+          "type": "string"
+        },
+        "freshmanGradedUnits": {
+          "type": "string"
+        },
+        "advancedStandingGradedUnits": {
+          "type": "string"
+        }
+      }
+    },
+    "LatinHonorsCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "latinHonors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LatinHonors"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "LinkModel": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string"
+        },
+        "rel": {
+          "type": "string"
+        },
+        "method": {
+          "type": "string"
+        }
+      }
+    },
+    "Major": {
+      "type": "object",
+      "properties": {
+        "majorCode": {
+          "type": "string"
+        },
+        "majorName": {
+          "type": "string"
+        },
+        "majorAbbreviation": {
+          "type": "string"
+        },
+        "majorStartTermCode": {
+          "type": "string"
+        },
+        "majorLastTermCode": {
+          "type": "string"
+        },
+        "cssMajorCode": {
+          "type": "string"
+        },
+        "customizedMajorFlag": {
+          "type": "string"
+        },
+        "divisionDepartmentCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MajorDivisionDepartment"
+          }
+        }
+      }
+    },
+    "MajorCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "majors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Major"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "MajorDivisionDepartment": {
+      "type": "object",
+      "properties": {
+        "divisionCode": {
+          "type": "string"
+        },
+        "departmentCode": {
+          "type": "string"
+        },
+        "divisionDepartmentStartTermCode": {
+          "type": "string"
+        },
+        "divisionDepartmentLastTermCode": {
+          "type": "string"
+        },
+        "divisionMajorStartTermCode": {
+          "type": "string"
+        },
+        "divisionMajorLastTermCode": {
+          "type": "string"
+        }
+      }
+    },
+    "MajorPrgmSpeclCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "majorProgramSpecializations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MajorProgramSpecialization"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "MajorProgram": {
+      "type": "object",
+      "properties": {
+        "collegeCode": {
+          "type": "string"
+        },
+        "collegeName": {
+          "type": "string"
+        },
+        "collegeStartTermCode": {
+          "type": "string"
+        },
+        "majorCode": {
+          "type": "string"
+        },
+        "majorName": {
+          "type": "string"
+        },
+        "majorStartTermCode": {
+          "type": "string"
+        },
+        "degreeCode": {
+          "type": "string"
+        },
+        "degreeName": {
+          "type": "string"
+        },
+        "degreeStartTermCode": {
+          "type": "string"
+        },
+        "programStartTermCode": {
+          "type": "string"
+        },
+        "programLastTermCode": {
+          "type": "string"
+        },
+        "programCareerCode": {
+          "type": "string"
+        },
+        "programTypeName": {
+          "type": "string"
+        },
+        "customizedProgramFlag": {
+          "type": "string"
+        },
+        "schoolwideProgramFlag": {
+          "type": "string"
+        }
+      }
+    },
+    "MajorProgramCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "majorPrograms": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MajorProgram"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "MajorProgramSpecialization": {
+      "type": "object",
+      "properties": {
+        "programSpecializationCode": {
+          "type": "string"
+        },
+        "programSpecializationName": {
+          "type": "string"
+        },
+        "collegeCode": {
+          "type": "string"
+        },
+        "collegeName": {
+          "type": "string"
+        },
+        "collegeStartTermCode": {
+          "type": "string"
+        },
+        "majorCode": {
+          "type": "string"
+        },
+        "majorName": {
+          "type": "string"
+        },
+        "majorStartTermCode": {
+          "type": "string"
+        },
+        "degreeCode": {
+          "type": "string"
+        },
+        "degreeName": {
+          "type": "string"
+        },
+        "degreeStartTermCode": {
+          "type": "string"
+        },
+        "programSpecializationStartTermCode": {
+          "type": "string"
+        },
+        "programSpecializationLastTermCode": {
+          "type": "string"
+        },
+        "customizedProgramSpecializationFlag": {
+          "type": "string"
+        },
+        "programSpecializationFinalTerm": {
+          "type": "string"
+        }
+      }
+    },
+    "MinimumProgress": {
+      "type": "object",
+      "properties": {
+        "minimumProgressCode": {
+          "type": "string"
+        },
+        "minimumProgressDescription": {
+          "type": "string"
+        }
+      }
+    },
+    "MinimumProgressCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "minimumProgress": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MinimumProgress"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "Minor": {
+      "type": "object",
+      "properties": {
+        "minorCode": {
+          "type": "string"
+        },
+        "minorName": {
+          "type": "string"
+        },
+        "minorAbbreviation": {
+          "type": "string"
+        },
+        "minorStartTermCode": {
+          "type": "string"
+        },
+        "minorLastTermCode": {
+          "type": "string"
+        },
+        "customizedMinorFlag": {
+          "type": "string"
+        },
+        "schoolwideMinorFlag": {
+          "type": "string"
+        },
+        "minorFinalTermCode": {
+          "type": "string"
+        },
+        "divisionDepartmentCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MinorDivisionDepartment"
+          }
+        }
+      }
+    },
+    "MinorCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "minors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Minor"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "MinorDivisionDepartment": {
+      "type": "object",
+      "properties": {
+        "divisionCode": {
+          "type": "string"
+        },
+        "departmentCode": {
+          "type": "string"
+        },
+        "divisionDepartmentStartTermCode": {
+          "type": "string"
+        },
+        "divisionDepartmentLastTermCode": {
+          "type": "string"
+        },
+        "divisionMinorStartTermCode": {
+          "type": "string"
+        },
+        "divisionMinorLastTermCode": {
+          "type": "string"
+        }
+      }
+    },
+    "ProgramOfStudy": {
+      "type": "object",
+      "properties": {
+        "majorCode": {
+          "type": "string"
+        },
+        "degreeCode": {
+          "type": "string"
+        },
+        "programStartTermCode": {
+          "type": "string"
+        },
+        "programLastTermCode": {
+          "type": "string"
+        }
+      }
+    },
+    "Province": {
+      "type": "object",
+      "properties": {
+        "provinceCode": {
+          "type": "string"
+        },
+        "countryCode": {
+          "type": "string"
+        },
+        "provinceName": {
+          "type": "string"
+        },
+        "provinceTypeCode": {
+          "type": "string"
+        },
+        "provinceStartTermCode": {
+          "type": "string"
+        },
+        "provinceStartDate": {
+          "type": "string"
+        },
+        "provinceLastTermCode": {
+          "type": "string"
+        },
+        "provinceLastDate": {
+          "type": "string"
+        },
+        "countryStartTermCode": {
+          "type": "string"
+        }
+      }
+    },
+    "ProvinceCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "provinces": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Province"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "SchedulePrint": {
+      "type": "object",
+      "properties": {
+        "schedulePrintCode": {
+          "type": "string"
+        },
+        "schedulePrintText": {
+          "type": "string"
+        }
+      }
+    },
+    "SchedulePrintCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "schedulePrints": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SchedulePrint"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "Session": {
+      "type": "object",
+      "properties": {
+        "termSessionCode": {
+          "type": "string"
+        },
+        "termSessionDisplayFormat": {
+          "type": "string"
+        },
+        "termSessionStartDate": {
+          "type": "string"
+        },
+        "termSessionLastDate": {
+          "type": "string"
+        },
+        "termsessionGroupCode": {
+          "type": "string"
+        },
+        "termSessionInstructionWeeks": {
+          "type": "string"
+        },
+        "termsessionGroupWeekCode": {
+          "type": "string"
+        },
+        "sessionTypeName": {
+          "type": "string"
+        }
+      }
+    },
+    "SessionCode": {
+      "type": "object",
+      "properties": {
+        "termSessionCode": {
+          "type": "string"
+        },
+        "termSessionDescription": {
+          "type": "string"
+        }
+      }
+    },
+    "Specialization": {
+      "type": "object",
+      "properties": {
+        "specializationCode": {
+          "type": "string"
+        },
+        "specializationName": {
+          "type": "string"
+        },
+        "specializationAbbreviation": {
+          "type": "string"
+        },
+        "specializationStartTermCode": {
+          "type": "string"
+        },
+        "specializationLastTermCode": {
+          "type": "string"
+        },
+        "customizedSpecializationFlag": {
+          "type": "string"
+        },
+        "specializationDegreeRecordflag": {
+          "type": "string"
+        },
+        "specializationFinalTerm": {
+          "type": "string"
+        }
+      }
+    },
+    "SpecializationCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "specializations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Specialization"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "State": {
+      "type": "object",
+      "properties": {
+        "universityLocationCode": {
+          "type": "string"
+        },
+        "universityLocationName": {
+          "type": "string"
+        },
+        "stateCode": {
+          "type": "string"
+        },
+        "stateStartTermCode": {
+          "type": "string"
+        },
+        "stateStartDate": {
+          "type": "string"
+        },
+        "stateLastTermCode": {
+          "type": "string"
+        },
+        "stateLastDate": {
+          "type": "string"
+        },
+        "universityLocationStartTermCode": {
+          "type": "string"
+        }
+      }
+    },
+    "StateCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "states": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/State"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "StudentEnrollmentStatus": {
+      "type": "object",
+      "properties": {
+        "studentEnrollmentStatusCode": {
+          "type": "string"
+        },
+        "studentEnrollmentStatusDescription": {
+          "type": "string"
+        }
+      }
+    },
+    "StudentEnrollmentStatusCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "studentEnrollmentStatus": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StudentEnrollmentStatus"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "SubjectArea": {
+      "type": "object",
+      "properties": {
+        "subjectAreaCode": {
+          "type": "string"
+        },
+        "subjectAreaName": {
+          "type": "string"
+        },
+        "subjectAreaStartTermCode": {
+          "type": "string"
+        },
+        "subjectAreaLastTermCode": {
+          "type": "string"
+        },
+        "customizedSubjectAreaFlag": {
+          "type": "string"
+        },
+        "divisionDepartmentCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SubjectAreaDivisionDepartment"
+          }
+        }
+      }
+    },
+    "SubjectAreaCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "subjectAreas": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SubjectArea"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "SubjectAreaDivisionDepartment": {
+      "type": "object",
+      "properties": {
+        "divisionCode": {
+          "type": "string"
+        },
+        "departmentCode": {
+          "type": "string"
+        },
+        "divisionDepartmentStartTermCode": {
+          "type": "string"
+        },
+        "divisionDepartmentLastTermCode": {
+          "type": "string"
+        },
+        "subjectAreaDivisionDepartmentStartTermCode": {
+          "type": "string"
+        },
+        "subjectAreaDivisionDepartmentLastTermCode": {
+          "type": "string"
+        }
+      }
+    },
+    "Term": {
+      "type": "object",
+      "properties": {
+        "termCode": {
+          "type": "string"
+        },
+        "termName": {
+          "type": "string"
+        },
+        "academicYear": {
+          "type": "string"
+        },
+        "termSequenceNumber": {
+          "type": "string"
+        },
+        "cssTermCode": {
+          "type": "string"
+        }
+      }
+    },
+    "TermCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "terms": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Term"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "TermFeeAssessment": {
+      "type": "object",
+      "properties": {
+        "careerCode": {
+          "type": "string"
+        },
+        "feeAssessmentSequenceNumber": {
+          "type": "string"
+        },
+        "majorCode": {
+          "type": "string"
+        },
+        "professionalSchoolLevelCode": {
+          "type": "string"
+        },
+        "feeAssessmentBeginDate": {
+          "type": "string"
+        },
+        "feeAssessmentEndDate": {
+          "type": "string"
+        }
+      }
+    },
+    "TermFeeAssessmentUtility": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "termFeeAssessment": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TermFeeAssessmentUtilityCollection"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "TermFeeAssessmentUtilityCollection": {
+      "type": "object",
+      "properties": {
+        "termCode": {
+          "type": "string"
+        },
+        "termFeeAssessmentCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TermFeeAssessment"
+          }
+        }
+      }
+    },
+    "TermSession": {
+      "type": "object",
+      "properties": {
+        "sessionTermCode": {
+          "type": "string"
+        },
+        "termSessionCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Session"
+          }
+        }
+      }
+    },
+    "TermSessionCode": {
+      "type": "object",
+      "properties": {
+        "sessionTermCode": {
+          "type": "string"
+        },
+        "termSessionCodeCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SessionCode"
+          }
+        }
+      }
+    },
+    "TermSessionCodeCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "termSessionCodes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TermSessionCode"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "TermSessionCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "termSessions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TermSession"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "TermSessionEvent": {
+      "type": "object",
+      "properties": {
+        "termCode": {
+          "type": "string"
+        },
+        "sessionCode": {
+          "type": "string"
+        },
+        "sessionEventCode": {
+          "type": "string"
+        },
+        "sessionEventName": {
+          "type": "string"
+        },
+        "sessionEventDescription": {
+          "type": "string"
+        },
+        "sessionEventStartDate": {
+          "type": "string"
+        },
+        "sessionEventLastDate": {
+          "type": "string"
+        }
+      }
+    },
+    "TermSessionEventCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "termSessionEvents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TermSessionEvent"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "TermSessionGroup": {
+      "type": "object",
+      "properties": {
+        "termSessionGroupCode": {
+          "type": "string"
+        },
+        "termsessionGroupDescription": {
+          "type": "string"
+        }
+      }
+    },
+    "TermSessionGroupCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "termSessionGroups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TermSessionGroup"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "TermSessionWeek": {
+      "type": "object",
+      "properties": {
+        "sessionTermCode": {
+          "type": "string"
+        },
+        "termSessionCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TermSessionWeekSession"
+          }
+        }
+      }
+    },
+    "TermSessionWeekCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "termSessionsByWeek": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TermSessionWeek"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "TermSessionWeekSession": {
+      "type": "object",
+      "properties": {
+        "sessionCode": {
+          "type": "string"
+        },
+        "sessionWeekNumber": {
+          "type": "string"
+        },
+        "sessionWeekStartDate": {
+          "type": "string"
+        },
+        "sessionWeekLastDate": {
+          "type": "string"
+        }
+      }
+    },
+    "TranscriptCareer": {
+      "type": "object",
+      "properties": {
+        "transcriptCareerCode": {
+          "type": "string"
+        },
+        "transcriptCareerName": {
+          "type": "string"
+        }
+      }
+    },
+    "TranscriptCareerCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "transcriptCareers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TranscriptCareer"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "UCCampus": {
+      "type": "object",
+      "properties": {
+        "ucCampusCode": {
+          "type": "string"
+        },
+        "ucCampusName": {
+          "type": "string"
+        }
+      }
+    },
+    "UCCampusCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "ucCampuses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UCCampus"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "UnitType": {
+      "type": "object",
+      "properties": {
+        "unitTypeCode": {
+          "type": "string"
+        },
+        "unitTypeName": {
+          "type": "string"
+        }
+      }
+    },
+    "UnitTypeCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "unitTypes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UnitType"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "UniversityLocation": {
+      "type": "object",
+      "properties": {
+        "universityLocationCode": {
+          "type": "string"
+        },
+        "cssLocationCode": {
+          "type": "string"
+        },
+        "universityLocationName": {
+          "type": "string"
+        },
+        "universityLocationAbbreviation": {
+          "type": "string"
+        },
+        "universityLocationAlternateName": {
+          "type": "string"
+        },
+        "universityLocationType": {
+          "type": "string"
+        },
+        "universityCountryCode": {
+          "type": "string"
+        },
+        "irsCountryCode": {
+          "type": "string"
+        },
+        "universityLocationStartTermCode": {
+          "type": "string"
+        },
+        "universityLocationStartDate": {
+          "type": "string"
+        },
+        "universityLocationLastTermCode": {
+          "type": "string"
+        },
+        "universityLocationLastDate": {
+          "type": "string"
+        },
+        "nonUCOPLocationFlag": {
+          "type": "string"
+        }
+      }
+    },
+    "UniversityLocationCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "universityLocations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UniversityLocation"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "VisaType": {
+      "type": "object",
+      "properties": {
+        "visaTypeCode": {
+          "type": "string"
+        },
+        "visaTypeDescription": {
+          "type": "string"
+        }
+      }
+    },
+    "VisaTypeCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "visaTypes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VisaType"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "unexStudentEnrollmentStatus": {
+      "type": "object",
+      "properties": {
+        "unexStudentEnrollmentStatusCode": {
+          "type": "string"
+        },
+        "unexStudentEnrollmentStatusDescription": {
+          "type": "string"
+        }
+      }
+    },
+    "unexStudentEnrollmentStatusCollectionResponse": {
+      "type": "object",
+      "properties": {
+        "unexStudentEnrollmentStatus": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/unexStudentEnrollmentStatus"
+          }
+        }
+      }
+    }
+  }
+}

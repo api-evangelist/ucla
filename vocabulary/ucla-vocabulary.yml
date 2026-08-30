@@ -1,0 +1,156 @@
+name: University of California, Los Angeles — API vocabulary
+description: >-
+  The domain vocabulary UCLA's own surfaces speak, extracted from the seven first-party
+  contracts UCLA publishes on its developer portal and from live responses. This is deliberately
+  UCLA's vocabulary, not a higher-education vocabulary. Terms like offeredTermCode, subjectAreaCode
+  and GE Foundation are UCLA Registrar coinages with no OneRoster or Ed-Fi equivalent, and they
+  are the clearest evidence that these contracts are institution-engineered rather than a vendor
+  platform wearing a UCLA name.
+generated: '2026-08-19'
+modified: '2026-08-19'
+method: derived
+source: >-
+  openapi/_original/*.yml (seven contracts, all fetched 200 from
+  https://developer.api.ucla.edu/sites/default/files/apidoc_specs/ on 2026-08-19),
+  https://developer.api.ucla.edu/ucla-help, and the Registrar general catalog at
+  https://catalog.registrar.ucla.edu/
+x-operator: institution
+terms:
+- term: offeredTermCode
+  definition: >-
+    UCLA's academic term identifier, a three-character code of the form 14F or 151 - two digits
+    for the academic year and one character for the quarter. It is the primary path parameter of
+    every Classes operation. UCLA runs on quarters, so this code has no semester equivalent.
+  surfaces: [Classes API, Dictionary API]
+  method: derived
+  evidence: 'openapi/_original/ucla-sis-classes-openapi.yml — path /classes/{offeredTermCode}/v1, sample values "151" and "14F"'
+- term: subjectAreaCode
+  definition: >-
+    The Registrar's code for an academic subject area, e.g. ENGCOMP for English Composition.
+    Used to partition both course and class queries. Enumerated by the Dictionary API rather
+    than declared as an enum in any contract.
+  surfaces: [Classes API, Courses API, Dictionary API]
+  method: derived
+  evidence: 'query parameter subjectAreaCode, sample value "ENGCOMP"'
+- term: courseCatalogNumber
+  definition: >-
+    Zero-padded four-character course number within a subject area, e.g. "0003" or "0375". The
+    padding is significant - callers who send "3" will not match.
+  surfaces: [Classes API, Courses API]
+  method: derived
+  evidence: 'path parameter courseCatalogNumber, sample values "0003", "0375"'
+- term: courseStartTermCode
+  definition: >-
+    The term in which a course version took effect, e.g. "99F". UCLA versions its courses by
+    term, so a course is identified by the triple (subjectAreaCode, courseCatalogNumber,
+    courseStartTermCode) rather than by a single id. This is the single most distinctive
+    modelling choice in UCLA's course data.
+  surfaces: [Courses API]
+  method: derived
+  evidence: 'path /courses/{subjectAreaCode}/{courseCatalogNumber}/{courseStartTermCode}/coursedetail/v1'
+- term: GE Foundation
+  definition: >-
+    UCLA's General Education requirement structure - a foundation (GEFoundationCode) subdivided
+    into categories (GEFoundationCategoryCode), against which courses are certified. Exposed as
+    its own tag and two operations in the Courses API.
+  surfaces: [Courses API]
+  method: derived
+  evidence: 'paths /gefoundations/v1 and /gefoundations/{GEFoundationCode}/{GEFoundationCategoryCode}/gefoundationcategorycourses/v1'
+- term: course diversity
+  definition: >-
+    Whether a course satisfies UCLA's diversity requirement, exposed as a first-class operation
+    (coursediversity) rather than as a field on the course. A policy commitment expressed
+    directly in the API surface.
+  surfaces: [Courses API]
+  method: derived
+  evidence: 'path /courses/{subjectAreaCode}/{courseCatalogNumber}/{courseStartTermCode}/coursediversity/v1'
+- term: classSectionNumber / classNumber
+  definition: >-
+    Two distinct three-character identifiers. classNumber identifies the class within a course
+    offering; classSectionNumber identifies a section (lecture, discussion, lab) within that
+    class. The Classes API exposes separate detail operations for each.
+  surfaces: [Classes API]
+  method: derived
+  evidence: 'paths /classsections/{offeredTermCode}/{subjectAreaCode}/{courseCatalogNumber}/{classNumber}/v1 and .../{classSectionNumber}/classsectiondetail/v1'
+- term: unex
+  definition: >-
+    UCLA Extension, the continuing-education division, given its own dedicated class-listing
+    route rather than being modelled as an attribute of a term. An organisational boundary made
+    visible in the URI.
+  surfaces: [Classes API]
+  method: derived
+  evidence: 'path /classes/unex/{offeredTermCode}/v1'
+- term: Dictionary
+  definition: >-
+    UCLA's term for the Registrar's reference-data service - 61 read operations that enumerate
+    the coded values every other SIS API returns: buildings, careers, cities, colleges, class
+    levels, activity types, academic actions, term sessions and 53 more. It is the largest
+    single contract UCLA publishes and the one that makes the rest legible. Every other campus
+    would call this a code-tables service.
+  surfaces: [Dictionary API]
+  method: derived
+  evidence: 'openapi/_original/ucla-sis-dictionary-openapi.yml — 61 paths under /dictionary/'
+- term: termsessionInstructionWeeks
+  definition: >-
+    The number of weeks of instruction in a term session, e.g. 6 for a summer session. A query
+    parameter on class listings, reflecting UCLA's variable-length summer sessions.
+  surfaces: [Classes API, Dictionary API]
+  method: derived
+  evidence: 'query parameter termsessionInstructionWeeks, sample value "6"'
+- term: production calendar job
+  definition: >-
+    A scheduled mainframe batch job in the Registrar's operational calendar, queryable by run
+    date and a forward window in weeks. The only UCLA contract that describes campus operations
+    rather than campus data, and it exposes the fact that UCLA's SIS still has a mainframe
+    behind it.
+  surfaces: [Production Calendar Jobs API]
+  method: derived
+  evidence: 'path /productioncalendarjobs/mainframe/{JobRunDate}/{NumberOfWeeksFromJobRunDate}/v1'
+- term: menudata
+  definition: >-
+    The navigation tree of MyUCLA, the student portal, published as an API so that the megamenu
+    can be assembled by any client. A small, honest, genuinely institution-run surface of exactly
+    the kind this pipeline exists to find.
+  surfaces: [MyUCLA Menu Data API]
+  method: derived
+  evidence: 'path /myucla/menudata/v1'
+- term: verify connectivity
+  definition: >-
+    A single health-check operation under the Infrastructure tag whose only purpose is to let a
+    subscribed application confirm it can reach the SIS through the gateway. UCLA ships it as a
+    catalogued API product with its own portal page.
+  surfaces: [Verify Connectivity to SIS API]
+  method: derived
+  evidence: 'path /infrastructure/verifyconnectivity/v1'
+- term: ucla.edu (Shibboleth scope)
+  definition: >-
+    The security scope UCLA asserts in InCommon metadata. It is the namespace within which UCLA
+    is authoritative for scoped SAML attributes such as eduPersonPrincipalName - the federated
+    identity equivalent of a registrable domain.
+  surfaces: [Shibboleth IdP]
+  method: probed
+  evidence: 'examples/ucla-idp-saml-metadata.xml — <shibmd:Scope regexp="false">ucla.edu</shibmd:Scope>'
+- term: BruinLearn
+  definition: >-
+    UCLA's brand name for its learning management system. The name is UCLA's; the platform
+    underneath is Instructure Canvas (bruinlearn.ucla.edu CNAMEs to ucla-vanity.instructure.com).
+    Recorded here because institutional branding over a rented platform is exactly the pattern
+    that makes university surfaces hard to attribute.
+  surfaces: [BruinLearn]
+  method: probed
+  x-operator: tenant
+  evidence: 'DNS CNAME to ucla-vanity.instructure.com; LTI 1.3 JWKS at /api/lti/security/jwks'
+absent_vocabulary:
+  description: >-
+    Terms a higher-education API vocabulary would normally contain that UCLA's public surfaces do
+    not express at all.
+  terms:
+  - enrollment / registration (no write path is public)
+  - grade / transcript
+  - student (no student-identity resource is published)
+  - person / directory
+  - OneRoster org, academicSession, lineItem (UCLA models none of these)
+  - degree / program / requirement audit
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

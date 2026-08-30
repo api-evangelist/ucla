@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ucla/main/json-schema/ucla-sis-verify-connectivity-schemas.json",
+  "title": "UCLA sis verify connectivity \u2014 schemas in use",
+  "description": "Schemas reachable from the operations of the UCLA contract of the same name. Extracted from the contract UCLA publishes on its own developer portal; the source document carries a large shared SIS definition library of which only these are referenced by any path.",
+  "x-generated": "2026-08-19",
+  "x-method": "derived",
+  "x-source": "https://developer.api.ucla.edu/sites/default/files/apidoc_specs/_infrastructure_verifyconnectivity_v1.json",
+  "x-operator": "institution",
+  "$defs": {
+    "Object": {
+      "type": "object",
+      "properties": {}
+    }
+  }
+}

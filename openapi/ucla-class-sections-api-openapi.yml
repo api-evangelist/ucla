@@ -1,0 +1,323 @@
+openapi: 3.2.0
+info:
+  version: v1
+  title: version v1 Class Sections API
+servers:
+- url: https://api.ucla.edu/sis
+security:
+- application: []
+tags:
+- name: Class Sections
+paths:
+  /classsections/{offeredTermCode}/{subjectAreaCode}/{courseCatalogNumber}/{classNumber}/v1:
+    get:
+      tags:
+      - Class Sections
+      summary: Returns a collection of sections in a class
+      operationId: ClassSections_GetClassSections
+      parameters:
+      - name: offeredTermCode
+        in: path
+        description: 14F
+        required: true
+        schema:
+          type: string
+      - name: subjectAreaCode
+        in: path
+        description: MATH
+        required: true
+        schema:
+          type: string
+      - name: courseCatalogNumber
+        in: path
+        description: '0001'
+        required: true
+        schema:
+          type: string
+      - name: classNumber
+        in: path
+        description: '001'
+        required: true
+        schema:
+          type: string
+      - name: classSectionNumber
+        in: query
+        description: '001'
+        required: false
+        schema:
+          type: string
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClassSectionsResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ClassSectionsResponse'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /classsections/{offeredTermCode}/{subjectAreaCode}/{courseCatalogNumber}/{classSectionNumber}/classsectiondetail/v1:
+    get:
+      tags:
+      - Class Sections
+      summary: ''
+      operationId: ClassSectionDetail_GetClassSectionDetail
+      parameters:
+      - name: offeredTermCode
+        in: path
+        description: 14F
+        required: true
+        schema:
+          type: string
+      - name: subjectAreaCode
+        in: path
+        description: MATH
+        required: true
+        schema:
+          type: string
+      - name: courseCatalogNumber
+        in: path
+        description: 0003A
+        required: true
+        schema:
+          type: string
+      - name: classSectionNumber
+        in: path
+        description: '001'
+        required: true
+        schema:
+          type: string
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClassSectionDetailResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ClassSectionDetailResponse'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+components:
+  schemas:
+    ClassSectionMeetingLocation:
+      type: object
+      properties:
+        classSectionMeetingDaysofWeekCode:
+          type: string
+        classSectionMeetingStartTime:
+          type: string
+        classSectionMeetingStopTime:
+          type: string
+        classSectionBuildingCode:
+          type: string
+        classSectionBuildingRoomCode:
+          type: string
+    ClassSectionDetailResponse:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        classSectionDetail:
+          $ref: '#/components/schemas/ClassSectionDetail'
+    ClassSectionNotes:
+      type: object
+      properties:
+        classSectionNotes:
+          type: string
+    ClassSectionUnit:
+      type: object
+      properties:
+        classSectionUnit:
+          type: string
+    ClassSectionNumber:
+      type: object
+      properties:
+        classSectionNumber:
+          type: string
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    ClassSectionDetail:
+      type: object
+      properties:
+        dataDisclosureWarning:
+          type: string
+        offeredTermCode:
+          type: string
+        subjectAreaCode:
+          type: string
+        courseCatalogNumber:
+          type: string
+        courseStartTermCode:
+          type: string
+        classSectionNumber:
+          type: string
+        classSectionNumberDisplay:
+          type: string
+        classSectionID:
+          type: string
+        classSectionSessionDisplayFormat:
+          type: string
+        concurrentEnrollmentFlag:
+          type: string
+        classSectionActivityCode:
+          type: string
+        classSectionActivityEnrollmentSequenceNumber:
+          type: string
+        classSectionPrimaryActivityFlag:
+          type: string
+        classSectionGradeTypeCode:
+          type: string
+        classSectionUnitTypeCode:
+          type: string
+        classSectionUnitCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClassSectionUnit'
+        classSectionNotesCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClassSectionNotes'
+        classSectionOnlineFlag:
+          type: string
+        classEnrollmentRestrictionTextCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClassSectionRestrictionText'
+        classSectionEnrollmentStatusCode:
+          type: string
+        classSectionEnrollmentCapacityNumber:
+          type: string
+        classSectionEnrollmentTotal:
+          type: string
+        classSectionUNEXEnrollmentTotal:
+          type: string
+        classSectionProjectedEnrollmentNumber:
+          type: string
+        classSectionCancelBefore3rdWeekFlag:
+          type: string
+        classSectionWeek3EnrollmentNumber:
+          type: string
+        classSectionWeek8EnrollmentNumber:
+          type: string
+        classSectionWaitlistCapacityNumber:
+          type: string
+        classSectionWaitlistTotal:
+          type: string
+        classSectionSchedulePrintCode:
+          type: string
+        instructorUCLAIDCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClassSectionInstructor'
+        classSectionCombinedMeetingId:
+          type: string
+        classSectionMeetingCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClassSectionMeetingLocation'
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    LinkModel:
+      type: object
+      properties:
+        href:
+          type: string
+        rel:
+          type: string
+        method:
+          type: string
+    ClassSectionsResponse:
+      type: object
+      properties:
+        classSection:
+          $ref: '#/components/schemas/ClassSections'
+    ClassSectionInstructor:
+      type: object
+      properties:
+        uclaid:
+          type: string
+        links:
+          $ref: '#/components/schemas/LinkModel'
+    ClassSectionRestrictionText:
+      type: object
+      properties:
+        classEnrollmentRestrictionText:
+          type: string
+        classEnrollmentConsentRequiredCode:
+          type: string
+        classEnrollmentRuleID:
+          type: string
+    ClassSections:
+      type: object
+      properties:
+        dataDisclosureWarning:
+          type: string
+        offeredTermCode:
+          type: string
+        subjectAreaCode:
+          type: string
+        courseCatalogNumber:
+          type: string
+        courseStartTermCode:
+          type: string
+        classNumber:
+          type: string
+        classSectionSessionDisplayFormat:
+          type: string
+        classSectionCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClassSectionNumber'
+  securitySchemes:
+    application:
+      type: oauth2
+      flows:
+        clientCredentials:
+          scopes:
+            read: Read access to protected resources
+            write: Write access to protected resources
+          tokenUrl: https://api.ucla.edu/oauth/client_credential/accesstoken?grant_type=client_credentials
+      description: OAuth2

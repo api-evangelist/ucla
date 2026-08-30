@@ -1,0 +1,100 @@
+generated: '2026-08-19'
+method: probed
+source: >-
+  Verbatim error bodies observed while probing UCLA hosts on 2026-08-19. Every entry below is a
+  response actually returned to an unauthenticated public request; none is synthesized.
+provider: University of California, Los Angeles
+providerId: ucla
+description: >-
+  UCLA publishes no error reference for any of its API surfaces - the seven contracts on the
+  developer portal declare response schemas but no error schema, and the portal's help page
+  covers access requests rather than failure semantics. This catalogue is assembled from what
+  the hosts actually returned, with the operator of each surface recorded alongside it.
+errors:
+- status: 401
+  host: api.ucla.edu
+  path: /sis/dictionary/buildings/v1
+  x-operator: institution
+  content_type: application/json
+  body: '{"fault":{"faultstring":"Invalid access token","detail":{"errorcode":"oauth.v2.InvalidAccessToken"}}}'
+  headers:
+    WWW-Authenticate: >-
+      Bearer realm="null",error="invalid_token",error_description="oauth.v2.InvalidAccessToken:
+      Invalid access token"
+    Access-Control-Allow-Origin: '*'
+  artifact: examples/ucla-apigee-invalid-token-error.json
+  assessment: >-
+    The strongest error response UCLA returns, and better than most of this cohort. Correct
+    status code, a machine-readable errorcode in the body, and a conformant RFC 6750
+    WWW-Authenticate challenge carrying error=invalid_token. The envelope is Apigee's stock
+    oauth.v2 fault shape rather than anything UCLA authored, realm is the literal string "null",
+    and there is no link to the developer portal where a caller would obtain a token - so an
+    agent can branch correctly on the failure but cannot self-serve a remedy.
+- status: 500
+  host: api.ucla.edu
+  path: / and any undefined path
+  x-operator: institution
+  content_type: text/plain
+  body: 'Unauthorized by UCLA API Gateway. Invalid Config Data'
+  assessment: >-
+    A real defect. Every unrouted path on the gateway - including the bare root - answers 500
+    with a plain-text sentence that mixes two different failure meanings ("Unauthorized" and
+    "Invalid Config Data") and returns the wrong class of code entirely. The correct answer for
+    a path that does not exist is 404. As published, a caller who mistypes a route is told the
+    server is broken.
+- status: 404
+  host: qa.api.ucla.edu
+  x-operator: institution
+  content_type: application/json
+  body: '{"fault":{"faultstring":"Unable to identify proxy for host: api.ucla.edu and url: \/","detail":{"errorcode":"messaging.adaptors.http.flow.ApplicationNotFound"}}}'
+  assessment: >-
+    The QA gateway gets this right where production does not - 404 with a machine-readable
+    errorcode instead of a plain-text 500. Production and QA therefore disagree about how to
+    answer an unknown path, which is a governance gap rather than a coding one. The faultstring
+    also echoes the production hostname api.ucla.edu from the QA environment, indicating a
+    shared or copied Apigee virtual-host configuration.
+- status: 403
+  host: iiif.library.ucla.edu
+  path: /iiif/2/{identifier}/info.json
+  x-operator: institution
+  content_type: text/plain;charset=utf-8
+  body: >-
+    403 Forbidden / prod-cantaloupe-iiif-source/{identifier}.jpx /
+    java.nio.file.AccessDeniedException: ... at edu.illinois.library.cantaloupe.source.S3Source...
+  artifact: examples/ucla-iiif-cantaloupe-403-negative-probe.txt
+  assessment: >-
+    Information disclosure. UCLA Library's Cantaloupe 5.0.5 image server returns a full Java
+    stack trace on every 403, naming the private S3 source bucket (prod-cantaloupe-iiif-source),
+    the object key convention (.jpx), the AWS SDK call path and the internal class hierarchy.
+    A nonsense identifier produces the identical body, so the response also carries no
+    information about whether an object exists. Worth reporting to UCLA Library; recorded here
+    because it was observed, not inferred.
+- status: 200
+  host: dataverse.ucla.edu, digital.library.ucla.edu
+  x-operator: institution
+  content_type: text/html; charset=utf-8
+  body: '<!doctype html><html lang="en"><head><title>Making sure you&#39;re not a bot!</title>...'
+  assessment: >-
+    Not an error in the HTTP sense and precisely the reason this file records status codes
+    rather than trusting them. Both hosts answer 200 to every path, including OAI-PMH and REST
+    API paths, with an Anubis proof-of-work bot challenge. A crawler that reads only the status
+    code records a live API; a crawler that reads the body records an unreadable surface. The
+    body is the truth.
+- status: 401
+  host: bruinlearn.ucla.edu
+  x-operator: tenant
+  content_type: application/json
+  body: '{"status":"unauthenticated","errors":[{"message":"user authorization required"}]}'
+  assessment: >-
+    Canvas's standard envelope, correct and structured. Instructure's engineering, not UCLA's.
+patterns:
+  machine_readable_error_code: partial
+  detail: >-
+    Present on the Apigee OAuth faults and on the QA gateway, absent on the production
+    gateway's 500, absent on the IIIF service, absent everywhere else.
+  problem_json_rfc9457: false
+  retry_after_observed: false
+  correlation_id_observed: false
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

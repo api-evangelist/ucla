@@ -1,0 +1,494 @@
+openapi: 3.2.0
+info:
+  version: v1
+  title: version v1 Classes API
+servers:
+- url: https://api.ucla.edu/sis
+security:
+- application: []
+tags:
+- name: Classes
+paths:
+  /classes/{offeredTermCode}/v1:
+    get:
+      tags:
+      - Classes
+      summary: Returns a collection of courses offered in a term
+      operationId: Classes_GetClasses
+      parameters:
+      - name: offeredTermCode
+        in: path
+        description: '151'
+        required: true
+        schema:
+          type: string
+      - name: subjectAreaCode
+        in: query
+        description: ENGCOMP
+        required: false
+        schema:
+          type: string
+      - name: courseCatalogNumber
+        in: query
+        description: '0003'
+        required: false
+        schema:
+          type: string
+      - name: courseStartTermCode
+        in: query
+        description: 99F
+        required: false
+        schema:
+          type: string
+      - name: termsessionGroupCode
+        in: query
+        description: A
+        required: false
+        schema:
+          type: string
+      - name: termsessionInstructionWeeks
+        in: query
+        description: '6'
+        required: false
+        schema:
+          type: string
+      - name: classNumber
+        in: query
+        description: '001'
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClassesCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ClassesCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /classes/{offeredTermCode}/{subjectAreaCode}/{courseCatalogNumber}/{classNumber}/classfinalexam/v1:
+    get:
+      tags:
+      - Classes
+      summary: ''
+      operationId: ClassFinalExam_GetClassFinalExam
+      parameters:
+      - name: offeredTermCode
+        in: path
+        description: 14F
+        required: true
+        schema:
+          type: string
+      - name: subjectAreaCode
+        in: path
+        description: MATH
+        required: true
+        schema:
+          type: string
+      - name: courseCatalogNumber
+        in: path
+        description: '0001'
+        required: true
+        schema:
+          type: string
+      - name: classNumber
+        in: path
+        description: '001'
+        required: true
+        schema:
+          type: string
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClassFinalExamResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ClassFinalExamResponse'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /classes/{offeredTermCode}/{subjectAreaCode}/{courseCatalogNumber}/{classNumber}/classdetail/v1:
+    get:
+      tags:
+      - Classes
+      summary: ''
+      operationId: ClassDetail_GetClassDetail
+      parameters:
+      - name: offeredTermCode
+        in: path
+        description: 14F
+        required: true
+        schema:
+          type: string
+      - name: subjectAreaCode
+        in: path
+        description: MATH
+        required: true
+        schema:
+          type: string
+      - name: courseCatalogNumber
+        in: path
+        description: '0375'
+        required: true
+        schema:
+          type: string
+      - name: classNumber
+        in: path
+        description: '001'
+        required: true
+        schema:
+          type: string
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClassDetailResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ClassDetailResponse'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /classes/unex/{offeredTermCode}/v1:
+    get:
+      tags:
+      - Classes
+      summary: ''
+      operationId: UNEXClassesSections_Get
+      parameters:
+      - name: offeredTermCode
+        in: path
+        description: 14F
+        required: true
+        schema:
+          type: string
+      - name: subjectAreaCode
+        in: query
+        description: MATH
+        required: false
+        schema:
+          type: string
+      - name: courseCatalogNumber
+        in: query
+        description: '0375'
+        required: false
+        schema:
+          type: string
+      - name: esmAuthnClientToken
+        in: header
+        description: esmAuthnClientToken.  Passed as header value to pass on through authorization.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UNEXClassSection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/UNEXClassSection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+components:
+  schemas:
+    ClassUNEX:
+      type: object
+      properties:
+        dataDisclosureWarning:
+          type: string
+        offeredTermCode:
+          type: string
+        subjectAreaCode:
+          type: string
+        courseCatalogNumber:
+          type: string
+        classNumberCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClassUNEXNumber'
+    UNEXClassSection:
+      type: object
+      properties:
+        classesUNEX:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClassUNEX'
+    ClassDetail:
+      type: object
+      properties:
+        dataDisclosureWarning:
+          type: string
+        offeredTermCode:
+          type: string
+        subjectAreaCode:
+          type: string
+        courseCatalogNumber:
+          type: string
+        courseStartTermCode:
+          type: string
+        classNumber:
+          type: string
+        classNumberDisplay:
+          type: string
+        classDescription:
+          type: string
+        classNotesCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClassNotes'
+        classTitle:
+          type: string
+        classSessionCode:
+          type: string
+        classSessionDisplayFormat:
+          type: string
+        classSchedulePrintCode:
+          type: string
+        classStartDate:
+          type: string
+        classEndDate:
+          type: string
+        classWebsite:
+          type: string
+        classTextbook:
+          type: string
+        classMultipleTermGradingCode:
+          type: string
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    SessionGroup:
+      type: object
+      properties:
+        termsessionGroupCode:
+          type: string
+        termsessionInstructionWeeks:
+          type: string
+        termsessionGroupWeekCode:
+          type: string
+        classCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClassNumber'
+    Classes:
+      type: object
+      properties:
+        dataDisclosureWarning:
+          type: string
+        offeredTermCode:
+          type: string
+        subjectAreaCode:
+          type: string
+        courseCatalogNumber:
+          type: string
+        courseCatalogNumberDisplay:
+          type: string
+        courseStartTermCode:
+          type: string
+        classSessionDisplayFormat:
+          type: string
+        termSessionGroupCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/SessionGroup'
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    ClassUNEXSection:
+      type: object
+      properties:
+        classSectionNumber:
+          type: string
+    ClassDetailResponse:
+      type: object
+      properties:
+        classDetail:
+          $ref: '#/components/schemas/ClassDetail'
+    ClassFinalExamResponse:
+      type: object
+      properties:
+        classFinalExam:
+          $ref: '#/components/schemas/ClassFinalExam'
+    ClassUNEXNumber:
+      type: object
+      properties:
+        classNumber:
+          type: string
+        classSectionCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClassUNEXSection'
+    ClassNotes:
+      type: object
+      properties:
+        classNotes:
+          type: string
+    ClassFinalExam:
+      type: object
+      properties:
+        dataDisclosureWarning:
+          type: string
+        offeredTermCode:
+          type: string
+        subjectAreaCode:
+          type: string
+        courseCatalogNumber:
+          type: string
+        courseStartTermCode:
+          type: string
+        classNumber:
+          type: string
+        classSessionDisplayFormat:
+          type: string
+        finalExamCode:
+          type: string
+        finalExamDate:
+          type: string
+        finalExamDayOfWeek:
+          type: string
+        finalExamTimes:
+          type: string
+        finalExamLocation:
+          type: string
+    LinkModel:
+      type: object
+      properties:
+        href:
+          type: string
+        rel:
+          type: string
+        method:
+          type: string
+    ClassesCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        classes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Classes'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    ClassNumber:
+      type: object
+      properties:
+        classNumber:
+          type: string
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+  securitySchemes:
+    application:
+      type: oauth2
+      flows:
+        clientCredentials:
+          scopes:
+            read: Read access to protected resources
+            write: Write access to protected resources
+          tokenUrl: https://api.ucla.edu/oauth/client_credential/accesstoken?grant_type=client_credentials
+      description: OAuth2

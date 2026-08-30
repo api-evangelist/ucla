@@ -1,0 +1,108 @@
+generated: '2026-08-19'
+method: probed
+source: >-
+  https://mdq.incommon.org/entities/urn%3Amace%3Aincommon%3Aucla.edu (HTTP 200, 9,452 bytes,
+  application/samlmetadata+xml, fetched 2026-08-19); cross-checked against the entity record at
+  https://met.refeds.org/met/entity/urn:mace:incommon:ucla.edu/ (HTTP 200)
+provider: University of California, Los Angeles
+providerId: ucla
+description: >-
+  Identity federation is the surface class universities operate by definition and almost never
+  get catalogued for, and at UCLA it is the single most complete institution-owned
+  machine-readable artifact the university publishes. UCLA runs its own Shibboleth identity
+  provider at shb.ais.ucla.edu, is registered by InCommon under entityID
+  urn:mace:incommon:ucla.edu, asserts the InCommon and REFEDS Research & Scholarship entity
+  categories, and carries a SIRTFI assurance certification - a public commitment to a defined
+  security-incident response posture with a named contact. Everything below was read from the
+  signed metadata, not from a UCLA web page.
+entities:
+- name: UCLA — institutional Shibboleth identity provider
+  entityID: urn:mace:incommon:ucla.edu
+  metadata_url: https://mdq.incommon.org/entities/urn%3Amace%3Aincommon%3Aucla.edu
+  metadata_status: 200
+  x-operator: institution
+  operator_evidence:
+    display_name: University of California, Los Angeles
+    organization_name: University of California-Los Angeles
+    organization_url: http://www.ucla.edu/
+    shibboleth_scope: ucla.edu
+    endpoints_host: shb.ais.ucla.edu
+    endpoints_dns: >-
+      shb.ais.ucla.edu CNAMEs to sso.auth.612c0b3a.prod.r53.aws.it.ucla.edu, an
+      it.ucla.edu-managed Route 53 record; A record 164.67.228.230 in UCLA address space.
+  software: Shibboleth Identity Provider
+  signed: true
+  signature_algorithm: http://www.w3.org/2001/04/xmldsig-more#rsa-sha256
+  registration_authority: https://incommon.org
+  valid_until: '2026-09-02T20:37:10.026Z'
+  roles:
+  - IDPSSODescriptor
+  - AttributeAuthorityDescriptor
+  protocols:
+  - urn:mace:shibboleth:1.0
+  - urn:oasis:names:tc:SAML:1.1:protocol
+  - urn:oasis:names:tc:SAML:2.0:protocol
+  sso_endpoints:
+  - binding: urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST
+    location: https://shb.ais.ucla.edu/shibboleth-idp/profile/SAML2/POST/SSO
+  - binding: urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect
+    location: https://shb.ais.ucla.edu/shibboleth-idp/profile/SAML2/Redirect/SSO
+  - binding: urn:mace:shibboleth:1.0:profiles:AuthnRequest
+    location: https://shb.ais.ucla.edu/shibboleth-idp/profile/Shibboleth/SSO
+  artifact_resolution:
+  - location: https://shb.ais.ucla.edu:8443/shibboleth-idp/Artifact
+  attribute_authority_endpoints:
+  - binding: urn:oasis:names:tc:SAML:1.0:bindings:SOAP-binding
+    location: https://shb.ais.ucla.edu:8443/shibboleth-idp/profile/SAML1/SOAP/AttributeQuery
+  - binding: urn:oasis:names:tc:SAML:2.0:bindings:SOAP
+    location: https://shb.ais.ucla.edu:8443/shibboleth-idp/profile/SAML2/SOAP/AttributeQuery
+  entity_categories:
+  - http://id.incommon.org/category/research-and-scholarship
+  - http://refeds.org/category/research-and-scholarship
+  - http://id.incommon.org/category/registered-by-incommon
+  assurance_certification:
+  - https://refeds.org/sirtfi
+  contacts:
+  - type: support
+    name: Client Support
+    email: clientsupport@it.ucla.edu
+  - type: technical
+    name: Mona Zarei
+    email: monaz@ucla.edu
+  - type: administrative
+    name: Michel Maokhampio
+    email: mmaokhampio@it.ucla.edu
+  - type: security
+    name: UCLA IT Security
+    email: security@it.ucla.edu
+  mdui:
+    display_name: University of California, Los Angeles
+    information_url: http://www.ucla.edu/terms-of-use/
+    logo: https://s3-us-west-2.amazonaws.com/ucomm-content-host/alpha/ucla-logo-80x60-2x.png
+federations:
+- name: InCommon
+  operator: Internet2
+  role: identity provider
+  registration_authority: https://incommon.org
+  entity_record: https://met.refeds.org/met/entity/urn:mace:incommon:ucla.edu/
+  interfederates_with: eduGAIN
+  note: >-
+    Registration by InCommon also explains UCLA's TLS posture - api.ucla.edu,
+    dataverse.ucla.edu, digital.library.ucla.edu and iiif.library.ucla.edu all carry
+    certificates issued to O=University of California, Los Angeles by InCommon RSA Server CA 2,
+    which is itself strong operator evidence for those hosts.
+assessment: >-
+  This is a well-run federation entry by any measure: signed, current, scoped, categorised, and
+  carrying a real security contact. It is also the clearest illustration of the university
+  pipeline's central point - the most credible machine-readable thing UCLA publishes is not on
+  its developer portal, it is in a federation metadata aggregate that no API catalogue has ever
+  looked at.
+gaps:
+- No SAML SPSSODescriptor role; UCLA is registered as an identity provider only.
+- >-
+  No RequestedAttribute or attribute-release documentation in the metadata, so a service
+  provider cannot tell from the entity what UCLA will assert.
+- No OpenID Connect discovery document anywhere on ucla.edu; the federation is SAML-only.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

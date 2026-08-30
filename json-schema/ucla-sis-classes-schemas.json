@@ -1,0 +1,576 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ucla/main/json-schema/ucla-sis-classes-schemas.json",
+  "title": "UCLA sis classes \u2014 schemas in use",
+  "description": "Schemas reachable from the operations of the UCLA contract of the same name. Extracted from the contract UCLA publishes on its own developer portal; the source document carries a large shared SIS definition library of which only these are referenced by any path.",
+  "x-generated": "2026-08-19",
+  "x-method": "derived",
+  "x-source": "https://developer.api.ucla.edu/sites/default/files/apidoc_specs/classes_v1_4.json",
+  "x-operator": "institution",
+  "$defs": {
+    "ClassDetail": {
+      "type": "object",
+      "properties": {
+        "dataDisclosureWarning": {
+          "type": "string"
+        },
+        "offeredTermCode": {
+          "type": "string"
+        },
+        "subjectAreaCode": {
+          "type": "string"
+        },
+        "courseCatalogNumber": {
+          "type": "string"
+        },
+        "courseStartTermCode": {
+          "type": "string"
+        },
+        "classNumber": {
+          "type": "string"
+        },
+        "classNumberDisplay": {
+          "type": "string"
+        },
+        "classDescription": {
+          "type": "string"
+        },
+        "classNotesCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ClassNotes"
+          }
+        },
+        "classTitle": {
+          "type": "string"
+        },
+        "classSessionCode": {
+          "type": "string"
+        },
+        "classSessionDisplayFormat": {
+          "type": "string"
+        },
+        "classSchedulePrintCode": {
+          "type": "string"
+        },
+        "classStartDate": {
+          "type": "string"
+        },
+        "classEndDate": {
+          "type": "string"
+        },
+        "classWebsite": {
+          "type": "string"
+        },
+        "classTextbook": {
+          "type": "string"
+        },
+        "classMultipleTermGradingCode": {
+          "type": "string"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "ClassDetailResponse": {
+      "type": "object",
+      "properties": {
+        "classDetail": {
+          "$ref": "#/definitions/ClassDetail"
+        }
+      }
+    },
+    "ClassFinalExam": {
+      "type": "object",
+      "properties": {
+        "dataDisclosureWarning": {
+          "type": "string"
+        },
+        "offeredTermCode": {
+          "type": "string"
+        },
+        "subjectAreaCode": {
+          "type": "string"
+        },
+        "courseCatalogNumber": {
+          "type": "string"
+        },
+        "courseStartTermCode": {
+          "type": "string"
+        },
+        "classNumber": {
+          "type": "string"
+        },
+        "classSessionDisplayFormat": {
+          "type": "string"
+        },
+        "finalExamCode": {
+          "type": "string"
+        },
+        "finalExamDate": {
+          "type": "string"
+        },
+        "finalExamDayOfWeek": {
+          "type": "string"
+        },
+        "finalExamTimes": {
+          "type": "string"
+        },
+        "finalExamLocation": {
+          "type": "string"
+        }
+      }
+    },
+    "ClassFinalExamResponse": {
+      "type": "object",
+      "properties": {
+        "classFinalExam": {
+          "$ref": "#/definitions/ClassFinalExam"
+        }
+      }
+    },
+    "ClassNotes": {
+      "type": "object",
+      "properties": {
+        "classNotes": {
+          "type": "string"
+        }
+      }
+    },
+    "ClassNumber": {
+      "type": "object",
+      "properties": {
+        "classNumber": {
+          "type": "string"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "ClassSectionDetail": {
+      "type": "object",
+      "properties": {
+        "dataDisclosureWarning": {
+          "type": "string"
+        },
+        "offeredTermCode": {
+          "type": "string"
+        },
+        "subjectAreaCode": {
+          "type": "string"
+        },
+        "courseCatalogNumber": {
+          "type": "string"
+        },
+        "courseStartTermCode": {
+          "type": "string"
+        },
+        "classSectionNumber": {
+          "type": "string"
+        },
+        "classSectionNumberDisplay": {
+          "type": "string"
+        },
+        "classSectionID": {
+          "type": "string"
+        },
+        "classSectionSessionDisplayFormat": {
+          "type": "string"
+        },
+        "concurrentEnrollmentFlag": {
+          "type": "string"
+        },
+        "classSectionActivityCode": {
+          "type": "string"
+        },
+        "classSectionActivityEnrollmentSequenceNumber": {
+          "type": "string"
+        },
+        "classSectionPrimaryActivityFlag": {
+          "type": "string"
+        },
+        "classSectionGradeTypeCode": {
+          "type": "string"
+        },
+        "classSectionUnitTypeCode": {
+          "type": "string"
+        },
+        "classSectionUnitCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ClassSectionUnit"
+          }
+        },
+        "classSectionNotesCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ClassSectionNotes"
+          }
+        },
+        "classSectionOnlineFlag": {
+          "type": "string"
+        },
+        "classEnrollmentRestrictionTextCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ClassSectionRestrictionText"
+          }
+        },
+        "classSectionEnrollmentStatusCode": {
+          "type": "string"
+        },
+        "classSectionEnrollmentCapacityNumber": {
+          "type": "string"
+        },
+        "classSectionEnrollmentTotal": {
+          "type": "string"
+        },
+        "classSectionUNEXEnrollmentTotal": {
+          "type": "string"
+        },
+        "classSectionProjectedEnrollmentNumber": {
+          "type": "string"
+        },
+        "classSectionCancelBefore3rdWeekFlag": {
+          "type": "string"
+        },
+        "classSectionWeek3EnrollmentNumber": {
+          "type": "string"
+        },
+        "classSectionWeek8EnrollmentNumber": {
+          "type": "string"
+        },
+        "classSectionWaitlistCapacityNumber": {
+          "type": "string"
+        },
+        "classSectionWaitlistTotal": {
+          "type": "string"
+        },
+        "classSectionSchedulePrintCode": {
+          "type": "string"
+        },
+        "instructorUCLAIDCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ClassSectionInstructor"
+          }
+        },
+        "classSectionCombinedMeetingId": {
+          "type": "string"
+        },
+        "classSectionMeetingCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ClassSectionMeetingLocation"
+          }
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "ClassSectionDetailResponse": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "classSectionDetail": {
+          "$ref": "#/definitions/ClassSectionDetail"
+        }
+      }
+    },
+    "ClassSectionInstructor": {
+      "type": "object",
+      "properties": {
+        "uclaid": {
+          "type": "string"
+        },
+        "links": {
+          "$ref": "#/definitions/LinkModel"
+        }
+      }
+    },
+    "ClassSectionMeetingLocation": {
+      "type": "object",
+      "properties": {
+        "classSectionMeetingDaysofWeekCode": {
+          "type": "string"
+        },
+        "classSectionMeetingStartTime": {
+          "type": "string"
+        },
+        "classSectionMeetingStopTime": {
+          "type": "string"
+        },
+        "classSectionBuildingCode": {
+          "type": "string"
+        },
+        "classSectionBuildingRoomCode": {
+          "type": "string"
+        }
+      }
+    },
+    "ClassSectionNotes": {
+      "type": "object",
+      "properties": {
+        "classSectionNotes": {
+          "type": "string"
+        }
+      }
+    },
+    "ClassSectionNumber": {
+      "type": "object",
+      "properties": {
+        "classSectionNumber": {
+          "type": "string"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "ClassSectionRestrictionText": {
+      "type": "object",
+      "properties": {
+        "classEnrollmentRestrictionText": {
+          "type": "string"
+        },
+        "classEnrollmentConsentRequiredCode": {
+          "type": "string"
+        },
+        "classEnrollmentRuleID": {
+          "type": "string"
+        }
+      }
+    },
+    "ClassSectionUnit": {
+      "type": "object",
+      "properties": {
+        "classSectionUnit": {
+          "type": "string"
+        }
+      }
+    },
+    "ClassSections": {
+      "type": "object",
+      "properties": {
+        "dataDisclosureWarning": {
+          "type": "string"
+        },
+        "offeredTermCode": {
+          "type": "string"
+        },
+        "subjectAreaCode": {
+          "type": "string"
+        },
+        "courseCatalogNumber": {
+          "type": "string"
+        },
+        "courseStartTermCode": {
+          "type": "string"
+        },
+        "classNumber": {
+          "type": "string"
+        },
+        "classSectionSessionDisplayFormat": {
+          "type": "string"
+        },
+        "classSectionCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ClassSectionNumber"
+          }
+        }
+      }
+    },
+    "ClassSectionsResponse": {
+      "type": "object",
+      "properties": {
+        "classSection": {
+          "$ref": "#/definitions/ClassSections"
+        }
+      }
+    },
+    "ClassUNEX": {
+      "type": "object",
+      "properties": {
+        "dataDisclosureWarning": {
+          "type": "string"
+        },
+        "offeredTermCode": {
+          "type": "string"
+        },
+        "subjectAreaCode": {
+          "type": "string"
+        },
+        "courseCatalogNumber": {
+          "type": "string"
+        },
+        "classNumberCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ClassUNEXNumber"
+          }
+        }
+      }
+    },
+    "ClassUNEXNumber": {
+      "type": "object",
+      "properties": {
+        "classNumber": {
+          "type": "string"
+        },
+        "classSectionCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ClassUNEXSection"
+          }
+        }
+      }
+    },
+    "ClassUNEXSection": {
+      "type": "object",
+      "properties": {
+        "classSectionNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "Classes": {
+      "type": "object",
+      "properties": {
+        "dataDisclosureWarning": {
+          "type": "string"
+        },
+        "offeredTermCode": {
+          "type": "string"
+        },
+        "subjectAreaCode": {
+          "type": "string"
+        },
+        "courseCatalogNumber": {
+          "type": "string"
+        },
+        "courseCatalogNumberDisplay": {
+          "type": "string"
+        },
+        "courseStartTermCode": {
+          "type": "string"
+        },
+        "classSessionDisplayFormat": {
+          "type": "string"
+        },
+        "termSessionGroupCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SessionGroup"
+          }
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "ClassesCollection": {
+      "type": "object",
+      "properties": {
+        "lastCachedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "classes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Classes"
+          }
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkModel"
+          }
+        }
+      }
+    },
+    "LinkModel": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string"
+        },
+        "rel": {
+          "type": "string"
+        },
+        "method": {
+          "type": "string"
+        }
+      }
+    },
+    "SessionGroup": {
+      "type": "object",
+      "properties": {
+        "termsessionGroupCode": {
+          "type": "string"
+        },
+        "termsessionInstructionWeeks": {
+          "type": "string"
+        },
+        "termsessionGroupWeekCode": {
+          "type": "string"
+        },
+        "classCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ClassNumber"
+          }
+        }
+      }
+    },
+    "UNEXClassSection": {
+      "type": "object",
+      "properties": {
+        "classesUNEX": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ClassUNEX"
+          }
+        }
+      }
+    }
+  }
+}

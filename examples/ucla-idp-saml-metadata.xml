@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><EntityDescriptor xmlns="urn:oasis:names:tc:SAML:2.0:metadata" ID="_94bf92e6-d175-4dd6-967b-b312d62c3274" entityID="urn:mace:incommon:ucla.edu" validUntil="2026-09-02T20:37:10.026Z"><Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/><Reference URI="#_94bf92e6-d175-4dd6-967b-b312d62c3274"><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><DigestValue>GBOqO74VAB7C+SjVHa2rk6I1UDufC3zYWJ/L+W1j+OI=</DigestValue></Reference></SignedInfo><SignatureValue>EfrXhlsbZofLBbY9A7FetrXc9bnMmJyshbMoIqxLHcD8dwB5oN2OMojrDSpFSwNjdIB0xI7CJceT
+67RnUDKnss7Sz7FQZuwLXgFiEcF/pRufpV7DWgDuWFdlC2A0c/ohquDgHvUj3HS8spQg92XYt3FN
+adAUtlNzvttbz21ab4ZPneQ3ifTwWjshAsSP3CIeMGekyDggn1lQEcUU6PFLynHdZDguRStlBWsq
+mRZe0fG8SjVJfwSzg3BtXl5nZeWIJ3PRQewGpy07FSqEm+EZQvyXW53hiETV11UGwEyy3uM43Qz3
+IhzzluFvKXAf0SJ5MEPvMPSWc5Yz8T6zzZnIYPeqjfuyq/UsB5DNHzG9wIKqOYeumH/g8pj1fstn
+t1wuPfVdABGQ6pOS782paaMGDp7nz5udLBe1pZ/Q6LWM8fonclNVGCBr46/p/r97bIfEt3Z+MDIo
+wLzPV1Sqh1fsFeVLmxthT095VbVXB2KtFSRVh7R+FKUW4EmELN7/N9/o</SignatureValue></Signature>
+  <Extensions>
+    <mdrpi:RegistrationInfo xmlns:mdrpi="urn:oasis:names:tc:SAML:metadata:rpi" registrationAuthority="https://incommon.org"/>
+    <mdattr:EntityAttributes xmlns:mdattr="urn:oasis:names:tc:SAML:metadata:attribute">
+      <saml:Attribute xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" Name="http://macedir.org/entity-category-support" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri">
+        <saml:AttributeValue>http://id.incommon.org/category/research-and-scholarship</saml:AttributeValue>
+        <saml:AttributeValue>http://refeds.org/category/research-and-scholarship</saml:AttributeValue>
+      </saml:Attribute>
+      <saml:Attribute xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" Name="urn:oasis:names:tc:SAML:attribute:assurance-certification" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri">
+        <saml:AttributeValue>https://refeds.org/sirtfi</saml:AttributeValue>
+      </saml:Attribute>
+      <saml:Attribute xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" Name="http://macedir.org/entity-category" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri">
+        <saml:AttributeValue>http://id.incommon.org/category/registered-by-incommon</saml:AttributeValue>
+      </saml:Attribute>
+    </mdattr:EntityAttributes>
+  </Extensions>
+  <IDPSSODescriptor errorURL="https://www.it.ucla.edu/shibboleth-error" protocolSupportEnumeration="urn:mace:shibboleth:1.0 urn:oasis:names:tc:SAML:1.1:protocol urn:oasis:names:tc:SAML:2.0:protocol">
+    <Extensions>
+      <shibmd:Scope xmlns:shibmd="urn:mace:shibboleth:metadata:1.0" regexp="false">ucla.edu</shibmd:Scope>
+      <mdui:UIInfo xmlns:mdui="urn:oasis:names:tc:SAML:metadata:ui">
+        <mdui:DisplayName xml:lang="en">University of California, Los Angeles</mdui:DisplayName>
+        <mdui:PrivacyStatementURL xml:lang="en">http://www.ucla.edu/terms-of-use/</mdui:PrivacyStatementURL>
+        <mdui:Logo height="120" width="160" xml:lang="en">https://s3-us-west-2.amazonaws.com/ucomm-content-host/alpha/ucla-logo-80x60-2x.png</mdui:Logo>
+      </mdui:UIInfo>
+    </Extensions>
+    <KeyDescriptor use="signing">
+      <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+        <ds:X509Data>
+          <!-- Serial No. 1419724874712109141700830380581405083800580204023, expires on Wed Nov  1 22:21:36 2034 GMT -->
+          <ds:X509Certificate>
+MIIEAzCCAmugAwIBAgIVAPiuqkjdasZbqctUXfLDAMT/TSX3MA0GCSqGSIb3DQEB
+CwUAMBsxGTAXBgNVBAMMEHNoYi5haXMudWNsYS5lZHUwHhcNMjQxMTAxMjIyMTM2
+WhcNMzQxMTAxMjIyMTM2WjAbMRkwFwYDVQQDDBBzaGIuYWlzLnVjbGEuZWR1MIIB
+ojANBgkqhkiG9w0BAQEFAAOCAY8AMIIBigKCAYEAoLM7m48vVaYMxqvIH0dWx+Vb
+KTVsOCAxpTZwVKBLhCyzKVeuKD2ttzQY+vC5OBuztTOdULl5txDkAH2K11SB1k3h
+FP49wQfjeTj4kPNYThagjq5lmKYYrHpG4gs3ki9j+cF03T1XOYS+LRAPFAVkjeSD
+QTOzKNO42ojAy3IX3psKuESQpTsw171wFflfJJ6hwjwG7Tr1Gb/nVeyOxug2u52w
+7+95n7NguH9D0QxHxCjxZKhrN8MOcVAk0MZ9hLMb7XCSaAZX1147h7fbLZ+CvMuI
+N0N2Gv4C+ihWm07YbeCjK6fClpnGEB08HY9ycT3Wsg/RXwyHFq/kZq9YjVAXPSyU
+yT8qyPVhFvcys3lA8Mqbt3YR0WUSEdsZBO51R+2fEdR0Gw52galaebJ6QMbKgZkL
+eRUNVxzYBx84hNWXuzxxUHZwxP/j+rhUIFFvtzz+pEZh7EHPuYDkQd5Xx1UPPaRA
+N5iqcYIrgphIIiDYlcc+HAbrSmIgxF1L0M6qb2X3AgMBAAGjPjA8MB0GA1UdDgQW
+BBQ4ea8lRvtj4qfMEBJoXje9PeR0zTAbBgNVHREEFDASghBzaGIuYWlzLnVjbGEu
+ZWR1MA0GCSqGSIb3DQEBCwUAA4IBgQB3t+T7l5vmT9wLenRqqwaiJ1y3T7Pmuw3T
+QTbquiMClY88g9rRfeeYsqkNhZ/1X3/XloTF2X1k0rwZodMgT14fLgHSPYGpbBwD
+HDsGZdUdWUO3LRXPWbnlI/ekfBVIKmxotS1Ub7bDraWD2jp/pnlbjRgY6QV4J99B
+7KYJ6Crz1GR21ByGvn2bY7c7kE1S2WfnMiMMy/zwMj5mO7rUph6XkTGPRYnHNpSS
+w2POYG54Y6/PBpGTWxZ2TrJh/n0VBGBUJ9nUej5+gq6bQNXfQSyMOtyCon5R5tSD
+fas1OcSu3LBrcsbyqiRqbQ8zMnieAoXF7ygIK53pNW//8V44mQl0MJdZF+BVj1ZP
+z6MIzNOQ4rmIcEqomfA0jFcuxGE33SfcSaNQyp/2SmFD+ns9Vm/jiuKVF3YZb/H5
+J8jKhiD9l0stySodxEnScQBevt/sykUCakIM2OFzDxcAKWrUPDvQX1xeDdeOndtg
+usT9aP0Yn9bkhkAwmSiav+19ipSTru4=
+          </ds:X509Certificate>
+        </ds:X509Data>
+      </ds:KeyInfo>
+    </KeyDescriptor>
+    <ArtifactResolutionService Binding="urn:oasis:names:tc:SAML:1.0:bindings:SOAP-binding" Location="https://shb.ais.ucla.edu:8443/shibboleth-idp/Artifact" index="1"/>
+    <SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://shb.ais.ucla.edu/shibboleth-idp/profile/SAML2/POST/SSO"/>
+    <SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://shb.ais.ucla.edu/shibboleth-idp/profile/SAML2/Redirect/SSO"/>
+    <SingleSignOnService Binding="urn:mace:shibboleth:1.0:profiles:AuthnRequest" Location="https://shb.ais.ucla.edu/shibboleth-idp/profile/Shibboleth/SSO"/>
+  </IDPSSODescriptor>
+  <AttributeAuthorityDescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:1.1:protocol urn:oasis:names:tc:SAML:2.0:protocol">
+    <Extensions>
+      <shibmd:Scope xmlns:shibmd="urn:mace:shibboleth:metadata:1.0" regexp="false">ucla.edu</shibmd:Scope>
+    </Extensions>
+    <KeyDescriptor use="signing">
+      <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+        <ds:X509Data>
+          <!-- Serial No. 1419724874712109141700830380581405083800580204023, expires on Wed Nov  1 22:21:36 2034 GMT -->
+          <ds:X509Certificate>
+MIIEAzCCAmugAwIBAgIVAPiuqkjdasZbqctUXfLDAMT/TSX3MA0GCSqGSIb3DQEB
+CwUAMBsxGTAXBgNVBAMMEHNoYi5haXMudWNsYS5lZHUwHhcNMjQxMTAxMjIyMTM2
+WhcNMzQxMTAxMjIyMTM2WjAbMRkwFwYDVQQDDBBzaGIuYWlzLnVjbGEuZWR1MIIB
+ojANBgkqhkiG9w0BAQEFAAOCAY8AMIIBigKCAYEAoLM7m48vVaYMxqvIH0dWx+Vb
+KTVsOCAxpTZwVKBLhCyzKVeuKD2ttzQY+vC5OBuztTOdULl5txDkAH2K11SB1k3h
+FP49wQfjeTj4kPNYThagjq5lmKYYrHpG4gs3ki9j+cF03T1XOYS+LRAPFAVkjeSD
+QTOzKNO42ojAy3IX3psKuESQpTsw171wFflfJJ6hwjwG7Tr1Gb/nVeyOxug2u52w
+7+95n7NguH9D0QxHxCjxZKhrN8MOcVAk0MZ9hLMb7XCSaAZX1147h7fbLZ+CvMuI
+N0N2Gv4C+ihWm07YbeCjK6fClpnGEB08HY9ycT3Wsg/RXwyHFq/kZq9YjVAXPSyU
+yT8qyPVhFvcys3lA8Mqbt3YR0WUSEdsZBO51R+2fEdR0Gw52galaebJ6QMbKgZkL
+eRUNVxzYBx84hNWXuzxxUHZwxP/j+rhUIFFvtzz+pEZh7EHPuYDkQd5Xx1UPPaRA
+N5iqcYIrgphIIiDYlcc+HAbrSmIgxF1L0M6qb2X3AgMBAAGjPjA8MB0GA1UdDgQW
+BBQ4ea8lRvtj4qfMEBJoXje9PeR0zTAbBgNVHREEFDASghBzaGIuYWlzLnVjbGEu
+ZWR1MA0GCSqGSIb3DQEBCwUAA4IBgQB3t+T7l5vmT9wLenRqqwaiJ1y3T7Pmuw3T
+QTbquiMClY88g9rRfeeYsqkNhZ/1X3/XloTF2X1k0rwZodMgT14fLgHSPYGpbBwD
+HDsGZdUdWUO3LRXPWbnlI/ekfBVIKmxotS1Ub7bDraWD2jp/pnlbjRgY6QV4J99B
+7KYJ6Crz1GR21ByGvn2bY7c7kE1S2WfnMiMMy/zwMj5mO7rUph6XkTGPRYnHNpSS
+w2POYG54Y6/PBpGTWxZ2TrJh/n0VBGBUJ9nUej5+gq6bQNXfQSyMOtyCon5R5tSD
+fas1OcSu3LBrcsbyqiRqbQ8zMnieAoXF7ygIK53pNW//8V44mQl0MJdZF+BVj1ZP
+z6MIzNOQ4rmIcEqomfA0jFcuxGE33SfcSaNQyp/2SmFD+ns9Vm/jiuKVF3YZb/H5
+J8jKhiD9l0stySodxEnScQBevt/sykUCakIM2OFzDxcAKWrUPDvQX1xeDdeOndtg
+usT9aP0Yn9bkhkAwmSiav+19ipSTru4=
+          </ds:X509Certificate>
+        </ds:X509Data>
+      </ds:KeyInfo>
+    </KeyDescriptor>
+    <AttributeService Binding="urn:oasis:names:tc:SAML:1.0:bindings:SOAP-binding" Location="https://shb.ais.ucla.edu:8443/shibboleth-idp/profile/SAML1/SOAP/AttributeQuery"/>
+    <AttributeService Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP" Location="https://shb.ais.ucla.edu:8443/shibboleth-idp/profile/SAML2/SOAP/AttributeQuery"/>
+  </AttributeAuthorityDescriptor>
+  <Organization>
+    <OrganizationName xml:lang="en">University of California-Los Angeles</OrganizationName>
+    <OrganizationDisplayName xml:lang="en">University of California-Los Angeles</OrganizationDisplayName>
+    <OrganizationURL xml:lang="en">http://www.ucla.edu/</OrganizationURL>
+  </Organization>
+  <ContactPerson contactType="support">
+    <GivenName>Client Support</GivenName>
+    <EmailAddress>mailto:clientsupport@it.ucla.edu</EmailAddress>
+  </ContactPerson>
+  <ContactPerson contactType="administrative">
+    <GivenName>Mona Zarei</GivenName>
+    <EmailAddress>mailto:monaz@ucla.edu</EmailAddress>
+  </ContactPerson>
+  <ContactPerson contactType="technical">
+    <GivenName>Michel Maokhampio</GivenName>
+    <EmailAddress>mailto:mmaokhampio@it.ucla.edu</EmailAddress>
+  </ContactPerson>
+  <ContactPerson xmlns:remd="http://refeds.org/metadata" contactType="other" remd:contactType="http://refeds.org/metadata/contactType/security">
+    <GivenName>UCLA IT Security</GivenName>
+    <EmailAddress>mailto:security@it.ucla.edu</EmailAddress>
+  </ContactPerson>
+</EntityDescriptor>

@@ -1,0 +1,270 @@
+openapi: 3.2.0
+info:
+  version: v1
+  title: version v1 GE Foundations API
+servers:
+- url: https://api.ucla.edu/sis
+security:
+- application: []
+tags:
+- name: GE Foundations
+paths:
+  /gefoundations/v1:
+    get:
+      tags:
+      - GE Foundations
+      summary: Returns a collection of GE Foundations
+      operationId: GEFoundations_GetGEFoundations
+      parameters:
+      - name: GEFoundationCode
+        in: query
+        description: SI
+        required: false
+        schema:
+          type: string
+      - name: GEFoundationName
+        in: query
+        description: FOUNDATIONS OF SCIENTIFIC INQUIRY
+        required: false
+        schema:
+          type: string
+      - name: GEFoundationCategoryCode
+        in: query
+        description: LS
+        required: false
+        schema:
+          type: string
+      - name: GEFoundationCategoryName
+        in: query
+        description: LIFE SCIENCES
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: '10'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GEFoundationsCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/GEFoundationsCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /gefoundations/{GEFoundationCode}/{GEFoundationCategoryCode}/gefoundationcategorycourses/v1:
+    get:
+      tags:
+      - GE Foundations
+      summary: ''
+      operationId: GEFoundationCategoryCourses_GetGEFoundationCategoryCourses
+      parameters:
+      - name: GEFoundationCode
+        in: path
+        description: SI
+        required: true
+        schema:
+          type: string
+      - name: GEFoundationCategoryCode
+        in: path
+        description: LS
+        required: true
+        schema:
+          type: string
+      - name: subjectAreaCode
+        in: query
+        description: LIFESCI
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: '10'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GEFoundationCategoryCoursesCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/GEFoundationCategoryCoursesCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+components:
+  schemas:
+    GEFoundationCategoryCoursesCollection:
+      type: object
+      properties:
+        geFoundationCategoryCourses:
+          type: array
+          items:
+            $ref: '#/components/schemas/GEFoundationCategoryCourses'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    GEFoundationsCategory:
+      type: object
+      properties:
+        geFoundationCategoryCode:
+          type: string
+        geFoundationCategoryName:
+          type: string
+        geFoundationCategoryStartTermCode:
+          type: string
+        geFoundationCategoryLastTermCode:
+          type: string
+        href:
+          type: string
+        rel:
+          type: string
+    GEFoundationsCollection:
+      type: object
+      properties:
+        geFoundations:
+          type: array
+          items:
+            $ref: '#/components/schemas/GEFoundations'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    LinkModel:
+      type: object
+      properties:
+        href:
+          type: string
+        rel:
+          type: string
+        method:
+          type: string
+    GEFoundations:
+      type: object
+      properties:
+        geFoundationCode:
+          type: string
+        geFoundationName:
+          type: string
+        geFoundationStartTermCode:
+          type: string
+        geFoundationLastTermCode:
+          type: string
+        geFoundationCategoryCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/GEFoundationsCategory'
+    GEFoundationCategoryCourses:
+      type: object
+      properties:
+        geFoundationCode:
+          type: string
+        geFoundationStartTermCode:
+          type: string
+        geFoundationCategoryCode:
+          type: string
+        geFoundationCategoryStartTermCode:
+          type: string
+        courseCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/GEFoundationCategoryCourse'
+    GEFoundationCategoryCourse:
+      type: object
+      properties:
+        subjectAreaCode:
+          type: string
+        courseCatalogNumber:
+          type: string
+        courseStartTermCode:
+          type: string
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+        courseFoundationCategoryStartTermCode:
+          type: string
+        courseFoundationCategoryLastTermCode:
+          type: string
+  securitySchemes:
+    application:
+      type: oauth2
+      flows:
+        clientCredentials:
+          scopes:
+            read: Read access to protected resources
+            write: Write access to protected resources
+          tokenUrl: https://api.ucla.edu/oauth/client_credential/accesstoken?grant_type=client_credentials
+      description: OAuth2

@@ -1,0 +1,667 @@
+openapi: 3.2.0
+info:
+  version: v1
+  title: version v1 Courses API
+servers:
+- url: https://api.ucla.edu/sis
+security:
+- application: []
+tags:
+- name: Courses
+paths:
+  /courses/v1:
+    get:
+      tags:
+      - Courses
+      summary: Returns a collection of Courses
+      operationId: Course_Get
+      parameters:
+      - name: subjectAreaCode
+        in: query
+        description: Math
+        required: false
+        schema:
+          type: string
+      - name: courseCatalogNumber
+        in: query
+        description: '0001'
+        required: false
+        schema:
+          type: string
+      - name: courseStartTermCode
+        in: query
+        description: 96F
+        required: false
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: '1'
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Default 10.<br />Pass 0 to get all records.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CourseCollection'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CourseCollection'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /courses/{subjectAreaCode}/{courseCatalogNumber}/{courseStartTermCode}/coursediversity/v1:
+    get:
+      tags:
+      - Courses
+      summary: ''
+      operationId: CourseDiversity_Get
+      parameters:
+      - name: subjectAreaCode
+        in: path
+        description: HIST
+        required: true
+        schema:
+          type: string
+      - name: courseCatalogNumber
+        in: path
+        description: 0008A
+        required: true
+        schema:
+          type: string
+      - name: courseStartTermCode
+        in: path
+        description: 03F
+        required: true
+        schema:
+          type: string
+      - name: courseDiversityCollegeCode
+        in: query
+        description: AA or LS
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CourseDiversityResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CourseDiversityResponse'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /courses/{subjectAreaCode}/{courseCatalogNumber}/{courseStartTermCode}/coursege/v1:
+    get:
+      tags:
+      - Courses
+      summary: ''
+      operationId: CourseGEFoundation_Get
+      parameters:
+      - name: subjectAreaCode
+        in: path
+        description: A&amp;O SCI
+        required: true
+        schema:
+          type: string
+      - name: courseCatalogNumber
+        in: path
+        description: 0001L
+        required: true
+        schema:
+          type: string
+      - name: courseStartTermCode
+        in: path
+        description: 04F
+        required: true
+        schema:
+          type: string
+      - name: GEFoundationCode
+        in: query
+        description: SI
+        required: false
+        schema:
+          type: string
+      - name: GEFoundationCategoryCode
+        in: query
+        description: PS
+        required: false
+        schema:
+          type: string
+      - name: GEAttributeCode
+        in: query
+        description: LD
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CourseGEFoundationResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CourseGEFoundationResponse'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /courses/{subjectAreaCode}/{courseCatalogNumber}/{courseStartTermCode}/coursedetail/v1:
+    get:
+      tags:
+      - Courses
+      summary: ''
+      operationId: CourseDetail_Get
+      parameters:
+      - name: subjectAreaCode
+        in: path
+        description: Math
+        required: true
+        schema:
+          type: string
+      - name: courseCatalogNumber
+        in: path
+        description: '0001'
+        required: true
+        schema:
+          type: string
+      - name: courseStartTermCode
+        in: path
+        description: 96F
+        required: true
+        schema:
+          type: string
+      - name: courseActivityTypeCode
+        in: query
+        description: LEC
+        required: false
+        schema:
+          type: string
+      - name: coursePrimaryActivityFlag
+        in: query
+        description: Y or N
+        required: false
+        schema:
+          type: string
+      - name: courseGradeTypeCode
+        in: query
+        description: SO
+        required: false
+        schema:
+          type: string
+      - name: courseUnitTypeCode
+        in: query
+        description: F
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CourseDetailResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CourseDetailResponse'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+  /courses/{subjectAreaCode}/{courseCatalogNumber}/{courseStartTermCode}/courserequisites/v1:
+    get:
+      tags:
+      - Courses
+      summary: ''
+      operationId: CourseRequisite_Get
+      parameters:
+      - name: subjectAreaCode
+        in: path
+        description: MATH
+        required: true
+        schema:
+          type: string
+      - name: courseCatalogNumber
+        in: path
+        description: 0003A
+        required: true
+        schema:
+          type: string
+      - name: courseStartTermCode
+        in: path
+        description: 14F
+        required: true
+        schema:
+          type: string
+      - name: requisiteSequenceNumber
+        in: query
+        description: '10'
+        required: false
+        schema:
+          type: string
+      - name: requisiteCourseName
+        in: query
+        description: MATH 0001
+        required: false
+        schema:
+          type: string
+      - name: coRequisiteFlag
+        in: query
+        description: Y or N
+        required: false
+        schema:
+          type: string
+      - name: preRequisiteFlag
+        in: query
+        description: Y or N
+        required: false
+        schema:
+          type: string
+      - name: requisiteSeverityText
+        in: query
+        description: '"Reject enrollment request" or "Warn on enrollment request"'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Record(s) found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CourseRequisiteResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CourseRequisiteResponse'
+        ' 200':
+          description: Record(s) found
+        ' 400':
+          description: Bad Request
+        ' 401':
+          description: Unauthorized
+        ' 403':
+          description: Forbidden
+        ' 404':
+          description: No Record Found
+        ' 500':
+          description: Server Error
+      deprecated: false
+components:
+  schemas:
+    GE:
+      type: object
+      properties:
+        geFoundationCode:
+          type: string
+        geFoundationStartTermCode:
+          type: string
+        geFoundationCategoryCode:
+          type: string
+        geFoundationCategoryStartTermCode:
+          type: string
+        courseFoundationCategoryStartTermCode:
+          type: string
+        courseFoundationCategoryLastTermCode:
+          type: string
+    MultipleListedCourse:
+      type: object
+      properties:
+        multipleListedSubjectAreaCode:
+          type: string
+        multipleListedCourseCatalogNumber:
+          type: string
+        multipleListedCourseStartTermCode:
+          type: string
+    CourseCatalogNumber:
+      type: object
+      properties:
+        courseCatalogNumber:
+          type: string
+        courseStartTermCode:
+          type: string
+    CourseSubtitle:
+      type: object
+      properties:
+        courseShortSubtitle:
+          type: string
+        courseLongSubtitle:
+          type: string
+    CourseGEFoundationResponse:
+      type: object
+      properties:
+        courseGEFoundations:
+          $ref: '#/components/schemas/CourseGEFoundation'
+    ConcurrentCourse:
+      type: object
+      properties:
+        concurrentSubjectAreaCode:
+          type: string
+        concurrentCourseCatalogNumber:
+          type: string
+        concurrentCourseStartTermCode:
+          type: string
+    Requisite:
+      type: object
+      properties:
+        requisiteSequenceNumber:
+          type: string
+        requisiteCourseName:
+          type: string
+        requisiteCourseStartTerm:
+          type: string
+        requisiteCourseMinimumUnits:
+          type: string
+        requisiteCourseMinimumLetterGrade:
+          type: string
+        requisiteLogicalConnectorCode:
+          type: string
+        requisiteConnectorLeftParenthesis1:
+          type: string
+        requisiteConnectorLeftParenthesis2:
+          type: string
+        requisiteConnectorLeftParenthesis3:
+          type: string
+        requisiteConnectorRightParenthesis1:
+          type: string
+        requisiteConnectorRightParenthesis2:
+          type: string
+        requisiteConnectorRightParenthesis3:
+          type: string
+        coRequisiteFlag:
+          type: string
+        preRequisiteFlag:
+          type: string
+        requisiteSeverityText:
+          type: string
+    CourseActivity:
+      type: object
+      properties:
+        courseActivityTypeCode:
+          type: string
+        coursePrimaryActivityFlag:
+          type: string
+        courseGradeTypeCode:
+          type: string
+        courseUnitTypeCode:
+          type: string
+        courseUnitCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/CourseUnit'
+    CourseUnit:
+      type: object
+      properties:
+        courseUnit:
+          type: string
+    CourseGEFoundation:
+      type: object
+      properties:
+        subjectAreaCode:
+          type: string
+        courseCatalogNumber:
+          type: string
+        courseStartTermCode:
+          type: string
+        geFoundationCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/GE'
+        geAttributeCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/CourseGEAttribute'
+    Diversity:
+      type: object
+      properties:
+        courseDiversityCollegeCode:
+          type: string
+        courseDiversityStartTermCode:
+          type: string
+        courseDiversityLastTermCode:
+          type: string
+    CourseGEAttribute:
+      type: object
+      properties:
+        geAttributeCode:
+          type: string
+        geAttributeStartTermCode:
+          type: string
+        courseAttributeStartTermCode:
+          type: string
+        courseAttributeLastTermCode:
+          type: string
+    Course:
+      type: object
+      properties:
+        subjectAreaCode:
+          type: string
+        courseCatalogNumberCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/CourseCatalogNumber'
+    CourseRequisite:
+      type: object
+      properties:
+        subjectAreaCode:
+          type: string
+        courseCatalogNumber:
+          type: string
+        courseStartTermCode:
+          type: string
+        requisiteCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/Requisite'
+    CourseDetailResponse:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        courseDetail:
+          $ref: '#/components/schemas/CourseDetail'
+    CourseRequisiteResponse:
+      type: object
+      properties:
+        courseRequisite:
+          $ref: '#/components/schemas/CourseRequisite'
+    LinkModel:
+      type: object
+      properties:
+        href:
+          type: string
+        rel:
+          type: string
+        method:
+          type: string
+    EquivalentCourse:
+      type: object
+      properties:
+        equivalentSubjectAreaCode:
+          type: string
+        equivalentCourseCatalogNumber:
+          type: string
+        equivalentCourseStartTermCode:
+          type: string
+    CourseDetail:
+      type: object
+      properties:
+        subjectAreaCode:
+          type: string
+        courseCatalogNumber:
+          type: string
+        courseCatalogNumberDisplay:
+          type: string
+        courseStartTermCode:
+          type: string
+        courseLastTermCode:
+          type: string
+        courseCareerLevelCode:
+          type: string
+        courseLevelName:
+          type: string
+        courseShortTitle:
+          type: string
+        courseLongTitle:
+          type: string
+        courseSubtitleCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/CourseSubtitle'
+        courseDescription:
+          type: string
+        courseMaterialsFeeAmount:
+          type: string
+        individualStudiesFlag:
+          type: string
+        fiatLuxCourseFlag:
+          type: string
+        writingIICourseFlag:
+          type: string
+        impactedCourseFlag:
+          type: string
+        duplicateClassAllowedFlag:
+          type: string
+        equivalentCourseCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/EquivalentCourse'
+        multipleListedCourseCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/MultipleListedCourse'
+        concurrentCourseCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConcurrentCourse'
+        multiTermCourseSequenceNumber:
+          type: string
+        multiTermCourseCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/MultiTerm'
+        courseActivityCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/CourseActivity'
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    CourseDiversity:
+      type: object
+      properties:
+        subjectAreaCode:
+          type: string
+        courseCatalogNumber:
+          type: string
+        courseStartTermCode:
+          type: string
+        courseDiversityCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/Diversity'
+    CourseCollection:
+      type: object
+      properties:
+        courses:
+          type: array
+          items:
+            $ref: '#/components/schemas/Course'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    CourseDiversityResponse:
+      type: object
+      properties:
+        courseDiversity:
+          $ref: '#/components/schemas/CourseDiversity'
+    MultiTerm:
+      type: object
+      properties:
+        multiTermSubjectAreaCode:
+          type: string
+        multiTermCourseCatalogNumber:
+          type: string
+        multiTermCourseStartTermCode:
+          type: string
+        multiTermCourseTotalNumber:
+          type: string
+  securitySchemes:
+    application:
+      type: oauth2
+      flows:
+        clientCredentials:
+          scopes:
+            read: Read access to protected resources
+            write: Write access to protected resources
+          tokenUrl: https://api.ucla.edu/oauth/client_credential/accesstoken?grant_type=client_credentials
+      description: OAuth2

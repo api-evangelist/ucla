@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ucla/main/json-schema/ucla-weather-schemas.json",
+  "title": "UCLA weather \u2014 schemas in use",
+  "description": "Schemas reachable from the operations of the UCLA contract of the same name. Extracted from the contract UCLA publishes on its own developer portal; the source document carries a large shared SIS definition library of which only these are referenced by any path.",
+  "x-generated": "2026-08-19",
+  "x-method": "derived",
+  "x-source": "https://developer.api.ucla.edu/sites/default/files/apidoc_specs/UCLAWeather_3.yaml",
+  "x-operator": "institution",
+  "$defs": {
+    "FullList": {
+      "type": "object",
+      "properties": {
+        "year": {
+          "type": "integer",
+          "description": "Current four digit year.",
+          "example": 2020
+        },
+        "month": {
+          "type": "string",
+          "description": "Current month.",
+          "example": "08"
+        },
+        "day": {
+          "type": "integer",
+          "description": "Current day of the month.",
+          "example": 18
+        },
+        "hour": {
+          "type": "integer",
+          "description": "Current hour of the day.",
+          "example": 11
+        },
+        "minutes": {
+          "type": "integer",
+          "description": "Current minute of the hour.",
+          "example": 37
+        },
+        "wind_direction": {
+          "type": "integer",
+          "description": "Average direction from which wind blows during the previous 60 seconds in degrees from due North.",
+          "example": 171
+        },
+        "wind_speed": {
+          "type": "string",
+          "description": "Average wind speed during the previous 60 seconds in miles per hour.",
+          "example": 7
+        },
+        "gust": {
+          "type": "string",
+          "description": "Maximum wind speed during the previous 60 seconds in miles per hour.",
+          "example": "008"
+        },
+        "air_temp": {
+          "type": "string",
+          "description": "Current air temperature in degrees Fahrenheit.",
+          "example": "086"
+        },
+        "min_temp": {
+          "type": "string",
+          "description": "Minimum temperature since midnight PST in degrees Fahrenheit.",
+          "example": 56
+        },
+        "max_temp": {
+          "type": "string",
+          "description": "Maximum temperature since midnight PST in degrees Fahrenheit.",
+          "example": "092"
+        },
+        "relative_humid": {
+          "type": "string",
+          "description": "Current relative humidity in percent.",
+          "example": "048"
+        },
+        "min_rel_humid": {
+          "type": "string",
+          "description": "Minimum relative humidity since midnight PST in percent.",
+          "example": 35
+        },
+        "max_rel_humid": {
+          "type": "string",
+          "description": "Maximum relative humidity since midnight PST in percent.",
+          "example": "078"
+        },
+        "dew_point": {
+          "type": "string",
+          "description": "Current dew point temperature in degrees Fahrenheit.",
+          "example": 53
+        },
+        "wet_bulb": {
+          "type": "string",
+          "description": "Current wet bulb temperature in degrees Fahrenheit.",
+          "example": 57
+        },
+        "sea_level_pressure": {
+          "type": "string",
+          "description": "Equivalent sea level pressure in millibars.",
+          "example": 1011.1
+        },
+        "rainfall_hour": {
+          "type": "string",
+          "description": "Rainfall in previous 60 minutes.",
+          "example": 0.0
+        },
+        "rainfall_day": {
+          "type": "string",
+          "description": "Rainfall since midnight PST.",
+          "example": 0.0
+        },
+        "datetime": {
+          "type": "string",
+          "description": "Date and time of data publication.",
+          "example": "2020-08-17 07:35:10"
+        }
+      }
+    }
+  }
+}
