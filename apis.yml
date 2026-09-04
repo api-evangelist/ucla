@@ -49,7 +49,7 @@ accessModel:
   - plans
   generated: '2026-08-19'
   method: probed
-position: Consumer
+position: Consuming
 access: 3rd-Party
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/ucla.png
 url: https://raw.githubusercontent.com/api-evangelist/ucla/refs/heads/main/apis.yml
