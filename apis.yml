@@ -1,28 +1,24 @@
----
 aid: ucla
 name: University of California, Los Angeles
-description: >-
-  The University of California, Los Angeles is a public land-grant research university in the
-  University of California system, ranked 29th in the QS World University Rankings, and it is one
-  of the few institutions in this cohort that genuinely runs a central API program rather than
-  renting one. UCLA operates its own API gateway at api.ucla.edu, fronted by Apigee under a
-  certificate issued to the university, and a Drupal/Apigee developer portal at
-  developer.api.ucla.edu that catalogues eight API products. Seven of those products publish a
-  real machine-readable contract, anonymously downloadable, and all seven describe routes on
-  UCLA's own gateway - six Swagger 2.0 contracts covering the student information system
-  (classes, class sections, courses, GE foundations, a 61-operation Registrar data dictionary,
-  the mainframe production calendar, a connectivity health check and the MyUCLA portal menu) plus
-  one OpenAPI 3.0.3 contract for a campus weather station. Ninety-one operations in total, every
-  one of them a read. UCLA also runs its own Shibboleth identity provider, registered by InCommon
-  under entityID urn:mace:incommon:ucla.edu with REFEDS Research & Scholarship and SIRTFI
-  certification - the most complete machine-readable artifact the university publishes, and the
-  one no API catalogue had looked at. UCLA Library self-hosts a Cantaloupe IIIF image server, a
-  Hyrax digital collections platform and a Dataverse instance, all on ucla.edu hosts under UCLA's
-  own TLS certificates. What UCLA does not have is any way in: every credential requires a UCLA
-  logon and a human approval, there is no self-service path, no status page, no changelog, no
-  llms.txt, no machine-readable catalog index, and no rate-limit or error documentation. The
-  learning management system, BruinLearn, is Instructure Canvas on a vanity subdomain and is
-  recorded as a tenant relationship rather than as UCLA engineering.
+description: 'The University of California, Los Angeles is a public land-grant research university in
+  the University of California system, ranked 29th in the QS World University Rankings, and it is one
+  of the few institutions in this cohort that genuinely runs a central API program rather than renting
+  one. UCLA operates its own API gateway at api.ucla.edu, fronted by Apigee under a certificate issued
+  to the university, and a Drupal/Apigee developer portal at developer.api.ucla.edu that catalogues eight
+  API products. Seven of those products publish a real machine-readable contract, anonymously downloadable,
+  and all seven describe routes on UCLA''s own gateway - six Swagger 2.0 contracts covering the student
+  information system (classes, class sections, courses, GE foundations, a 61-operation Registrar data
+  dictionary, the mainframe production calendar, a connectivity health check and the MyUCLA portal menu)
+  plus one OpenAPI 3.0.3 contract for a campus weather station. Ninety-one operations in total, every
+  one of them a read. UCLA also runs its own Shibboleth identity provider, registered by InCommon under
+  entityID urn:mace:incommon:ucla.edu with REFEDS Research & Scholarship and SIRTFI certification - the
+  most complete machine-readable artifact the university publishes, and the one no API catalogue had looked
+  at. UCLA Library self-hosts a Cantaloupe IIIF image server, a Hyrax digital collections platform and
+  a Dataverse instance, all on ucla.edu hosts under UCLA''s own TLS certificates. What UCLA does not have
+  is any way in: every credential requires a UCLA logon and a human approval, there is no self-service
+  path, no status page, no changelog, no llms.txt, no machine-readable catalog index, and no rate-limit
+  or error documentation. The learning management system, BruinLearn, is Instructure Canvas on a vanity
+  subdomain and is recorded as a tenant relationship rather than as UCLA engineering.'
 type: Index
 deliveryModel:
   model: saas
@@ -69,20 +65,19 @@ tags:
 - IIIF
 - Campus Life
 created: '2026-06-03'
-modified: '2026-08-19'
+modified: '2026-09-16'
 specificationVersion: '0.23'
 x-type: university
 x-category: Public Research University
 apis:
 - aid: ucla:identity
   name: UCLA Shibboleth Identity Provider (InCommon)
-  description: >-
-    UCLA's own Shibboleth identity provider and the most complete machine-readable artifact the university
-    publishes. Registered by InCommon under entityID urn:mace:incommon:ucla.edu, signed with RSA-SHA256,
-    scoped to ucla.edu, serving SAML 1.1 and SAML 2.0 SSO from shb.ais.ucla.edu with a separate attribute
-    authority on port 8443. Asserts the InCommon and REFEDS Research & Scholarship entity categories and
-    a REFEDS SIRTFI assurance certification with a named security contact. Anonymously readable, federated
-    into eduGAIN, and the surface class this cohort is never credited for.
+  description: UCLA's own Shibboleth identity provider and the most complete machine-readable artifact
+    the university publishes. Registered by InCommon under entityID urn:mace:incommon:ucla.edu, signed
+    with RSA-SHA256, scoped to ucla.edu, serving SAML 1.1 and SAML 2.0 SSO from shb.ais.ucla.edu with
+    a separate attribute authority on port 8443. Asserts the InCommon and REFEDS Research & Scholarship
+    entity categories and a REFEDS SIRTFI assurance certification with a named security contact. Anonymously
+    readable, federated into eduGAIN, and the surface class this cohort is never credited for.
   humanURL: https://dts.ucla.edu/
   baseURL: https://shb.ais.ucla.edu/shibboleth-idp
   tags:
@@ -104,20 +99,19 @@ apis:
   - type: Authentication
     url: authentication/ucla-authentication.yml
   x-operator: institution
-  x-operator-evidence: >-
-    entityID under ucla.edu; shibmd:Scope ucla.edu; endpoints on shb.ais.ucla.edu which CNAMEs to sso.auth.612c0b3a.prod.r53.aws.it.ucla.edu
-    (UCLA-managed Route 53); OrganizationName "University of California-Los Angeles"; contacts at it.ucla.edu
-    and ucla.edu.
+  x-operator-evidence: entityID under ucla.edu; shibmd:Scope ucla.edu; endpoints on shb.ais.ucla.edu which
+    CNAMEs to sso.auth.612c0b3a.prod.r53.aws.it.ucla.edu (UCLA-managed Route 53); OrganizationName "University
+    of California-Los Angeles"; contacts at it.ucla.edu and ucla.edu.
   x-access: public
   x-added: '2026-08-19'
 - aid: ucla:library-iiif
   name: UCLA Library IIIF Image Service
-  description: >-
-    UCLA Library self-hosts a Cantaloupe 5.0.5 image server exposing both IIIF Image API 2.x and 3.0 endpoints
-    for its digital collections. Institution-operated on UCLA's own AWS infrastructure under a UCLA-issued
-    certificate, not a vendor platform. Live but effectively unreadable from outside - every identifier
-    probed, including a deliberate nonsense control, returned 403 with a Java stack trace naming the private
-    S3 source bucket, so no manifest or info.json could be retrieved and none is claimed.
+  description: UCLA Library self-hosts a Cantaloupe 5.0.5 image server exposing both IIIF Image API 2.x
+    and 3.0 endpoints for its digital collections. Institution-operated on UCLA's own AWS infrastructure
+    under a UCLA-issued certificate, not a vendor platform. Live but effectively unreadable from outside
+    - every identifier probed, including a deliberate nonsense control, returned 403 with a Java stack
+    trace naming the private S3 source bucket, so no manifest or info.json could be retrieved and none
+    is claimed.
   humanURL: https://guides.library.ucla.edu/digital-collections/iiif
   baseURL: https://iiif.library.ucla.edu/iiif/2
   tags:
@@ -142,21 +136,18 @@ apis:
   - type: GitHubOrganization
     url: https://github.com/UCLALibrary
   x-operator: institution
-  x-operator-evidence: >-
-    TLS subject O=University of California, Los Angeles issued by InCommon RSA OV SSL CA 3; resolves to
-    an AWS ELB in UCLA Library's own us-west-2 account; software is open-source Cantaloupe self-hosted,
-    not a hosted repository service.
+  x-operator-evidence: TLS subject O=University of California, Los Angeles issued by InCommon RSA OV SSL
+    CA 3; resolves to an AWS ELB in UCLA Library's own us-west-2 account; software is open-source Cantaloupe
+    self-hosted, not a hosted repository service.
   x-access: blocked
-  x-status: >-
-    403 with stack trace on every identifier including a negative control (probed 2026-08-19)
+  x-status: 403 with stack trace on every identifier including a negative control (probed 2026-08-19)
 - aid: ucla:digital-collections
   name: UCLA Library Digital Collections
-  description: >-
-    UCLA Library's digital collections platform, institution-hosted on a UCLA IP under a UCLA-issued certificate
-    and developed in the open by the UCLA Library engineering organisation. Recorded as a relationship
-    rather than a contract because the host answers HTTP 200 with an Anubis proof-of-work bot challenge
-    to every path, including the OAI-PMH route, so no API response could be read. Neither a finding about
-    UCLA nor a claim of a surface - a marker that this needs an authorised re-probe.
+  description: UCLA Library's digital collections platform, institution-hosted on a UCLA IP under a UCLA-issued
+    certificate and developed in the open by the UCLA Library engineering organisation. Recorded as a
+    relationship rather than a contract because the host answers HTTP 200 with an Anubis proof-of-work
+    bot challenge to every path, including the OAI-PMH route, so no API response could be read. Neither
+    a finding about UCLA nor a claim of a surface - a marker that this needs an authorised re-probe.
   humanURL: https://digital.library.ucla.edu/
   baseURL: https://digital.library.ucla.edu/
   tags:
@@ -171,19 +162,18 @@ apis:
   - type: GitHubOrganization
     url: https://github.com/UCLALibrary
   x-operator: institution
-  x-operator-evidence: >-
-    A record 164.67.48.162 in UCLA address space; TLS subject O=University of California, Los Angeles
-    issued by InCommon RSA Server CA 2; no vendor CNAME.
+  x-operator-evidence: A record 164.67.48.162 in UCLA address space; TLS subject O=University of California,
+    Los Angeles issued by InCommon RSA Server CA 2; no vendor CNAME.
   x-access: blocked
   x-status: 200 with an Anubis bot-challenge body on every path (probed 2026-08-19)
 - aid: ucla:dataverse
   name: UCLA Dataverse
-  description: >-
-    UCLA's research data repository, running open-source Dataverse on a UCLA-owned host under a UCLA-issued
-    certificate with no vendor CNAME - which distinguishes it from the Figshare and Elsevier Pure tenancies
-    that dominate this cohort. Recorded as a relationship rather than a contract because the host answers
-    HTTP 200 with an Anubis bot challenge to every path including /api/info/version and /oai, so neither
-    the Dataverse version, the DOI prefix nor OAI-PMH conformance could be confirmed, and none is claimed.
+  description: UCLA's research data repository, running open-source Dataverse on a UCLA-owned host under
+    a UCLA-issued certificate with no vendor CNAME - which distinguishes it from the Figshare and Elsevier
+    Pure tenancies that dominate this cohort. Recorded as a relationship rather than a contract because
+    the host answers HTTP 200 with an Anubis bot challenge to every path including /api/info/version and
+    /oai, so neither the Dataverse version, the DOI prefix nor OAI-PMH conformance could be confirmed,
+    and none is claimed.
   humanURL: https://dataverse.ucla.edu/
   baseURL: https://dataverse.ucla.edu/api
   tags:
@@ -198,18 +188,16 @@ apis:
   - type: Conformance
     url: conformance/ucla-conformance.yml
   x-operator: institution
-  x-operator-evidence: >-
-    TLS subject O=University of California, Los Angeles issued by InCommon RSA Server CA 2; A record 52.37.16.173
-    with no vendor CNAME; software is open-source Dataverse, self-installed.
+  x-operator-evidence: TLS subject O=University of California, Los Angeles issued by InCommon RSA Server
+    CA 2; A record 52.37.16.173 with no vendor CNAME; software is open-source Dataverse, self-installed.
   x-access: blocked
   x-status: 200 with an Anubis bot-challenge body on every path (probed 2026-08-19)
   x-added: '2026-08-19'
 - aid: ucla:bruinlearn
   name: BruinLearn (Canvas LMS)
-  description: >-
-    UCLA's learning management system. The brand, the courses, the learners and the subdomain are UCLA's;
-    the REST API, the LTI 1.3 implementation, the key rotation and the contract are Instructure's, and
-    bruinlearn.ucla.edu CNAMEs to ucla-vanity.instructure.com. The LTI tool-platform JWKS is anonymously
+  description: UCLA's learning management system. The brand, the courses, the learners and the subdomain
+    are UCLA's; the REST API, the LTI 1.3 implementation, the key rotation and the contract are Instructure's,
+    and bruinlearn.ucla.edu CNAMEs to ucla-vanity.instructure.com. The LTI tool-platform JWKS is anonymously
     readable and the REST API returns a structured 401. Recorded as a tenant relationship; no Canvas contract
     is saved under this institution.
   humanURL: https://bruinlearn.ucla.edu/
@@ -226,15 +214,14 @@ apis:
   - type: Examples
     url: examples/ucla-bruinlearn-lti-jwks.json
   x-operator: tenant
-  x-operator-evidence: >-
-    bruinlearn.ucla.edu CNAMEs to ucla-vanity.instructure.com; Canvas error envelope {"status":"unauthenticated"}
-    on /api/v1/accounts; LTI JWKS at the standard Canvas path.
+  x-operator-evidence: bruinlearn.ucla.edu CNAMEs to ucla-vanity.instructure.com; Canvas error envelope
+    {"status":"unauthenticated"} on /api/v1/accounts; LTI JWKS at the standard Canvas path.
   x-access: gated
   x-added: '2026-08-19'
 - aid: ucla:ucla-class-sections-api
   name: University of California, Los Angeles Class Sections API
-  description: >-
-    The Class Sections API from University of California, Los Angeles — 2 operation(s) for class sections.
+  description: The Class Sections API from University of California, Los Angeles — 2 operation(s) for
+    class sections.
   humanURL: https://developer.api.ucla.edu/api/261
   baseURL: https://api.ucla.edu/sis
   tags:
@@ -384,8 +371,7 @@ apis:
     url: json-schema/ucla-weather-schemas.json
 - aid: ucla:ucla-dictionary-api
   name: University of California, Los Angeles Dictionary API
-  description: >-
-    The Dictionary API from University of California, Los Angeles — 61 operation(s) for dictionary.
+  description: The Dictionary API from University of California, Los Angeles — 61 operation(s) for dictionary.
   humanURL: https://developer.api.ucla.edu/api/261
   baseURL: https://api.ucla.edu/sis
   tags:
@@ -435,8 +421,8 @@ apis:
     url: json-schema/ucla-weather-schemas.json
 - aid: ucla:ucla-ge-foundations-api
   name: University of California, Los Angeles GE Foundations API
-  description: >-
-    The GE Foundations API from University of California, Los Angeles — 2 operation(s) for ge foundations.
+  description: The GE Foundations API from University of California, Los Angeles — 2 operation(s) for
+    ge foundations.
   humanURL: https://developer.api.ucla.edu/api/261
   baseURL: https://api.ucla.edu/sis
   tags:
@@ -486,8 +472,8 @@ apis:
     url: json-schema/ucla-weather-schemas.json
 - aid: ucla:ucla-infrastructure-api
   name: University of California, Los Angeles Infrastructure API
-  description: >-
-    The Infrastructure API from University of California, Los Angeles — 1 operation(s) for infrastructure.
+  description: The Infrastructure API from University of California, Los Angeles — 1 operation(s) for
+    infrastructure.
   humanURL: https://developer.api.ucla.edu/api/261
   baseURL: https://api.ucla.edu/sis
   tags:
@@ -587,9 +573,8 @@ apis:
     url: json-schema/ucla-weather-schemas.json
 - aid: ucla:ucla-production-calendar-jobs-api
   name: University of California, Los Angeles Production Calendar Jobs API
-  description: >-
-    The Production Calendar Jobs API from University of California, Los Angeles — 1 operation(s) for production
-    calendar jobs.
+  description: The Production Calendar Jobs API from University of California, Los Angeles — 1 operation(s)
+    for production calendar jobs.
   humanURL: https://developer.api.ucla.edu/api/261
   baseURL: https://api.ucla.edu/sis
   tags:
@@ -639,8 +624,7 @@ apis:
     url: json-schema/ucla-weather-schemas.json
 - aid: ucla:ucla-weather-api
   name: University of California, Los Angeles Weather API
-  description: >-
-    The Weather API from University of California, Los Angeles — 14 operation(s) for weather.
+  description: The Weather API from University of California, Los Angeles — 14 operation(s) for weather.
   humanURL: https://developer.api.ucla.edu/api/261
   baseURL: https://api.ucla.edu/sis
   tags:
@@ -733,7 +717,7 @@ common:
 - type: AITooling
   url: https://dts.ucla.edu/initiatives/ai/guiding-principles-responsible-use
 - type: OpenAPI
-  url: openapi/ucla-sis-dictionary-openapi.yml
+  url: openapi/_original/ucla-sis-dictionary-openapi.yml
 - type: JSONSchema
   url: json-schema/ucla-sis-dictionary-schemas.json
 - type: Examples
@@ -772,23 +756,21 @@ maintainers:
 x-coverage:
   state: gated
   reason: approval_required_no_self_service
-  detail: >-
-    UCLA is the strongest institution-operated API program measured in this cohort so far and it
-    is still not consumable. Seven real OpenAPI contracts covering 91 operations are anonymously
-    downloadable from the developer portal, and every route they describe is live on UCLA's own
-    Apigee gateway - a documented SIS path returns 401 with oauth.v2.InvalidAccessToken and a
-    conformant RFC 6750 Bearer challenge, which proves the contracts describe real endpoints. But
-    a credential exists only after a developer signs in with a UCLA logon, creates an App, selects
-    an API Product and a campus unit approves the request. There is no public registration, no
-    sandbox, no trial key. The portal states plainly that most APIs are only visible after log on,
-    so the eight catalogued products are a subset of an unknown whole. Two secondary limits are
-    recorded rather than treated as findings about UCLA - dataverse.ucla.edu and
-    digital.library.ucla.edu both answer 200 with an Anubis proof-of-work bot challenge on every
-    path, so OAI-PMH, Dataverse version and DOI prefix could not be read and are not claimed; and
-    UCLA Library's Cantaloupe IIIF server answers 403 with a stack trace for every identifier
-    including a deliberate nonsense control, so no manifest could be retrieved. This is a correct
-    gated profile, not a failed probe - roughly 60 URLs were fetched successfully across 15 hosts,
-    including 7 contracts, signed federation metadata and 3 live error surfaces.
+  detail: UCLA is the strongest institution-operated API program measured in this cohort so far and it
+    is still not consumable. Seven real OpenAPI contracts covering 91 operations are anonymously downloadable
+    from the developer portal, and every route they describe is live on UCLA's own Apigee gateway - a
+    documented SIS path returns 401 with oauth.v2.InvalidAccessToken and a conformant RFC 6750 Bearer
+    challenge, which proves the contracts describe real endpoints. But a credential exists only after
+    a developer signs in with a UCLA logon, creates an App, selects an API Product and a campus unit approves
+    the request. There is no public registration, no sandbox, no trial key. The portal states plainly
+    that most APIs are only visible after log on, so the eight catalogued products are a subset of an
+    unknown whole. Two secondary limits are recorded rather than treated as findings about UCLA - dataverse.ucla.edu
+    and digital.library.ucla.edu both answer 200 with an Anubis proof-of-work bot challenge on every path,
+    so OAI-PMH, Dataverse version and DOI prefix could not be read and are not claimed; and UCLA Library's
+    Cantaloupe IIIF server answers 403 with a stack trace for every identifier including a deliberate
+    nonsense control, so no manifest could be retrieved. This is a correct gated profile, not a failed
+    probe - roughly 60 URLs were fetched successfully across 15 hosts, including 7 contracts, signed federation
+    metadata and 3 live error surfaces.
   evidence:
   - url: https://developer.api.ucla.edu/api-catalog
     status: 200
@@ -816,7 +798,8 @@ x-coverage:
     status: 200
   - url: https://api.ucla.edu/nonexistentpath
     status: 500
-    note: 'Plain-text "Unauthorized by UCLA API Gateway. Invalid Config Data" on every unrouted path; should be 404.'
+    note: Plain-text "Unauthorized by UCLA API Gateway. Invalid Config Data" on every unrouted path; should
+      be 404.
   - url: https://qa.api.ucla.edu/
     status: 404
     note: QA returns a structured ApplicationNotFound fault where production returns a 500.
@@ -844,9 +827,8 @@ x-coverage:
     note: Cantaloupe 5.0.5 landing page; IIIF Image API 2.x and 3.0 endpoints advertised.
   - url: https://iiif.library.ucla.edu/iiif/2/bogus-identifier/info.json
     status: 403
-    note: >-
-      Negative control. Identical stack-trace body to a plausible real identifier, so a 403 here
-      is never evidence an object exists. Also leaks the private S3 bucket name.
+    note: Negative control. Identical stack-trace body to a plausible real identifier, so a 403 here is
+      never evidence an object exists. Also leaks the private S3 bucket name.
   - url: https://api.ucla.edu/
     status: 500
   - url: https://data.ucla.edu/
@@ -857,35 +839,31 @@ x-coverage:
     note: Pilot portal recorded in the June 2026 profile still does not resolve from outside campus.
   - url: https://weather.atmos.ucla.edu/
     status: 0
-    note: >-
-      Referenced by info.description in UCLA's own Weather contract. Resolves in DNS but accepts
-      no connection; dead pointer, removed rather than carried.
+    note: Referenced by info.description in UCLA's own Weather contract. Resolves in DNS but accepts no
+      connection; dead pointer, removed rather than carried.
   - url: https://www.ucla.edu/llms.txt
     status: 404
   - url: https://developer.api.ucla.edu/.well-known/security.txt
     status: 404
   - url: https://escholarship.org/oai?verb=ListSets
     status: 200
-    note: >-
-      UC systemwide repository operated by the California Digital Library. ListSets returns a
-      single set, "everything", with no UCLA-specific set, so nothing here is attributable to
-      UCLA and no entry is recorded for it.
+    note: UC systemwide repository operated by the California Digital Library. ListSets returns a single
+      set, "everything", with no UCLA-specific set, so nothing here is attributable to UCLA and no entry
+      is recorded for it.
   - url: https://it.ucla.edu/privacy
     status: 200
     note: Soft-404 — redirects to the dts.ucla.edu homepage; not claimed as a pointer.
   assessed: '2026-08-19'
   method: university pipeline live probe sweep
   added: 6
-  added_detail: >-
-    Six surfaces were added that the June 2026 profile missed: the Verify Connectivity to SIS and
-    UCLA Weather API products, the Shibboleth identity provider, UCLA Dataverse, UCLA Library
-    Digital Collections and the BruinLearn tenancy. Seven OpenAPI contracts were retrieved for
-    the first time; the June profile recorded documentation pointers only and held no contract at
-    all. All seven were found by reading the swaggerUIFormatter block out of the portal's
-    drupal-settings-json, because UCLA publishes no machine-readable index of its own catalog.
+  added_detail: 'Six surfaces were added that the June 2026 profile missed: the Verify Connectivity to
+    SIS and UCLA Weather API products, the Shibboleth identity provider, UCLA Dataverse, UCLA Library
+    Digital Collections and the BruinLearn tenancy. Seven OpenAPI contracts were retrieved for the first
+    time; the June profile recorded documentation pointers only and held no contract at all. All seven
+    were found by reading the swaggerUIFormatter block out of the portal''s drupal-settings-json, because
+    UCLA publishes no machine-readable index of its own catalog.'
   removed: 0
-  removed_detail: >-
-    Nothing was removed. The correct-university-attribution pass found no vendor-attributed
-    contract in this repository to strip - UCLA had none, because the June profile had saved no
-    contracts at all. The one reclassification is BruinLearn, newly recorded as x-operator tenant
-    rather than credited to UCLA.
+  removed_detail: Nothing was removed. The correct-university-attribution pass found no vendor-attributed
+    contract in this repository to strip - UCLA had none, because the June profile had saved no contracts
+    at all. The one reclassification is BruinLearn, newly recorded as x-operator tenant rather than credited
+    to UCLA.
