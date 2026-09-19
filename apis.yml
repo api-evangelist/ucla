@@ -85,6 +85,13 @@ apis:
   - SAML
   - Shibboleth
   - InCommon
+  - SSO
+  - eduGAIN
+  tags_raw:
+  - Identity Federation
+  - SAML
+  - Shibboleth
+  - InCommon
   - Single Sign-On
   - eduGAIN
   properties:
