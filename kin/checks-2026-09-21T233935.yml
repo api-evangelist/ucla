@@ -2,22 +2,18 @@
 kin_checks:
   slug: ucla
   schema_version: 0.22.0
-  scored_at: '2026-09-19'
-  run_ts: 2026-09-19T193153
+  scored_at: '2026-09-21'
+  run_ts: 2026-09-21T233935
   note: Actionable checks (missed + partial) in `checks`, plus the ids that did not
     apply in `na`. Everything else in rubric/scoring-0.22.0.yml was earned; counts
     below let you verify that.
   counts:
     total: 136
-    earned: 42
+    earned: 46
     partial: 10
-    missed: 60
+    missed: 56
     na: 24
   checks:
-  - id: human_url_per_api
-    status: missed
-  - id: base_url_per_api
-    status: missed
   - id: well_known_published
     status: missed
   - id: llms_txt_published
@@ -40,10 +36,6 @@ kin_checks:
     status: missed
     detail: 0 of 9 openapi documents pass
   - id: asyncapi_present
-    status: missed
-  - id: json_schema_present
-    status: missed
-  - id: json_schema_per_resource
     status: missed
   - id: json_ld_property_depth
     status: missed
