@@ -1,23 +1,22 @@
-openapi: 3.2.0
+openapi: 3.0.3
 info:
   version: 0.0.1
-  title: UCLA Weather API
+  title: UCLA Weather
   description: UCLA Weather https://weather.atmos.ucla.edu/
 servers:
 - url: https://api.ucla.edu/
 - url: https://qa.api.ucla.edu/
-security:
-- ApiKeyAuth: []
-tags:
-- name: Weather
 paths:
   /weather/api:
     get:
-      summary: Returns current UCLA weather information with a valid APP apiKey send in as…
-      description: Returns current UCLA weather information with a valid APP apiKey send in as header parameter.
+      summary: Returns current UCLA weather information with a valid APP apiKey send in as header parameter.
+      description: Returns current UCLA weather information with a valid APP apiKey send in as header
+        parameter.
       parameters:
       - name: param
-        description: windDirection or windSpeed or gust or airTemperature or minimumTemperature or maximumTemperature or relativeHumidity or minRelativeHumidity or maxRelativeHumidity or dewPoint or wetBulb or seaLevelPressure or rainFallHour or rainFallDay
+        description: windDirection or windSpeed or gust or airTemperature or minimumTemperature or maximumTemperature
+          or relativeHumidity or minRelativeHumidity or maxRelativeHumidity or dewPoint or wetBulb or
+          seaLevelPressure or rainFallHour or rainFallDay
         in: query
         required: false
         schema:
@@ -29,13 +28,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FullList'
-      tags:
-      - Weather
-      operationId: getWeatherApi
-      x-operation-id-source: derived
   /weather/windSpeed:
     get:
-      summary: Average wind speed during the previous 60 seconds in miles per hour
+      summary: Average wind speed during the previous 60 seconds in miles per hour.
       responses:
         '200':
           description: Average wind speed during the previous 60 seconds in miles per hour.
@@ -43,13 +38,9 @@ paths:
             text/plain:
               schema:
                 type: string
-      tags:
-      - Weather
-      operationId: getWeatherWindSpeed
-      x-operation-id-source: derived
   /weather/gust:
     get:
-      summary: Maximum wind speed during the previous 60 seconds in miles per hour
+      summary: Maximum wind speed during the previous 60 seconds in miles per hour.
       responses:
         '200':
           description: Maximum wind speed during the previous 60 seconds in miles per hour.
@@ -57,13 +48,9 @@ paths:
             text/plain:
               schema:
                 type: string
-      tags:
-      - Weather
-      operationId: getWeatherGust
-      x-operation-id-source: derived
   /weather/airTemperature:
     get:
-      summary: Current air temperature in degrees Fahrenheit
+      summary: Current air temperature in degrees Fahrenheit.
       responses:
         '200':
           description: Current air temperature in degrees Fahrenheit.
@@ -71,13 +58,9 @@ paths:
             text/plain:
               schema:
                 type: string
-      tags:
-      - Weather
-      operationId: getWeatherAirTemperature
-      x-operation-id-source: derived
   /weather/minimumTemperature:
     get:
-      summary: Minimum temperature since midnight PST in degrees Fahrenheit
+      summary: Minimum temperature since midnight PST in degrees Fahrenheit.
       responses:
         '200':
           description: Minimum temperature since midnight PST in degrees Fahrenheit.
@@ -85,13 +68,9 @@ paths:
             text/plain:
               schema:
                 type: string
-      tags:
-      - Weather
-      operationId: getWeatherMinimumTemperature
-      x-operation-id-source: derived
   /weather/maximumTemperature:
     get:
-      summary: Maximum temperature since midnight PST in degrees Fahrenheit
+      summary: Maximum temperature since midnight PST in degrees Fahrenheit.
       responses:
         '200':
           description: Maximum temperature since midnight PST in degrees Fahrenheit.
@@ -99,13 +78,9 @@ paths:
             text/plain:
               schema:
                 type: string
-      tags:
-      - Weather
-      operationId: getWeatherMaximumTemperature
-      x-operation-id-source: derived
   /weather/relativeHumidity:
     get:
-      summary: Current relative humidity in percent
+      summary: Current relative humidity in percent.
       responses:
         '200':
           description: Current relative humidity in percent.
@@ -113,13 +88,9 @@ paths:
             text/plain:
               schema:
                 type: string
-      tags:
-      - Weather
-      operationId: getWeatherRelativeHumidity
-      x-operation-id-source: derived
   /weather/minRelativeHumidity:
     get:
-      summary: Minimum relative humidity since midnight PST in percent
+      summary: Minimum relative humidity since midnight PST in percent.
       responses:
         '200':
           description: Minimum relative humidity since midnight PST in percent.
@@ -127,13 +98,9 @@ paths:
             text/plain:
               schema:
                 type: string
-      tags:
-      - Weather
-      operationId: getWeatherMinRelativeHumidity
-      x-operation-id-source: derived
   /weather/maxRelativeHumidity:
     get:
-      summary: Maximum relative humidity since midnight PST in percent
+      summary: Maximum relative humidity since midnight PST in percent.
       responses:
         '200':
           description: Maximum relative humidity since midnight PST in percent.
@@ -141,13 +108,9 @@ paths:
             text/plain:
               schema:
                 type: string
-      tags:
-      - Weather
-      operationId: getWeatherMaxRelativeHumidity
-      x-operation-id-source: derived
   /weather/dewPoint:
     get:
-      summary: Current dew point temperature in degrees Fahrenheit
+      summary: Current dew point temperature in degrees Fahrenheit.
       responses:
         '200':
           description: Current dew point temperature in degrees Fahrenheit.
@@ -155,13 +118,9 @@ paths:
             text/plain:
               schema:
                 type: string
-      tags:
-      - Weather
-      operationId: getWeatherDewPoint
-      x-operation-id-source: derived
   /weather/wetBulb:
     get:
-      summary: Current wet bulb temperature in degrees Fahrenheit
+      summary: Current wet bulb temperature in degrees Fahrenheit.
       responses:
         '200':
           description: Current wet bulb temperature in degrees Fahrenheit.
@@ -169,13 +128,9 @@ paths:
             text/plain:
               schema:
                 type: string
-      tags:
-      - Weather
-      operationId: getWeatherWetBulb
-      x-operation-id-source: derived
   /weather/seaLevelPressure:
     get:
-      summary: Equivalent sea level pressure in millibars
+      summary: Equivalent sea level pressure in millibars.
       responses:
         '200':
           description: Equivalent sea level pressure in millibars.
@@ -183,13 +138,9 @@ paths:
             text/plain:
               schema:
                 type: string
-      tags:
-      - Weather
-      operationId: getWeatherSeaLevelPressure
-      x-operation-id-source: derived
   /weather/rainFallHour:
     get:
-      summary: Rainfall in previous 60 minutes
+      summary: Rainfall in previous 60 minutes.
       responses:
         '200':
           description: Rainfall in previous 60 minutes.
@@ -197,13 +148,9 @@ paths:
             text/plain:
               schema:
                 type: string
-      tags:
-      - Weather
-      operationId: getWeatherRainFallHour
-      x-operation-id-source: derived
   /weather/rainFallDay:
     get:
-      summary: Rainfall since midnight PST
+      summary: Rainfall since midnight PST.
       responses:
         '200':
           description: Rainfall since midnight PST.
@@ -211,11 +158,12 @@ paths:
             text/plain:
               schema:
                 type: string
-      tags:
-      - Weather
-      operationId: getWeatherRainFallDay
-      x-operation-id-source: derived
 components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-apikey
   schemas:
     FullList:
       type: object
@@ -242,7 +190,8 @@ components:
           example: 37
         wind_direction:
           type: integer
-          description: Average direction from which wind blows during the previous 60 seconds in degrees from due North.
+          description: Average direction from which wind blows during the previous 60 seconds in degrees
+            from due North.
           example: 171
         wind_speed:
           type: string
@@ -300,8 +249,5 @@ components:
           type: string
           description: Date and time of data publication.
           example: '2020-08-17 07:35:10'
-  securitySchemes:
-    ApiKeyAuth:
-      type: apiKey
-      in: header
-      name: x-apikey
+security:
+- ApiKeyAuth: []

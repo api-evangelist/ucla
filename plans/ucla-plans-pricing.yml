@@ -4,7 +4,7 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: University of California, Los Angeles
 providerId: ucla
 created: '2026-06-03'
-modified: '2026-06-03'
+modified: '2026-08-19'
 reconciled: false
 tags:
 - Education
@@ -12,15 +12,18 @@ tags:
 - University
 - Plans
 description: >-
-  University of California, Los Angeles is a non-commercial higher-education institution; its APIs are not sold
-  as a commercial product. Public APIs (library, repository, course, and open-metadata
-  interfaces) are offered free of charge, typically for non-commercial use. Most
-  administrative and identity APIs are not openly self-service and require institutional
-  affiliation, credentials, or federation membership rather than a paid plan.
+  UCLA is a non-commercial higher-education institution and does not sell API access. There is no
+  price, no tier and no meter anywhere on the developer portal. Access to all seven published
+  contracts is free of charge but is not free of process: a developer signs in with a UCLA logon,
+  creates an App, subscribes it to one or more API Products, and a campus unit approves the
+  request. There is no public registration, no sandbox and no trial credential, so the practical
+  plan for an unaffiliated caller is "none". The only genuinely open UCLA surface is the signed
+  SAML metadata for its identity provider, which requires no credential at all.
 notes: >-
-  No published per-seat or per-call commercial pricing. "Free / Open" reflects open
-  public endpoints; "Affiliation / Credentialed" reflects access gated by institutional
-  identity rather than payment.
+  Verified 2026-08-19. "Free / Open" applies only to anonymously readable metadata (the seven
+  OpenAPI documents themselves and the InCommon SAML metadata). "Affiliation / Credentialed"
+  applies to every callable endpoint. Access requests go through
+  https://developer.api.ucla.edu/ and api-support@it.ucla.edu.
 sources:
 - https://raw.githubusercontent.com/api-evangelist/ucla/refs/heads/main/apis.yml
 plans:

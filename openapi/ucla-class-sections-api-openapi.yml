@@ -79,7 +79,7 @@ paths:
     get:
       tags:
       - Class Sections
-      summary: ''
+      summary: Class section detail get class section detail
       operationId: ClassSectionDetail_GetClassSectionDetail
       parameters:
       - name: offeredTermCode
@@ -135,39 +135,9 @@ paths:
         ' 500':
           description: Server Error
       deprecated: false
+      x-summary-source: derived
 components:
   schemas:
-    ClassSectionMeetingLocation:
-      type: object
-      properties:
-        classSectionMeetingDaysofWeekCode:
-          type: string
-        classSectionMeetingStartTime:
-          type: string
-        classSectionMeetingStopTime:
-          type: string
-        classSectionBuildingCode:
-          type: string
-        classSectionBuildingRoomCode:
-          type: string
-    ClassSectionDetailResponse:
-      type: object
-      properties:
-        lastCachedAt:
-          format: date-time
-          type: string
-        classSectionDetail:
-          $ref: '#/components/schemas/ClassSectionDetail'
-    ClassSectionNotes:
-      type: object
-      properties:
-        classSectionNotes:
-          type: string
-    ClassSectionUnit:
-      type: object
-      properties:
-        classSectionUnit:
-          type: string
     ClassSectionNumber:
       type: object
       properties:
@@ -260,35 +230,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LinkModel'
-    LinkModel:
+    ClassSectionUnit:
       type: object
       properties:
-        href:
+        classSectionUnit:
           type: string
-        rel:
-          type: string
-        method:
-          type: string
-    ClassSectionsResponse:
+    ClassSectionNotes:
       type: object
       properties:
-        classSection:
-          $ref: '#/components/schemas/ClassSections'
-    ClassSectionInstructor:
-      type: object
-      properties:
-        uclaid:
-          type: string
-        links:
-          $ref: '#/components/schemas/LinkModel'
-    ClassSectionRestrictionText:
-      type: object
-      properties:
-        classEnrollmentRestrictionText:
-          type: string
-        classEnrollmentConsentRequiredCode:
-          type: string
-        classEnrollmentRuleID:
+        classSectionNotes:
           type: string
     ClassSections:
       type: object
@@ -311,6 +261,57 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ClassSectionNumber'
+    ClassSectionsResponse:
+      type: object
+      properties:
+        classSection:
+          $ref: '#/components/schemas/ClassSections'
+    ClassSectionRestrictionText:
+      type: object
+      properties:
+        classEnrollmentRestrictionText:
+          type: string
+        classEnrollmentConsentRequiredCode:
+          type: string
+        classEnrollmentRuleID:
+          type: string
+    ClassSectionMeetingLocation:
+      type: object
+      properties:
+        classSectionMeetingDaysofWeekCode:
+          type: string
+        classSectionMeetingStartTime:
+          type: string
+        classSectionMeetingStopTime:
+          type: string
+        classSectionBuildingCode:
+          type: string
+        classSectionBuildingRoomCode:
+          type: string
+    ClassSectionDetailResponse:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        classSectionDetail:
+          $ref: '#/components/schemas/ClassSectionDetail'
+    ClassSectionInstructor:
+      type: object
+      properties:
+        uclaid:
+          type: string
+        links:
+          $ref: '#/components/schemas/LinkModel'
+    LinkModel:
+      type: object
+      properties:
+        href:
+          type: string
+        rel:
+          type: string
+        method:
+          type: string
   securitySchemes:
     application:
       type: oauth2

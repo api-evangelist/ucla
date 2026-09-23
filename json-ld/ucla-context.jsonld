@@ -1,5 +1,6 @@
 {
   "@context": {
+    "@vocab": "https://schema.org/",
     "schema": "https://schema.org/",
     "ucla": "https://developer.api.ucla.edu/vocab#",
     "name": "schema:name",
@@ -9,34 +10,54 @@
     "logo": "schema:logo",
     "address": "schema:address",
     "department": "schema:department",
-    "api": {
-      "@id": "ucla:api",
-      "@container": "@set"
-    },
-    "humanURL": {
-      "@id": "ucla:humanURL",
-      "@type": "@id"
-    },
-    "baseURL": {
-      "@id": "ucla:baseURL",
-      "@type": "@id"
-    },
-    "Classes": "ucla:Classes",
-    "Courses": "ucla:Courses",
-    "Dictionary": "ucla:Dictionary",
-    "Menu": "ucla:Menu",
+    "CollegeOrUniversity": "schema:CollegeOrUniversity",
+    "api": { "@id": "ucla:api", "@container": "@set" },
+    "humanURL": { "@id": "ucla:humanURL", "@type": "@id" },
+    "baseURL": { "@id": "ucla:baseURL", "@type": "@id" },
+    "operator": "ucla:operator",
+    "Institution": "ucla:InstitutionOperated",
+    "Tenant": "ucla:TenantOperated",
+    "offeredTermCode": "ucla:offeredTermCode",
+    "subjectAreaCode": "ucla:subjectAreaCode",
+    "courseCatalogNumber": "ucla:courseCatalogNumber",
+    "courseStartTermCode": "ucla:courseStartTermCode",
+    "classNumber": "ucla:classNumber",
+    "classSectionNumber": "ucla:classSectionNumber",
+    "termsessionInstructionWeeks": "ucla:termsessionInstructionWeeks",
+    "GEFoundationCode": "ucla:GEFoundationCode",
+    "GEFoundationCategoryCode": "ucla:GEFoundationCategoryCode",
+    "courseDiversity": "ucla:courseDiversity",
+    "Class": "ucla:Class",
+    "ClassSection": "ucla:ClassSection",
+    "Course": { "@id": "schema:Course" },
+    "DictionaryEntry": "ucla:DictionaryEntry",
     "ProductionCalendarJob": "ucla:ProductionCalendarJob",
-    "IIIFManifest": "ucla:IIIFManifest"
+    "MenuData": "ucla:MenuData",
+    "WeatherObservation": "ucla:WeatherObservation",
+    "IIIFManifest": "ucla:iiifManifest",
+    "entityID": "ucla:samlEntityID",
+    "shibbolethScope": "ucla:shibbolethScope",
+    "identityFederation": "ucla:identityFederation"
   },
-  "@type": "schema:CollegeOrUniversity",
   "@id": "https://www.ucla.edu/",
+  "@type": "CollegeOrUniversity",
   "name": "University of California, Los Angeles",
   "url": "https://www.ucla.edu/",
-  "description": "A public land-grant research university in Los Angeles, California, operating a centralized API Developer Portal cataloging campus APIs for student information, courses, classes, the Registrar data dictionary, MyUCLA menu data, enterprise integration, and IIIF-compliant library digital collections.",
   "sameAs": [
     "https://developer.api.ucla.edu/",
     "https://github.com/ucla",
+    "https://github.com/UCLALibrary",
     "https://www.linkedin.com/school/ucla/",
-    "https://digital.library.ucla.edu/"
-  ]
+    "https://ror.org/046rm7j60",
+    "https://www.wikidata.org/wiki/Q174710"
+  ],
+  "identityFederation": {
+    "entityID": "urn:mace:incommon:ucla.edu",
+    "shibbolethScope": "ucla.edu",
+    "url": "https://mdq.incommon.org/entities/urn%3Amace%3Aincommon%3Aucla.edu"
+  },
+  "x-generated": "2026-08-19",
+  "x-method": "derived",
+  "x-source": "apis.yml, openapi/_original/*.yml, examples/ucla-idp-saml-metadata.xml",
+  "x-operator": "institution"
 }

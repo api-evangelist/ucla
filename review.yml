@@ -3,59 +3,133 @@ name: University of California, Los Angeles
 description: University of California, Los Angeles public developer/API footprint review for APIs.json cataloging.
 url: https://raw.githubusercontent.com/api-evangelist/ucla/refs/heads/main/review.yml
 created: '2026-06-03'
-modified: '2026-06-03'
+modified: '2026-08-19'
 reviews:
-  - date: '2026-06-03'
-    rating: 4
-    summary: >-
-      UCLA runs a genuine, centralized API Developer Portal at
-      developer.api.ucla.edu with a public API Catalog (Classes, Courses,
-      Dictionary, MyUCLA Menu Data, Production Calendar Jobs) that offers
-      interactive documentation, but access to actual endpoints is gated behind
-      an approval workflow with App Key/secret credentials, so base URLs were
-      not published. The portal home, catalog, and individual product pages all
-      resolved live (HTTP 200). UCLA Library exposes IIIF-compliant digital
-      collections manifests. The developer-pilot portal did not resolve from
-      outside the network (treated as 0). Official GitHub org (github.com/ucla)
-      and UCLA Library org verified live. No public endpoints were fabricated;
-      gated and unreachable resources are recorded honestly.
-    endpoints:
-      - url: https://developer.api.ucla.edu/
-        status: 200
-        note: API Developer Portal home; verified live.
-      - url: https://developer.api.ucla.edu/api-catalog
-        status: 200
-        note: API Catalog listing campus API products; verified live.
-      - url: https://developer.api.ucla.edu/api/261
-        status: 200
-        note: Classes API documentation page; access gated.
-      - url: https://developer.api.ucla.edu/api/271
-        status: 200
-        note: Courses API documentation page; access gated.
-      - url: https://developer.api.ucla.edu/api/366
-        status: 200
-        note: Dictionary API documentation page; access gated.
-      - url: https://developer.api.ucla.edu/api/61
-        status: 200
-        note: MyUCLA Menu Data API documentation page; access gated.
-      - url: https://developer.api.ucla.edu/api/281
-        status: 200
-        note: Production Calendar Jobs API documentation page; access gated.
-      - url: https://catalog.registrar.ucla.edu/
-        status: 200
-        note: UCLA General Catalog, source for Courses/Classes data.
-      - url: https://digital.library.ucla.edu/
-        status: 200
-        note: UCLA Library Digital Collections (IIIF-enabled); verified live.
-      - url: https://iiif.library.ucla.edu/
-        status: 200
-        note: UCLA Library IIIF image service host; verified live.
-      - url: https://github.com/ucla
-        status: 200
-        note: Official UCLA GitHub organization; verified live.
-      - url: https://www.ucla.edu/
-        status: 200
-        note: Official institution website; verified live.
-      - url: https://developer-pilot.api.ucla.edu/
-        status: 0
-        note: Pilot developer portal did not resolve from outside the campus network.
+- date: '2026-06-03'
+  rating: 4
+  summary: >-
+    UCLA runs a genuine, centralized API Developer Portal at developer.api.ucla.edu with a public
+    API Catalog (Classes, Courses, Dictionary, MyUCLA Menu Data, Production Calendar Jobs) that
+    offers interactive documentation, but access to actual endpoints is gated behind an approval
+    workflow with App Key/secret credentials, so base URLs were not published. The portal home,
+    catalog, and individual product pages all resolved live (HTTP 200). UCLA Library exposes
+    IIIF-compliant digital collections manifests. The developer-pilot portal did not resolve from
+    outside the network (treated as 0). Official GitHub org (github.com/ucla) and UCLA Library org
+    verified live. No public endpoints were fabricated; gated and unreachable resources are
+    recorded honestly.
+  endpoints:
+  - url: https://developer.api.ucla.edu/
+    status: 200
+    note: API Developer Portal home; verified live.
+  - url: https://developer.api.ucla.edu/api-catalog
+    status: 200
+    note: API Catalog listing campus API products; verified live.
+  - url: https://developer.api.ucla.edu/api/261
+    status: 200
+    note: Classes API documentation page; access gated.
+  - url: https://developer.api.ucla.edu/api/271
+    status: 200
+    note: Courses API documentation page; access gated.
+  - url: https://developer.api.ucla.edu/api/366
+    status: 200
+    note: Dictionary API documentation page; access gated.
+  - url: https://developer.api.ucla.edu/api/61
+    status: 200
+    note: MyUCLA Menu Data API documentation page; access gated.
+  - url: https://developer.api.ucla.edu/api/281
+    status: 200
+    note: Production Calendar Jobs API documentation page; access gated.
+  - url: https://catalog.registrar.ucla.edu/
+    status: 200
+    note: UCLA General Catalog, source for Courses/Classes data.
+  - url: https://digital.library.ucla.edu/
+    status: 200
+    note: UCLA Library Digital Collections (IIIF-enabled); verified live.
+  - url: https://iiif.library.ucla.edu/
+    status: 200
+    note: UCLA Library IIIF image service host; verified live.
+  - url: https://github.com/ucla
+    status: 200
+    note: Official UCLA GitHub organization; verified live.
+  - url: https://www.ucla.edu/
+    status: 200
+    note: Official institution website; verified live.
+  - url: https://developer-pilot.api.ucla.edu/
+    status: 0
+    note: Pilot developer portal did not resolve from outside the campus network.
+- date: '2026-08-19'
+  rating: 6
+  reviewer: API Evangelist university pipeline
+  summary: >-
+    Re-profiled under the university pipeline, which settles operator attribution before saving
+    anything. The June review's central conclusion - that UCLA gates everything and publishes no
+    base URLs - was half right and materially incomplete. UCLA does gate everything, but it also
+    publishes seven complete OpenAPI contracts anonymously, and the June pass did not find them
+    because the portal exposes no machine-readable index: each specification URL lives inside the
+    swaggerUIFormatter block of the page's drupal-settings-json. Reading those eight pages yielded
+    contracts for Classes, Courses, Dictionary, Production Calendar Jobs, MyUCLA Menu Data, a
+    previously unrecorded Verify Connectivity to SIS product, and a previously unrecorded UCLA
+    Weather API - 91 operations, all GET, all on api.ucla.edu, which CNAMEs to ucla-prod.apigee.net
+    under a certificate issued to O=University of California, Los Angeles. A documented SIS route
+    answers 401 with oauth.v2.InvalidAccessToken and an RFC 6750 Bearer challenge, so the contracts
+    describe endpoints that genuinely exist. The largest find is outside the portal entirely: UCLA
+    runs its own Shibboleth identity provider, registered by InCommon under entityID
+    urn:mace:incommon:ucla.edu, signed, scoped to ucla.edu, carrying REFEDS Research & Scholarship
+    and a SIRTFI assurance certification with security@it.ucla.edu named as its contact. Three
+    contract defects are worth reporting back to UCLA: 462 response keys across the six SIS
+    contracts are declared with a leading space and are therefore invisible to conformant
+    validators; the production gateway answers 500 with plain text on any unrouted path where QA
+    correctly answers 404; and UCLA Library's Cantaloupe IIIF server returns a Java stack trace
+    naming its private S3 bucket on every 403, including for a nonsense identifier. Nothing was
+    removed - unusually for this cohort, UCLA held no vendor-attributed contract, because the June
+    profile had saved no contracts at all. BruinLearn was newly recorded as a tenant relationship
+    (Instructure Canvas on a vanity subdomain) rather than credited to UCLA.
+  endpoints:
+  - url: https://developer.api.ucla.edu/api-catalog
+    status: 200
+    note: Eight products; three (51, 346, 1446) absent from the June profile.
+  - url: https://developer.api.ucla.edu/sites/default/files/apidoc_specs/classes_v1_4.json
+    status: 200
+    note: Swagger 2.0, 6 operations, host api.ucla.edu basePath /sis.
+  - url: https://developer.api.ucla.edu/sites/default/files/apidoc_specs/dictionary_v1%20%281%29.json
+    status: 200
+    note: Swagger 2.0, 61 operations — the Registrar data dictionary.
+  - url: https://developer.api.ucla.edu/sites/default/files/apidoc_specs/UCLAWeather_3.yaml
+    status: 200
+    note: OpenAPI 3.0.3, 14 operations, header API key — the only 3.x contract UCLA publishes.
+  - url: https://api.ucla.edu/sis/dictionary/buildings/v1
+    status: 401
+    note: oauth.v2.InvalidAccessToken with RFC 6750 Bearer challenge; gateway live and enforcing.
+  - url: https://api.ucla.edu/nonexistentpath
+    status: 500
+    note: 'Plain text "Unauthorized by UCLA API Gateway. Invalid Config Data"; should be 404.'
+  - url: https://qa.api.ucla.edu/
+    status: 404
+    note: Structured ApplicationNotFound fault; QA and production disagree.
+  - url: https://mdq.incommon.org/entities/urn%3Amace%3Aincommon%3Aucla.edu
+    status: 200
+    note: Signed SAML metadata for UCLA's own Shibboleth IdP; REFEDS R&S + SIRTFI.
+  - url: https://iiif.library.ucla.edu/iiif/2/bogus-identifier/info.json
+    status: 403
+    note: Negative control returns a Java stack trace naming the private S3 bucket.
+  - url: https://dataverse.ucla.edu/oai?verb=Identify
+    status: 200
+    note: Anubis bot-challenge body, not OAI-PMH; unreadable, not credited.
+  - url: https://digital.library.ucla.edu/catalog/oai?verb=Identify
+    status: 200
+    note: Anubis bot-challenge body; unreadable, not credited.
+  - url: https://bruinlearn.ucla.edu/api/lti/security/jwks
+    status: 200
+    note: Tenant — bruinlearn.ucla.edu CNAMEs to ucla-vanity.instructure.com.
+  - url: https://weather.atmos.ucla.edu/
+    status: 0
+    note: Referenced by UCLA's own Weather contract; resolves in DNS, accepts no connection.
+  - url: https://data.ucla.edu/
+    status: 0
+    note: No open-data portal at the conventional hostname.
+  - url: https://developer-pilot.api.ucla.edu/
+    status: 0
+    note: Still does not resolve from outside campus, unchanged since June.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

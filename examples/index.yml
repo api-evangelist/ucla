@@ -1,0 +1,60 @@
+generated: '2026-08-19'
+method: probed
+source: live HTTP fetches of the listed URLs on 2026-08-19
+provider: University of California, Los Angeles
+providerId: ucla
+description: >-
+  Verbatim responses captured from live UCLA surfaces. Nothing in this directory is
+  synthesized; each file is the unmodified body returned by the URL recorded against it.
+  Operator is recorded per example because UCLA runs some of these surfaces itself and rents
+  others from a platform vendor.
+examples:
+- file: ucla-idp-saml-metadata.xml
+  url: https://mdq.incommon.org/entities/urn%3Amace%3Aincommon%3Aucla.edu
+  status: 200
+  content_type: application/samlmetadata+xml
+  x-operator: institution
+  describes: >-
+    InCommon-signed SAML 2.0 metadata for UCLA's own Shibboleth identity provider, entityID
+    urn:mace:incommon:ucla.edu, IdP endpoints on shb.ais.ucla.edu, scope ucla.edu. Carries
+    InCommon and REFEDS Research & Scholarship entity categories and a SIRTFI assurance
+    certification. Fetched from the InCommon MDQ service because that is where the signed
+    copy lives; the entity, the endpoints and the keys are UCLA's.
+- file: ucla-apigee-invalid-token-error.json
+  url: https://api.ucla.edu/sis/dictionary/buildings/v1
+  status: 401
+  content_type: application/json
+  x-operator: institution
+  describes: >-
+    The error envelope UCLA's own API gateway returns to an unauthenticated caller on a real,
+    documented SIS route. Confirms the gateway is live and enforcing OAuth 2.0, and that the
+    contracts on the developer portal describe routes that actually exist.
+- file: ucla-iiif-cantaloupe-403-negative-probe.txt
+  url: https://iiif.library.ucla.edu/iiif/2/bogus-identifier/info.json
+  status: 403
+  content_type: text/plain;charset=utf-8
+  x-operator: institution
+  describes: >-
+    Deliberate negative probe against a nonsense identifier. UCLA Library's Cantaloupe 5.0.5
+    IIIF image server answers with a full Java stack trace that names the private S3 source
+    bucket. Recorded for two reasons - it is the same body a real identifier returns, so a 403
+    here is never evidence that an object exists, and the stack trace is an information
+    disclosure worth reporting back to the library.
+- file: ucla-bruinlearn-lti-jwks.json
+  url: https://bruinlearn.ucla.edu/api/lti/security/jwks
+  status: 200
+  content_type: application/json
+  x-operator: tenant
+  describes: >-
+    LTI 1.3 tool-platform JSON Web Key Set for BruinLearn, UCLA's learning management system.
+    The keys sign LTI launches for UCLA's courses; the software, the contract and the key
+    rotation are Instructure's. bruinlearn.ucla.edu CNAMEs to ucla-vanity.instructure.com.
+- file: ucla-developer-portal-robots.txt
+  url: https://developer.api.ucla.edu/robots.txt
+  status: 200
+  content_type: text/plain
+  x-operator: institution
+  describes: >-
+    Stock Drupal robots.txt served by the developer portal. Recorded because it does not
+    disallow /sites/default/files/apidoc_specs/ - the directory the portal's OpenAPI documents
+    are served from - which is how those contracts are publicly retrievable at all.

@@ -13,7 +13,7 @@ paths:
     get:
       tags:
       - Infrastructure
-      summary: ''
+      summary: Verify connectivity get
       operationId: VerifyConnectivity_Get
       parameters:
       - name: anyText
@@ -45,6 +45,7 @@ paths:
         ' 500':
           description: Server Error
       deprecated: false
+      x-summary-source: derived
 components:
   schemas:
     Object:

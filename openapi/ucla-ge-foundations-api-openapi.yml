@@ -81,7 +81,7 @@ paths:
     get:
       tags:
       - GE Foundations
-      summary: ''
+      summary: GE foundation category courses get GE foundation category courses
       operationId: GEFoundationCategoryCourses_GetGEFoundationCategoryCourses
       parameters:
       - name: GEFoundationCode
@@ -139,15 +139,16 @@ paths:
         ' 500':
           description: Server Error
       deprecated: false
+      x-summary-source: derived
 components:
   schemas:
-    GEFoundationCategoryCoursesCollection:
+    GEFoundationsCollection:
       type: object
       properties:
-        geFoundationCategoryCourses:
+        geFoundations:
           type: array
           items:
-            $ref: '#/components/schemas/GEFoundationCategoryCourses'
+            $ref: '#/components/schemas/GEFoundations'
         totalRecords:
           format: int32
           type: integer
@@ -179,13 +180,28 @@ components:
           type: string
         rel:
           type: string
-    GEFoundationsCollection:
+    GEFoundationCategoryCourses:
       type: object
       properties:
-        geFoundations:
+        geFoundationCode:
+          type: string
+        geFoundationStartTermCode:
+          type: string
+        geFoundationCategoryCode:
+          type: string
+        geFoundationCategoryStartTermCode:
+          type: string
+        courseCollection:
           type: array
           items:
-            $ref: '#/components/schemas/GEFoundations'
+            $ref: '#/components/schemas/GEFoundationCategoryCourse'
+    GEFoundationCategoryCoursesCollection:
+      type: object
+      properties:
+        geFoundationCategoryCourses:
+          type: array
+          items:
+            $ref: '#/components/schemas/GEFoundationCategoryCourses'
         totalRecords:
           format: int32
           type: integer
@@ -202,45 +218,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LinkModel'
-    LinkModel:
-      type: object
-      properties:
-        href:
-          type: string
-        rel:
-          type: string
-        method:
-          type: string
-    GEFoundations:
-      type: object
-      properties:
-        geFoundationCode:
-          type: string
-        geFoundationName:
-          type: string
-        geFoundationStartTermCode:
-          type: string
-        geFoundationLastTermCode:
-          type: string
-        geFoundationCategoryCollection:
-          type: array
-          items:
-            $ref: '#/components/schemas/GEFoundationsCategory'
-    GEFoundationCategoryCourses:
-      type: object
-      properties:
-        geFoundationCode:
-          type: string
-        geFoundationStartTermCode:
-          type: string
-        geFoundationCategoryCode:
-          type: string
-        geFoundationCategoryStartTermCode:
-          type: string
-        courseCollection:
-          type: array
-          items:
-            $ref: '#/components/schemas/GEFoundationCategoryCourse'
     GEFoundationCategoryCourse:
       type: object
       properties:
@@ -257,6 +234,30 @@ components:
         courseFoundationCategoryStartTermCode:
           type: string
         courseFoundationCategoryLastTermCode:
+          type: string
+    GEFoundations:
+      type: object
+      properties:
+        geFoundationCode:
+          type: string
+        geFoundationName:
+          type: string
+        geFoundationStartTermCode:
+          type: string
+        geFoundationLastTermCode:
+          type: string
+        geFoundationCategoryCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/GEFoundationsCategory'
+    LinkModel:
+      type: object
+      properties:
+        href:
+          type: string
+        rel:
+          type: string
+        method:
           type: string
   securitySchemes:
     application:

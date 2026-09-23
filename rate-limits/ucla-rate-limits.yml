@@ -4,7 +4,7 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: University of California, Los Angeles
 providerId: ucla
 created: '2026-06-03'
-modified: '2026-06-03'
+modified: '2026-08-19'
 reconciled: false
 tags:
 - Education
@@ -12,21 +12,36 @@ tags:
 - University
 - Rate Limiting
 description: >-
-  University of California, Los Angeles does not publish a unified public rate-limit table across its APIs. Open
-  metadata and harvesting endpoints (OAI-PMH, IIIF, library) may throttle large-scale
-  or automated harvesting; clients should harvest politely, honor Retry-After, and
-  contact the relevant service for bulk access.
-notes: Confirm per-service limits with each API's documentation; harvest responsibly.
+  UCLA publishes no rate-limit documentation of any kind. All 91 operations across its seven
+  contracts run behind a Google Apigee gateway at api.ucla.edu, which is certainly enforcing
+  quota per API Product, but not one contract declares a 429 response and no rate-limit header
+  was observed on any live response. Quota is set when a campus unit approves an application's
+  subscription to an API Product; that decision is not published anywhere. The library IIIF and
+  digital-collections hosts additionally sit behind an Anubis proof-of-work bot challenge, which
+  functions as an undeclared rate limit on automated clients.
+notes: >-
+  Verified 2026-08-19. No 429 declared in any UCLA contract; no Retry-After, X-RateLimit or
+  RateLimit-* header observed on 401/403/404/500 responses from api.ucla.edu, qa.api.ucla.edu or
+  iiif.library.ucla.edu. Ask api-support@it.ucla.edu for the quota attached to a given product.
 sources:
 - https://raw.githubusercontent.com/api-evangelist/ucla/refs/heads/main/apis.yml
 responseCodes:
   throttled: 429
 limits:
-- name: Default
+- name: Default (Apigee product quota)
   scope: client
   metric: requests-per-minute
-  limit: see service documentation
-  notes: No published global limit; large harvests may be rate-limited.
+  limit: undisclosed
+  notes: >-
+    Enforced by the gateway per API Product and per App Key. Not published, not declared in any
+    contract, and not discoverable before an access request is approved.
+- name: Bot challenge (UCLA Library hosts)
+  scope: client
+  metric: proof-of-work
+  limit: undisclosed
+  notes: >-
+    dataverse.ucla.edu and digital.library.ucla.edu answer HTTP 200 with an Anubis challenge on
+    every path. An undeclared throttle on automated access rather than a published rate limit.
 policies:
 - name: Backoff Strategy
   description: Exponential backoff with jitter; honor Retry-After; harvest during off-peak hours.

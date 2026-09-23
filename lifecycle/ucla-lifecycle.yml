@@ -1,0 +1,100 @@
+generated: '2026-08-19'
+method: derived
+source: >-
+  Derived from the seven contracts UCLA publishes at
+  https://developer.api.ucla.edu/sites/default/files/apidoc_specs/ and from observed surface
+  behaviour on 2026-08-19. UCLA publishes no versioning policy, no deprecation policy, no
+  changelog and no status page for any API surface.
+provider: University of California, Los Angeles
+providerId: ucla
+description: >-
+  Lifecycle posture for UCLA's API surfaces. UCLA does something almost no other institution in
+  this cohort does - it versions in the URI path, consistently, on every operation of every SIS
+  contract. What it does not do is publish anything about what that version means, when it
+  changes, or how a consumer is told.
+versioning:
+- surface: UCLA SIS APIs (api.ucla.edu/sis)
+  x-operator: institution
+  scheme: uri-path-suffix
+  detail: >-
+    Every path terminates in /v1 rather than beginning with it - /classes/{offeredTermCode}/v1,
+    /dictionary/buildings/v1, /courses/{subjectAreaCode}/{courseCatalogNumber}/{courseStartTermCode}/coursedetail/v1.
+    The version is a trailing segment on each resource, which means individual resources can be
+    versioned independently of one another. That is a deliberate and unusual design choice; it
+    is also undocumented anywhere, so a consumer cannot tell whether /v2 of one resource implies
+    anything about its siblings. info.version is the string "v1" on all six contracts, and
+    info.title is the string "API version v1" on all six - the contracts do not name themselves.
+  changelog: none
+  deprecation_policy: none
+  status_page: none
+  sunset_header: not documented
+- surface: UCLA Weather API (api.ucla.edu/weather)
+  x-operator: institution
+  scheme: none
+  detail: >-
+    No version segment in any of the fourteen paths. info.version is 0.0.1, which for a live
+    production route on the campus gateway reads as a contract that was never revised after
+    first authoring. The only UCLA contract written in OpenAPI 3.0.3; the other six are Swagger
+    2.0.
+  changelog: none
+  deprecation_policy: none
+  status_page: none
+- surface: UCLA API Developer Portal (developer.api.ucla.edu)
+  x-operator: institution
+  scheme: node-id
+  detail: >-
+    API products are addressed by Drupal node id (/api/261, /api/271, /api/366, /api/1446).
+    Node ids are not stable identifiers of a product - the Dictionary product appears twice
+    under two different node ids, 366 and 1446, and only 366 carries a specification. There is
+    no product-level version, no catalog feed, and no machine-readable index of the catalog.
+  changelog: none
+  deprecation_policy: none
+  status_page: none
+- surface: UCLA Shibboleth IdP (shb.ais.ucla.edu)
+  x-operator: institution
+  scheme: metadata-validity-window
+  detail: >-
+    Versioning is implicit in the signed metadata's validUntil, currently 2026-09-02. InCommon
+    republishes on a rolling window, so the metadata document is itself the change signal and
+    is worth polling. Protocol versions are pinned by SAML 1.1 and SAML 2.0.
+  changelog: none
+  deprecation_policy: >-
+    Governed by InCommon federation practice rather than by UCLA - deregistration or key
+    rollover is announced through the federation, not through a UCLA channel.
+  status_page: none
+- surface: UCLA Library IIIF (iiif.library.ucla.edu)
+  x-operator: institution
+  scheme: standard-version
+  detail: >-
+    Two versioned endpoints are exposed, /iiif/2 and /iiif/3, corresponding to IIIF Image API
+    2.x and 3.0. The version is the standard's, not UCLA's. Server self-reports
+    Cantaloupe/5.0.5 in an x-powered-by header, which discloses the exact software release in
+    production.
+  changelog: none
+  deprecation_policy: none
+  status_page: none
+- surface: BruinLearn (bruinlearn.ucla.edu)
+  x-operator: tenant
+  scheme: platform
+  detail: >-
+    Versioned by the Canvas release Instructure ships (/api/v1, LTI 1.3). UCLA does not control
+    this cadence and does not publish it.
+deprecation:
+  policy_published: false
+  sunset_header_observed: false
+  deprecated_flag_in_contracts: false
+  detail: >-
+    No operation in any of the seven contracts carries `deprecated: true`, no Sunset or
+    Deprecation header was observed, and no UCLA page describes what happens when an API
+    product is retired. The Dictionary product's duplicate node (1446) with no specification
+    attached is the closest thing to observable lifecycle drift on the portal, and it is
+    unannotated.
+observability:
+  status_page: none
+  detail: >-
+    No status.ucla.edu, no status.it.ucla.edu, no status page linked from the developer portal.
+    An API consumer has no channel through which UCLA communicates an incident.
+support_channel: api-support@it.ucla.edu
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
