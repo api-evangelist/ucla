@@ -347,64 +347,11 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    MultipleListedCourse:
+    CourseGEFoundationResponse:
       type: object
       properties:
-        multipleListedSubjectAreaCode:
-          type: string
-        multipleListedCourseCatalogNumber:
-          type: string
-        multipleListedCourseStartTermCode:
-          type: string
-    Requisite:
-      type: object
-      properties:
-        requisiteSequenceNumber:
-          type: string
-        requisiteCourseName:
-          type: string
-        requisiteCourseStartTerm:
-          type: string
-        requisiteCourseMinimumUnits:
-          type: string
-        requisiteCourseMinimumLetterGrade:
-          type: string
-        requisiteLogicalConnectorCode:
-          type: string
-        requisiteConnectorLeftParenthesis1:
-          type: string
-        requisiteConnectorLeftParenthesis2:
-          type: string
-        requisiteConnectorLeftParenthesis3:
-          type: string
-        requisiteConnectorRightParenthesis1:
-          type: string
-        requisiteConnectorRightParenthesis2:
-          type: string
-        requisiteConnectorRightParenthesis3:
-          type: string
-        coRequisiteFlag:
-          type: string
-        preRequisiteFlag:
-          type: string
-        requisiteSeverityText:
-          type: string
-    CourseUnit:
-      type: object
-      properties:
-        courseUnit:
-          type: string
-    MultiTerm:
-      type: object
-      properties:
-        multiTermSubjectAreaCode:
-          type: string
-        multiTermCourseCatalogNumber:
-          type: string
-        multiTermCourseStartTermCode:
-          type: string
-        multiTermCourseTotalNumber:
-          type: string
+        courseGEFoundations:
+          $ref: '#/components/schemas/CourseGEFoundation'
     CourseGEFoundation:
       type: object
       properties:
@@ -422,62 +369,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CourseGEAttribute'
-    CourseDiversityResponse:
-      type: object
-      properties:
-        courseDiversity:
-          $ref: '#/components/schemas/CourseDiversity'
-    GE:
-      type: object
-      properties:
-        geFoundationCode:
-          type: string
-        geFoundationStartTermCode:
-          type: string
-        geFoundationCategoryCode:
-          type: string
-        geFoundationCategoryStartTermCode:
-          type: string
-        courseFoundationCategoryStartTermCode:
-          type: string
-        courseFoundationCategoryLastTermCode:
-          type: string
-    CourseDiversity:
-      type: object
-      properties:
-        subjectAreaCode:
-          type: string
-        courseCatalogNumber:
-          type: string
-        courseStartTermCode:
-          type: string
-        courseDiversityCollection:
-          type: array
-          items:
-            $ref: '#/components/schemas/Diversity'
-    CourseCollection:
-      type: object
-      properties:
-        courses:
-          type: array
-          items:
-            $ref: '#/components/schemas/Course'
-        totalRecords:
-          format: int32
-          type: integer
-        totalPages:
-          format: int32
-          type: integer
-        pageNumber:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
     CourseDetailResponse:
       type: object
       properties:
@@ -501,74 +392,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CourseUnit'
-    CourseRequisite:
-      type: object
-      properties:
-        subjectAreaCode:
-          type: string
-        courseCatalogNumber:
-          type: string
-        courseStartTermCode:
-          type: string
-        requisiteCollection:
-          type: array
-          items:
-            $ref: '#/components/schemas/Requisite'
-    Diversity:
-      type: object
-      properties:
-        courseDiversityCollegeCode:
-          type: string
-        courseDiversityStartTermCode:
-          type: string
-        courseDiversityLastTermCode:
-          type: string
-    CourseGEFoundationResponse:
-      type: object
-      properties:
-        courseGEFoundations:
-          $ref: '#/components/schemas/CourseGEFoundation'
-    CourseCatalogNumber:
-      type: object
-      properties:
-        courseCatalogNumber:
-          type: string
-        courseStartTermCode:
-          type: string
-    CourseGEAttribute:
-      type: object
-      properties:
-        geAttributeCode:
-          type: string
-        geAttributeStartTermCode:
-          type: string
-        courseAttributeStartTermCode:
-          type: string
-        courseAttributeLastTermCode:
-          type: string
-    LinkModel:
-      type: object
-      properties:
-        href:
-          type: string
-        rel:
-          type: string
-        method:
-          type: string
-    Course:
-      type: object
-      properties:
-        subjectAreaCode:
-          type: string
-        courseCatalogNumberCollection:
-          type: array
-          items:
-            $ref: '#/components/schemas/CourseCatalogNumber'
-    CourseRequisiteResponse:
-      type: object
-      properties:
-        courseRequisite:
-          $ref: '#/components/schemas/CourseRequisite'
     CourseDetail:
       type: object
       properties:
@@ -634,14 +457,169 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LinkModel'
-    EquivalentCourse:
+    CourseGEAttribute:
       type: object
       properties:
-        equivalentSubjectAreaCode:
+        geAttributeCode:
           type: string
-        equivalentCourseCatalogNumber:
+        geAttributeStartTermCode:
           type: string
-        equivalentCourseStartTermCode:
+        courseAttributeStartTermCode:
+          type: string
+        courseAttributeLastTermCode:
+          type: string
+    CourseDiversity:
+      type: object
+      properties:
+        subjectAreaCode:
+          type: string
+        courseCatalogNumber:
+          type: string
+        courseStartTermCode:
+          type: string
+        courseDiversityCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/Diversity'
+    CourseDiversityResponse:
+      type: object
+      properties:
+        courseDiversity:
+          $ref: '#/components/schemas/CourseDiversity'
+    MultipleListedCourse:
+      type: object
+      properties:
+        multipleListedSubjectAreaCode:
+          type: string
+        multipleListedCourseCatalogNumber:
+          type: string
+        multipleListedCourseStartTermCode:
+          type: string
+    CourseUnit:
+      type: object
+      properties:
+        courseUnit:
+          type: string
+    Requisite:
+      type: object
+      properties:
+        requisiteSequenceNumber:
+          type: string
+        requisiteCourseName:
+          type: string
+        requisiteCourseStartTerm:
+          type: string
+        requisiteCourseMinimumUnits:
+          type: string
+        requisiteCourseMinimumLetterGrade:
+          type: string
+        requisiteLogicalConnectorCode:
+          type: string
+        requisiteConnectorLeftParenthesis1:
+          type: string
+        requisiteConnectorLeftParenthesis2:
+          type: string
+        requisiteConnectorLeftParenthesis3:
+          type: string
+        requisiteConnectorRightParenthesis1:
+          type: string
+        requisiteConnectorRightParenthesis2:
+          type: string
+        requisiteConnectorRightParenthesis3:
+          type: string
+        coRequisiteFlag:
+          type: string
+        preRequisiteFlag:
+          type: string
+        requisiteSeverityText:
+          type: string
+    Course:
+      type: object
+      properties:
+        subjectAreaCode:
+          type: string
+        courseCatalogNumberCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/CourseCatalogNumber'
+    CourseCollection:
+      type: object
+      properties:
+        courses:
+          type: array
+          items:
+            $ref: '#/components/schemas/Course'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    GE:
+      type: object
+      properties:
+        geFoundationCode:
+          type: string
+        geFoundationStartTermCode:
+          type: string
+        geFoundationCategoryCode:
+          type: string
+        geFoundationCategoryStartTermCode:
+          type: string
+        courseFoundationCategoryStartTermCode:
+          type: string
+        courseFoundationCategoryLastTermCode:
+          type: string
+    LinkModel:
+      type: object
+      properties:
+        href:
+          type: string
+        rel:
+          type: string
+        method:
+          type: string
+    Diversity:
+      type: object
+      properties:
+        courseDiversityCollegeCode:
+          type: string
+        courseDiversityStartTermCode:
+          type: string
+        courseDiversityLastTermCode:
+          type: string
+    CourseRequisiteResponse:
+      type: object
+      properties:
+        courseRequisite:
+          $ref: '#/components/schemas/CourseRequisite'
+    CourseCatalogNumber:
+      type: object
+      properties:
+        courseCatalogNumber:
+          type: string
+        courseStartTermCode:
+          type: string
+    MultiTerm:
+      type: object
+      properties:
+        multiTermSubjectAreaCode:
+          type: string
+        multiTermCourseCatalogNumber:
+          type: string
+        multiTermCourseStartTermCode:
+          type: string
+        multiTermCourseTotalNumber:
           type: string
     CourseSubtitle:
       type: object
@@ -650,6 +628,19 @@ components:
           type: string
         courseLongSubtitle:
           type: string
+    CourseRequisite:
+      type: object
+      properties:
+        subjectAreaCode:
+          type: string
+        courseCatalogNumber:
+          type: string
+        courseStartTermCode:
+          type: string
+        requisiteCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/Requisite'
     ConcurrentCourse:
       type: object
       properties:
@@ -658,6 +649,15 @@ components:
         concurrentCourseCatalogNumber:
           type: string
         concurrentCourseStartTermCode:
+          type: string
+    EquivalentCourse:
+      type: object
+      properties:
+        equivalentSubjectAreaCode:
+          type: string
+        equivalentCourseCatalogNumber:
+          type: string
+        equivalentCourseStartTermCode:
           type: string
   securitySchemes:
     application:
