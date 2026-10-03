@@ -280,15 +280,48 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ClassNumber:
+    ClassUNEX:
+      type: object
+      properties:
+        dataDisclosureWarning:
+          type: string
+        offeredTermCode:
+          type: string
+        subjectAreaCode:
+          type: string
+        courseCatalogNumber:
+          type: string
+        classNumberCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClassUNEXNumber'
+    ClassUNEXNumber:
       type: object
       properties:
         classNumber:
           type: string
-        links:
+        classSectionCollection:
           type: array
           items:
-            $ref: '#/components/schemas/LinkModel'
+            $ref: '#/components/schemas/ClassUNEXSection'
+    ClassUNEXSection:
+      type: object
+      properties:
+        classSectionNumber:
+          type: string
+    SessionGroup:
+      type: object
+      properties:
+        termsessionGroupCode:
+          type: string
+        termsessionInstructionWeeks:
+          type: string
+        termsessionGroupWeekCode:
+          type: string
+        classCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClassNumber'
     ClassDetail:
       type: object
       properties:
@@ -334,75 +367,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LinkModel'
-    ClassesCollection:
+    UNEXClassSection:
       type: object
       properties:
-        lastCachedAt:
-          format: date-time
-          type: string
-        classes:
+        classesUNEX:
           type: array
           items:
-            $ref: '#/components/schemas/Classes'
-        totalRecords:
-          format: int32
-          type: integer
-        totalPages:
-          format: int32
-          type: integer
-        pageNumber:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
-    ClassUNEXSection:
-      type: object
-      properties:
-        classSectionNumber:
-          type: string
-    ClassDetailResponse:
-      type: object
-      properties:
-        classDetail:
-          $ref: '#/components/schemas/ClassDetail'
-    ClassUNEX:
-      type: object
-      properties:
-        dataDisclosureWarning:
-          type: string
-        offeredTermCode:
-          type: string
-        subjectAreaCode:
-          type: string
-        courseCatalogNumber:
-          type: string
-        classNumberCollection:
-          type: array
-          items:
-            $ref: '#/components/schemas/ClassUNEXNumber'
-    ClassFinalExamResponse:
-      type: object
-      properties:
-        classFinalExam:
-          $ref: '#/components/schemas/ClassFinalExam'
-    SessionGroup:
-      type: object
-      properties:
-        termsessionGroupCode:
-          type: string
-        termsessionInstructionWeeks:
-          type: string
-        termsessionGroupWeekCode:
-          type: string
-        classCollection:
-          type: array
-          items:
-            $ref: '#/components/schemas/ClassNumber'
+            $ref: '#/components/schemas/ClassUNEX'
     Classes:
       type: object
       properties:
@@ -433,31 +404,6 @@ components:
       properties:
         classNotes:
           type: string
-    LinkModel:
-      type: object
-      properties:
-        href:
-          type: string
-        rel:
-          type: string
-        method:
-          type: string
-    ClassUNEXNumber:
-      type: object
-      properties:
-        classNumber:
-          type: string
-        classSectionCollection:
-          type: array
-          items:
-            $ref: '#/components/schemas/ClassUNEXSection'
-    UNEXClassSection:
-      type: object
-      properties:
-        classesUNEX:
-          type: array
-          items:
-            $ref: '#/components/schemas/ClassUNEX'
     ClassFinalExam:
       type: object
       properties:
@@ -485,6 +431,60 @@ components:
           type: string
         finalExamLocation:
           type: string
+    ClassNumber:
+      type: object
+      properties:
+        classNumber:
+          type: string
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    ClassesCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        classes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Classes'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    ClassDetailResponse:
+      type: object
+      properties:
+        classDetail:
+          $ref: '#/components/schemas/ClassDetail'
+    LinkModel:
+      type: object
+      properties:
+        href:
+          type: string
+        rel:
+          type: string
+        method:
+          type: string
+    ClassFinalExamResponse:
+      type: object
+      properties:
+        classFinalExam:
+          $ref: '#/components/schemas/ClassFinalExam'
   securitySchemes:
     application:
       type: oauth2

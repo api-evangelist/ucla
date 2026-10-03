@@ -143,44 +143,6 @@ components:
       properties:
         classSection:
           $ref: '#/components/schemas/ClassSections'
-    ClassSectionDetailResponse:
-      type: object
-      properties:
-        lastCachedAt:
-          format: date-time
-          type: string
-        classSectionDetail:
-          $ref: '#/components/schemas/ClassSectionDetail'
-    ClassSectionNumber:
-      type: object
-      properties:
-        classSectionNumber:
-          type: string
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
-    ClassSectionRestrictionText:
-      type: object
-      properties:
-        classEnrollmentRestrictionText:
-          type: string
-        classEnrollmentConsentRequiredCode:
-          type: string
-        classEnrollmentRuleID:
-          type: string
-    ClassSectionNotes:
-      type: object
-      properties:
-        classSectionNotes:
-          type: string
-    ClassSectionInstructor:
-      type: object
-      properties:
-        uclaid:
-          type: string
-        links:
-          $ref: '#/components/schemas/LinkModel'
     ClassSectionMeetingLocation:
       type: object
       properties:
@@ -215,19 +177,17 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ClassSectionNumber'
-    LinkModel:
+    ClassSectionInstructor:
       type: object
       properties:
-        href:
+        uclaid:
           type: string
-        rel:
-          type: string
-        method:
-          type: string
-    ClassSectionUnit:
+        links:
+          $ref: '#/components/schemas/LinkModel'
+    ClassSectionNotes:
       type: object
       properties:
-        classSectionUnit:
+        classSectionNotes:
           type: string
     ClassSectionDetail:
       type: object
@@ -308,6 +268,46 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ClassSectionMeetingLocation'
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    ClassSectionDetailResponse:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        classSectionDetail:
+          $ref: '#/components/schemas/ClassSectionDetail'
+    ClassSectionRestrictionText:
+      type: object
+      properties:
+        classEnrollmentRestrictionText:
+          type: string
+        classEnrollmentConsentRequiredCode:
+          type: string
+        classEnrollmentRuleID:
+          type: string
+    LinkModel:
+      type: object
+      properties:
+        href:
+          type: string
+        rel:
+          type: string
+        method:
+          type: string
+    ClassSectionUnit:
+      type: object
+      properties:
+        classSectionUnit:
+          type: string
+    ClassSectionNumber:
+      type: object
+      properties:
+        classSectionNumber:
+          type: string
         links:
           type: array
           items:

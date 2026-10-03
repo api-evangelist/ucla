@@ -142,6 +142,51 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    GEFoundationCategoryCourses:
+      type: object
+      properties:
+        geFoundationCode:
+          type: string
+        geFoundationStartTermCode:
+          type: string
+        geFoundationCategoryCode:
+          type: string
+        geFoundationCategoryStartTermCode:
+          type: string
+        courseCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/GEFoundationCategoryCourse'
+    GEFoundations:
+      type: object
+      properties:
+        geFoundationCode:
+          type: string
+        geFoundationName:
+          type: string
+        geFoundationStartTermCode:
+          type: string
+        geFoundationLastTermCode:
+          type: string
+        geFoundationCategoryCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/GEFoundationsCategory'
+    GEFoundationsCategory:
+      type: object
+      properties:
+        geFoundationCategoryCode:
+          type: string
+        geFoundationCategoryName:
+          type: string
+        geFoundationCategoryStartTermCode:
+          type: string
+        geFoundationCategoryLastTermCode:
+          type: string
+        href:
+          type: string
+        rel:
+          type: string
     GEFoundationCategoryCoursesCollection:
       type: object
       properties:
@@ -165,53 +210,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LinkModel'
-    GEFoundationCategoryCourse:
-      type: object
-      properties:
-        subjectAreaCode:
-          type: string
-        courseCatalogNumber:
-          type: string
-        courseStartTermCode:
-          type: string
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
-        courseFoundationCategoryStartTermCode:
-          type: string
-        courseFoundationCategoryLastTermCode:
-          type: string
-    GEFoundationsCategory:
-      type: object
-      properties:
-        geFoundationCategoryCode:
-          type: string
-        geFoundationCategoryName:
-          type: string
-        geFoundationCategoryStartTermCode:
-          type: string
-        geFoundationCategoryLastTermCode:
-          type: string
-        href:
-          type: string
-        rel:
-          type: string
-    GEFoundationCategoryCourses:
-      type: object
-      properties:
-        geFoundationCode:
-          type: string
-        geFoundationStartTermCode:
-          type: string
-        geFoundationCategoryCode:
-          type: string
-        geFoundationCategoryStartTermCode:
-          type: string
-        courseCollection:
-          type: array
-          items:
-            $ref: '#/components/schemas/GEFoundationCategoryCourse'
     GEFoundationsCollection:
       type: object
       properties:
@@ -235,21 +233,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LinkModel'
-    GEFoundations:
-      type: object
-      properties:
-        geFoundationCode:
-          type: string
-        geFoundationName:
-          type: string
-        geFoundationStartTermCode:
-          type: string
-        geFoundationLastTermCode:
-          type: string
-        geFoundationCategoryCollection:
-          type: array
-          items:
-            $ref: '#/components/schemas/GEFoundationsCategory'
     LinkModel:
       type: object
       properties:
@@ -258,6 +241,23 @@ components:
         rel:
           type: string
         method:
+          type: string
+    GEFoundationCategoryCourse:
+      type: object
+      properties:
+        subjectAreaCode:
+          type: string
+        courseCatalogNumber:
+          type: string
+        courseStartTermCode:
+          type: string
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+        courseFoundationCategoryStartTermCode:
+          type: string
+        courseFoundationCategoryLastTermCode:
           type: string
   securitySchemes:
     application:

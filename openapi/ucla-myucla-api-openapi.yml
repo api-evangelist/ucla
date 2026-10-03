@@ -69,6 +69,29 @@ components:
             $ref: '#/components/schemas/SuperGroup'
         _homeURL:
           type: string
+    UserInfo:
+      type: object
+      properties:
+        homeURL:
+          type: string
+        logoutURL:
+          type: string
+        noticesURL:
+          type: string
+        displayName:
+          type: string
+        menuData:
+          $ref: '#/components/schemas/MegaMenuModel'
+        notices:
+          format: int32
+          type: integer
+        redirectToNotices:
+          type: boolean
+        jsonMenuData:
+          type: string
+        lastUpdatedTS:
+          format: date-time
+          type: string
     SuperGroup:
       description: "Class that represents a SuperGroup. A super group is comprised of several\n            feature groups."
       type: object
@@ -201,29 +224,6 @@ components:
         noticeCountCookieValue:
           type: string
         roleChangedCookieTS:
-          type: string
-    UserInfo:
-      type: object
-      properties:
-        homeURL:
-          type: string
-        logoutURL:
-          type: string
-        noticesURL:
-          type: string
-        displayName:
-          type: string
-        menuData:
-          $ref: '#/components/schemas/MegaMenuModel'
-        notices:
-          format: int32
-          type: integer
-        redirectToNotices:
-          type: boolean
-        jsonMenuData:
-          type: string
-        lastUpdatedTS:
-          format: date-time
           type: string
   securitySchemes:
     application:
