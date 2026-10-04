@@ -79,34 +79,6 @@ paths:
       deprecated: false
 components:
   schemas:
-    MainframeResponse:
-      type: object
-      properties:
-        jobRunDate:
-          type: string
-        numberOfWeeksFromJobRunDate:
-          format: int32
-          type: integer
-        productionCalendarJobsCollection:
-          type: array
-          items:
-            $ref: '#/components/schemas/Jobs'
-        totalRecords:
-          format: int32
-          type: integer
-        totalPages:
-          format: int32
-          type: integer
-        pageNumber:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
     Jobs:
       type: object
       properties:
@@ -147,6 +119,34 @@ components:
           type: string
         method:
           type: string
+    MainframeResponse:
+      type: object
+      properties:
+        jobRunDate:
+          type: string
+        numberOfWeeksFromJobRunDate:
+          format: int32
+          type: integer
+        productionCalendarJobsCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/Jobs'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
   securitySchemes:
     application:
       type: oauth2

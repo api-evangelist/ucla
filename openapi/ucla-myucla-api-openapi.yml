@@ -58,16 +58,53 @@ paths:
         required: true
 components:
   schemas:
-    MegaMenuModel:
-      description: "The mega menu model contains all the data necessary to render\n            the full Mega Menu for IWE."
+    Feature:
+      description: "A feature is one of the links that a user can click on. This metadata is populated from\n            the database."
       type: object
       properties:
-        superGroups:
-          description: "Set of super groups sorted in the order that they should\n            be rendered."
-          type: array
-          items:
-            $ref: '#/components/schemas/SuperGroup'
-        _homeURL:
+        featureIDNumber:
+          format: int32
+          description: Feature ID number in database
+          type: integer
+        featureName:
+          description: Feature name
+          type: string
+        featureToolTip:
+          description: Tooltip to show with the feature
+          type: string
+        featureDescription:
+          description: Long description of the feature
+          type: string
+        isFeatureExternal:
+          description: Determines whether or not the feature is an external facing feature
+          type: boolean
+        isHomeWindow:
+          description: Determines whether this feature is a home feature
+          type: boolean
+        tempIcon:
+          description: Location of the feature's icon
+          type: string
+        featureURL:
+          description: URL feature is hosted at
+          type: string
+        isLegacy:
+          description: Determines whether feature is a legacy feature
+          type: boolean
+        isAvailable:
+          description: Determines if feature is available.
+          type: boolean
+        message:
+          description: Optional database message accompanying feature
+          type: string
+        isImportant:
+          description: Determines if the feature is marked as important
+          type: boolean
+        siteID:
+          format: int32
+          description: Site ID number that the feature belongs to
+          type: integer
+        siteName:
+          description: Name of site that the feature belongs to
           type: string
     UserInfo:
       type: object
@@ -122,54 +159,6 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/FeatureGroup'
-    Feature:
-      description: "A feature is one of the links that a user can click on. This metadata is populated from\n            the database."
-      type: object
-      properties:
-        featureIDNumber:
-          format: int32
-          description: Feature ID number in database
-          type: integer
-        featureName:
-          description: Feature name
-          type: string
-        featureToolTip:
-          description: Tooltip to show with the feature
-          type: string
-        featureDescription:
-          description: Long description of the feature
-          type: string
-        isFeatureExternal:
-          description: Determines whether or not the feature is an external facing feature
-          type: boolean
-        isHomeWindow:
-          description: Determines whether this feature is a home feature
-          type: boolean
-        tempIcon:
-          description: Location of the feature's icon
-          type: string
-        featureURL:
-          description: URL feature is hosted at
-          type: string
-        isLegacy:
-          description: Determines whether feature is a legacy feature
-          type: boolean
-        isAvailable:
-          description: Determines if feature is available.
-          type: boolean
-        message:
-          description: Optional database message accompanying feature
-          type: string
-        isImportant:
-          description: Determines if the feature is marked as important
-          type: boolean
-        siteID:
-          format: int32
-          description: Site ID number that the feature belongs to
-          type: integer
-        siteName:
-          description: Name of site that the feature belongs to
-          type: string
     FeatureGroup:
       description: A feature group is a group of features that logically should be grouped together.
       type: object
@@ -190,6 +179,17 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Feature'
+    MegaMenuModel:
+      description: "The mega menu model contains all the data necessary to render\n            the full Mega Menu for IWE."
+      type: object
+      properties:
+        superGroups:
+          description: "Set of super groups sorted in the order that they should\n            be rendered."
+          type: array
+          items:
+            $ref: '#/components/schemas/SuperGroup'
+        _homeURL:
+          type: string
     MenuDataInput:
       type: object
       properties:

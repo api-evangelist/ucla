@@ -4550,54 +4550,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    DivisionDepartmentMinor:
-      type: object
-      properties:
-        minorCode:
-          type: string
-        divisionMinorStartTermCode:
-          type: string
-        divisionMinorLastTermCode:
-          type: string
-    EnrollmentPass:
-      type: object
-      properties:
-        enrollmentPassCode:
-          type: string
-        enrollmentPassDescription:
-          type: string
-        enrollmentPassStartDate:
-          type: string
-        enrollmentPassLastDate:
-          type: string
-        enrollmentPassMaxUnits:
-          type: string
-    TermSessionCodeCollection:
-      type: object
-      properties:
-        lastCachedAt:
-          format: date-time
-          type: string
-        termSessionCodes:
-          type: array
-          items:
-            $ref: '#/components/schemas/TermSessionCode'
-        totalRecords:
-          format: int32
-          type: integer
-        totalPages:
-          format: int32
-          type: integer
-        pageNumber:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
     DivisionDepartmentMajor:
       type: object
       properties:
@@ -4607,58 +4559,44 @@ components:
           type: string
         divisionMajorLastTermCode:
           type: string
-    State:
+    SessionCode:
       type: object
       properties:
-        universityLocationCode:
+        termSessionCode:
           type: string
-        universityLocationName:
+        termSessionDescription:
           type: string
-        stateCode:
-          type: string
-        stateStartTermCode:
-          type: string
-        stateStartDate:
-          type: string
-        stateLastTermCode:
-          type: string
-        stateLastDate:
-          type: string
-        universityLocationStartTermCode:
-          type: string
-    SchedulePrint:
+    unexStudentEnrollmentStatus:
       type: object
       properties:
-        schedulePrintCode:
+        unexStudentEnrollmentStatusCode:
           type: string
-        schedulePrintText:
+        unexStudentEnrollmentStatusDescription:
           type: string
-    GradeType:
+    Building:
       type: object
       properties:
-        gradeTypeCode:
+        buildingCode:
           type: string
-        gradeTypeName:
+        buildingName:
           type: string
-        careerCode:
-          type: string
-    unexStudentEnrollmentStatusCollectionResponse:
+    ClassLevel:
       type: object
       properties:
-        unexStudentEnrollmentStatus:
-          type: array
-          items:
-            $ref: '#/components/schemas/unexStudentEnrollmentStatus'
-    IPEDSAPBEthnicityCollection:
+        classLevelCode:
+          type: string
+        classLevelName:
+          type: string
+    EnrollmentAppointmentGroupCollection:
       type: object
       properties:
         lastCachedAt:
           format: date-time
           type: string
-        ipedsapbEthnicities:
+        enrollmentAppointmentGroups:
           type: array
           items:
-            $ref: '#/components/schemas/IPEDSAPBEthnicity'
+            $ref: '#/components/schemas/EnrollmentAppointmentGroup'
         totalRecords:
           format: int32
           type: integer
@@ -4675,575 +4613,73 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LinkModel'
-    DivisionDepartmentCollection:
+    AcademicAction:
+      type: object
+      properties:
+        academicActionCode:
+          type: string
+        academicActionDescription:
+          type: string
+    DivisionDepartmentSubjectArea:
+      type: object
+      properties:
+        subjectAreaCode:
+          type: string
+        subjectAreaDivisionDepartmentStartTermCode:
+          type: string
+        subjectAreaDivisionDepartmentLastTermCode:
+          type: string
+    DaysofWeek:
+      type: object
+      properties:
+        daysofWeekCode:
+          type: string
+        daysofWeekDescription:
+          type: string
+    MinorDivisionDepartment:
+      type: object
+      properties:
+        divisionCode:
+          type: string
+        departmentCode:
+          type: string
+        divisionDepartmentStartTermCode:
+          type: string
+        divisionDepartmentLastTermCode:
+          type: string
+        divisionMinorStartTermCode:
+          type: string
+        divisionMinorLastTermCode:
+          type: string
+    Specialization:
+      type: object
+      properties:
+        specializationCode:
+          type: string
+        specializationName:
+          type: string
+        specializationAbbreviation:
+          type: string
+        specializationStartTermCode:
+          type: string
+        specializationLastTermCode:
+          type: string
+        customizedSpecializationFlag:
+          type: string
+        specializationDegreeRecordflag:
+          type: string
+        specializationFinalTerm:
+          type: string
+    DivisionCollegeCollection:
       type: object
       properties:
         lastCachedAt:
           format: date-time
           type: string
-        divisionDepartments:
+        divisionColleges:
           type: array
           items:
-            $ref: '#/components/schemas/DivisionDepartment'
-        totalRecords:
-          format: int32
-          type: integer
-        totalPages:
-          format: int32
-          type: integer
-        pageNumber:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
-    MajorCollection:
-      type: object
-      properties:
-        lastCachedAt:
-          format: date-time
-          type: string
-        majors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Major'
-        totalRecords:
-          format: int32
-          type: integer
-        totalPages:
-          format: int32
-          type: integer
-        pageNumber:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
-    TermSessionWeek:
-      type: object
-      properties:
-        sessionTermCode:
-          type: string
-        termSessionCollection:
-          type: array
-          items:
-            $ref: '#/components/schemas/TermSessionWeekSession'
-    InstitutionCollection:
-      type: object
-      properties:
-        lastCachedAt:
-          format: date-time
-          type: string
-        institutions:
-          type: array
-          items:
-            $ref: '#/components/schemas/Institution'
-        totalRecords:
-          format: int32
-          type: integer
-        totalPages:
-          format: int32
-          type: integer
-        pageNumber:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
-    EnrollmentStatus:
-      type: object
-      properties:
-        classSectionEnrollmentStatusCode:
-          type: string
-        classSectionEnrollmentStatusDescription:
-          type: string
-    ClassNumbers:
-      type: object
-      properties:
-        classNumber:
-          type: string
-        displayClassNumber:
-          type: string
-    ClassLevelCollection:
-      type: object
-      properties:
-        lastCachedAt:
-          format: date-time
-          type: string
-        classLevels:
-          type: array
-          items:
-            $ref: '#/components/schemas/ClassLevel'
-        totalRecords:
-          format: int32
-          type: integer
-        totalPages:
-          format: int32
-          type: integer
-        pageNumber:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
-    TermFeeAssessmentUtilityCollection:
-      type: object
-      properties:
-        termCode:
-          type: string
-        termFeeAssessmentCollection:
-          type: array
-          items:
-            $ref: '#/components/schemas/TermFeeAssessment'
-    SchedulePrintCollection:
-      type: object
-      properties:
-        lastCachedAt:
-          format: date-time
-          type: string
-        schedulePrints:
-          type: array
-          items:
-            $ref: '#/components/schemas/SchedulePrint'
-        totalRecords:
-          format: int32
-          type: integer
-        totalPages:
-          format: int32
-          type: integer
-        pageNumber:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
-    IPEDSAPBEthnicity:
-      type: object
-      properties:
-        ipedsapbEthnicityCode:
-          type: string
-        ipedsapbEthnicityName:
-          type: string
-    DegreeType:
-      type: object
-      properties:
-        degreeCode:
-          type: string
-        degreeName:
-          type: string
-        degreeTypeCode:
-          type: string
-        degreeTypeName:
-          type: string
-        degreeStartTermCode:
-          type: string
-        degreeLastTermCode:
-          type: string
-        cssDegreeCode:
-          type: string
-    CityCollection:
-      type: object
-      properties:
-        lastCachedAt:
-          format: date-time
-          type: string
-        cities:
-          type: array
-          items:
-            $ref: '#/components/schemas/City'
-        totalRecords:
-          format: int32
-          type: integer
-        totalPages:
-          format: int32
-          type: integer
-        pageNumber:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
-    AcademicActionCollection:
-      type: object
-      properties:
-        lastCachedAt:
-          format: date-time
-          type: string
-        academicActions:
-          type: array
-          items:
-            $ref: '#/components/schemas/AcademicAction'
-        totalRecords:
-          format: int32
-          type: integer
-        totalPages:
-          format: int32
-          type: integer
-        pageNumber:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
-    Institution:
-      type: object
-      properties:
-        institutionCode:
-          type: string
-        institutionName:
-          type: string
-        institutionEffectiveDate:
-          type: string
-        institutionExpirationDate:
-          type: string
-        institutionAddressCollection:
-          type: array
-          items:
-            $ref: '#/components/schemas/InstitutionAddress'
-        uclaSchoolLevelCode:
-          type: string
-        uclaSchoolTypeCode:
-          type: string
-        ucopSchoolTypeCode:
-          type: string
-        ucopStatusCode:
-          type: string
-    TermSessionGroup:
-      type: object
-      properties:
-        termSessionGroupCode:
-          type: string
-        termsessionGroupDescription:
-          type: string
-    MinimumProgress:
-      type: object
-      properties:
-        minimumProgressCode:
-          type: string
-        minimumProgressDescription:
-          type: string
-    SubjectAreaCollection:
-      type: object
-      properties:
-        lastCachedAt:
-          format: date-time
-          type: string
-        subjectAreas:
-          type: array
-          items:
-            $ref: '#/components/schemas/SubjectArea'
-        totalRecords:
-          format: int32
-          type: integer
-        totalPages:
-          format: int32
-          type: integer
-        pageNumber:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
-    HoldLevelCollection:
-      type: object
-      properties:
-        lastCachedAt:
-          format: date-time
-          type: string
-        holdLevels:
-          type: array
-          items:
-            $ref: '#/components/schemas/HoldLevel'
-        totalRecords:
-          format: int32
-          type: integer
-        totalPages:
-          format: int32
-          type: integer
-        pageNumber:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
-    LinkModel:
-      type: object
-      properties:
-        href:
-          type: string
-        rel:
-          type: string
-        method:
-          type: string
-    TermSessionCollection:
-      type: object
-      properties:
-        lastCachedAt:
-          format: date-time
-          type: string
-        termSessions:
-          type: array
-          items:
-            $ref: '#/components/schemas/TermSession'
-        totalRecords:
-          format: int32
-          type: integer
-        totalPages:
-          format: int32
-          type: integer
-        pageNumber:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
-    ClassNumbersCollection:
-      type: object
-      properties:
-        lastCachedAt:
-          format: date-time
-          type: string
-        classNumbers:
-          type: array
-          items:
-            $ref: '#/components/schemas/ClassNumbers'
-        totalRecords:
-          format: int32
-          type: integer
-        totalPages:
-          format: int32
-          type: integer
-        pageNumber:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
-    TermSessionWeekCollection:
-      type: object
-      properties:
-        lastCachedAt:
-          format: date-time
-          type: string
-        termSessionsByWeek:
-          type: array
-          items:
-            $ref: '#/components/schemas/TermSessionWeek'
-        totalRecords:
-          format: int32
-          type: integer
-        totalPages:
-          format: int32
-          type: integer
-        pageNumber:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
-    TranscriptCareer:
-      type: object
-      properties:
-        transcriptCareerCode:
-          type: string
-        transcriptCareerName:
-          type: string
-    College:
-      type: object
-      properties:
-        collegeCode:
-          type: string
-        collegeName:
-          type: string
-        collegeStartTermCode:
-          type: string
-        collegeLastTermCode:
-          type: string
-        cssCollegeCode:
-          type: string
-    GEAttribute:
-      type: object
-      properties:
-        geAttributeCode:
-          type: string
-        geAttributeName:
-          type: string
-        geAttributeStartTermCode:
-          type: string
-        geAttributeLastTermCode:
-          type: string
-    ClassSectionNumbersCollection:
-      type: object
-      properties:
-        lastCachedAt:
-          format: date-time
-          type: string
-        classSectionNumbers:
-          type: array
-          items:
-            $ref: '#/components/schemas/ClassSectionNumbers'
-        totalRecords:
-          format: int32
-          type: integer
-        totalPages:
-          format: int32
-          type: integer
-        pageNumber:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
-    UniversityLocation:
-      type: object
-      properties:
-        universityLocationCode:
-          type: string
-        cssLocationCode:
-          type: string
-        universityLocationName:
-          type: string
-        universityLocationAbbreviation:
-          type: string
-        universityLocationAlternateName:
-          type: string
-        universityLocationType:
-          type: string
-        universityCountryCode:
-          type: string
-        irsCountryCode:
-          type: string
-        universityLocationStartTermCode:
-          type: string
-        universityLocationStartDate:
-          type: string
-        universityLocationLastTermCode:
-          type: string
-        universityLocationLastDate:
-          type: string
-        nonUCOPLocationFlag:
-          type: string
-    EnrollmentConsentRequired:
-      type: object
-      properties:
-        enrollmentConsentRequiredCode:
-          type: string
-        enrollmentConsentRequiredDescription:
-          type: string
-    CourseCatalogNumbersCollection:
-      type: object
-      properties:
-        lastCachedAt:
-          format: date-time
-          type: string
-        courseCatalogNumbers:
-          type: array
-          items:
-            $ref: '#/components/schemas/CourseCatalogNumbers'
-        totalRecords:
-          format: int32
-          type: integer
-        totalPages:
-          format: int32
-          type: integer
-        pageNumber:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
-    SpecializationCollection:
-      type: object
-      properties:
-        lastCachedAt:
-          format: date-time
-          type: string
-        specializations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Specialization'
-        totalRecords:
-          format: int32
-          type: integer
-        totalPages:
-          format: int32
-          type: integer
-        pageNumber:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
-    IPEDSAPBExpandedEthnicityCollection:
-      type: object
-      properties:
-        lastCachedAt:
-          format: date-time
-          type: string
-        ipedsapbExpandedEthnicities:
-          type: array
-          items:
-            $ref: '#/components/schemas/IPEDSAPBExpandedEthnicity'
+            $ref: '#/components/schemas/DivisionCollege'
         totalRecords:
           format: int32
           type: integer
@@ -5286,16 +4722,23 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LinkModel'
-    DivisionCollection:
+    ActivityType:
+      type: object
+      properties:
+        activityTypeCode:
+          type: string
+        activityTypeName:
+          type: string
+    DivisionDepartmentCollection:
       type: object
       properties:
         lastCachedAt:
           format: date-time
           type: string
-        divisions:
+        divisionDepartments:
           type: array
           items:
-            $ref: '#/components/schemas/Division'
+            $ref: '#/components/schemas/DivisionDepartment'
         totalRecords:
           format: int32
           type: integer
@@ -5312,133 +4755,27 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LinkModel'
-    StateCollection:
+    Major:
       type: object
       properties:
-        lastCachedAt:
-          format: date-time
+        majorCode:
           type: string
-        states:
-          type: array
-          items:
-            $ref: '#/components/schemas/State'
-        totalRecords:
-          format: int32
-          type: integer
-        totalPages:
-          format: int32
-          type: integer
-        pageNumber:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
-    GEAttributeCollection:
-      type: object
-      properties:
-        lastCachedAt:
-          format: date-time
+        majorName:
           type: string
-        geAttributes:
-          type: array
-          items:
-            $ref: '#/components/schemas/GEAttribute'
-        totalRecords:
-          format: int32
-          type: integer
-        totalPages:
-          format: int32
-          type: integer
-        pageNumber:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
-    CourseClassIdentifiersCollection:
-      type: object
-      properties:
-        courseClassIdentifiers:
-          type: array
-          items:
-            $ref: '#/components/schemas/CourseClassIdentifiers'
-        totalRecords:
-          format: int32
-          type: integer
-        totalPages:
-          format: int32
-          type: integer
-        pageNumber:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
-    DivisionCollegeCollection:
-      type: object
-      properties:
-        lastCachedAt:
-          format: date-time
+        majorAbbreviation:
           type: string
-        divisionColleges:
-          type: array
-          items:
-            $ref: '#/components/schemas/DivisionCollege'
-        totalRecords:
-          format: int32
-          type: integer
-        totalPages:
-          format: int32
-          type: integer
-        pageNumber:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
-    TermCollection:
-      type: object
-      properties:
-        lastCachedAt:
-          format: date-time
+        majorStartTermCode:
           type: string
-        terms:
+        majorLastTermCode:
+          type: string
+        cssMajorCode:
+          type: string
+        customizedMajorFlag:
+          type: string
+        divisionDepartmentCollection:
           type: array
           items:
-            $ref: '#/components/schemas/Term'
-        totalRecords:
-          format: int32
-          type: integer
-        totalPages:
-          format: int32
-          type: integer
-        pageNumber:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
+            $ref: '#/components/schemas/MajorDivisionDepartment'
     EnrollmentAppointmentsCollection:
       type: object
       properties:
@@ -5465,39 +4802,51 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LinkModel'
-    MajorProgram:
+    State:
       type: object
       properties:
-        collegeCode:
+        universityLocationCode:
           type: string
-        collegeName:
+        universityLocationName:
           type: string
-        collegeStartTermCode:
+        stateCode:
           type: string
-        majorCode:
+        stateStartTermCode:
           type: string
-        majorName:
+        stateStartDate:
           type: string
-        majorStartTermCode:
+        stateLastTermCode:
           type: string
-        degreeCode:
+        stateLastDate:
           type: string
-        degreeName:
+        universityLocationStartTermCode:
           type: string
-        degreeStartTermCode:
+    UnitTypeCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
           type: string
-        programStartTermCode:
-          type: string
-        programLastTermCode:
-          type: string
-        programCareerCode:
-          type: string
-        programTypeName:
-          type: string
-        customizedProgramFlag:
-          type: string
-        schoolwideProgramFlag:
-          type: string
+        unitTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/UnitType'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
     CollegeCollection:
       type: object
       properties:
@@ -5524,16 +4873,38 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LinkModel'
-    EnrollmentRuleCollection:
+    ProgramOfStudy:
+      type: object
+      properties:
+        majorCode:
+          type: string
+        degreeCode:
+          type: string
+        programStartTermCode:
+          type: string
+        programLastTermCode:
+          type: string
+    CourseClassIdentifiers:
+      type: object
+      properties:
+        offeredTermCode:
+          type: string
+        classSectionID:
+          type: string
+        courseClassIdentifierCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/CourseClassIdentifier'
+    HoldCollection:
       type: object
       properties:
         lastCachedAt:
           format: date-time
           type: string
-        enrollmentRules:
+        holds:
           type: array
           items:
-            $ref: '#/components/schemas/EnrollmentRule'
+            $ref: '#/components/schemas/Hold'
         totalRecords:
           format: int32
           type: integer
@@ -5550,85 +4921,61 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LinkModel'
-    SubjectArea:
+    DivisionDepartmentMinor:
       type: object
       properties:
-        subjectAreaCode:
+        minorCode:
           type: string
-        subjectAreaName:
+        divisionMinorStartTermCode:
           type: string
-        subjectAreaStartTermCode:
+        divisionMinorLastTermCode:
           type: string
-        subjectAreaLastTermCode:
-          type: string
-        customizedSubjectAreaFlag:
-          type: string
-        divisionDepartmentCollection:
-          type: array
-          items:
-            $ref: '#/components/schemas/SubjectAreaDivisionDepartment'
-    ActivityTypeCollection:
+    Career:
       type: object
       properties:
-        lastCachedAt:
-          format: date-time
+        careerCode:
           type: string
-        activityTypes:
-          type: array
-          items:
-            $ref: '#/components/schemas/ActivityType'
-        totalRecords:
-          format: int32
-          type: integer
-        totalPages:
-          format: int32
-          type: integer
-        pageNumber:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
-    UniversityLocationCollection:
+        careerName:
+          type: string
+    UniversityLocation:
       type: object
       properties:
-        lastCachedAt:
-          format: date-time
+        universityLocationCode:
           type: string
-        universityLocations:
-          type: array
-          items:
-            $ref: '#/components/schemas/UniversityLocation'
-        totalRecords:
-          format: int32
-          type: integer
-        totalPages:
-          format: int32
-          type: integer
-        pageNumber:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
-    ProvinceCollection:
+        cssLocationCode:
+          type: string
+        universityLocationName:
+          type: string
+        universityLocationAbbreviation:
+          type: string
+        universityLocationAlternateName:
+          type: string
+        universityLocationType:
+          type: string
+        universityCountryCode:
+          type: string
+        irsCountryCode:
+          type: string
+        universityLocationStartTermCode:
+          type: string
+        universityLocationStartDate:
+          type: string
+        universityLocationLastTermCode:
+          type: string
+        universityLocationLastDate:
+          type: string
+        nonUCOPLocationFlag:
+          type: string
+    EnrollmentPassesCollection:
       type: object
       properties:
         lastCachedAt:
           format: date-time
           type: string
-        provinces:
+        enrollmentPasses:
           type: array
           items:
-            $ref: '#/components/schemas/Province'
+            $ref: '#/components/schemas/EnrollmentPasses'
         totalRecords:
           format: int32
           type: integer
@@ -5671,16 +5018,326 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LinkModel'
-    LatinHonorsCollection:
+    InstitutionCollection:
       type: object
       properties:
         lastCachedAt:
           format: date-time
           type: string
-        latinHonors:
+        institutions:
           type: array
           items:
-            $ref: '#/components/schemas/LatinHonors'
+            $ref: '#/components/schemas/Institution'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    IPEDSAPBExpandedEthnicityCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        ipedsapbExpandedEthnicities:
+          type: array
+          items:
+            $ref: '#/components/schemas/IPEDSAPBExpandedEthnicity'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    MinimumProgressCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        minimumProgress:
+          type: array
+          items:
+            $ref: '#/components/schemas/MinimumProgress'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    BuildingCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        buildings:
+          type: array
+          items:
+            $ref: '#/components/schemas/Building'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    DepartmentCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        departments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Department'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    EnrollmentConsentRequired:
+      type: object
+      properties:
+        enrollmentConsentRequiredCode:
+          type: string
+        enrollmentConsentRequiredDescription:
+          type: string
+    MajorProgramCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        majorPrograms:
+          type: array
+          items:
+            $ref: '#/components/schemas/MajorProgram'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    InstitutionAddress:
+      type: object
+      properties:
+        institutionStreetAddress1:
+          type: string
+        institutionStreetAddress2:
+          type: string
+        institutionCityName:
+          type: string
+        institutionStateCode:
+          type: string
+        institutionZipCode:
+          type: string
+        institutionCountyCode:
+          type: string
+        institutionCountryCode:
+          type: string
+        institutionLocationCode:
+          type: string
+    College:
+      type: object
+      properties:
+        collegeCode:
+          type: string
+        collegeName:
+          type: string
+        collegeStartTermCode:
+          type: string
+        collegeLastTermCode:
+          type: string
+        cssCollegeCode:
+          type: string
+    DivisionCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        divisions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Division'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    DegreeTypeCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        degreeTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/DegreeType'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    VisaType:
+      type: object
+      properties:
+        visaTypeCode:
+          type: string
+        visaTypeDescription:
+          type: string
+    TermSessionWeek:
+      type: object
+      properties:
+        sessionTermCode:
+          type: string
+        termSessionCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/TermSessionWeekSession'
+    MinimumProgress:
+      type: object
+      properties:
+        minimumProgressCode:
+          type: string
+        minimumProgressDescription:
+          type: string
+    HoldLevel:
+      type: object
+      properties:
+        holdLevelCode:
+          type: string
+        holdLevelDescription:
+          type: string
+    DivisionCollege:
+      type: object
+      properties:
+        divisionCode:
+          type: string
+        divisionStartTermCode:
+          type: string
+        collegeCode:
+          type: string
+        collegeStartTermCode:
+          type: string
+        collegeDivisionStartTermCode:
+          type: string
+        collegeDivisionLastTermCode:
+          type: string
+        programOfStudyCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProgramOfStudy'
+    ClassSectionNumbers:
+      type: object
+      properties:
+        classSectionNumber:
+          type: string
+        displayClassSectionNumber:
+          type: string
+    ClassNumbers:
+      type: object
+      properties:
+        classNumber:
+          type: string
+        displayClassNumber:
+          type: string
+    TermCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        terms:
+          type: array
+          items:
+            $ref: '#/components/schemas/Term'
         totalRecords:
           format: int32
           type: integer
@@ -5723,154 +5380,31 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LinkModel'
-    ClassSectionNumbers:
+    SchedulePrint:
       type: object
       properties:
-        classSectionNumber:
+        schedulePrintCode:
           type: string
-        displayClassSectionNumber:
+        schedulePrintText:
           type: string
-    InstructorType:
+    Session:
       type: object
       properties:
-        instructorType:
+        termSessionCode:
           type: string
-        instructorTypeName:
+        termSessionDisplayFormat:
           type: string
-    MajorDivisionDepartment:
-      type: object
-      properties:
-        divisionCode:
+        termSessionStartDate:
           type: string
-        departmentCode:
+        termSessionLastDate:
           type: string
-        divisionDepartmentStartTermCode:
+        termsessionGroupCode:
           type: string
-        divisionDepartmentLastTermCode:
+        termSessionInstructionWeeks:
           type: string
-        divisionMajorStartTermCode:
+        termsessionGroupWeekCode:
           type: string
-        divisionMajorLastTermCode:
-          type: string
-    TermSessionWeekSession:
-      type: object
-      properties:
-        sessionCode:
-          type: string
-        sessionWeekNumber:
-          type: string
-        sessionWeekStartDate:
-          type: string
-        sessionWeekLastDate:
-          type: string
-    DivisionCollege:
-      type: object
-      properties:
-        divisionCode:
-          type: string
-        divisionStartTermCode:
-          type: string
-        collegeCode:
-          type: string
-        collegeStartTermCode:
-          type: string
-        collegeDivisionStartTermCode:
-          type: string
-        collegeDivisionLastTermCode:
-          type: string
-        programOfStudyCollection:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProgramOfStudy'
-    HoldLevel:
-      type: object
-      properties:
-        holdLevelCode:
-          type: string
-        holdLevelDescription:
-          type: string
-    Country:
-      type: object
-      properties:
-        universityLocationCode:
-          type: string
-        countryCode:
-          type: string
-        isoCountryCode:
-          type: string
-        fipsCountryName:
-          type: string
-        uspsCountryName:
-          type: string
-        countryStartTermCode:
-          type: string
-        countryStartDate:
-          type: string
-        countryLastTermCode:
-          type: string
-        countryLastDate:
-          type: string
-        universityLocationStartTermCode:
-          type: string
-    MinorDivisionDepartment:
-      type: object
-      properties:
-        divisionCode:
-          type: string
-        departmentCode:
-          type: string
-        divisionDepartmentStartTermCode:
-          type: string
-        divisionDepartmentLastTermCode:
-          type: string
-        divisionMinorStartTermCode:
-          type: string
-        divisionMinorLastTermCode:
-          type: string
-    MajorProgramCollection:
-      type: object
-      properties:
-        lastCachedAt:
-          format: date-time
-          type: string
-        majorPrograms:
-          type: array
-          items:
-            $ref: '#/components/schemas/MajorProgram'
-        totalRecords:
-          format: int32
-          type: integer
-        totalPages:
-          format: int32
-          type: integer
-        pageNumber:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
-    Specialization:
-      type: object
-      properties:
-        specializationCode:
-          type: string
-        specializationName:
-          type: string
-        specializationAbbreviation:
-          type: string
-        specializationStartTermCode:
-          type: string
-        specializationLastTermCode:
-          type: string
-        customizedSpecializationFlag:
-          type: string
-        specializationDegreeRecordflag:
-          type: string
-        specializationFinalTerm:
+        sessionTypeName:
           type: string
     GradeTypeCollection:
       type: object
@@ -5898,71 +5432,16 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LinkModel'
-    TermSession:
-      type: object
-      properties:
-        sessionTermCode:
-          type: string
-        termSessionCollection:
-          type: array
-          items:
-            $ref: '#/components/schemas/Session'
-    Province:
-      type: object
-      properties:
-        provinceCode:
-          type: string
-        countryCode:
-          type: string
-        provinceName:
-          type: string
-        provinceTypeCode:
-          type: string
-        provinceStartTermCode:
-          type: string
-        provinceStartDate:
-          type: string
-        provinceLastTermCode:
-          type: string
-        provinceLastDate:
-          type: string
-        countryStartTermCode:
-          type: string
-    ProgramOfStudy:
-      type: object
-      properties:
-        majorCode:
-          type: string
-        degreeCode:
-          type: string
-        programStartTermCode:
-          type: string
-        programLastTermCode:
-          type: string
-    VisaType:
-      type: object
-      properties:
-        visaTypeCode:
-          type: string
-        visaTypeDescription:
-          type: string
-    Hold:
-      type: object
-      properties:
-        holdCode:
-          type: string
-        holdDescription:
-          type: string
-    UCCampusCollection:
+    TermFeeAssessmentUtility:
       type: object
       properties:
         lastCachedAt:
           format: date-time
           type: string
-        ucCampuses:
+        termFeeAssessment:
           type: array
           items:
-            $ref: '#/components/schemas/UCCampus'
+            $ref: '#/components/schemas/TermFeeAssessmentUtilityCollection'
         totalRecords:
           format: int32
           type: integer
@@ -5979,97 +5458,16 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LinkModel'
-    AcademicAction:
-      type: object
-      properties:
-        academicActionCode:
-          type: string
-        academicActionDescription:
-          type: string
-    Session:
-      type: object
-      properties:
-        termSessionCode:
-          type: string
-        termSessionDisplayFormat:
-          type: string
-        termSessionStartDate:
-          type: string
-        termSessionLastDate:
-          type: string
-        termsessionGroupCode:
-          type: string
-        termSessionInstructionWeeks:
-          type: string
-        termsessionGroupWeekCode:
-          type: string
-        sessionTypeName:
-          type: string
-    EnrollmentRule:
-      type: object
-      properties:
-        enrollmentRuleID:
-          type: string
-        enrollmentRuleDescription:
-          type: string
-    CourseCatalogNumbers:
-      type: object
-      properties:
-        courseCatalogNumber:
-          type: string
-        displayCourseCatalogNumber:
-          type: string
-    ActivityType:
-      type: object
-      properties:
-        activityTypeCode:
-          type: string
-        activityTypeName:
-          type: string
-    FinancialSystemDepartment:
-      type: object
-      properties:
-        financialSystemDepartmentCode:
-          type: string
-        financialSystemDepartmentName:
-          type: string
-        financialSystemDepartmentAbbreviation:
-          type: string
-        financialSystemDepartmentMailCode:
-          type: string
-        offersWorkStudyEmploymentFlag:
-          type: string
-    Major:
-      type: object
-      properties:
-        majorCode:
-          type: string
-        majorName:
-          type: string
-        majorAbbreviation:
-          type: string
-        majorStartTermCode:
-          type: string
-        majorLastTermCode:
-          type: string
-        cssMajorCode:
-          type: string
-        customizedMajorFlag:
-          type: string
-        divisionDepartmentCollection:
-          type: array
-          items:
-            $ref: '#/components/schemas/MajorDivisionDepartment'
-    TranscriptCareerCollection:
+    CourseCatalogNumbersCollection:
       type: object
       properties:
         lastCachedAt:
           format: date-time
           type: string
-        transcriptCareers:
+        courseCatalogNumbers:
           type: array
           items:
-            $ref: '#/components/schemas/TranscriptCareer'
+            $ref: '#/components/schemas/CourseCatalogNumbers'
         totalRecords:
           format: int32
           type: integer
@@ -6086,88 +5484,16 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LinkModel'
-    FinancialSystemDivision:
-      type: object
-      properties:
-        financialSystemDivisionCode:
-          type: string
-        financialSystemDivisionName:
-          type: string
-        financialSystemDepartmentCollection:
-          type: array
-          items:
-            $ref: '#/components/schemas/FinancialSystemDivisionDepartmentCodeCollection'
-    FinancialSystemDivisionDepartmentCodeCollection:
-      type: object
-      properties:
-        departmentCode:
-          type: string
-    EnrollmentAppointmentGroup:
-      type: object
-      properties:
-        undergraduateEnrollmentAppointmentGroupCode:
-          type: string
-        undergraduateEnrollmentAppointmentGroupDescription:
-          type: string
-    ClassLevel:
-      type: object
-      properties:
-        classLevelCode:
-          type: string
-        classLevelName:
-          type: string
-    TermSessionCode:
-      type: object
-      properties:
-        sessionTermCode:
-          type: string
-        termSessionCodeCollection:
-          type: array
-          items:
-            $ref: '#/components/schemas/SessionCode'
-    CourseClassIdentifiers:
-      type: object
-      properties:
-        offeredTermCode:
-          type: string
-        classSectionID:
-          type: string
-        courseClassIdentifierCollection:
-          type: array
-          items:
-            $ref: '#/components/schemas/CourseClassIdentifier'
-    unexStudentEnrollmentStatus:
-      type: object
-      properties:
-        unexStudentEnrollmentStatusCode:
-          type: string
-        unexStudentEnrollmentStatusDescription:
-          type: string
-    Department:
-      type: object
-      properties:
-        departmentCode:
-          type: string
-        departmentName:
-          type: string
-        departmentStartTermCode:
-          type: string
-        departmentLastTermCode:
-          type: string
-        customizedDepartmentFlag:
-          type: string
-        departmentTypeName:
-          type: string
-    VisaTypeCollection:
+    ClassLevelCollection:
       type: object
       properties:
         lastCachedAt:
           format: date-time
           type: string
-        visaTypes:
+        classLevels:
           type: array
           items:
-            $ref: '#/components/schemas/VisaType'
+            $ref: '#/components/schemas/ClassLevel'
         totalRecords:
           format: int32
           type: integer
@@ -6184,174 +5510,16 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LinkModel'
-    Term:
-      type: object
-      properties:
-        termCode:
-          type: string
-        termName:
-          type: string
-        academicYear:
-          type: string
-        termSequenceNumber:
-          type: string
-        cssTermCode:
-          type: string
-    ActiveAcademicTerm:
-      type: object
-      properties:
-        inputDate:
-          type: string
-        termSessionDate:
-          type: string
-        termCode:
-          type: string
-        termSequenceNumber:
-          type: string
-        termSessionStartDate:
-          type: string
-        termSessionLastDate:
-          type: string
-    MajorPrgmSpeclCollection:
+    IPEDSAPBEthnicityCollection:
       type: object
       properties:
         lastCachedAt:
           format: date-time
           type: string
-        majorProgramSpecializations:
+        ipedsapbEthnicities:
           type: array
           items:
-            $ref: '#/components/schemas/MajorProgramSpecialization'
-        totalRecords:
-          format: int32
-          type: integer
-        totalPages:
-          format: int32
-          type: integer
-        pageNumber:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
-    UnitType:
-      type: object
-      properties:
-        unitTypeCode:
-          type: string
-        unitTypeName:
-          type: string
-    IPEDSAPBExpandedEthnicity:
-      type: object
-      properties:
-        ipedsapbExpandedEthnicityCode:
-          type: string
-        ipedsapbExpandedEthnicityName:
-          type: string
-    AffiliationsTermSession:
-      type: object
-      properties:
-        affiliationName:
-          type: string
-        termSessionCode:
-          type: string
-    UnitTypeCollection:
-      type: object
-      properties:
-        lastCachedAt:
-          format: date-time
-          type: string
-        unitTypes:
-          type: array
-          items:
-            $ref: '#/components/schemas/UnitType'
-        totalRecords:
-          format: int32
-          type: integer
-        totalPages:
-          format: int32
-          type: integer
-        pageNumber:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
-    AffiliationsTermSessionCollection:
-      type: object
-      properties:
-        lastCachedAt:
-          format: date-time
-          type: string
-        affiliationsTermSessions:
-          type: array
-          items:
-            $ref: '#/components/schemas/AffiliationsTermSession'
-        totalRecords:
-          format: int32
-          type: integer
-        totalPages:
-          format: int32
-          type: integer
-        pageNumber:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
-    City:
-      type: object
-      properties:
-        universityLocationCode:
-          type: string
-        cityName:
-          type: string
-        cityStartTermCode:
-          type: string
-        cityStartDate:
-          type: string
-        cityLastTermCode:
-          type: string
-        cityLastDate:
-          type: string
-        universityLocationStartTermCode:
-          type: string
-    Career:
-      type: object
-      properties:
-        careerCode:
-          type: string
-        careerName:
-          type: string
-    Building:
-      type: object
-      properties:
-        buildingCode:
-          type: string
-        buildingName:
-          type: string
-    BuildingCollection:
-      type: object
-      properties:
-        lastCachedAt:
-          format: date-time
-          type: string
-        buildings:
-          type: array
-          items:
-            $ref: '#/components/schemas/Building'
+            $ref: '#/components/schemas/IPEDSAPBEthnicity'
         totalRecords:
           format: int32
           type: integer
@@ -6401,6 +5569,323 @@ components:
           type: string
         programSpecializationFinalTerm:
           type: string
+    StateCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        states:
+          type: array
+          items:
+            $ref: '#/components/schemas/State'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    TermSessionGroup:
+      type: object
+      properties:
+        termSessionGroupCode:
+          type: string
+        termsessionGroupDescription:
+          type: string
+    ClassSectionNumbersCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        classSectionNumbers:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClassSectionNumbers'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    SubjectArea:
+      type: object
+      properties:
+        subjectAreaCode:
+          type: string
+        subjectAreaName:
+          type: string
+        subjectAreaStartTermCode:
+          type: string
+        subjectAreaLastTermCode:
+          type: string
+        customizedSubjectAreaFlag:
+          type: string
+        divisionDepartmentCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubjectAreaDivisionDepartment'
+    TermSession:
+      type: object
+      properties:
+        sessionTermCode:
+          type: string
+        termSessionCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/Session'
+    EnrollmentRule:
+      type: object
+      properties:
+        enrollmentRuleID:
+          type: string
+        enrollmentRuleDescription:
+          type: string
+    LinkModel:
+      type: object
+      properties:
+        href:
+          type: string
+        rel:
+          type: string
+        method:
+          type: string
+    ActiveAcademicTerm:
+      type: object
+      properties:
+        inputDate:
+          type: string
+        termSessionDate:
+          type: string
+        termCode:
+          type: string
+        termSequenceNumber:
+          type: string
+        termSessionStartDate:
+          type: string
+        termSessionLastDate:
+          type: string
+    SubjectAreaDivisionDepartment:
+      type: object
+      properties:
+        divisionCode:
+          type: string
+        departmentCode:
+          type: string
+        divisionDepartmentStartTermCode:
+          type: string
+        divisionDepartmentLastTermCode:
+          type: string
+        subjectAreaDivisionDepartmentStartTermCode:
+          type: string
+        subjectAreaDivisionDepartmentLastTermCode:
+          type: string
+    TermFeeAssessment:
+      type: object
+      properties:
+        careerCode:
+          type: string
+        feeAssessmentSequenceNumber:
+          type: string
+        majorCode:
+          type: string
+        professionalSchoolLevelCode:
+          type: string
+        feeAssessmentBeginDate:
+          type: string
+        feeAssessmentEndDate:
+          type: string
+    UCCampusCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        ucCampuses:
+          type: array
+          items:
+            $ref: '#/components/schemas/UCCampus'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    MajorPrgmSpeclCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        majorProgramSpecializations:
+          type: array
+          items:
+            $ref: '#/components/schemas/MajorProgramSpecialization'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    TermSessionCode:
+      type: object
+      properties:
+        sessionTermCode:
+          type: string
+        termSessionCodeCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/SessionCode'
+    Province:
+      type: object
+      properties:
+        provinceCode:
+          type: string
+        countryCode:
+          type: string
+        provinceName:
+          type: string
+        provinceTypeCode:
+          type: string
+        provinceStartTermCode:
+          type: string
+        provinceStartDate:
+          type: string
+        provinceLastTermCode:
+          type: string
+        provinceLastDate:
+          type: string
+        countryStartTermCode:
+          type: string
+    UniversityLocationCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        universityLocations:
+          type: array
+          items:
+            $ref: '#/components/schemas/UniversityLocation'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    EnrollmentStatusCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        enrollmentStatuses:
+          type: array
+          items:
+            $ref: '#/components/schemas/EnrollmentStatus'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    TermSessionEvent:
+      type: object
+      properties:
+        termCode:
+          type: string
+        sessionCode:
+          type: string
+        sessionEventCode:
+          type: string
+        sessionEventName:
+          type: string
+        sessionEventDescription:
+          type: string
+        sessionEventStartDate:
+          type: string
+        sessionEventLastDate:
+          type: string
+    Hold:
+      type: object
+      properties:
+        holdCode:
+          type: string
+        holdDescription:
+          type: string
+    FinancialSystemDepartment:
+      type: object
+      properties:
+        financialSystemDepartmentCode:
+          type: string
+        financialSystemDepartmentName:
+          type: string
+        financialSystemDepartmentAbbreviation:
+          type: string
+        financialSystemDepartmentMailCode:
+          type: string
+        offersWorkStudyEmploymentFlag:
+          type: string
     MinorCollection:
       type: object
       properties:
@@ -6427,23 +5912,16 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LinkModel'
-    DaysofWeek:
-      type: object
-      properties:
-        daysofWeekCode:
-          type: string
-        daysofWeekDescription:
-          type: string
-    CareerCollection:
+    FinancialSystemDepartmentCollection:
       type: object
       properties:
         lastCachedAt:
           format: date-time
           type: string
-        careers:
+        financialSystemDepartments:
           type: array
           items:
-            $ref: '#/components/schemas/Career'
+            $ref: '#/components/schemas/FinancialSystemDepartment'
         totalRecords:
           format: int32
           type: integer
@@ -6460,48 +5938,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LinkModel'
-    InstitutionAddress:
-      type: object
-      properties:
-        institutionStreetAddress1:
-          type: string
-        institutionStreetAddress2:
-          type: string
-        institutionCityName:
-          type: string
-        institutionStateCode:
-          type: string
-        institutionZipCode:
-          type: string
-        institutionCountyCode:
-          type: string
-        institutionCountryCode:
-          type: string
-        institutionLocationCode:
-          type: string
-    Minor:
-      type: object
-      properties:
-        minorCode:
-          type: string
-        minorName:
-          type: string
-        minorAbbreviation:
-          type: string
-        minorStartTermCode:
-          type: string
-        minorLastTermCode:
-          type: string
-        customizedMinorFlag:
-          type: string
-        schoolwideMinorFlag:
-          type: string
-        minorFinalTermCode:
-          type: string
-        divisionDepartmentCollection:
-          type: array
-          items:
-            $ref: '#/components/schemas/MinorDivisionDepartment'
     CourseClassIdentifier:
       type: object
       properties:
@@ -6515,55 +5951,42 @@ components:
           type: string
         classSectionNumber:
           type: string
-    EnrollmentPasses:
+    LatinHonors:
       type: object
       properties:
-        enrollmentTermCode:
+        latinHonorsStartTermCode:
           type: string
-        enrollmentPassCollection:
-          type: array
-          items:
-            $ref: '#/components/schemas/EnrollmentPass'
-    TermSessionEvent:
+        latinHonorsEndTermCode:
+          type: string
+        collegeCode:
+          type: string
+        LatinHonors:
+          type: string
+        minimumGPA:
+          type: string
+        maximumGPA:
+          type: string
+        freshmanGradedUnits:
+          type: string
+        advancedStandingGradedUnits:
+          type: string
+    AffiliationsTermSession:
       type: object
       properties:
-        termCode:
+        affiliationName:
           type: string
-        sessionCode:
+        termSessionCode:
           type: string
-        sessionEventCode:
-          type: string
-        sessionEventName:
-          type: string
-        sessionEventDescription:
-          type: string
-        sessionEventStartDate:
-          type: string
-        sessionEventLastDate:
-          type: string
-    EnrollmentAppointment:
-      type: object
-      properties:
-        enrollmentAppointmentNumber:
-          type: string
-        enrollmentAppointmentStartDate:
-          type: string
-        enrollmentAppointmentStartTime:
-          type: string
-        enrollmentAppointmentEndDate:
-          type: string
-        enrollmentAppointmentEndTime:
-          type: string
-    DegreeTypeCollection:
+    EnrollmentConsentRequiredCollection:
       type: object
       properties:
         lastCachedAt:
           format: date-time
           type: string
-        degreeTypes:
+        enrollmentConsentsRequired:
           type: array
           items:
-            $ref: '#/components/schemas/DegreeType'
+            $ref: '#/components/schemas/EnrollmentConsentRequired'
         totalRecords:
           format: int32
           type: integer
@@ -6580,6 +6003,317 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LinkModel'
+    Country:
+      type: object
+      properties:
+        universityLocationCode:
+          type: string
+        countryCode:
+          type: string
+        isoCountryCode:
+          type: string
+        fipsCountryName:
+          type: string
+        uspsCountryName:
+          type: string
+        countryStartTermCode:
+          type: string
+        countryStartDate:
+          type: string
+        countryLastTermCode:
+          type: string
+        countryLastDate:
+          type: string
+        universityLocationStartTermCode:
+          type: string
+    SubjectAreaCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        subjectAreas:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubjectArea'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    AffiliationsTermSessionCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        affiliationsTermSessions:
+          type: array
+          items:
+            $ref: '#/components/schemas/AffiliationsTermSession'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    EnrollmentAppointmentGroup:
+      type: object
+      properties:
+        undergraduateEnrollmentAppointmentGroupCode:
+          type: string
+        undergraduateEnrollmentAppointmentGroupDescription:
+          type: string
+    EnrollmentPass:
+      type: object
+      properties:
+        enrollmentPassCode:
+          type: string
+        enrollmentPassDescription:
+          type: string
+        enrollmentPassStartDate:
+          type: string
+        enrollmentPassLastDate:
+          type: string
+        enrollmentPassMaxUnits:
+          type: string
+    AcademicActionCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        academicActions:
+          type: array
+          items:
+            $ref: '#/components/schemas/AcademicAction'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    GEAttributeCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        geAttributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/GEAttribute'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    Term:
+      type: object
+      properties:
+        termCode:
+          type: string
+        termName:
+          type: string
+        academicYear:
+          type: string
+        termSequenceNumber:
+          type: string
+        cssTermCode:
+          type: string
+    SchedulePrintCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        schedulePrints:
+          type: array
+          items:
+            $ref: '#/components/schemas/SchedulePrint'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    EnrollmentStatus:
+      type: object
+      properties:
+        classSectionEnrollmentStatusCode:
+          type: string
+        classSectionEnrollmentStatusDescription:
+          type: string
+    InstructorTypeCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        instructorTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/InstructorType'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    EnrollmentAppointments:
+      type: object
+      properties:
+        enrollmentTermCode:
+          type: string
+        enrollmentPassCode:
+          type: string
+        enrollmentAppointmentCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/EnrollmentAppointment'
+    TermSessionWeekCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        termSessionsByWeek:
+          type: array
+          items:
+            $ref: '#/components/schemas/TermSessionWeek'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    Department:
+      type: object
+      properties:
+        departmentCode:
+          type: string
+        departmentName:
+          type: string
+        departmentStartTermCode:
+          type: string
+        departmentLastTermCode:
+          type: string
+        customizedDepartmentFlag:
+          type: string
+        departmentTypeName:
+          type: string
+    LatinHonorsCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        latinHonors:
+          type: array
+          items:
+            $ref: '#/components/schemas/LatinHonors'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    TranscriptCareer:
+      type: object
+      properties:
+        transcriptCareerCode:
+          type: string
+        transcriptCareerName:
+          type: string
+    IPEDSAPBEthnicity:
+      type: object
+      properties:
+        ipedsapbEthnicityCode:
+          type: string
+        ipedsapbEthnicityName:
+          type: string
     StudentEnrollmentStatusCollection:
       type: object
       properties:
@@ -6606,12 +6340,122 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LinkModel'
-    StudentEnrollmentStatus:
+    CourseClassIdentifiersCollection:
       type: object
       properties:
-        studentEnrollmentStatusCode:
+        courseClassIdentifiers:
+          type: array
+          items:
+            $ref: '#/components/schemas/CourseClassIdentifiers'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    ProvinceCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
           type: string
-        studentEnrollmentStatusDescription:
+        provinces:
+          type: array
+          items:
+            $ref: '#/components/schemas/Province'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    UCCampus:
+      type: object
+      properties:
+        ucCampusCode:
+          type: string
+        ucCampusName:
+          type: string
+    City:
+      type: object
+      properties:
+        universityLocationCode:
+          type: string
+        cityName:
+          type: string
+        cityStartTermCode:
+          type: string
+        cityStartDate:
+          type: string
+        cityLastTermCode:
+          type: string
+        cityLastDate:
+          type: string
+        universityLocationStartTermCode:
+          type: string
+    SpecializationCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        specializations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Specialization'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    unexStudentEnrollmentStatusCollectionResponse:
+      type: object
+      properties:
+        unexStudentEnrollmentStatus:
+          type: array
+          items:
+            $ref: '#/components/schemas/unexStudentEnrollmentStatus'
+    Division:
+      type: object
+      properties:
+        divisionCode:
+          type: string
+        divisionName:
+          type: string
+        divisionStartTermCode:
+          type: string
+        divisionLastTermCode:
           type: string
     CountryCollection:
       type: object
@@ -6666,16 +6510,23 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DivisionDepartmentMinor'
-    TermFeeAssessmentUtility:
+    ActiveAcademicTermCollection:
+      type: object
+      properties:
+        activeAcademicTerm:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActiveAcademicTerm'
+    TermSessionCollection:
       type: object
       properties:
         lastCachedAt:
           format: date-time
           type: string
-        termFeeAssessment:
+        termSessions:
           type: array
           items:
-            $ref: '#/components/schemas/TermFeeAssessmentUtilityCollection'
+            $ref: '#/components/schemas/TermSession'
         totalRecords:
           format: int32
           type: integer
@@ -6692,27 +6543,16 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LinkModel'
-    Division:
-      type: object
-      properties:
-        divisionCode:
-          type: string
-        divisionName:
-          type: string
-        divisionStartTermCode:
-          type: string
-        divisionLastTermCode:
-          type: string
-    EnrollmentStatusCollection:
+    MajorCollection:
       type: object
       properties:
         lastCachedAt:
           format: date-time
           type: string
-        enrollmentStatuses:
+        majors:
           type: array
           items:
-            $ref: '#/components/schemas/EnrollmentStatus'
+            $ref: '#/components/schemas/Major'
         totalRecords:
           format: int32
           type: integer
@@ -6729,7 +6569,129 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LinkModel'
-    SubjectAreaDivisionDepartment:
+    ClassNumbersCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        classNumbers:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClassNumbers'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    ActivityTypeCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        activityTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActivityType'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    TermSessionWeekSession:
+      type: object
+      properties:
+        sessionCode:
+          type: string
+        sessionWeekNumber:
+          type: string
+        sessionWeekStartDate:
+          type: string
+        sessionWeekLastDate:
+          type: string
+    CityCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        cities:
+          type: array
+          items:
+            $ref: '#/components/schemas/City'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    TranscriptCareerCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        transcriptCareers:
+          type: array
+          items:
+            $ref: '#/components/schemas/TranscriptCareer'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    CourseCatalogNumbers:
+      type: object
+      properties:
+        courseCatalogNumber:
+          type: string
+        displayCourseCatalogNumber:
+          type: string
+    MajorDivisionDepartment:
       type: object
       properties:
         divisionCode:
@@ -6740,43 +6702,34 @@ components:
           type: string
         divisionDepartmentLastTermCode:
           type: string
-        subjectAreaDivisionDepartmentStartTermCode:
+        divisionMajorStartTermCode:
           type: string
-        subjectAreaDivisionDepartmentLastTermCode:
+        divisionMajorLastTermCode:
           type: string
-    UCCampus:
+    FinancialSystemDivisionDepartmentCodeCollection:
       type: object
       properties:
-        ucCampusCode:
+        departmentCode:
           type: string
-        ucCampusName:
-          type: string
-    DivisionDepartmentSubjectArea:
+    TermFeeAssessmentUtilityCollection:
       type: object
       properties:
-        subjectAreaCode:
+        termCode:
           type: string
-        subjectAreaDivisionDepartmentStartTermCode:
-          type: string
-        subjectAreaDivisionDepartmentLastTermCode:
-          type: string
-    ActiveAcademicTermCollection:
-      type: object
-      properties:
-        activeAcademicTerm:
+        termFeeAssessmentCollection:
           type: array
           items:
-            $ref: '#/components/schemas/ActiveAcademicTerm'
-    FinancialSystemDepartmentCollection:
+            $ref: '#/components/schemas/TermFeeAssessment'
+    EnrollmentRuleCollection:
       type: object
       properties:
         lastCachedAt:
           format: date-time
           type: string
-        financialSystemDepartments:
+        enrollmentRules:
           type: array
           items:
-            $ref: '#/components/schemas/FinancialSystemDepartment'
+            $ref: '#/components/schemas/EnrollmentRule'
         totalRecords:
           format: int32
           type: integer
@@ -6793,188 +6746,23 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LinkModel'
-    TermFeeAssessment:
+    DegreeType:
       type: object
       properties:
-        careerCode:
+        degreeCode:
           type: string
-        feeAssessmentSequenceNumber:
+        degreeName:
           type: string
-        majorCode:
+        degreeTypeCode:
           type: string
-        professionalSchoolLevelCode:
+        degreeTypeName:
           type: string
-        feeAssessmentBeginDate:
+        degreeStartTermCode:
           type: string
-        feeAssessmentEndDate:
+        degreeLastTermCode:
           type: string
-    EnrollmentAppointments:
-      type: object
-      properties:
-        enrollmentTermCode:
+        cssDegreeCode:
           type: string
-        enrollmentPassCode:
-          type: string
-        enrollmentAppointmentCollection:
-          type: array
-          items:
-            $ref: '#/components/schemas/EnrollmentAppointment'
-    SessionCode:
-      type: object
-      properties:
-        termSessionCode:
-          type: string
-        termSessionDescription:
-          type: string
-    InstructorTypeCollection:
-      type: object
-      properties:
-        lastCachedAt:
-          format: date-time
-          type: string
-        instructorTypes:
-          type: array
-          items:
-            $ref: '#/components/schemas/InstructorType'
-        totalRecords:
-          format: int32
-          type: integer
-        totalPages:
-          format: int32
-          type: integer
-        pageNumber:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
-    EnrollmentPassesCollection:
-      type: object
-      properties:
-        lastCachedAt:
-          format: date-time
-          type: string
-        enrollmentPasses:
-          type: array
-          items:
-            $ref: '#/components/schemas/EnrollmentPasses'
-        totalRecords:
-          format: int32
-          type: integer
-        totalPages:
-          format: int32
-          type: integer
-        pageNumber:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
-    EnrollmentConsentRequiredCollection:
-      type: object
-      properties:
-        lastCachedAt:
-          format: date-time
-          type: string
-        enrollmentConsentsRequired:
-          type: array
-          items:
-            $ref: '#/components/schemas/EnrollmentConsentRequired'
-        totalRecords:
-          format: int32
-          type: integer
-        totalPages:
-          format: int32
-          type: integer
-        pageNumber:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
-    LatinHonors:
-      type: object
-      properties:
-        latinHonorsStartTermCode:
-          type: string
-        latinHonorsEndTermCode:
-          type: string
-        collegeCode:
-          type: string
-        LatinHonors:
-          type: string
-        minimumGPA:
-          type: string
-        maximumGPA:
-          type: string
-        freshmanGradedUnits:
-          type: string
-        advancedStandingGradedUnits:
-          type: string
-    EnrollmentAppointmentGroupCollection:
-      type: object
-      properties:
-        lastCachedAt:
-          format: date-time
-          type: string
-        enrollmentAppointmentGroups:
-          type: array
-          items:
-            $ref: '#/components/schemas/EnrollmentAppointmentGroup'
-        totalRecords:
-          format: int32
-          type: integer
-        totalPages:
-          format: int32
-          type: integer
-        pageNumber:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
-    MinimumProgressCollection:
-      type: object
-      properties:
-        lastCachedAt:
-          format: date-time
-          type: string
-        minimumProgress:
-          type: array
-          items:
-            $ref: '#/components/schemas/MinimumProgress'
-        totalRecords:
-          format: int32
-          type: integer
-        totalPages:
-          format: int32
-          type: integer
-        pageNumber:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
     TermSessionGroupCollection:
       type: object
       properties:
@@ -7001,16 +6789,111 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LinkModel'
-    HoldCollection:
+    EnrollmentPasses:
+      type: object
+      properties:
+        enrollmentTermCode:
+          type: string
+        enrollmentPassCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/EnrollmentPass'
+    InstructorType:
+      type: object
+      properties:
+        instructorType:
+          type: string
+        instructorTypeName:
+          type: string
+    Institution:
+      type: object
+      properties:
+        institutionCode:
+          type: string
+        institutionName:
+          type: string
+        institutionEffectiveDate:
+          type: string
+        institutionExpirationDate:
+          type: string
+        institutionAddressCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/InstitutionAddress'
+        uclaSchoolLevelCode:
+          type: string
+        uclaSchoolTypeCode:
+          type: string
+        ucopSchoolTypeCode:
+          type: string
+        ucopStatusCode:
+          type: string
+    MajorProgram:
+      type: object
+      properties:
+        collegeCode:
+          type: string
+        collegeName:
+          type: string
+        collegeStartTermCode:
+          type: string
+        majorCode:
+          type: string
+        majorName:
+          type: string
+        majorStartTermCode:
+          type: string
+        degreeCode:
+          type: string
+        degreeName:
+          type: string
+        degreeStartTermCode:
+          type: string
+        programStartTermCode:
+          type: string
+        programLastTermCode:
+          type: string
+        programCareerCode:
+          type: string
+        programTypeName:
+          type: string
+        customizedProgramFlag:
+          type: string
+        schoolwideProgramFlag:
+          type: string
+    Minor:
+      type: object
+      properties:
+        minorCode:
+          type: string
+        minorName:
+          type: string
+        minorAbbreviation:
+          type: string
+        minorStartTermCode:
+          type: string
+        minorLastTermCode:
+          type: string
+        customizedMinorFlag:
+          type: string
+        schoolwideMinorFlag:
+          type: string
+        minorFinalTermCode:
+          type: string
+        divisionDepartmentCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/MinorDivisionDepartment'
+    CareerCollection:
       type: object
       properties:
         lastCachedAt:
           format: date-time
           type: string
-        holds:
+        careers:
           type: array
           items:
-            $ref: '#/components/schemas/Hold'
+            $ref: '#/components/schemas/Career'
         totalRecords:
           format: int32
           type: integer
@@ -7027,16 +6910,34 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LinkModel'
-    DepartmentCollection:
+    FinancialSystemDivision:
+      type: object
+      properties:
+        financialSystemDivisionCode:
+          type: string
+        financialSystemDivisionName:
+          type: string
+        financialSystemDepartmentCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/FinancialSystemDivisionDepartmentCodeCollection'
+    IPEDSAPBExpandedEthnicity:
+      type: object
+      properties:
+        ipedsapbExpandedEthnicityCode:
+          type: string
+        ipedsapbExpandedEthnicityName:
+          type: string
+    TermSessionCodeCollection:
       type: object
       properties:
         lastCachedAt:
           format: date-time
           type: string
-        departments:
+        termSessionCodes:
           type: array
           items:
-            $ref: '#/components/schemas/Department'
+            $ref: '#/components/schemas/TermSessionCode'
         totalRecords:
           format: int32
           type: integer
@@ -7053,6 +6954,105 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LinkModel'
+    VisaTypeCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        visaTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/VisaType'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    GradeType:
+      type: object
+      properties:
+        gradeTypeCode:
+          type: string
+        gradeTypeName:
+          type: string
+        careerCode:
+          type: string
+    EnrollmentAppointment:
+      type: object
+      properties:
+        enrollmentAppointmentNumber:
+          type: string
+        enrollmentAppointmentStartDate:
+          type: string
+        enrollmentAppointmentStartTime:
+          type: string
+        enrollmentAppointmentEndDate:
+          type: string
+        enrollmentAppointmentEndTime:
+          type: string
+    StudentEnrollmentStatus:
+      type: object
+      properties:
+        studentEnrollmentStatusCode:
+          type: string
+        studentEnrollmentStatusDescription:
+          type: string
+    HoldLevelCollection:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        holdLevels:
+          type: array
+          items:
+            $ref: '#/components/schemas/HoldLevel'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    GEAttribute:
+      type: object
+      properties:
+        geAttributeCode:
+          type: string
+        geAttributeName:
+          type: string
+        geAttributeStartTermCode:
+          type: string
+        geAttributeLastTermCode:
+          type: string
+    UnitType:
+      type: object
+      properties:
+        unitTypeCode:
+          type: string
+        unitTypeName:
+          type: string
   securitySchemes:
     application:
       type: oauth2

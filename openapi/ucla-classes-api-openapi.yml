@@ -280,6 +280,52 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    LinkModel:
+      type: object
+      properties:
+        href:
+          type: string
+        rel:
+          type: string
+        method:
+          type: string
+    ClassUNEXSection:
+      type: object
+      properties:
+        classSectionNumber:
+          type: string
+    ClassFinalExam:
+      type: object
+      properties:
+        dataDisclosureWarning:
+          type: string
+        offeredTermCode:
+          type: string
+        subjectAreaCode:
+          type: string
+        courseCatalogNumber:
+          type: string
+        courseStartTermCode:
+          type: string
+        classNumber:
+          type: string
+        classSessionDisplayFormat:
+          type: string
+        finalExamCode:
+          type: string
+        finalExamDate:
+          type: string
+        finalExamDayOfWeek:
+          type: string
+        finalExamTimes:
+          type: string
+        finalExamLocation:
+          type: string
+    ClassNotes:
+      type: object
+      properties:
+        classNotes:
+          type: string
     ClassUNEX:
       type: object
       properties:
@@ -295,6 +341,32 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ClassUNEXNumber'
+    ClassFinalExamResponse:
+      type: object
+      properties:
+        classFinalExam:
+          $ref: '#/components/schemas/ClassFinalExam'
+    UNEXClassSection:
+      type: object
+      properties:
+        classesUNEX:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClassUNEX'
+    ClassNumber:
+      type: object
+      properties:
+        classNumber:
+          type: string
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    ClassDetailResponse:
+      type: object
+      properties:
+        classDetail:
+          $ref: '#/components/schemas/ClassDetail'
     ClassUNEXNumber:
       type: object
       properties:
@@ -304,11 +376,31 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ClassUNEXSection'
-    ClassUNEXSection:
+    Classes:
       type: object
       properties:
-        classSectionNumber:
+        dataDisclosureWarning:
           type: string
+        offeredTermCode:
+          type: string
+        subjectAreaCode:
+          type: string
+        courseCatalogNumber:
+          type: string
+        courseCatalogNumberDisplay:
+          type: string
+        courseStartTermCode:
+          type: string
+        classSessionDisplayFormat:
+          type: string
+        termSessionGroupCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/SessionGroup'
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
     SessionGroup:
       type: object
       properties:
@@ -367,79 +459,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LinkModel'
-    UNEXClassSection:
-      type: object
-      properties:
-        classesUNEX:
-          type: array
-          items:
-            $ref: '#/components/schemas/ClassUNEX'
-    Classes:
-      type: object
-      properties:
-        dataDisclosureWarning:
-          type: string
-        offeredTermCode:
-          type: string
-        subjectAreaCode:
-          type: string
-        courseCatalogNumber:
-          type: string
-        courseCatalogNumberDisplay:
-          type: string
-        courseStartTermCode:
-          type: string
-        classSessionDisplayFormat:
-          type: string
-        termSessionGroupCollection:
-          type: array
-          items:
-            $ref: '#/components/schemas/SessionGroup'
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
-    ClassNotes:
-      type: object
-      properties:
-        classNotes:
-          type: string
-    ClassFinalExam:
-      type: object
-      properties:
-        dataDisclosureWarning:
-          type: string
-        offeredTermCode:
-          type: string
-        subjectAreaCode:
-          type: string
-        courseCatalogNumber:
-          type: string
-        courseStartTermCode:
-          type: string
-        classNumber:
-          type: string
-        classSessionDisplayFormat:
-          type: string
-        finalExamCode:
-          type: string
-        finalExamDate:
-          type: string
-        finalExamDayOfWeek:
-          type: string
-        finalExamTimes:
-          type: string
-        finalExamLocation:
-          type: string
-    ClassNumber:
-      type: object
-      properties:
-        classNumber:
-          type: string
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
     ClassesCollection:
       type: object
       properties:
@@ -466,25 +485,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LinkModel'
-    ClassDetailResponse:
-      type: object
-      properties:
-        classDetail:
-          $ref: '#/components/schemas/ClassDetail'
-    LinkModel:
-      type: object
-      properties:
-        href:
-          type: string
-        rel:
-          type: string
-        method:
-          type: string
-    ClassFinalExamResponse:
-      type: object
-      properties:
-        classFinalExam:
-          $ref: '#/components/schemas/ClassFinalExam'
   securitySchemes:
     application:
       type: oauth2

@@ -138,45 +138,15 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ClassSectionsResponse:
+    LinkModel:
       type: object
       properties:
-        classSection:
-          $ref: '#/components/schemas/ClassSections'
-    ClassSectionMeetingLocation:
-      type: object
-      properties:
-        classSectionMeetingDaysofWeekCode:
+        href:
           type: string
-        classSectionMeetingStartTime:
+        rel:
           type: string
-        classSectionMeetingStopTime:
+        method:
           type: string
-        classSectionBuildingCode:
-          type: string
-        classSectionBuildingRoomCode:
-          type: string
-    ClassSections:
-      type: object
-      properties:
-        dataDisclosureWarning:
-          type: string
-        offeredTermCode:
-          type: string
-        subjectAreaCode:
-          type: string
-        courseCatalogNumber:
-          type: string
-        courseStartTermCode:
-          type: string
-        classNumber:
-          type: string
-        classSectionSessionDisplayFormat:
-          type: string
-        classSectionCollection:
-          type: array
-          items:
-            $ref: '#/components/schemas/ClassSectionNumber'
     ClassSectionInstructor:
       type: object
       properties:
@@ -184,6 +154,23 @@ components:
           type: string
         links:
           $ref: '#/components/schemas/LinkModel'
+    ClassSectionDetailResponse:
+      type: object
+      properties:
+        lastCachedAt:
+          format: date-time
+          type: string
+        classSectionDetail:
+          $ref: '#/components/schemas/ClassSectionDetail'
+    ClassSectionRestrictionText:
+      type: object
+      properties:
+        classEnrollmentRestrictionText:
+          type: string
+        classEnrollmentConsentRequiredCode:
+          type: string
+        classEnrollmentRuleID:
+          type: string
     ClassSectionNotes:
       type: object
       properties:
@@ -272,37 +259,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LinkModel'
-    ClassSectionDetailResponse:
-      type: object
-      properties:
-        lastCachedAt:
-          format: date-time
-          type: string
-        classSectionDetail:
-          $ref: '#/components/schemas/ClassSectionDetail'
-    ClassSectionRestrictionText:
-      type: object
-      properties:
-        classEnrollmentRestrictionText:
-          type: string
-        classEnrollmentConsentRequiredCode:
-          type: string
-        classEnrollmentRuleID:
-          type: string
-    LinkModel:
-      type: object
-      properties:
-        href:
-          type: string
-        rel:
-          type: string
-        method:
-          type: string
-    ClassSectionUnit:
-      type: object
-      properties:
-        classSectionUnit:
-          type: string
     ClassSectionNumber:
       type: object
       properties:
@@ -312,6 +268,50 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LinkModel'
+    ClassSections:
+      type: object
+      properties:
+        dataDisclosureWarning:
+          type: string
+        offeredTermCode:
+          type: string
+        subjectAreaCode:
+          type: string
+        courseCatalogNumber:
+          type: string
+        courseStartTermCode:
+          type: string
+        classNumber:
+          type: string
+        classSectionSessionDisplayFormat:
+          type: string
+        classSectionCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClassSectionNumber'
+    ClassSectionsResponse:
+      type: object
+      properties:
+        classSection:
+          $ref: '#/components/schemas/ClassSections'
+    ClassSectionMeetingLocation:
+      type: object
+      properties:
+        classSectionMeetingDaysofWeekCode:
+          type: string
+        classSectionMeetingStartTime:
+          type: string
+        classSectionMeetingStopTime:
+          type: string
+        classSectionBuildingCode:
+          type: string
+        classSectionBuildingRoomCode:
+          type: string
+    ClassSectionUnit:
+      type: object
+      properties:
+        classSectionUnit:
+          type: string
   securitySchemes:
     application:
       type: oauth2
