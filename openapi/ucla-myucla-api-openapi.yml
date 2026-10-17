@@ -58,6 +58,75 @@ paths:
         required: true
 components:
   schemas:
+    UserInfo:
+      type: object
+      properties:
+        homeURL:
+          type: string
+        logoutURL:
+          type: string
+        noticesURL:
+          type: string
+        displayName:
+          type: string
+        menuData:
+          $ref: '#/components/schemas/MegaMenuModel'
+        notices:
+          format: int32
+          type: integer
+        redirectToNotices:
+          type: boolean
+        jsonMenuData:
+          type: string
+        lastUpdatedTS:
+          format: date-time
+          type: string
+    MegaMenuModel:
+      description: "The mega menu model contains all the data necessary to render\n            the full Mega Menu for IWE."
+      type: object
+      properties:
+        superGroups:
+          description: "Set of super groups sorted in the order that they should\n            be rendered."
+          type: array
+          items:
+            $ref: '#/components/schemas/SuperGroup'
+        _homeURL:
+          type: string
+    MenuDataInput:
+      type: object
+      properties:
+        ppId:
+          type: string
+        sessionId:
+          type: string
+        shibUclaLogonId:
+          type: string
+        uid:
+          type: string
+        uclaPersonRole:
+          type: string
+        firstName:
+          type: string
+        nickName:
+          type: string
+        logoutURL:
+          type: string
+        favoriteFeatureCookieTS:
+          type: string
+        favoriteFeatureCookieValue:
+          type: string
+        hiddenRoleCookieTS:
+          type: string
+        hiddenRoleCookieValue:
+          type: string
+        homeUrlCookieTS:
+          type: string
+        homeUrlCookieValue:
+          type: string
+        noticeCountCookieValue:
+          type: string
+        roleChangedCookieTS:
+          type: string
     Feature:
       description: "A feature is one of the links that a user can click on. This metadata is populated from\n            the database."
       type: object
@@ -106,29 +175,26 @@ components:
         siteName:
           description: Name of site that the feature belongs to
           type: string
-    UserInfo:
+    FeatureGroup:
+      description: A feature group is a group of features that logically should be grouped together.
       type: object
       properties:
-        homeURL:
-          type: string
-        logoutURL:
-          type: string
-        noticesURL:
-          type: string
-        displayName:
-          type: string
-        menuData:
-          $ref: '#/components/schemas/MegaMenuModel'
-        notices:
+        featureGroupID:
           format: int32
+          description: Feature Group ID in database
           type: integer
-        redirectToNotices:
-          type: boolean
-        jsonMenuData:
+        featureGroupSequenceNumber:
+          format: int32
+          description: Feature Group sequence numbering order to render
+          type: integer
+        featureGroupName:
+          description: Name of the Feature Group
           type: string
-        lastUpdatedTS:
-          format: date-time
-          type: string
+        features:
+          description: Set of features that belong to this feature group
+          type: array
+          items:
+            $ref: '#/components/schemas/Feature'
     SuperGroup:
       description: "Class that represents a SuperGroup. A super group is comprised of several\n            feature groups."
       type: object
@@ -159,72 +225,6 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/FeatureGroup'
-    FeatureGroup:
-      description: A feature group is a group of features that logically should be grouped together.
-      type: object
-      properties:
-        featureGroupID:
-          format: int32
-          description: Feature Group ID in database
-          type: integer
-        featureGroupSequenceNumber:
-          format: int32
-          description: Feature Group sequence numbering order to render
-          type: integer
-        featureGroupName:
-          description: Name of the Feature Group
-          type: string
-        features:
-          description: Set of features that belong to this feature group
-          type: array
-          items:
-            $ref: '#/components/schemas/Feature'
-    MegaMenuModel:
-      description: "The mega menu model contains all the data necessary to render\n            the full Mega Menu for IWE."
-      type: object
-      properties:
-        superGroups:
-          description: "Set of super groups sorted in the order that they should\n            be rendered."
-          type: array
-          items:
-            $ref: '#/components/schemas/SuperGroup'
-        _homeURL:
-          type: string
-    MenuDataInput:
-      type: object
-      properties:
-        ppId:
-          type: string
-        sessionId:
-          type: string
-        shibUclaLogonId:
-          type: string
-        uid:
-          type: string
-        uclaPersonRole:
-          type: string
-        firstName:
-          type: string
-        nickName:
-          type: string
-        logoutURL:
-          type: string
-        favoriteFeatureCookieTS:
-          type: string
-        favoriteFeatureCookieValue:
-          type: string
-        hiddenRoleCookieTS:
-          type: string
-        hiddenRoleCookieValue:
-          type: string
-        homeUrlCookieTS:
-          type: string
-        homeUrlCookieValue:
-          type: string
-        noticeCountCookieValue:
-          type: string
-        roleChangedCookieTS:
-          type: string
   securitySchemes:
     application:
       type: oauth2

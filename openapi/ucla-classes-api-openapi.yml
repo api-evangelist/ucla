@@ -280,20 +280,13 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    LinkModel:
+    UNEXClassSection:
       type: object
       properties:
-        href:
-          type: string
-        rel:
-          type: string
-        method:
-          type: string
-    ClassUNEXSection:
-      type: object
-      properties:
-        classSectionNumber:
-          type: string
+        classesUNEX:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClassUNEX'
     ClassFinalExam:
       type: object
       properties:
@@ -326,6 +319,25 @@ components:
       properties:
         classNotes:
           type: string
+    LinkModel:
+      type: object
+      properties:
+        href:
+          type: string
+        rel:
+          type: string
+        method:
+          type: string
+    ClassUNEXSection:
+      type: object
+      properties:
+        classSectionNumber:
+          type: string
+    ClassDetailResponse:
+      type: object
+      properties:
+        classDetail:
+          $ref: '#/components/schemas/ClassDetail'
     ClassUNEX:
       type: object
       properties:
@@ -341,41 +353,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ClassUNEXNumber'
-    ClassFinalExamResponse:
-      type: object
-      properties:
-        classFinalExam:
-          $ref: '#/components/schemas/ClassFinalExam'
-    UNEXClassSection:
-      type: object
-      properties:
-        classesUNEX:
-          type: array
-          items:
-            $ref: '#/components/schemas/ClassUNEX'
-    ClassNumber:
-      type: object
-      properties:
-        classNumber:
-          type: string
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
-    ClassDetailResponse:
-      type: object
-      properties:
-        classDetail:
-          $ref: '#/components/schemas/ClassDetail'
-    ClassUNEXNumber:
-      type: object
-      properties:
-        classNumber:
-          type: string
-        classSectionCollection:
-          type: array
-          items:
-            $ref: '#/components/schemas/ClassUNEXSection'
     Classes:
       type: object
       properties:
@@ -401,19 +378,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LinkModel'
-    SessionGroup:
-      type: object
-      properties:
-        termsessionGroupCode:
-          type: string
-        termsessionInstructionWeeks:
-          type: string
-        termsessionGroupWeekCode:
-          type: string
-        classCollection:
-          type: array
-          items:
-            $ref: '#/components/schemas/ClassNumber'
     ClassDetail:
       type: object
       properties:
@@ -459,6 +423,42 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LinkModel'
+    ClassNumber:
+      type: object
+      properties:
+        classNumber:
+          type: string
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
+    ClassUNEXNumber:
+      type: object
+      properties:
+        classNumber:
+          type: string
+        classSectionCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClassUNEXSection'
+    ClassFinalExamResponse:
+      type: object
+      properties:
+        classFinalExam:
+          $ref: '#/components/schemas/ClassFinalExam'
+    SessionGroup:
+      type: object
+      properties:
+        termsessionGroupCode:
+          type: string
+        termsessionInstructionWeeks:
+          type: string
+        termsessionGroupWeekCode:
+          type: string
+        classCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClassNumber'
     ClassesCollection:
       type: object
       properties:

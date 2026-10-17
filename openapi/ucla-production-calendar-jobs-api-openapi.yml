@@ -79,37 +79,6 @@ paths:
       deprecated: false
 components:
   schemas:
-    Jobs:
-      type: object
-      properties:
-        termCode:
-          type: string
-        network:
-          type: string
-        networkType:
-          type: string
-        jobSequenceNumber:
-          type: string
-        jobName:
-          type: string
-        jobDescription:
-          type: string
-        parameterCode:
-          type: string
-        parameterValue:
-          type: string
-        jobStartDate:
-          type: string
-        jobEndDate:
-          type: string
-        mainframeStartDate:
-          type: string
-        mainframeEndDate:
-          type: string
-        weekdayRun:
-          type: string
-        comments:
-          type: string
     LinkModel:
       type: object
       properties:
@@ -147,6 +116,37 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LinkModel'
+    Jobs:
+      type: object
+      properties:
+        termCode:
+          type: string
+        network:
+          type: string
+        networkType:
+          type: string
+        jobSequenceNumber:
+          type: string
+        jobName:
+          type: string
+        jobDescription:
+          type: string
+        parameterCode:
+          type: string
+        parameterValue:
+          type: string
+        jobStartDate:
+          type: string
+        jobEndDate:
+          type: string
+        mainframeStartDate:
+          type: string
+        mainframeEndDate:
+          type: string
+        weekdayRun:
+          type: string
+        comments:
+          type: string
   securitySchemes:
     application:
       type: oauth2

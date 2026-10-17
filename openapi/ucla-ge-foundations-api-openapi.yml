@@ -142,68 +142,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    LinkModel:
-      type: object
-      properties:
-        href:
-          type: string
-        rel:
-          type: string
-        method:
-          type: string
-    GEFoundations:
-      type: object
-      properties:
-        geFoundationCode:
-          type: string
-        geFoundationName:
-          type: string
-        geFoundationStartTermCode:
-          type: string
-        geFoundationLastTermCode:
-          type: string
-        geFoundationCategoryCollection:
-          type: array
-          items:
-            $ref: '#/components/schemas/GEFoundationsCategory'
-    GEFoundationCategoryCourses:
-      type: object
-      properties:
-        geFoundationCode:
-          type: string
-        geFoundationStartTermCode:
-          type: string
-        geFoundationCategoryCode:
-          type: string
-        geFoundationCategoryStartTermCode:
-          type: string
-        courseCollection:
-          type: array
-          items:
-            $ref: '#/components/schemas/GEFoundationCategoryCourse'
-    GEFoundationsCollection:
-      type: object
-      properties:
-        geFoundations:
-          type: array
-          items:
-            $ref: '#/components/schemas/GEFoundations'
-        totalRecords:
-          format: int32
-          type: integer
-        totalPages:
-          format: int32
-          type: integer
-        pageNumber:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinkModel'
     GEFoundationCategoryCourse:
       type: object
       properties:
@@ -221,6 +159,45 @@ components:
           type: string
         courseFoundationCategoryLastTermCode:
           type: string
+    GEFoundationsCategory:
+      type: object
+      properties:
+        geFoundationCategoryCode:
+          type: string
+        geFoundationCategoryName:
+          type: string
+        geFoundationCategoryStartTermCode:
+          type: string
+        geFoundationCategoryLastTermCode:
+          type: string
+        href:
+          type: string
+        rel:
+          type: string
+    LinkModel:
+      type: object
+      properties:
+        href:
+          type: string
+        rel:
+          type: string
+        method:
+          type: string
+    GEFoundationCategoryCourses:
+      type: object
+      properties:
+        geFoundationCode:
+          type: string
+        geFoundationStartTermCode:
+          type: string
+        geFoundationCategoryCode:
+          type: string
+        geFoundationCategoryStartTermCode:
+          type: string
+        courseCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/GEFoundationCategoryCourse'
     GEFoundationCategoryCoursesCollection:
       type: object
       properties:
@@ -244,21 +221,44 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LinkModel'
-    GEFoundationsCategory:
+    GEFoundations:
       type: object
       properties:
-        geFoundationCategoryCode:
+        geFoundationCode:
           type: string
-        geFoundationCategoryName:
+        geFoundationName:
           type: string
-        geFoundationCategoryStartTermCode:
+        geFoundationStartTermCode:
           type: string
-        geFoundationCategoryLastTermCode:
+        geFoundationLastTermCode:
           type: string
-        href:
-          type: string
-        rel:
-          type: string
+        geFoundationCategoryCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/GEFoundationsCategory'
+    GEFoundationsCollection:
+      type: object
+      properties:
+        geFoundations:
+          type: array
+          items:
+            $ref: '#/components/schemas/GEFoundations'
+        totalRecords:
+          format: int32
+          type: integer
+        totalPages:
+          format: int32
+          type: integer
+        pageNumber:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkModel'
   securitySchemes:
     application:
       type: oauth2
