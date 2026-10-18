@@ -210,6 +210,12 @@ apis:
   humanURL: https://bruinlearn.ucla.edu/
   baseURL: https://bruinlearn.ucla.edu/api/v1
   tags:
+  - LMS
+  - LTI
+  - Course Delivery
+  - Canvas
+  - Gated
+  tags_raw:
   - Learning Management
   - LTI
   - Course Delivery
@@ -382,6 +388,8 @@ apis:
   humanURL: https://developer.api.ucla.edu/api/261
   baseURL: https://api.ucla.edu/sis
   tags:
+  - Dictionaries
+  tags_raw:
   - Dictionary
   properties:
   - type: OpenAPI
