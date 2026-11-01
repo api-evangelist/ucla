@@ -1,4 +1,4 @@
-# University of California, Los Angeles (ucla)
+# University of California, Los Angeles
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,99 +64,167 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-The University of California, Los Angeles (UCLA) is a public land-grant research university in the University of California system, ranked 29th in the QS World University Rankings. It is one of the few institutions in this cohort that genuinely runs a central API program rather than renting one: UCLA operates its own Apigee-fronted gateway at `api.ucla.edu` under a certificate issued to the university, and a developer portal at [developer.api.ucla.edu](https://developer.api.ucla.edu/) cataloguing eight API products, seven of which publish a complete, anonymously downloadable OpenAPI contract. UCLA also runs its own Shibboleth identity provider, registered by InCommon. What it does not run is any self-service path — every credential requires a UCLA logon and a human approval.
+The University of California, Los Angeles is a public land-grant research university in the University of California system, ranked 29th in the QS World University Rankings, and it is one of the few institutions in this cohort that genuinely runs a central API program rather than renting one. UCLA operates its own API gateway at api.ucla.edu, fronted by Apigee under a certificate issued to the university, and a Drupal/Apigee developer portal at developer.api.ucla.edu that catalogues eight API products. Seven of those products publish a real machine-readable contract, anonymously downloadable, and all seven describe routes on UCLA's own gateway - six Swagger 2.0 contracts covering the student information system (classes, class sections, courses, GE foundations, a 61-operation Registrar data dictionary, the mainframe production calendar, a connectivity health check and the MyUCLA portal menu) plus one OpenAPI 3.0.3 contract for a campus weather station. Ninety-one operations in total, every one of them a read. UCLA also runs its own Shibboleth identity provider, registered by InCommon under entityID urn:mace:incommon:ucla.edu with REFEDS Research & Scholarship and SIRTFI certification - the most complete machine-readable artifact the university publishes, and the one no API catalogue had looked at. UCLA Library self-hosts a Cantaloupe IIIF image server, a Hyrax digital collections platform and a Dataverse instance, all on ucla.edu hosts under UCLA's own TLS certificates. What UCLA does not have is any way in: every credential requires a UCLA logon and a human approval, there is no self-service path, no status page, no changelog, no llms.txt, no machine-readable catalog index, and no rate-limit or error documentation. The learning management system, BruinLearn, is Instructure Canvas on a vanity subdomain and is recorded as a tenant relationship rather than as UCLA engineering.
 
-- APIs.json: https://raw.githubusercontent.com/api-evangelist/ucla/refs/heads/main/apis.yml
-- Run with Naftiko: https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=ucla-api-evangelist&utm_content=repo
+**Areas:** University · Higher Education · Education · United States · California · UC System · Public Research University · Course Catalog · Student Information · Identity Federation · Research Repository · Library
 
-## Type
+## University of California, Los Angeles on APIs.io
 
-University / Public Research University — Index / Consumer / 3rd-Party
+Everything profiled for University of California, Los Angeles is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/ucla/](https://apis.io/providers/ucla/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (14)
 
-University, Higher Education, Education, United States, California, UC System, Public Research University, Course Catalog, Student Information, Identity Federation, Research Repository, Library, IIIF, Campus Life
+- [UCLA Shibboleth Identity Provider (InCommon)](https://apis.io/apis/ucla/identity/) — UCLA's own Shibboleth identity provider and the most complete machine-readable artifact the university publishes. Registered by InCommon under entityID…
+- [UCLA Library IIIF Image Service](https://apis.io/apis/ucla/library-iiif/) — UCLA Library self-hosts a Cantaloupe 5.0.5 image server exposing both IIIF Image API 2.x and 3.0 endpoints for its digital collections. Institution-operated…
+- [UCLA Library Digital Collections](https://apis.io/apis/ucla/digital-collections/) — UCLA Library's digital collections platform, institution-hosted on a UCLA IP under a UCLA-issued certificate and developed in the open by the UCLA Library…
+- [UCLA Dataverse](https://apis.io/apis/ucla/dataverse/) — UCLA's research data repository, running open-source Dataverse on a UCLA-owned host under a UCLA-issued certificate with no vendor CNAME - which…
+- [BruinLearn (Canvas LMS)](https://apis.io/apis/ucla/bruinlearn/) — UCLA's learning management system. The brand, the courses, the learners and the subdomain are UCLA's; the REST API, the LTI 1.3 implementation, the key…
+- [University of California, Los Angeles Class Sections API](https://apis.io/apis/ucla/ucla-class-sections-api/) — The Class Sections API from University of California, Los Angeles — 2 operation(s) for class sections.
+- [University of California, Los Angeles Classes API](https://apis.io/apis/ucla/ucla-classes-api/) — The Classes API from University of California, Los Angeles — 4 operation(s) for classes.
+- [University of California, Los Angeles Courses API](https://apis.io/apis/ucla/ucla-courses-api/) — The Courses API from University of California, Los Angeles — 5 operation(s) for courses.
+- [University of California, Los Angeles Dictionary API](https://apis.io/apis/ucla/ucla-dictionary-api/) — The Dictionary API from University of California, Los Angeles — 61 operation(s) for dictionary.
+- [University of California, Los Angeles GE Foundations API](https://apis.io/apis/ucla/ucla-ge-foundations-api/) — The GE Foundations API from University of California, Los Angeles — 2 operation(s) for ge foundations.
+- [University of California, Los Angeles Infrastructure API](https://apis.io/apis/ucla/ucla-infrastructure-api/) — The Infrastructure API from University of California, Los Angeles — 1 operation(s) for infrastructure.
+- [University of California, Los Angeles My UCLA API](https://apis.io/apis/ucla/ucla-myucla-api/) — The MyUCLA API from University of California, Los Angeles — 1 operation(s) for myucla.
+- [University of California, Los Angeles Production Calendar Jobs API](https://apis.io/apis/ucla/ucla-production-calendar-jobs-api/) — The Production Calendar Jobs API from University of California, Los Angeles — 1 operation(s) for production calendar jobs.
+- [University of California, Los Angeles Weather API](https://apis.io/apis/ucla/ucla-weather-api/) — The Weather API from University of California, Los Angeles — 14 operation(s) for weather.
 
-## Who operates what
+### Published properties
 
-Every surface below carries an `x-operator` in `apis.yml`. A university is a federation of buyers, and the question that matters is not whether a specification exists but who runs the thing it describes.
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-| Surface | Operator | Evidence |
-|---|---|---|
-| Six SIS APIs + Weather API | **institution** | `servers[]` on `api.ucla.edu`; TLS `O=University of California, Los Angeles` |
-| Shibboleth IdP | **institution** | `entityID urn:mace:incommon:ucla.edu`, scope `ucla.edu`, endpoints on `shb.ais.ucla.edu` |
-| Library IIIF (Cantaloupe) | **institution** | UCLA-issued TLS; self-hosted on UCLA Library's own AWS account |
-| Digital Collections | **institution** | UCLA IP, UCLA-issued TLS, no vendor CNAME |
-| UCLA Dataverse | **institution** | UCLA-issued TLS, no vendor CNAME, self-installed open-source Dataverse |
-| BruinLearn | **tenant** | `bruinlearn.ucla.edu` CNAMEs to `ucla-vanity.instructure.com` |
+#### Agentic access (1)
 
-## APIs
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- **UCLA Classes API** — 6 operations. Classes and class sections for a term, including a dedicated UCLA Extension route. [Contract](openapi/ucla-sis-classes-openapi.yml) · [Docs](https://developer.api.ucla.edu/api/261)
-- **UCLA Courses API** — 7 operations. Approved courses, requisites, diversity attributes and the General Education foundation structure. [Contract](openapi/ucla-sis-courses-openapi.yml) · [Docs](https://developer.api.ucla.edu/api/271)
-- **UCLA Registrar Dictionary API** — 61 operations enumerating every coded value the other SIS APIs return. [Contract](openapi/ucla-sis-dictionary-openapi.yml) · [Docs](https://developer.api.ucla.edu/api/366)
-- **UCLA Production Calendar Jobs API** — 1 operation. The Registrar's mainframe batch schedule. [Contract](openapi/ucla-sis-production-calendar-jobs-openapi.yml) · [Docs](https://developer.api.ucla.edu/api/281)
-- **UCLA Verify Connectivity to SIS API** — 1 operation. A catalogued health check. [Contract](openapi/ucla-sis-verify-connectivity-openapi.yml) · [Docs](https://developer.api.ucla.edu/api/346)
-- **MyUCLA Menu Data API** — 1 operation. The student portal navigation tree. [Contract](openapi/ucla-myucla-menu-data-openapi.yml) · [Docs](https://developer.api.ucla.edu/api/61)
-- **UCLA Weather API** — 14 operations. Campus weather station observations. The only OpenAPI 3.0.3 contract UCLA publishes. [Contract](openapi/ucla-weather-openapi.yml) · [Docs](https://developer.api.ucla.edu/api/51)
-- **UCLA Shibboleth Identity Provider** — SAML 1.1 + 2.0, REFEDS R&S, SIRTFI. [Federation record](identity-federation/ucla-identity-federation.yml)
-- **UCLA Library IIIF Image Service** — Cantaloupe 5.0.5, IIIF Image API 2.x and 3.0.
-- **UCLA Library Digital Collections** — bot-challenged; recorded, not credited.
-- **UCLA Dataverse** — bot-challenged; recorded, not credited.
-- **BruinLearn (Canvas LMS)** — tenant relationship, LTI 1.3.
+- [Ucla Agentic Access](https://apis.io/agentic-access/ucla/ucla-agentic-access/)
 
-91 operations across seven contracts, every one of them a read. None is callable without a UCLA-approved App Key.
+#### JSON Schema (7)
 
-## Notable findings
+The data models the API reads and writes.
 
-- The seven contracts are not linked anywhere on the portal. Each specification URL lives inside the `swaggerUIFormatter` block of the product page's `drupal-settings-json`. UCLA publishes no machine-readable index of its own catalog.
-- **462 response keys** across the six SIS contracts are declared with a **leading space** — `" 400"`, `" 401"`, `" 500"`. A conformant Swagger 2.0 validator sees one declared response per operation and no error responses at all.
-- The production gateway answers **500 with plain text** on any unrouted path; the QA gateway correctly answers 404 with a structured fault.
-- UCLA Library's Cantaloupe IIIF server returns a **full Java stack trace naming its private S3 bucket** on every 403, including for a deliberate nonsense identifier.
-- 175 parameter `description` fields contain a bare sample value (`"151"`, `"ENGCOMP"`, `"99F"`) instead of a description.
-- The Weather contract's `info.description` points at `weather.atmos.ucla.edu`, which resolves in DNS but accepts no connection.
+- [UCLA myUCLA menu data — schemas in use](https://apis.io/schemas/ucla/ucla-myucla-menu-data-schemas/)
+- [UCLA sis classes — schemas in use](https://apis.io/schemas/ucla/ucla-sis-classes-schemas/)
+- [UCLA sis courses — schemas in use](https://apis.io/schemas/ucla/ucla-sis-courses-schemas/)
+- [UCLA sis dictionary — schemas in use](https://apis.io/schemas/ucla/ucla-sis-dictionary-schemas/)
+- [UCLA sis production calendar jobs — schemas in use](https://apis.io/schemas/ucla/ucla-sis-production-calendar-jobs-schemas/)
+- [UCLA sis verify connectivity — schemas in use](https://apis.io/schemas/ucla/ucla-sis-verify-connectivity-schemas/)
+- [UCLA weather — schemas in use](https://apis.io/schemas/ucla/ucla-weather-schemas/)
 
-## Artifacts
+#### JSON-LD (1)
 
-- OpenAPI: [openapi/](openapi/) — with pristine pre-refine copies in [openapi/_original/](openapi/_original/)
-- JSON Schema: [json-schema/](json-schema/) — the reachable schema subset per contract
-- Identity Federation: [identity-federation/ucla-identity-federation.yml](identity-federation/ucla-identity-federation.yml)
-- Authentication: [authentication/ucla-authentication.yml](authentication/ucla-authentication.yml)
-- Scopes: [scopes/ucla-scopes.yml](scopes/ucla-scopes.yml)
-- Errors: [errors/ucla-errors.yml](errors/ucla-errors.yml)
-- Conformance: [conformance/ucla-conformance.yml](conformance/ucla-conformance.yml)
-- Lifecycle: [lifecycle/ucla-lifecycle.yml](lifecycle/ucla-lifecycle.yml)
-- Rules: [rules/ucla-rules.yml](rules/ucla-rules.yml)
-- Vocabulary: [vocabulary/ucla-vocabulary.yml](vocabulary/ucla-vocabulary.yml)
-- Agentic Access: [agentic-access/ucla-agentic-access.yml](agentic-access/ucla-agentic-access.yml)
-- Examples: [examples/index.yml](examples/index.yml)
-- JSON-LD: [json-ld/ucla-context.jsonld](json-ld/ucla-context.jsonld)
-- Plans & Pricing: [plans/ucla-plans-pricing.yml](plans/ucla-plans-pricing.yml)
-- Rate Limits: [rate-limits/ucla-rate-limits.yml](rate-limits/ucla-rate-limits.yml)
-- FinOps: [finops/ucla-finops.yml](finops/ucla-finops.yml)
-- Review: [review.yml](review.yml)
+Linked-data contexts for the provider's vocabulary.
 
-## Timestamps
+- [Ucla Context](https://apis.io/jsonld/ucla/ucla-context/)
 
-- Created: 2026-06-03
-- Modified: 2026-08-19
+#### Examples (2)
 
-## Common Properties
+Example requests and responses.
 
-- Website: https://www.ucla.edu/
-- Developer Portal: https://developer.api.ucla.edu/
-- Identity Federation: https://mdq.incommon.org/entities/urn%3Amace%3Aincommon%3Aucla.edu
-- Course Catalog: https://catalog.registrar.ucla.edu/
-- Research Repository: https://dataverse.ucla.edu/
-- Research Computing: https://oarc.ucla.edu/
-- AI Policy: https://dts.ucla.edu/initiatives/ai/ai-use-policy-guide
-- GitHub: https://github.com/ucla · https://github.com/UCLALibrary
-- LinkedIn: https://www.linkedin.com/school/ucla/
+- [Ucla Apigee Invalid Token Error](https://apis.io/examples/ucla/ucla-apigee-invalid-token-error/)
+- [Ucla Bruinlearn Lti Jwks](https://apis.io/examples/ucla/ucla-bruinlearn-lti-jwks/)
 
-## Notes
+#### Governance rules (1)
 
-Re-profiled on 2026-08-19 under the API Evangelist university pipeline, which settles operator attribution before saving any contract. Roughly 60 URLs were fetched across 15 hosts. Nothing was removed — UCLA held no vendor-attributed contract to strip, because the June 2026 profile had saved no contracts at all. Six surfaces were added and BruinLearn was newly recorded as a tenant relationship rather than credited to UCLA. `dataverse.ucla.edu` and `digital.library.ucla.edu` answer HTTP 200 with an Anubis proof-of-work bot challenge on every path, so OAI-PMH conformance could not be read and is not claimed.
+Spectral rulesets for the provider's contracts.
 
-## Maintainers
+- [University of California, Los Angeles API Rules](https://apis.io/rules/ucla/ucla-rules/)
 
-- Kin Lane — kin@apievangelist.com
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Ucla Authentication](https://apis.io/security/ucla/ucla-authentication/)
+- [Ucla Domain Security](https://apis.io/security/ucla/ucla-domain-security/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Ucla Scopes](https://apis.io/scopes/ucla/ucla-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Ucla Plans Pricing](https://apis.io/plans/ucla/ucla-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Ucla Rate Limits](https://apis.io/rate-limits/ucla/ucla-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Ucla Finops](https://apis.io/finops/ucla/ucla-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.ucla.edu/)
+- [Documentation](https://developer.api.ucla.edu/ucla-help)
+- [API reference](https://developer.api.ucla.edu/api-catalog)
+- [Support](https://developer.api.ucla.edu/ucla-help)
+- [Blog](https://newsroom.ucla.edu/)
+- [Terms of service](https://www.ucla.edu/terms-of-use)
+- [Privacy policy](https://compliance.ucla.edu/privacy)
+- [GitHub](https://github.com/ucla)
+
+## API Evangelist rating
+
+**Kin Score 41.8** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 71.4 |
+| Contract quality | 58.2 |
+| Contract governance | 3.8 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 45.2 |
+| Access clarity | 39.5 |
+
+**Agent readiness 23.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | negotiable (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | documented (partial credit) |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 34.3** — Education & Research
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/ucla/](https://apis.io/providers/ucla/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for University of California, Los Angeles: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/ucla/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
